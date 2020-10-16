@@ -562,13 +562,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Battery Parsing</from>
-      <to>Dummy (do nothing)</to>
+      <from>Select values 3</from>
+      <to>Battery Parsing</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>Battery Parsing</to>
+      <from>Battery Parsing</from>
+      <to>Sensor Parsing</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sensor Parsing</from>
+      <to>Dummy (do nothing)</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -602,7 +607,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>640</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -637,7 +642,90 @@
     </remotesteps>
     <GUI>
       <xloc>656</xloc>
-      <yloc>752</yloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Battery Parsing</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>file:///C:/Users/Rodrigo/Desktop/Repos/IV-2021/BatteryParsing.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description/>
+          <connector>
+            <parent>Battery</parent>
+            <child>Battery</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description/>
+          <connector>
+            <parent>battery_removable</parent>
+            <child>battery_removable</child>
+          </connector>
+          <connector>
+            <parent>battery_type</parent>
+            <child>battery_type</child>
+          </connector>
+          <connector>
+            <parent>battery_mAh</parent>
+            <child>battery_mAh</child>
+          </connector>
+          <connector>
+            <parent>battery_wh</parent>
+            <child>battery_wh</child>
+          </connector>
+          <connector>
+            <parent>battery_type</parent>
+            <child>battery_type</child>
+          </connector>
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>Battery</variable>
+          <input/>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -668,7 +756,7 @@
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>752</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -703,7 +791,7 @@
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>640</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -765,7 +853,7 @@
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
-      <yloc>544</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -814,7 +902,32 @@
     </remotesteps>
     <GUI>
       <xloc>864</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -867,7 +980,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1227,7 +1340,7 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>544</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1336,7 +1449,7 @@
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>80</yloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1581,7 +1694,7 @@
       <field>
         <name>Display_resolution</name>
         <path>$..[*].Display_resolution</path>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -1737,7 +1850,7 @@
       <field>
         <name>Audio_jack</name>
         <path>$..[*].Audio_jack</path>
-        <type>String</type>
+        <type>Binary</type>
         <format/>
         <currency/>
         <decimal/>
@@ -1913,7 +2026,7 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>320</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1949,7 +2062,7 @@
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>544</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1996,7 +2109,7 @@
     </remotesteps>
     <GUI>
       <xloc>960</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2033,7 +2146,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2070,7 +2183,7 @@
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2086,13 +2199,19 @@
       <schema_name/>
     </partitioning>
     <fields>
+      <field>
+        <name>objectId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Battery</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Sensors</name>
+        <rename/>
+      </field>
       <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>createdAt</name>
-      </remove>
-      <remove>
-        <name>updatedAt</name>
-      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2104,7 +2223,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>240</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2148,7 +2267,7 @@
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
-      <yloc>752</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2198,7 +2317,7 @@
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2248,7 +2367,7 @@
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>400</yloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2298,7 +2417,7 @@
     </remotesteps>
     <GUI>
       <xloc>960</xloc>
-      <yloc>544</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2348,7 +2467,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>752</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2405,7 +2524,7 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>752</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2573,7 +2692,7 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>544</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2604,7 +2723,7 @@
     </remotesteps>
     <GUI>
       <xloc>800</xloc>
-      <yloc>640</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2639,12 +2758,12 @@
     </remotesteps>
     <GUI>
       <xloc>944</xloc>
-      <yloc>640</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Battery Parsing</name>
+    <name>Sensor Parsing</name>
     <type>Mapping</type>
     <description/>
     <distribute>Y</distribute>
@@ -2657,7 +2776,7 @@
     <specification_method>filename</specification_method>
     <trans_object_id/>
     <trans_name/>
-    <filename>file:///C:/Users/Rodrigo/Desktop/Repos/IV-2021/BatteryParsing.ktr</filename>
+    <filename>${Internal.Entry.Current.Directory}/SensorParsing.ktr</filename>
     <directory_path/>
     <mappings>
       <input>
@@ -2665,11 +2784,11 @@
           <input_step/>
           <output_step/>
           <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
+          <rename_on_output>Y</rename_on_output>
           <description/>
           <connector>
-            <parent>Battery</parent>
-            <child>Battery</child>
+            <parent>Sensors</parent>
+            <child>Sensors</child>
           </connector>
         </mapping>
       </input>
@@ -2681,30 +2800,78 @@
           <rename_on_output>N</rename_on_output>
           <description/>
           <connector>
-            <parent>battery_removable</parent>
-            <child>battery_removable</child>
+            <parent>sensor_accelerometer</parent>
+            <child>sensor_accelerometer</child>
           </connector>
           <connector>
-            <parent>battery_type</parent>
-            <child>battery_type</child>
+            <parent>sensor_compass</parent>
+            <child>sensor_compass</child>
           </connector>
           <connector>
-            <parent>battery_mAh</parent>
-            <child>battery_mAh</child>
+            <parent>sensor_gyro</parent>
+            <child>sensor_gyro</child>
           </connector>
           <connector>
-            <parent>battery_wh</parent>
-            <child>battery_wh</child>
+            <parent>sensor_proximity</parent>
+            <child>sensor_proximity</child>
           </connector>
           <connector>
-            <parent>battery_type</parent>
-            <child>battery_type</child>
+            <parent>sensor_barometer</parent>
+            <child>sensor_barometer</child>
+          </connector>
+          <connector>
+            <parent>sensor_altimeter</parent>
+            <child>sensor_altimeter</child>
+          </connector>
+          <connector>
+            <parent>sensor_temperature</parent>
+            <child>sensor_temperature</child>
+          </connector>
+          <connector>
+            <parent>sensor_heart_rate</parent>
+            <child>sensor_heart_rate</child>
+          </connector>
+          <connector>
+            <parent>sensor_spo2</parent>
+            <child>sensor_spo2</child>
+          </connector>
+          <connector>
+            <parent>sensor_iris_scanner</parent>
+            <child>sensor_iris_scanner</child>
+          </connector>
+          <connector>
+            <parent>sensor_humidity</parent>
+            <child>sensor_humidity</child>
+          </connector>
+          <connector>
+            <parent>sensor_core</parent>
+            <child>sensor_core</child>
+          </connector>
+          <connector>
+            <parent>sensor_gesture</parent>
+            <child>sensor_gesture</child>
+          </connector>
+          <connector>
+            <parent>sensor_uv</parent>
+            <child>sensor_uv</child>
+          </connector>
+          <connector>
+            <parent>sensor_color_spectrum</parent>
+            <child>sensor_color_spectrum</child>
+          </connector>
+          <connector>
+            <parent>sensor_fingerprint</parent>
+            <child>sensor_fingerprint</child>
+          </connector>
+          <connector>
+            <parent>sensor_fingerprint_mounted</parent>
+            <child>sensor_fingerprint_mounted</child>
           </connector>
         </mapping>
       </output>
       <parameters>
         <variablemapping>
-          <variable>Battery</variable>
+          <variable>Sensors</variable>
           <input/>
         </variablemapping>
         <inherit_all_vars>Y</inherit_all_vars>
@@ -2721,33 +2888,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>640</xloc>
-      <yloc>240</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
