@@ -2481,7 +2481,7 @@
       <meta>
         <name>sensor_fingerprint_mounted</name>
         <rename>sensor_fingerprint_mounted</rename>
-        <type>Boolean</type>
+        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>

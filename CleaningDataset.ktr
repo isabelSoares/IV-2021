@@ -578,182 +578,32 @@
     </hop>
     <hop>
       <from>Announced Parsing</from>
-      <to>OthersSpecs Parsing</to>
+      <to>Others Parsing</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>OthersSpecs Parsing</from>
-      <to>Regex evaluation dimensions</to>
+      <from>Others Parsing</from>
+      <to>Memory Parsing</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Regex evaluation dimensions</from>
-      <to>Filter rows</to>
+      <from>Memory Parsing</from>
+      <to>Camera Parsing</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Calculator</to>
+      <from>Camera Parsing</from>
+      <to>Sort rows 5</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator</from>
-      <to>Filter rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows 2</from>
-      <to>Calculator 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator 2</from>
+      <from>Sort rows 5</from>
       <to>Select values 5</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows 2</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 5</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Add aspect_ratio</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add aspect_ratio</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing)</from>
-      <to>Regex evaluation screen_body_ratio</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation screen_body_ratio</from>
-      <to>Select values 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 6</from>
-      <to>Regex evaluation GB Ram</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation GB Ram</from>
-      <to>Regex evaluation MB Ram</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation MB Ram</from>
-      <to>Filter rows 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows 3</from>
-      <to>Dummy (do nothing) 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation MB Ram</from>
-      <to>Formula RAM GB to MB</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula RAM GB to MB</from>
-      <to>Filter GB RAM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter GB RAM</from>
-      <to>RAM GB to MB</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RAM GB to MB</from>
-      <to>Remove RAM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter GB RAM</from>
-      <to>Remove RAM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation GB IM</from>
-      <to>Regex evaluation MB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove RAM</from>
-      <to>Regex evaluation GB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows 3 2</from>
-      <to>Dummy (do nothing) 2 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter GB IM</from>
-      <to>IM GB to MB</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation MB IM</from>
-      <to>Regex evaluation KB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation KB IM</from>
-      <to>Filter rows 3 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex evaluation KB IM</from>
-      <to>Formula IM GB to MB</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula IM GB to MB</from>
-      <to>Filter GB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>IM GB to MB 2</from>
-      <to>Remove IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>IM GB to MB</from>
-      <to>Filter KB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter GB IM</from>
-      <to>Filter KB IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter KB IM</from>
-      <to>IM GB to MB 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter KB IM</from>
-      <to>Remove IM</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove IM</from>
-      <to>Sort rows 5</to>
+      <to>Text file output 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1563,115 +1413,6 @@
     </GUI>
   </step>
   <step>
-    <name>JSON input Brands</name>
-    <type>JsonInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <ignoreMissingPath>Y</ignoreMissingPath>
-    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
-    <rownum_field/>
-    <file>
-      <name>${Internal.Entry.Current.Directory}/Datasets/Cell_Phone_Models_By_Brand.json</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>Cell_Phone_Brand</name>
-        <path>$..Cell_Phone_Brand</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>updatedAt</name>
-        <path>$..updatedAt</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>createdAt</name>
-        <path>$..createdAt</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>objectId</name>
-        <path>$..objectId</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>JSON input Models</name>
     <type>JsonInput</type>
     <description/>
@@ -2281,6 +2022,109 @@
     <GUI>
       <xloc>1088</xloc>
       <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Others Parsing</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>${Internal.Entry.Current.Directory}/OthersSpecsParsing.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description/>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description/>
+          <connector>
+            <parent>Audio_jack</parent>
+            <child>Audio_jack</child>
+          </connector>
+          <connector>
+            <parent>Bluetooth</parent>
+            <child>Bluetooth</child>
+          </connector>
+          <connector>
+            <parent>display_dimension1</parent>
+            <child>display_dimension1</child>
+          </connector>
+          <connector>
+            <parent>display_dimension2</parent>
+            <child>display_dimension2</child>
+          </connector>
+          <connector>
+            <parent>aspect_ratio</parent>
+            <child>aspect_ratio</child>
+          </connector>
+          <connector>
+            <parent>screen_body_ratio</parent>
+            <child>screen_body_ratio</child>
+          </connector>
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>Audio_jack</variable>
+          <input/>
+        </variablemapping>
+        <variablemapping>
+          <variable>Bluetooth</variable>
+          <input/>
+        </variablemapping>
+        <variablemapping>
+          <variable>GPS</variable>
+          <input/>
+        </variablemapping>
+        <variablemapping>
+          <variable>Radio</variable>
+          <input/>
+        </variablemapping>
+        <variablemapping>
+          <variable>Display_size</variable>
+          <input/>
+        </variablemapping>
+        <variablemapping>
+          <variable>Display_resolution</variable>
+          <input/>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2929,8 +2773,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2624</xloc>
-      <yloc>240</yloc>
+      <xloc>1248</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3226,7 +3070,7 @@
     </GUI>
   </step>
   <step>
-    <name>OthersSpecs Parsing</name>
+    <name>Memory Parsing</name>
     <type>Mapping</type>
     <description/>
     <distribute>Y</distribute>
@@ -3239,7 +3083,7 @@
     <specification_method>filename</specification_method>
     <trans_object_id/>
     <trans_name/>
-    <filename>${Internal.Entry.Current.Directory}/OthersSpecsParsing.ktr</filename>
+    <filename>${Internal.Entry.Current.Directory}/MemoryParsing.ktr</filename>
     <directory_path/>
     <mappings>
       <input>
@@ -3259,30 +3103,22 @@
           <rename_on_output>N</rename_on_output>
           <description/>
           <connector>
-            <parent>Audio_jack</parent>
-            <child>Audio_jack</child>
+            <parent>ram_MB</parent>
+            <child>ram_MB</child>
           </connector>
           <connector>
-            <parent>Bluetooth</parent>
-            <child>Bluetooth</child>
+            <parent>im_MB</parent>
+            <child>im_MB</child>
           </connector>
         </mapping>
       </output>
       <parameters>
         <variablemapping>
-          <variable>Audio_jack</variable>
+          <variable>RAM</variable>
           <input/>
         </variablemapping>
         <variablemapping>
-          <variable>Bluetooth</variable>
-          <input/>
-        </variablemapping>
-        <variablemapping>
-          <variable>GPS</variable>
-          <input/>
-        </variablemapping>
-        <variablemapping>
-          <variable>Radio</variable>
+          <variable>Internal_memory</variable>
           <input/>
         </variablemapping>
         <inherit_all_vars>Y</inherit_all_vars>
@@ -3299,14 +3135,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>960</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Regex evaluation dimensions</name>
-    <type>RegexEval</type>
+    <name>Camera Parsing</name>
+    <type>Mapping</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -3315,47 +3151,56 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <script>^(?:.*?)(\d+)(?: )*(?:x)(?: )*(\d+)(?: )*(?:pixels)(?:.*?)$</script>
-    <matcher>Display_size</matcher>
-    <resultfieldname>display_parsed</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>display_dimension1</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-      <field>
-        <name>display_dimension2</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-    </fields>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>${Internal.Entry.Current.Directory}/CameraParsing.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description/>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description/>
+          <connector>
+            <parent>primary_camera_MP</parent>
+            <child>primary_camera_MP</child>
+          </connector>
+          <connector>
+            <parent>primary_camera_autofocus</parent>
+            <child>primary_camera_autofocus</child>
+          </connector>
+          <connector>
+            <parent>primary_camera_LED_flash</parent>
+            <child>primary_camera_LED_flash</child>
+          </connector>
+          <connector>
+            <parent>primary_camera_VGA</parent>
+            <child>primary_camera_VGA</child>
+          </connector>
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>Primary_camera</variable>
+          <input/>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -3365,203 +3210,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
+      <xloc>1088</xloc>
       <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Calculator</send_true_to>
-    <send_false_to>Add aspect_ratio</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>display_parsed</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Boolean</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Calculator</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>aspect_ratio</field_name>
-      <calc_type>DIVIDE</calc_type>
-      <field_a>display_dimension1</field_a>
-      <field_b>display_dimension2</field_b>
-      <field_c/>
-      <value_type>Number</value_type>
-      <value_length>4</value_length>
-      <value_precision>4</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Calculator 2</send_true_to>
-    <send_false_to>Dummy (do nothing)</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>aspect_ratio</leftvalue>
-        <function>&lt;</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Number</type>
-          <text>1.0</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask>####0.0#########;-####0.0#########</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Calculator 2</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>correct_aspect_ratio</field_name>
-      <calc_type>DIVIDE</calc_type>
-      <field_a>display_dimension2</field_a>
-      <field_b>display_dimension1</field_b>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>4</value_length>
-      <value_precision>4</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3577,501 +3227,171 @@
       <schema_name/>
     </partitioning>
     <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>aspect_ratio</name>
-      </remove>
-      <meta>
-        <name>correct_aspect_ratio</name>
-        <rename>aspect_ratio</rename>
-        <type>None</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add aspect_ratio</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
+      <field>
+        <name>Model</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Brand</name>
+        <rename/>
+      </field>
+      <field>
+        <name>year</name>
+        <rename/>
+      </field>
+      <field>
+        <name>quarter</name>
+        <rename/>
+      </field>
+      <field>
+        <name>month</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Audio_jack</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_removable</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_amps</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_wh</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_type</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Bluetooth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Display_type</name>
+        <rename/>
+      </field>
+      <field>
+        <name>display_dimension1</name>
+        <rename/>
+      </field>
+      <field>
+        <name>display_dimension2</name>
+        <rename/>
+      </field>
       <field>
         <name>aspect_ratio</name>
-        <type>Number</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <rename/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex evaluation screen_body_ratio</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^(?:.*?)(\d+).(?:\d+)%(?:.*?)$</script>
-    <matcher>Display_resolution</matcher>
-    <resultfieldname>matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
       <field>
         <name>screen_body_ratio</name>
-        <type>None</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
+        <rename/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 6</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>Display_resolution</name>
-      </remove>
-      <remove>
-        <name>Display_size</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1552</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex evaluation GB Ram</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^(?:.*?)(\d+)(?: *)(?:GB)(?:.*?)$</script>
-    <matcher>RAM</matcher>
-    <resultfieldname>ram_GB_matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
       <field>
-        <name>ram_GB</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
+        <name>GPS</name>
+        <rename/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1696</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex evaluation MB Ram</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^(?:.*?)(\d+)(?: *)(?:MB)(?:.*?)$</script>
-    <matcher>RAM</matcher>
-    <resultfieldname>ram_MB_matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
+      <field>
+        <name>Radio</name>
+        <rename/>
+      </field>
       <field>
         <name>ram_MB</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
+        <rename/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1696</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 3</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Dummy (do nothing) 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>ram_GB_matched</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>ram_MB_matched</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>RAM</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1696</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing) 2</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1552</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula RAM GB to MB</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>ram_GB_to_MB</field_name>
-      <formula_string>1000 * [ram_gb]</formula_string>
-      <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1856</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter GB RAM</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>RAM GB to MB</send_true_to>
-    <send_false_to>Remove RAM</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>ram_GB_to_MB</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1856</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RAM GB to MB</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
       <field>
-        <name>ram_MB</name>
-        <replaceby>ram_GB_to_MB</replaceby>
+        <name>im_MB</name>
+        <rename/>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1856</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove RAM</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
+      <field>
+        <name>primary_camera_MP</name>
+        <rename/>
+      </field>
+      <field>
+        <name>primary_camera_autofocus</name>
+        <rename/>
+      </field>
+      <field>
+        <name>primary_camera_LED_flash</name>
+        <rename/>
+      </field>
+      <field>
+        <name>primary_camera_VGA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_accelerometer</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_altimeter</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_barometer</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_color_spectrum</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_compass</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_core</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_fingerprint</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_fingerprint_mounted</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_gesture</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_gyro</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_heart_rate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_humidity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_iris_scanner</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_proximity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_spo2</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_temperature</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_uv</name>
+        <rename/>
+      </field>
       <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>ram_GB</name>
-      </remove>
-      <remove>
-        <name>ram_GB_matched</name>
-      </remove>
-      <remove>
-        <name>ram_MB_matched</name>
-      </remove>
-      <remove>
-        <name>matched</name>
-      </remove>
-      <remove>
-        <name>ram_GB_to_MB</name>
-      </remove>
-      <remove>
-        <name>RAM</name>
-      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -4082,14 +3402,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1952</xloc>
-      <yloc>144</yloc>
+      <xloc>1248</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Regex evaluation GB IM</name>
-    <type>RegexEval</type>
+    <name>Text file output 2</name>
+    <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -4098,33 +3418,37 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <script>^(?:.*?)(\d+)(?: *)(?:GB)(?:.*?)$</script>
-    <matcher>Internal_memory</matcher>
-    <resultfieldname>im_GB_matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
+    <separator>;</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>windows-1252</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${Internal.Entry.Current.Directory}/Datasets/Models_Parsed</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
     <fields>
-      <field>
-        <name>im_GB</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -4135,452 +3459,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2080</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex evaluation MB IM</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^(?:.*?)(\d+)(?: *)(?:MB)(?:.*?)$</script>
-    <matcher>Internal_memory</matcher>
-    <resultfieldname>im_MB_matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>im_MB</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2080</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 3 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Dummy (do nothing) 2 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>im_GB_matched</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>im_MB_matched</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>im_KB_matched</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>Internal_memory</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2240</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Formula IM GB to MB</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>im_GB_to_MB</field_name>
-      <formula_string>1000 * [im_gb]</formula_string>
-      <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <formula>
-      <field_name>im_KB_to_MB</field_name>
-      <formula_string>[im_kb] / 1000</formula_string>
-      <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field/>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2400</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter GB IM</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>IM GB to MB</send_true_to>
-    <send_false_to>Filter KB IM</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>im_GB_to_MB</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2400</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>IM GB to MB</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>im_MB</name>
-        <replaceby>im_GB_to_MB</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2400</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing) 2 2</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2080</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex evaluation KB IM</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^(?:.*?)(\d+)(?: *)(?:KB)(?:.*?)$</script>
-    <matcher>Internal_memory</matcher>
-    <resultfieldname>im_KB_matched</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>im_KB</name>
-        <type>Number</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2240</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter KB IM</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>IM GB to MB 2</send_true_to>
-    <send_false_to>Remove IM</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>im_KB_to_MB</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2528</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>IM GB to MB 2</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>im_MB</name>
-        <replaceby>im_KB_to_MB</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2528</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove IM</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>im_GB</name>
-      </remove>
-      <remove>
-        <name>im_GB_matched</name>
-      </remove>
-      <remove>
-        <name>im_MB_matched</name>
-      </remove>
-      <remove>
-        <name>im_KB_matched</name>
-      </remove>
-      <remove>
-        <name>im_KB</name>
-      </remove>
-      <remove>
-        <name>im_GB_to_MB</name>
-      </remove>
-      <remove>
-        <name>im_KB_to_MB</name>
-      </remove>
-      <remove>
-        <name>Internal_memory</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2624</xloc>
-      <yloc>128</yloc>
+      <xloc>1248</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
