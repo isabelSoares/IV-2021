@@ -447,13 +447,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get Year with Regex</from>
-      <to>Select values 2</to>
+      <from>Select values 2</from>
+      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
-      <to>Sort rows</to>
+      <from>Get Year with Regex</from>
+      <to>Select values 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -573,7 +573,72 @@
     </hop>
     <hop>
       <from>Sensor Parsing</from>
+      <to>Announced Parsing</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Announced Parsing</from>
+      <to>Sort rows 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 5</from>
+      <to>Audio_Jack Filter</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Audio_Jack Filter</from>
+      <to>Set field value to a constant</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>bluetooth</from>
+      <to>Bluetooth Filter</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Audio_Jack Filter</from>
+      <to>bluetooth</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value to a constant</from>
+      <to>bluetooth</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Bluetooth Filter</from>
+      <to>Set field value to a constant 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Bluetooth Filter</from>
+      <to>Bluetooth Filter 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Bluetooth Filter 2</from>
+      <to>Set field value to a constant 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value to a constant 2</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value to a constant 2 2</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Bluetooth Filter 2</from>
       <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Select values 5</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -660,7 +725,7 @@
     <specification_method>filename</specification_method>
     <trans_object_id/>
     <trans_name/>
-    <filename>file:///C:/Users/Rodrigo/Desktop/Repos/IV-2021/BatteryParsing.ktr</filename>
+    <filename>${Internal.Entry.Current.Directory}/BatteryParsing.ktr</filename>
     <directory_path/>
     <mappings>
       <input>
@@ -907,35 +972,10 @@
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Get Year with Regex</name>
     <type>RegexEval</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -2117,7 +2157,7 @@
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -2211,6 +2251,26 @@
         <name>Sensors</name>
         <rename/>
       </field>
+      <field>
+        <name>Announced</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Brand</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Audio_jack</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Bluetooth</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Display_size</name>
+        <rename/>
+      </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
@@ -2268,6 +2328,137 @@
     <GUI>
       <xloc>800</xloc>
       <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sensor Parsing</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>${Internal.Entry.Current.Directory}/SensorParsing.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description/>
+          <connector>
+            <parent>Sensors</parent>
+            <child>Sensors</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step/>
+          <output_step/>
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description/>
+          <connector>
+            <parent>sensor_accelerometer</parent>
+            <child>sensor_accelerometer</child>
+          </connector>
+          <connector>
+            <parent>sensor_compass</parent>
+            <child>sensor_compass</child>
+          </connector>
+          <connector>
+            <parent>sensor_gyro</parent>
+            <child>sensor_gyro</child>
+          </connector>
+          <connector>
+            <parent>sensor_proximity</parent>
+            <child>sensor_proximity</child>
+          </connector>
+          <connector>
+            <parent>sensor_barometer</parent>
+            <child>sensor_barometer</child>
+          </connector>
+          <connector>
+            <parent>sensor_altimeter</parent>
+            <child>sensor_altimeter</child>
+          </connector>
+          <connector>
+            <parent>sensor_temperature</parent>
+            <child>sensor_temperature</child>
+          </connector>
+          <connector>
+            <parent>sensor_heart_rate</parent>
+            <child>sensor_heart_rate</child>
+          </connector>
+          <connector>
+            <parent>sensor_spo2</parent>
+            <child>sensor_spo2</child>
+          </connector>
+          <connector>
+            <parent>sensor_iris_scanner</parent>
+            <child>sensor_iris_scanner</child>
+          </connector>
+          <connector>
+            <parent>sensor_humidity</parent>
+            <child>sensor_humidity</child>
+          </connector>
+          <connector>
+            <parent>sensor_core</parent>
+            <child>sensor_core</child>
+          </connector>
+          <connector>
+            <parent>sensor_gesture</parent>
+            <child>sensor_gesture</child>
+          </connector>
+          <connector>
+            <parent>sensor_uv</parent>
+            <child>sensor_uv</child>
+          </connector>
+          <connector>
+            <parent>sensor_color_spectrum</parent>
+            <child>sensor_color_spectrum</child>
+          </connector>
+          <connector>
+            <parent>sensor_fingerprint</parent>
+            <child>sensor_fingerprint</child>
+          </connector>
+          <connector>
+            <parent>sensor_fingerprint_mounted</parent>
+            <child>sensor_fingerprint_mounted</child>
+          </connector>
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>Sensors</variable>
+          <input/>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2763,7 +2954,7 @@
     </GUI>
   </step>
   <step>
-    <name>Sensor Parsing</name>
+    <name>Announced Parsing</name>
     <type>Mapping</type>
     <description/>
     <distribute>Y</distribute>
@@ -2776,7 +2967,7 @@
     <specification_method>filename</specification_method>
     <trans_object_id/>
     <trans_name/>
-    <filename>${Internal.Entry.Current.Directory}/SensorParsing.ktr</filename>
+    <filename>${Internal.Entry.Current.Directory}/AnnouncedParsing.ktr</filename>
     <directory_path/>
     <mappings>
       <input>
@@ -2787,8 +2978,8 @@
           <rename_on_output>Y</rename_on_output>
           <description/>
           <connector>
-            <parent>Sensors</parent>
-            <child>Sensors</child>
+            <parent>Announced</parent>
+            <child>Announced</child>
           </connector>
         </mapping>
       </input>
@@ -2799,79 +2990,11 @@
           <main_path>Y</main_path>
           <rename_on_output>N</rename_on_output>
           <description/>
-          <connector>
-            <parent>sensor_accelerometer</parent>
-            <child>sensor_accelerometer</child>
-          </connector>
-          <connector>
-            <parent>sensor_compass</parent>
-            <child>sensor_compass</child>
-          </connector>
-          <connector>
-            <parent>sensor_gyro</parent>
-            <child>sensor_gyro</child>
-          </connector>
-          <connector>
-            <parent>sensor_proximity</parent>
-            <child>sensor_proximity</child>
-          </connector>
-          <connector>
-            <parent>sensor_barometer</parent>
-            <child>sensor_barometer</child>
-          </connector>
-          <connector>
-            <parent>sensor_altimeter</parent>
-            <child>sensor_altimeter</child>
-          </connector>
-          <connector>
-            <parent>sensor_temperature</parent>
-            <child>sensor_temperature</child>
-          </connector>
-          <connector>
-            <parent>sensor_heart_rate</parent>
-            <child>sensor_heart_rate</child>
-          </connector>
-          <connector>
-            <parent>sensor_spo2</parent>
-            <child>sensor_spo2</child>
-          </connector>
-          <connector>
-            <parent>sensor_iris_scanner</parent>
-            <child>sensor_iris_scanner</child>
-          </connector>
-          <connector>
-            <parent>sensor_humidity</parent>
-            <child>sensor_humidity</child>
-          </connector>
-          <connector>
-            <parent>sensor_core</parent>
-            <child>sensor_core</child>
-          </connector>
-          <connector>
-            <parent>sensor_gesture</parent>
-            <child>sensor_gesture</child>
-          </connector>
-          <connector>
-            <parent>sensor_uv</parent>
-            <child>sensor_uv</child>
-          </connector>
-          <connector>
-            <parent>sensor_color_spectrum</parent>
-            <child>sensor_color_spectrum</child>
-          </connector>
-          <connector>
-            <parent>sensor_fingerprint</parent>
-            <child>sensor_fingerprint</child>
-          </connector>
-          <connector>
-            <parent>sensor_fingerprint_mounted</parent>
-            <child>sensor_fingerprint_mounted</child>
-          </connector>
         </mapping>
       </output>
       <parameters>
         <variablemapping>
-          <variable>Sensors</variable>
+          <variable>Announced</variable>
           <input/>
         </variablemapping>
         <inherit_all_vars>Y</inherit_all_vars>
@@ -2888,8 +3011,534 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>752</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 5</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Brand</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>year</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>quarter</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>month</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Audio_Jack Filter</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>bluetooth</send_true_to>
+    <send_false_to>Set field value to a constant</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Audio_jack</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Binary</type>
+              <text>Yes</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>Audio_jack</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Binary</type>
+              <text>No</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value to a constant</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>Audio_jack</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Bluetooth Filter</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value to a constant 2</send_true_to>
+    <send_false_to>Bluetooth Filter 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Bluetooth</leftvalue>
+            <function>CONTAINS</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>No</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>bluetooth</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>bluetooth</name>
+        <type>Binary</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value to a constant 2</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>bluetooth_1</name>
+        <value>No</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Bluetooth Filter 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_false_to>Set field value to a constant 2 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Bluetooth</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value to a constant 2 2</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>bluetooth_1</name>
+        <value>Yes</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>objectId</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Brand</name>
+        <rename/>
+      </field>
+      <field>
+        <name>Audio_jack</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_removable</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_amps</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_wh</name>
+        <rename/>
+      </field>
+      <field>
+        <name>battery_type</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_accelerometer</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_compass</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_gyro</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_proximity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_barometer</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_altimeter</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_temperature</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_heart_rate</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_spo2</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_iris_scanner</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_humidity</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_core</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_gesture</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_uv</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_color_spectrum</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_fingerprint</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sensor_fingerprint_mounted</name>
+        <rename/>
+      </field>
+      <field>
+        <name>year</name>
+        <rename/>
+      </field>
+      <field>
+        <name>quarter</name>
+        <rename/>
+      </field>
+      <field>
+        <name>month</name>
+        <rename/>
+      </field>
+      <field>
+        <name>bluetooth_1</name>
+        <rename>Bluetooth</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1408</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
