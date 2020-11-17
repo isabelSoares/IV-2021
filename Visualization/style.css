@@ -1,0 +1,61 @@
+#main_div {
+    width: 1650;
+    height: 900;
+    background-color: lightblue;
+}
+
+#time_selection {
+    float: left;
+    width: 85%;
+    height: 5%;
+    background-color: transparent;
+}
+
+#brands_selection {
+    float: right;
+    width: 15%;
+    height: 37.5%;
+    background-color: transparent;
+}
+
+#line_chart1 {
+    float: left;
+    width: 30%;
+    height: 32.5%;
+    background-color: transparent;
+}
+
+#small_multiples_line_chart {
+    float: right;
+    width: 55%;
+    height: 32.5%;
+    background-color: transparent;
+}
+
+#line_chart2 {
+    float: left;
+    width: 30%;
+    height: 32.5%;
+    background-color: transparent;
+}
+
+#parallel_coordinates_chart {
+    float: right;
+    width: 70%;
+    height: 32.5%;
+    background-color: transparent;
+}
+
+#glyph_chart {
+    float: left;
+    width: 78%;
+    height: 30%;
+    background-color: transparent;
+}
+
+#spiral_chart {
+    float: right;
+    width: 22%;
+    height: 30%;
+    background-color: transparent;
+}
