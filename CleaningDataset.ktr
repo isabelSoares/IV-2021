@@ -537,23 +537,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>#Models == Null</from>
-      <to>Sort rows 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>#Models = 0</from>
-      <to>Sort rows 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 4</from>
       <to>#Models == Null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 4</from>
-      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -621,6 +606,36 @@
       <to>Text file output 2</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>#Models == Null</from>
+      <to>Filter Outlier Years 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>#Models = 0</from>
+      <to>Filter Outlier Years 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value to a constant 2</from>
+      <to>Sort rows 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Outlier Years 2</from>
+      <to>Sort rows 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Outlier Years 2</from>
+      <to>Set field value to a constant 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 4</from>
+      <to>Text file output</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>#Models = 0</name>
@@ -668,7 +683,7 @@
       <schema_name/>
     </partitioning>
     <send_true_to>#Models = 0</send_true_to>
-    <send_false_to>Sort rows 4</send_false_to>
+    <send_false_to>Filter Outlier Years 2</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -3067,7 +3082,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>192</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3199,7 +3214,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
+        <nullif>null</nullif>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>0</precision>
@@ -3238,7 +3253,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>48</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3878,6 +3893,105 @@
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter Outlier Years 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value to a constant 2</send_true_to>
+    <send_false_to>Sort rows 4</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Year</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2030</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>Year</leftvalue>
+            <function>&lt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>1980</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value to a constant 2</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>Year</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
       <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>

@@ -147,7 +147,7 @@ Bird;2004;12;null
 Bird;2005;19;null
 Bird;2006;3;null
 Bird;2007;25;null
-BlackBerry;78;1;null
+BlackBerry;null;1;null
 BlackBerry;2003;3;null
 BlackBerry;2004;5;null
 BlackBerry;2005;1;null
@@ -210,6 +210,7 @@ Emporia;2012;4;null
 Emporia;2013;3;null
 Emporia;2014;4;null
 Energizer;2015;5;null
+Ericsson;null;1;null
 Ericsson;1992;0;null
 Ericsson;1993;0;null
 Ericsson;1994;1;null
@@ -238,7 +239,6 @@ Ericsson;2016;0;null
 Ericsson;2017;0;null
 Ericsson;2018;0;null
 Ericsson;2019;0;null
-Ericsson;2400;1;null
 Eten;2004;4;null
 Eten;2005;1;null
 Eten;2006;6;null
@@ -441,6 +441,7 @@ Lenovo/Motorola;2016;0;null
 Lenovo/Motorola;2017;0;null
 Lenovo/Motorola;2018;0;null
 Lenovo/Motorola;2019;0;null
+LG;null;1;null
 LG;1992;0;null
 LG;1993;0;null
 LG;1994;0;null
@@ -469,7 +470,6 @@ LG;2016;30;null
 LG;2017;7;null
 LG;2018;0;null
 LG;2019;0;null
-LG;2522;1;null
 Maxon;1999;8;null
 Maxon;2000;4;null
 Maxon;2003;11;null
@@ -554,6 +554,8 @@ Mitsubishi;2003;4;null
 Mitsubishi;2004;7;null
 Modu;2009;7;null
 Modu;2010;1;null
+Motorola;null;2;null
+Motorola;null;3;null
 Motorola;1992;0;4
 Motorola;1993;0;null
 Motorola;1994;0;12
@@ -582,8 +584,6 @@ Motorola;2016;9;null
 Motorola;2017;9;null
 Motorola;2018;0;null
 Motorola;2019;0;null
-Motorola;2614;2;null
-Motorola;2644;3;null
 MWg;2007;2;null
 MWg;2008;3;null
 NEC;1992;0;2
@@ -621,6 +621,8 @@ NIU;2012;12;null
 NIU;2013;9;null
 NIU;2014;5;null
 NIU;2015;4;null
+Nokia;null;1;null
+Nokia;null;1;null
 Nokia;1992;0;3
 Nokia;1993;0;5
 Nokia;1994;0;9
@@ -649,8 +651,6 @@ Nokia;2016;2;null
 Nokia;2017;4;null
 Nokia;2018;0;null
 Nokia;2019;0;null
-Nokia;2463;1;null
-Nokia;2523;1;null
 Nvidia;2014;2;null
 Nvidia;2015;1;null
 O2;2003;3;null
@@ -732,6 +732,7 @@ Palm;2007;1;null
 Palm;2008;3;null
 Palm;2009;2;null
 Palm;2010;4;null
+Panasonic;null;1;null
 Panasonic;1992;0;null
 Panasonic;1993;0;null
 Panasonic;1994;0;null
@@ -760,7 +761,6 @@ Panasonic;2016;14;null
 Panasonic;2017;7;null
 Panasonic;2018;0;null
 Panasonic;2019;0;null
-Panasonic;2675;1;null
 Pantech;2003;3;null
 Pantech;2004;11;null
 Pantech;2005;12;null
@@ -883,12 +883,12 @@ Samsung;2016;41;3064466
 Samsung;2017;17;3212633
 Samsung;2018;0;2950437
 Samsung;2019;0;296194
+Sendo;null;2;null
 Sendo;2000;1;null
 Sendo;2001;3;null
 Sendo;2003;4;null
 Sendo;2004;5;null
 Sendo;2005;3;null
-Sendo;2401;2;null
 Sewon;2002;4;null
 Sewon;2004;19;null
 Sewon;2005;1;null
@@ -906,6 +906,8 @@ Sharp;2012;2;null
 Sharp;2014;1;null
 Sharp;2015;2;null
 Sharp;2016;2;null
+Siemens;null;1;null
+Siemens;null;1;null
 Siemens;1992;0;null
 Siemens;1993;0;null
 Siemens;1994;0;null
@@ -934,14 +936,13 @@ Siemens;2016;0;null
 Siemens;2017;0;null
 Siemens;2018;0;null
 Siemens;2019;0;null
-Siemens;2491;1;null
-Siemens;2522;1;null
 Sonim;2007;1;null
 Sonim;2008;1;null
 Sonim;2009;1;null
 Sonim;2010;4;null
 Sonim;2011;4;null
 Sonim;2014;2;null
+Sony;null;1;null
 Sony;1992;0;null
 Sony;1993;0;null
 Sony;1994;0;null
@@ -970,7 +971,8 @@ Sony;2016;8;null
 Sony;2017;5;null
 Sony;2018;0;null
 Sony;2019;0;null
-Sony;2490;1;null
+Sony Ericsson;null;1;null
+Sony Ericsson;null;2;null
 Sony Ericsson;1992;0;null
 Sony Ericsson;1993;0;null
 Sony Ericsson;1994;0;null
@@ -999,8 +1001,6 @@ Sony Ericsson;2016;0;null
 Sony Ericsson;2017;0;null
 Sony Ericsson;2018;0;null
 Sony Ericsson;2019;0;null
-Sony Ericsson;2461;1;null
-Sony Ericsson;2614;2;null
 Spice;2010;36;null
 Spice;2011;17;null
 Spice;2012;18;null
@@ -1045,13 +1045,13 @@ TCL;2019;0;null
 Tel.Me.;2002;1;null
 Tel.Me.;2003;3;null
 Tel.Me.;2004;1;null
+Telit;null;1;null
 Telit;1999;5;null
 Telit;2002;2;null
 Telit;2003;3;null
 Telit;2004;4;null
 Telit;2005;9;null
 Telit;2006;6;null
-Telit;2675;1;null
 Thuraya;2007;1;null
 Toshiba;2005;5;null
 Toshiba;2006;8;null
