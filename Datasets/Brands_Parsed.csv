@@ -1,418 +1,418 @@
 Brand;Year;# Models;Sales
-Acer           ;2009;10;null
-Acer           ;2010;11;null
-Acer           ;2011;9;null
-Acer           ;2012;12;null
-Acer           ;2013;12;null
-Acer           ;2014;20;null
-Acer           ;2015;18;null
-Acer           ;2016;7;null
-Alcatel        ;1992;0;null
-Alcatel        ;1993;0;null
-Alcatel        ;1994;0;null
-Alcatel        ;1995;0;null
-Alcatel        ;1996;0;null
-Alcatel        ;1997;1;2631
-Alcatel        ;1998;8;6967
-Alcatel        ;1999;1;null
-Alcatel        ;2000;9;null
-Alcatel        ;2001;2;null
-Alcatel        ;2002;3;null
-Alcatel        ;2003;7;null
-Alcatel        ;2004;11;null
-Alcatel        ;2005;17;null
-Alcatel        ;2006;10;null
-Alcatel        ;2007;18;null
-Alcatel        ;2008;21;null
-Alcatel        ;2009;23;null
-Alcatel        ;2010;25;null
-Alcatel        ;2011;39;null
-Alcatel        ;2012;29;null
-Alcatel        ;2013;35;null
-Alcatel        ;2014;42;null
-Alcatel        ;2015;32;null
-Alcatel        ;2016;21;null
-Alcatel        ;2017;5;null
-Alcatel        ;2018;0;null
-Alcatel        ;2019;0;null
-Allview        ;2011;1;null
-Allview        ;2012;9;null
-Allview        ;2013;21;null
-Allview        ;2014;37;null
-Allview        ;2015;23;null
-Allview        ;2016;25;null
-Allview        ;2017;4;null
-Amazon         ;2011;1;null
-Amazon         ;2012;3;null
-Amazon         ;2013;3;null
-Amazon         ;2014;4;null
-Amazon         ;2015;3;null
-Amoi           ;2003;7;null
-Amoi           ;2004;3;null
-Amoi           ;2006;24;null
-Amoi           ;2007;14;null
-Apple          ;1992;0;null
-Apple          ;1993;0;null
-Apple          ;1994;0;null
-Apple          ;1995;0;null
-Apple          ;1996;0;null
-Apple          ;1997;0;null
-Apple          ;1998;0;null
-Apple          ;1999;0;null
-Apple          ;2000;0;null
-Apple          ;2001;0;null
-Apple          ;2002;0;null
-Apple          ;2003;0;null
-Apple          ;2004;0;null
-Apple          ;2005;0;null
-Apple          ;2006;0;null
-Apple          ;2007;1;23
-Apple          ;2008;1;12
-Apple          ;2009;1;24889
-Apple          ;2010;3;465983
-Apple          ;2011;5;892632
-Apple          ;2012;7;1301332
-Apple          ;2013;4;1507859
-Apple          ;2014;10;191426
-Apple          ;2015;4;2258506
-Apple          ;2016;12;216064
-Apple          ;2017;3;2149244
-Apple          ;2018;0;2090484
-Apple          ;2019;0;2074751
-Archos         ;2013;8;null
-Archos         ;2014;12;null
-Archos         ;2015;3;null
-Archos         ;2016;3;null
-Archos         ;2017;5;null
-Asus           ;2005;1;null
-Asus           ;2006;10;null
-Asus           ;2007;5;null
-Asus           ;2008;7;null
-Asus           ;2009;2;null
-Asus           ;2011;3;null
-Asus           ;2012;12;null
-Asus           ;2013;16;null
-Asus           ;2014;28;null
-Asus           ;2015;32;null
-Asus           ;2016;24;null
-Asus           ;2017;8;null
-AT&T           ;2006;1;null
-AT&T           ;2007;2;null
-AT&T           ;2008;1;null
-BBK            ;1992;0;null
-BBK            ;1993;0;null
-BBK            ;1994;0;null
-BBK            ;1995;0;null
-BBK            ;1996;0;null
-BBK            ;1997;0;null
-BBK            ;1998;0;null
-BBK            ;1999;0;null
-BBK            ;2000;0;null
-BBK            ;2001;0;null
-BBK            ;2002;0;null
-BBK            ;2003;0;null
-BBK            ;2004;0;null
-BBK            ;2005;0;null
-BBK            ;2006;0;null
-BBK            ;2007;0;null
-BBK            ;2008;0;null
-BBK            ;2009;0;null
-BBK            ;2010;0;null
-BBK            ;2011;0;null
-BBK            ;2012;0;null
-BBK            ;2013;0;null
-BBK            ;2014;0;null
-BBK            ;2015;0;null
-BBK            ;2016;0;724086
-BBK            ;2017;0;null
-BBK            ;2018;0;null
-BBK            ;2019;0;null
-Benefon        ;1999;3;null
-Benefon        ;2000;4;null
-Benefon        ;2006;1;null
-Benefon        ;2007;1;null
-BenQ           ;2003;1;null
-BenQ           ;2004;10;null
-BenQ           ;2005;7;null
-BenQ           ;2006;2;null
-BenQ           ;2007;5;null
-BenQ           ;2008;4;null
-BenQ           ;2013;2;null
-BenQ           ;2014;3;null
-BenQ           ;2015;1;null
-BenQ-Siemens   ;2006;22;null
-BenQ-Siemens   ;2007;5;null
-Bird           ;2003;2;null
-Bird           ;2004;12;null
-Bird           ;2005;19;null
-Bird           ;2006;3;null
-Bird           ;2007;25;null
-BlackBerry     ;78;1;null
-BlackBerry     ;2003;3;null
-BlackBerry     ;2004;5;null
-BlackBerry     ;2005;1;null
-BlackBerry     ;2006;5;null
-BlackBerry     ;2007;8;null
-BlackBerry     ;2008;6;null
-BlackBerry     ;2009;7;null
-BlackBerry     ;2010;9;null
-BlackBerry     ;2011;13;null
-BlackBerry     ;2012;4;null
-BlackBerry     ;2013;6;null
-BlackBerry     ;2014;4;null
-BlackBerry     ;2015;3;null
-BlackBerry     ;2016;2;null
-BlackBerry     ;2017;2;null
-BLU            ;2009;1;null
-BLU            ;2010;21;null
-BLU            ;2011;26;null
-BLU            ;2012;13;null
-BLU            ;2013;32;null
-BLU            ;2014;31;null
-BLU            ;2015;36;null
-BLU            ;2016;56;null
-BLU            ;2017;18;null
-Bosch          ;1996;3;null
-Bosch          ;1997;2;null
-Bosch          ;1998;1;null
-Bosch          ;1999;4;null
-BQ             ;2015;6;null
-BQ             ;2016;4;null
-BQ             ;2017;2;null
-Casio          ;2010;1;null
-Casio          ;2011;3;null
-Casio          ;2013;1;null
-Cat            ;2013;3;null
-Cat            ;2014;2;null
-Cat            ;2015;3;null
-Cat            ;2016;1;null
-Celkon         ;2010;11;null
-Celkon         ;2011;48;null
-Celkon         ;2012;50;null
-Celkon         ;2013;50;null
-Celkon         ;2014;49;null
-Celkon         ;2015;21;null
-Chea           ;2003;10;null
-Chea           ;2004;2;null
-Coolpad        ;2015;5;null
-Coolpad        ;2016;13;null
-Coolpad        ;2017;2;null
-Dell           ;2009;3;null
-Dell           ;2010;6;null
-Dell           ;2011;4;null
-Dell           ;2012;1;null
-Dell           ;2013;3;null
-Dell           ;2014;1;null
-Dell           ;2015;1;null
-Emporia        ;2010;1;null
-Emporia        ;2011;3;null
-Emporia        ;2012;4;null
-Emporia        ;2013;3;null
-Emporia        ;2014;4;null
-Energizer      ;2015;5;null
-Ericsson       ;1992;0;null
-Ericsson       ;1993;0;null
-Ericsson       ;1994;1;null
-Ericsson       ;1995;7;null
-Ericsson       ;1996;3;null
-Ericsson       ;1997;4;15914
-Ericsson       ;1998;2;23827
-Ericsson       ;1999;6;29785
-Ericsson       ;2000;7;41467
-Ericsson       ;2001;9;26956
-Ericsson       ;2002;0;null
-Ericsson       ;2003;0;null
-Ericsson       ;2004;0;null
-Ericsson       ;2005;0;null
-Ericsson       ;2006;0;null
-Ericsson       ;2007;0;null
-Ericsson       ;2008;0;null
-Ericsson       ;2009;0;null
-Ericsson       ;2010;0;null
-Ericsson       ;2011;0;null
-Ericsson       ;2012;0;null
-Ericsson       ;2013;0;null
-Ericsson       ;2014;0;null
-Ericsson       ;2015;0;null
-Ericsson       ;2016;0;null
-Ericsson       ;2017;0;null
-Ericsson       ;2018;0;null
-Ericsson       ;2019;0;null
-Ericsson       ;2400;1;null
-Eten           ;2004;4;null
-Eten           ;2005;1;null
-Eten           ;2006;6;null
-Eten           ;2007;2;null
-Eten           ;2008;9;null
+Acer;2009;10;null
+Acer;2010;11;null
+Acer;2011;9;null
+Acer;2012;12;null
+Acer;2013;12;null
+Acer;2014;20;null
+Acer;2015;18;null
+Acer;2016;7;null
+Alcatel;1992;0;null
+Alcatel;1993;0;null
+Alcatel;1994;0;null
+Alcatel;1995;0;null
+Alcatel;1996;0;null
+Alcatel;1997;1;2631
+Alcatel;1998;8;6967
+Alcatel;1999;1;null
+Alcatel;2000;9;null
+Alcatel;2001;2;null
+Alcatel;2002;3;null
+Alcatel;2003;7;null
+Alcatel;2004;11;null
+Alcatel;2005;17;null
+Alcatel;2006;10;null
+Alcatel;2007;18;null
+Alcatel;2008;21;null
+Alcatel;2009;23;null
+Alcatel;2010;25;null
+Alcatel;2011;39;null
+Alcatel;2012;29;null
+Alcatel;2013;35;null
+Alcatel;2014;42;null
+Alcatel;2015;32;null
+Alcatel;2016;21;null
+Alcatel;2017;5;null
+Alcatel;2018;0;null
+Alcatel;2019;0;null
+Allview;2011;1;null
+Allview;2012;9;null
+Allview;2013;21;null
+Allview;2014;37;null
+Allview;2015;23;null
+Allview;2016;25;null
+Allview;2017;4;null
+Amazon;2011;1;null
+Amazon;2012;3;null
+Amazon;2013;3;null
+Amazon;2014;4;null
+Amazon;2015;3;null
+Amoi;2003;7;null
+Amoi;2004;3;null
+Amoi;2006;24;null
+Amoi;2007;14;null
+Apple;1992;0;null
+Apple;1993;0;null
+Apple;1994;0;null
+Apple;1995;0;null
+Apple;1996;0;null
+Apple;1997;0;null
+Apple;1998;0;null
+Apple;1999;0;null
+Apple;2000;0;null
+Apple;2001;0;null
+Apple;2002;0;null
+Apple;2003;0;null
+Apple;2004;0;null
+Apple;2005;0;null
+Apple;2006;0;null
+Apple;2007;1;23
+Apple;2008;1;12
+Apple;2009;1;24889
+Apple;2010;3;465983
+Apple;2011;5;892632
+Apple;2012;7;1301332
+Apple;2013;4;1507859
+Apple;2014;10;191426
+Apple;2015;4;2258506
+Apple;2016;12;216064
+Apple;2017;3;2149244
+Apple;2018;0;2090484
+Apple;2019;0;2074751
+Archos;2013;8;null
+Archos;2014;12;null
+Archos;2015;3;null
+Archos;2016;3;null
+Archos;2017;5;null
+Asus;2005;1;null
+Asus;2006;10;null
+Asus;2007;5;null
+Asus;2008;7;null
+Asus;2009;2;null
+Asus;2011;3;null
+Asus;2012;12;null
+Asus;2013;16;null
+Asus;2014;28;null
+Asus;2015;32;null
+Asus;2016;24;null
+Asus;2017;8;null
+AT&T;2006;1;null
+AT&T;2007;2;null
+AT&T;2008;1;null
+BBK;1992;0;null
+BBK;1993;0;null
+BBK;1994;0;null
+BBK;1995;0;null
+BBK;1996;0;null
+BBK;1997;0;null
+BBK;1998;0;null
+BBK;1999;0;null
+BBK;2000;0;null
+BBK;2001;0;null
+BBK;2002;0;null
+BBK;2003;0;null
+BBK;2004;0;null
+BBK;2005;0;null
+BBK;2006;0;null
+BBK;2007;0;null
+BBK;2008;0;null
+BBK;2009;0;null
+BBK;2010;0;null
+BBK;2011;0;null
+BBK;2012;0;null
+BBK;2013;0;null
+BBK;2014;0;null
+BBK;2015;0;null
+BBK;2016;0;724086
+BBK;2017;0;null
+BBK;2018;0;null
+BBK;2019;0;null
+Benefon;1999;3;null
+Benefon;2000;4;null
+Benefon;2006;1;null
+Benefon;2007;1;null
+BenQ;2003;1;null
+BenQ;2004;10;null
+BenQ;2005;7;null
+BenQ;2006;2;null
+BenQ;2007;5;null
+BenQ;2008;4;null
+BenQ;2013;2;null
+BenQ;2014;3;null
+BenQ;2015;1;null
+BenQ-Siemens;2006;22;null
+BenQ-Siemens;2007;5;null
+Bird;2003;2;null
+Bird;2004;12;null
+Bird;2005;19;null
+Bird;2006;3;null
+Bird;2007;25;null
+BlackBerry;78;1;null
+BlackBerry;2003;3;null
+BlackBerry;2004;5;null
+BlackBerry;2005;1;null
+BlackBerry;2006;5;null
+BlackBerry;2007;8;null
+BlackBerry;2008;6;null
+BlackBerry;2009;7;null
+BlackBerry;2010;9;null
+BlackBerry;2011;13;null
+BlackBerry;2012;4;null
+BlackBerry;2013;6;null
+BlackBerry;2014;4;null
+BlackBerry;2015;3;null
+BlackBerry;2016;2;null
+BlackBerry;2017;2;null
+BLU;2009;1;null
+BLU;2010;21;null
+BLU;2011;26;null
+BLU;2012;13;null
+BLU;2013;32;null
+BLU;2014;31;null
+BLU;2015;36;null
+BLU;2016;56;null
+BLU;2017;18;null
+Bosch;1996;3;null
+Bosch;1997;2;null
+Bosch;1998;1;null
+Bosch;1999;4;null
+BQ;2015;6;null
+BQ;2016;4;null
+BQ;2017;2;null
+Casio;2010;1;null
+Casio;2011;3;null
+Casio;2013;1;null
+Cat;2013;3;null
+Cat;2014;2;null
+Cat;2015;3;null
+Cat;2016;1;null
+Celkon;2010;11;null
+Celkon;2011;48;null
+Celkon;2012;50;null
+Celkon;2013;50;null
+Celkon;2014;49;null
+Celkon;2015;21;null
+Chea;2003;10;null
+Chea;2004;2;null
+Coolpad;2015;5;null
+Coolpad;2016;13;null
+Coolpad;2017;2;null
+Dell;2009;3;null
+Dell;2010;6;null
+Dell;2011;4;null
+Dell;2012;1;null
+Dell;2013;3;null
+Dell;2014;1;null
+Dell;2015;1;null
+Emporia;2010;1;null
+Emporia;2011;3;null
+Emporia;2012;4;null
+Emporia;2013;3;null
+Emporia;2014;4;null
+Energizer;2015;5;null
+Ericsson;1992;0;null
+Ericsson;1993;0;null
+Ericsson;1994;1;null
+Ericsson;1995;7;null
+Ericsson;1996;3;null
+Ericsson;1997;4;15914
+Ericsson;1998;2;23827
+Ericsson;1999;6;29785
+Ericsson;2000;7;41467
+Ericsson;2001;9;26956
+Ericsson;2002;0;null
+Ericsson;2003;0;null
+Ericsson;2004;0;null
+Ericsson;2005;0;null
+Ericsson;2006;0;null
+Ericsson;2007;0;null
+Ericsson;2008;0;null
+Ericsson;2009;0;null
+Ericsson;2010;0;null
+Ericsson;2011;0;null
+Ericsson;2012;0;null
+Ericsson;2013;0;null
+Ericsson;2014;0;null
+Ericsson;2015;0;null
+Ericsson;2016;0;null
+Ericsson;2017;0;null
+Ericsson;2018;0;null
+Ericsson;2019;0;null
+Ericsson;2400;1;null
+Eten;2004;4;null
+Eten;2005;1;null
+Eten;2006;6;null
+Eten;2007;2;null
+Eten;2008;9;null
 Fujitsu Siemens;2006;2;null
-Garmin-Asus    ;2009;2;null
-Garmin-Asus    ;2010;3;null
-Gigabyte       ;2005;11;null
-Gigabyte       ;2006;3;null
-Gigabyte       ;2007;2;null
-Gigabyte       ;2008;4;null
-Gigabyte       ;2009;4;null
-Gigabyte       ;2010;3;null
-Gigabyte       ;2011;5;null
-Gigabyte       ;2012;3;null
-Gigabyte       ;2013;10;null
-Gigabyte       ;2014;10;null
-Gigabyte       ;2015;7;null
-Gionee         ;2013;16;null
-Gionee         ;2014;13;null
-Gionee         ;2015;18;null
-Gionee         ;2016;14;null
-Gionee         ;2017;8;null
-Google         ;2015;1;null
-Google         ;2016;2;null
-Haier          ;2003;1;null
-Haier          ;2004;18;null
-Haier          ;2005;9;null
-Haier          ;2006;8;null
-Haier          ;2010;14;null
-HP             ;2004;4;null
-HP             ;2005;2;null
-HP             ;2006;5;null
-HP             ;2007;2;null
-HP             ;2008;1;null
-HP             ;2009;3;null
-HP             ;2011;6;null
-HP             ;2013;5;null
-HP             ;2014;9;null
-HP             ;2015;3;null
-HP             ;2016;1;null
-HTC            ;1992;0;null
-HTC            ;1993;0;null
-HTC            ;1994;0;null
-HTC            ;1995;0;null
-HTC            ;1996;0;null
-HTC            ;1997;0;null
-HTC            ;1998;0;null
-HTC            ;1999;0;null
-HTC            ;2000;0;null
-HTC            ;2001;0;null
-HTC            ;2002;0;null
-HTC            ;2003;0;null
-HTC            ;2004;0;null
-HTC            ;2005;0;null
-HTC            ;2006;8;null
-HTC            ;2007;10;null
-HTC            ;2008;14;null
-HTC            ;2009;18;null
-HTC            ;2010;19;246884
-HTC            ;2011;37;432669
-HTC            ;2012;32;321218
-HTC            ;2013;22;null
-HTC            ;2014;32;null
-HTC            ;2015;25;null
-HTC            ;2016;16;null
-HTC            ;2017;4;null
-HTC            ;2018;0;null
-HTC            ;2019;0;null
-Huawei         ;1992;0;null
-Huawei         ;1993;0;null
-Huawei         ;1994;0;null
-Huawei         ;1995;0;null
-Huawei         ;1996;0;null
-Huawei         ;1997;0;null
-Huawei         ;1998;0;null
-Huawei         ;1999;0;null
-Huawei         ;2000;0;null
-Huawei         ;2001;0;null
-Huawei         ;2002;0;null
-Huawei         ;2003;0;null
-Huawei         ;2004;0;null
-Huawei         ;2005;0;null
-Huawei         ;2006;0;null
-Huawei         ;2007;2;null
-Huawei         ;2008;11;null
-Huawei         ;2009;6;null
-Huawei         ;2010;16;238147
-Huawei         ;2011;27;406634
-Huawei         ;2012;31;472883
-Huawei         ;2013;29;532951
-Huawei         ;2014;36;70499
-Huawei         ;2015;29;1040947
-Huawei         ;2016;32;1328249
-Huawei         ;2017;21;1505343
-Huawei         ;2018;0;2029014
-Huawei         ;2019;0;2406155
-i-mate         ;2004;8;null
-i-mate         ;2005;6;null
-i-mate         ;2006;8;null
-i-mate         ;2007;7;null
-i-mate         ;2008;4;null
-i-mate         ;2009;1;null
-i-mobile       ;2006;1;null
-i-mobile       ;2007;6;null
-i-mobile       ;2008;12;null
-i-mobile       ;2009;13;null
-i-mobile       ;2010;5;null
-Icemobile      ;2010;1;null
-Icemobile      ;2011;18;null
-Icemobile      ;2012;16;null
-Icemobile      ;2013;8;null
-Icemobile      ;2014;12;null
-Icemobile      ;2015;4;null
-Icemobile      ;2016;1;null
-Innostream     ;2003;3;null
-Innostream     ;2004;12;null
-Innostream     ;2005;3;null
-iNQ            ;2009;3;null
-iNQ            ;2011;2;null
-Intex          ;2014;3;null
-Intex          ;2015;11;null
-Intex          ;2016;1;null
-Jolla          ;2013;1;null
-Jolla          ;2014;1;null
-Jolla          ;2016;1;null
-Karbonn        ;2012;28;null
-Karbonn        ;2013;20;null
-Karbonn        ;2014;11;null
-Karbonn        ;2015;1;null
-Kyocera        ;2000;1;null
-Kyocera        ;2008;5;null
-Kyocera        ;2011;7;null
-Kyocera        ;2012;2;null
-Kyocera        ;2013;3;null
-Kyocera        ;2014;3;null
-Kyocera        ;2015;1;null
-Kyocera        ;2016;1;null
-Lava           ;2013;12;null
-Lava           ;2014;27;null
-Lava           ;2015;25;null
-Lava           ;2016;34;null
-Lava           ;2017;6;null
-LeEco          ;2016;7;null
-LeEco          ;2017;2;null
-Lenovo         ;1992;0;null
-Lenovo         ;1993;0;null
-Lenovo         ;1994;0;null
-Lenovo         ;1995;0;null
-Lenovo         ;1996;0;null
-Lenovo         ;1997;0;null
-Lenovo         ;1998;0;null
-Lenovo         ;1999;0;null
-Lenovo         ;2000;0;null
-Lenovo         ;2001;0;null
-Lenovo         ;2002;0;null
-Lenovo         ;2003;0;null
-Lenovo         ;2004;0;null
-Lenovo         ;2005;0;null
-Lenovo         ;2006;0;null
-Lenovo         ;2007;0;null
-Lenovo         ;2008;0;null
-Lenovo         ;2009;0;null
-Lenovo         ;2010;0;null
-Lenovo         ;2011;13;null
-Lenovo         ;2012;13;null
-Lenovo         ;2013;31;452847
-Lenovo         ;2014;36;null
-Lenovo         ;2015;36;727482
-Lenovo         ;2016;31;null
-Lenovo         ;2017;5;null
-Lenovo         ;2018;0;null
-Lenovo         ;2019;0;null
+Garmin-Asus;2009;2;null
+Garmin-Asus;2010;3;null
+Gigabyte;2005;11;null
+Gigabyte;2006;3;null
+Gigabyte;2007;2;null
+Gigabyte;2008;4;null
+Gigabyte;2009;4;null
+Gigabyte;2010;3;null
+Gigabyte;2011;5;null
+Gigabyte;2012;3;null
+Gigabyte;2013;10;null
+Gigabyte;2014;10;null
+Gigabyte;2015;7;null
+Gionee;2013;16;null
+Gionee;2014;13;null
+Gionee;2015;18;null
+Gionee;2016;14;null
+Gionee;2017;8;null
+Google;2015;1;null
+Google;2016;2;null
+Haier;2003;1;null
+Haier;2004;18;null
+Haier;2005;9;null
+Haier;2006;8;null
+Haier;2010;14;null
+HP;2004;4;null
+HP;2005;2;null
+HP;2006;5;null
+HP;2007;2;null
+HP;2008;1;null
+HP;2009;3;null
+HP;2011;6;null
+HP;2013;5;null
+HP;2014;9;null
+HP;2015;3;null
+HP;2016;1;null
+HTC;1992;0;null
+HTC;1993;0;null
+HTC;1994;0;null
+HTC;1995;0;null
+HTC;1996;0;null
+HTC;1997;0;null
+HTC;1998;0;null
+HTC;1999;0;null
+HTC;2000;0;null
+HTC;2001;0;null
+HTC;2002;0;null
+HTC;2003;0;null
+HTC;2004;0;null
+HTC;2005;0;null
+HTC;2006;8;null
+HTC;2007;10;null
+HTC;2008;14;null
+HTC;2009;18;null
+HTC;2010;19;246884
+HTC;2011;37;432669
+HTC;2012;32;321218
+HTC;2013;22;null
+HTC;2014;32;null
+HTC;2015;25;null
+HTC;2016;16;null
+HTC;2017;4;null
+HTC;2018;0;null
+HTC;2019;0;null
+Huawei;1992;0;null
+Huawei;1993;0;null
+Huawei;1994;0;null
+Huawei;1995;0;null
+Huawei;1996;0;null
+Huawei;1997;0;null
+Huawei;1998;0;null
+Huawei;1999;0;null
+Huawei;2000;0;null
+Huawei;2001;0;null
+Huawei;2002;0;null
+Huawei;2003;0;null
+Huawei;2004;0;null
+Huawei;2005;0;null
+Huawei;2006;0;null
+Huawei;2007;2;null
+Huawei;2008;11;null
+Huawei;2009;6;null
+Huawei;2010;16;238147
+Huawei;2011;27;406634
+Huawei;2012;31;472883
+Huawei;2013;29;532951
+Huawei;2014;36;70499
+Huawei;2015;29;1040947
+Huawei;2016;32;1328249
+Huawei;2017;21;1505343
+Huawei;2018;0;2029014
+Huawei;2019;0;2406155
+i-mate;2004;8;null
+i-mate;2005;6;null
+i-mate;2006;8;null
+i-mate;2007;7;null
+i-mate;2008;4;null
+i-mate;2009;1;null
+i-mobile;2006;1;null
+i-mobile;2007;6;null
+i-mobile;2008;12;null
+i-mobile;2009;13;null
+i-mobile;2010;5;null
+Icemobile;2010;1;null
+Icemobile;2011;18;null
+Icemobile;2012;16;null
+Icemobile;2013;8;null
+Icemobile;2014;12;null
+Icemobile;2015;4;null
+Icemobile;2016;1;null
+Innostream;2003;3;null
+Innostream;2004;12;null
+Innostream;2005;3;null
+iNQ;2009;3;null
+iNQ;2011;2;null
+Intex;2014;3;null
+Intex;2015;11;null
+Intex;2016;1;null
+Jolla;2013;1;null
+Jolla;2014;1;null
+Jolla;2016;1;null
+Karbonn;2012;28;null
+Karbonn;2013;20;null
+Karbonn;2014;11;null
+Karbonn;2015;1;null
+Kyocera;2000;1;null
+Kyocera;2008;5;null
+Kyocera;2011;7;null
+Kyocera;2012;2;null
+Kyocera;2013;3;null
+Kyocera;2014;3;null
+Kyocera;2015;1;null
+Kyocera;2016;1;null
+Lava;2013;12;null
+Lava;2014;27;null
+Lava;2015;25;null
+Lava;2016;34;null
+Lava;2017;6;null
+LeEco;2016;7;null
+LeEco;2017;2;null
+Lenovo;1992;0;null
+Lenovo;1993;0;null
+Lenovo;1994;0;null
+Lenovo;1995;0;null
+Lenovo;1996;0;null
+Lenovo;1997;0;null
+Lenovo;1998;0;null
+Lenovo;1999;0;null
+Lenovo;2000;0;null
+Lenovo;2001;0;null
+Lenovo;2002;0;null
+Lenovo;2003;0;null
+Lenovo;2004;0;null
+Lenovo;2005;0;null
+Lenovo;2006;0;null
+Lenovo;2007;0;null
+Lenovo;2008;0;null
+Lenovo;2009;0;null
+Lenovo;2010;0;null
+Lenovo;2011;13;null
+Lenovo;2012;13;null
+Lenovo;2013;31;452847
+Lenovo;2014;36;null
+Lenovo;2015;36;727482
+Lenovo;2016;31;null
+Lenovo;2017;5;null
+Lenovo;2018;0;null
+Lenovo;2019;0;null
 Lenovo/Motorola;1992;0;null
 Lenovo/Motorola;1993;0;null
 Lenovo/Motorola;1994;0;null
@@ -441,799 +441,799 @@ Lenovo/Motorola;2016;0;null
 Lenovo/Motorola;2017;0;null
 Lenovo/Motorola;2018;0;null
 Lenovo/Motorola;2019;0;null
-LG             ;1992;0;null
-LG             ;1993;0;null
-LG             ;1994;0;null
-LG             ;1995;0;null
-LG             ;1996;0;null
-LG             ;1997;0;null
-LG             ;1998;0;null
-LG             ;1999;0;null
-LG             ;2000;0;null
-LG             ;2001;0;null
-LG             ;2002;10;null
-LG             ;2003;12;262137
-LG             ;2004;23;422768
-LG             ;2005;36;549246
-LG             ;2006;36;61986
-LG             ;2007;30;785763
-LG             ;2008;46;1025554
-LG             ;2009;55;1220553
-LG             ;2010;81;1141546
-LG             ;2011;60;863709
-LG             ;2012;41;580159
-LG             ;2013;34;690245
-LG             ;2014;52;76096
-LG             ;2015;29;null
-LG             ;2016;30;null
-LG             ;2017;7;null
-LG             ;2018;0;null
-LG             ;2019;0;null
-LG             ;2522;1;null
-Maxon          ;1999;8;null
-Maxon          ;2000;4;null
-Maxon          ;2003;11;null
-Maxon          ;2004;8;null
-Maxwest        ;2013;13;null
-Maxwest        ;2014;10;null
-Maxwest        ;2015;10;null
-Maxwest        ;2016;8;null
-Meizu          ;2011;1;null
-Meizu          ;2012;2;null
-Meizu          ;2013;1;null
-Meizu          ;2014;3;null
-Meizu          ;2015;6;null
-Meizu          ;2016;15;null
-Meizu          ;2017;3;null
-Micromax       ;1992;0;null
-Micromax       ;1993;0;null
-Micromax       ;1994;0;null
-Micromax       ;1995;0;null
-Micromax       ;1996;0;null
-Micromax       ;1997;0;null
-Micromax       ;1998;0;null
-Micromax       ;1999;0;null
-Micromax       ;2000;0;null
-Micromax       ;2001;0;null
-Micromax       ;2002;0;null
-Micromax       ;2003;0;null
-Micromax       ;2004;0;null
-Micromax       ;2005;0;null
-Micromax       ;2006;0;null
-Micromax       ;2007;0;null
-Micromax       ;2008;1;null
-Micromax       ;2009;9;null
-Micromax       ;2010;33;null
-Micromax       ;2011;19;null
-Micromax       ;2012;40;null
-Micromax       ;2013;43;null
-Micromax       ;2014;34;37094
-Micromax       ;2015;49;null
-Micromax       ;2016;25;null
-Micromax       ;2017;8;null
-Micromax       ;2018;0;null
-Micromax       ;2019;0;null
-Microsoft      ;1992;0;null
-Microsoft      ;1993;0;null
-Microsoft      ;1994;0;null
-Microsoft      ;1995;0;null
-Microsoft      ;1996;0;null
-Microsoft      ;1997;0;null
-Microsoft      ;1998;0;null
-Microsoft      ;1999;0;null
-Microsoft      ;2000;0;null
-Microsoft      ;2001;0;null
-Microsoft      ;2002;0;null
-Microsoft      ;2003;0;null
-Microsoft      ;2004;0;null
-Microsoft      ;2005;0;null
-Microsoft      ;2006;0;null
-Microsoft      ;2007;0;null
-Microsoft      ;2008;0;null
-Microsoft      ;2009;0;null
-Microsoft      ;2010;4;null
-Microsoft      ;2011;0;null
-Microsoft      ;2012;1;null
-Microsoft      ;2013;1;null
-Microsoft      ;2014;2;18566
-Microsoft      ;2015;18;null
-Microsoft      ;2016;1;null
-Microsoft      ;2017;0;null
-Microsoft      ;2018;0;null
-Microsoft      ;2019;0;null
-Mitac          ;2003;2;null
-Mitac          ;2004;2;null
-Mitac          ;2005;1;null
-Mitac          ;2007;3;null
-Mitac          ;2009;4;null
-Mitsubishi     ;1999;4;null
-Mitsubishi     ;2000;7;null
-Mitsubishi     ;2001;2;null
-Mitsubishi     ;2002;1;null
-Mitsubishi     ;2003;4;null
-Mitsubishi     ;2004;7;null
-Modu           ;2009;7;null
-Modu           ;2010;1;null
-Motorola       ;1992;0;4
-Motorola       ;1993;0;null
-Motorola       ;1994;0;12
-Motorola       ;1995;0;null
-Motorola       ;1996;0;60
-Motorola       ;1997;5;25328
-Motorola       ;1998;5;32319
-Motorola       ;1999;7;47818
-Motorola       ;2000;9;60094
-Motorola       ;2001;8;59097
-Motorola       ;2002;9;64640
-Motorola       ;2003;32;75177
-Motorola       ;2004;38;104124
-Motorola       ;2005;37;144920
-Motorola       ;2006;14;209251
-Motorola       ;2007;19;164307
-Motorola       ;2008;30;10659
-Motorola       ;2009;25;584752
-Motorola       ;2010;53;385537
-Motorola       ;2011;57;40269
-Motorola       ;2012;35;339163
-Motorola       ;2013;7;null
-Motorola       ;2014;12;null
-Motorola       ;2015;16;null
-Motorola       ;2016;9;null
-Motorola       ;2017;9;null
-Motorola       ;2018;0;null
-Motorola       ;2019;0;null
-Motorola       ;2614;2;null
-Motorola       ;2644;3;null
-MWg            ;2007;2;null
-MWg            ;2008;3;null
-NEC            ;1992;0;2
-NEC            ;1993;0;null
-NEC            ;1994;0;6
-NEC            ;1995;0;null
-NEC            ;1996;0;null
-NEC            ;1997;1;null
-NEC            ;1998;0;null
-NEC            ;1999;2;null
-NEC            ;2000;2;null
-NEC            ;2001;2;null
-NEC            ;2002;2;null
-NEC            ;2003;14;null
-NEC            ;2004;28;null
-NEC            ;2005;14;null
-NEC            ;2006;7;null
-NEC            ;2007;0;null
-NEC            ;2008;0;null
-NEC            ;2009;0;null
-NEC            ;2010;0;null
-NEC            ;2011;0;null
-NEC            ;2012;0;null
-NEC            ;2013;1;null
-NEC            ;2014;0;null
-NEC            ;2015;0;null
-NEC            ;2016;0;null
-NEC            ;2017;0;null
-NEC            ;2018;0;null
-NEC            ;2019;0;null
-Neonode        ;2003;1;null
-Neonode        ;2005;1;null
-Neonode        ;2007;1;null
-NIU            ;2012;12;null
-NIU            ;2013;9;null
-NIU            ;2014;5;null
-NIU            ;2015;4;null
-Nokia          ;1992;0;3
-Nokia          ;1993;0;5
-Nokia          ;1994;0;9
-Nokia          ;1995;1;13
-Nokia          ;1996;0;18
-Nokia          ;1997;1;20593
-Nokia          ;1998;7;37374
-Nokia          ;1999;4;76335
-Nokia          ;2000;6;126369
-Nokia          ;2001;5;139672
-Nokia          ;2002;16;151422
-Nokia          ;2003;25;180672
-Nokia          ;2004;20;207231
-Nokia          ;2005;34;265615
-Nokia          ;2006;31;344916
-Nokia          ;2007;38;435453
-Nokia          ;2008;38;472315
-Nokia          ;2009;47;4408816
-Nokia          ;2010;38;4613182
-Nokia          ;2011;37;4224783
-Nokia          ;2012;30;333938
-Nokia          ;2013;26;2507931
-Nokia          ;2014;22;null
-Nokia          ;2015;8;null
-Nokia          ;2016;2;null
-Nokia          ;2017;4;null
-Nokia          ;2018;0;null
-Nokia          ;2019;0;null
-Nokia          ;2463;1;null
-Nokia          ;2523;1;null
-Nvidia         ;2014;2;null
-Nvidia         ;2015;1;null
-O2             ;2003;3;null
-O2             ;2004;8;null
-O2             ;2005;10;null
-O2             ;2006;10;null
-O2             ;2007;9;null
-O2             ;2008;4;null
-O2             ;2009;1;null
-OnePlus        ;2014;1;null
-OnePlus        ;2015;2;null
-OnePlus        ;2016;2;null
-OnePlus        ;2017;1;null
-Oppo           ;1992;0;null
-Oppo           ;1993;0;null
-Oppo           ;1994;0;null
-Oppo           ;1995;0;null
-Oppo           ;1996;0;null
-Oppo           ;1997;0;null
-Oppo           ;1998;0;null
-Oppo           ;1999;0;null
-Oppo           ;2000;0;null
-Oppo           ;2001;0;null
-Oppo           ;2002;0;null
-Oppo           ;2003;0;null
-Oppo           ;2004;0;null
-Oppo           ;2005;0;null
-Oppo           ;2006;0;null
-Oppo           ;2007;0;null
-Oppo           ;2008;0;null
-Oppo           ;2009;0;null
-Oppo           ;2010;0;null
-Oppo           ;2011;0;null
-Oppo           ;2012;8;null
-Oppo           ;2013;5;null
-Oppo           ;2014;13;null
-Oppo           ;2015;18;null
-Oppo           ;2016;9;852995
-Oppo           ;2017;5;112124
-Oppo           ;2018;0;1188375
-Oppo           ;2019;0;1186932
-Orange         ;2011;12;null
-Orange         ;2012;2;null
-Orange         ;2013;1;null
-Orange         ;2014;3;null
-Others         ;1992;0;null
-Others         ;1993;0;null
-Others         ;1994;0;null
-Others         ;1995;0;null
-Others         ;1996;0;null
-Others         ;1997;0;null
-Others         ;1998;0;null
-Others         ;1999;0;null
-Others         ;2000;0;null
-Others         ;2001;0;null
-Others         ;2002;0;null
-Others         ;2003;0;null
-Others         ;2004;0;null
-Others         ;2005;0;null
-Others         ;2006;0;null
-Others         ;2007;0;null
-Others         ;2008;0;248189
-Others         ;2009;0;2991792
-Others         ;2010;0;4885693
-Others         ;2011;0;5973269
-Others         ;2012;0;5873996
-Others         ;2013;0;61371
-Others         ;2014;0;62936
-Others         ;2015;0;6353685
-Others         ;2016;0;6823143
-Others         ;2017;0;6380047
-Others         ;2018;0;6070490
-Others         ;2019;0;565630
-Palm           ;2002;1;null
-Palm           ;2003;2;null
-Palm           ;2004;1;null
-Palm           ;2006;2;null
-Palm           ;2007;1;null
-Palm           ;2008;3;null
-Palm           ;2009;2;null
-Palm           ;2010;4;null
-Panasonic      ;1992;0;null
-Panasonic      ;1993;0;null
-Panasonic      ;1994;0;null
-Panasonic      ;1995;0;null
-Panasonic      ;1996;0;null
-Panasonic      ;1997;0;8627
-Panasonic      ;1998;1;13397
-Panasonic      ;1999;3;15581
-Panasonic      ;2000;2;null
-Panasonic      ;2001;3;null
-Panasonic      ;2002;2;null
-Panasonic      ;2003;6;null
-Panasonic      ;2004;13;null
-Panasonic      ;2005;11;null
-Panasonic      ;2006;0;null
-Panasonic      ;2007;0;null
-Panasonic      ;2008;0;null
-Panasonic      ;2009;0;null
-Panasonic      ;2010;0;null
-Panasonic      ;2011;4;null
-Panasonic      ;2012;2;null
-Panasonic      ;2013;5;null
-Panasonic      ;2014;11;null
-Panasonic      ;2015;10;null
-Panasonic      ;2016;14;null
-Panasonic      ;2017;7;null
-Panasonic      ;2018;0;null
-Panasonic      ;2019;0;null
-Panasonic      ;2675;1;null
-Pantech        ;2003;3;null
-Pantech        ;2004;11;null
-Pantech        ;2005;12;null
-Pantech        ;2006;11;null
-Pantech        ;2007;1;null
-Pantech        ;2008;2;null
-Pantech        ;2009;3;null
-Pantech        ;2010;11;null
-Pantech        ;2011;7;null
-Pantech        ;2012;8;null
-Pantech        ;2013;3;null
-Parla          ;2012;4;null
-Parla          ;2013;3;null
-Parla          ;2014;1;null
-Parla          ;2015;2;null
-Philips        ;1996;1;null
-Philips        ;1997;2;null
-Philips        ;1999;5;null
-Philips        ;2000;8;null
-Philips        ;2001;1;null
-Philips        ;2002;6;null
-Philips        ;2003;6;null
-Philips        ;2004;12;null
-Philips        ;2005;12;null
-Philips        ;2006;15;null
-Philips        ;2007;15;null
-Philips        ;2008;15;null
-Philips        ;2009;19;null
-Philips        ;2010;24;null
-Philips        ;2011;27;null
-Philips        ;2012;23;null
-Philips        ;2013;23;null
-Philips        ;2014;4;null
-Philips        ;2015;9;null
-Plum           ;2011;19;null
-Plum           ;2012;16;null
-Plum           ;2013;16;null
-Plum           ;2014;19;null
-Plum           ;2015;8;null
-Plum           ;2016;12;null
-Posh           ;2014;14;null
-Posh           ;2015;9;null
-Posh           ;2016;7;null
-Prestigio      ;2013;42;null
-Prestigio      ;2014;14;null
-QMobile        ;2013;5;null
-QMobile        ;2014;28;null
-QMobile        ;2015;35;null
-QMobile        ;2016;11;null
-Qtek           ;2003;1;null
-Qtek           ;2004;9;null
-Qtek           ;2005;7;null
-Qtek           ;2006;4;null
-RIM            ;1992;0;null
-RIM            ;1993;0;null
-RIM            ;1994;0;null
-RIM            ;1995;0;null
-RIM            ;1996;0;null
-RIM            ;1997;0;null
-RIM            ;1998;0;null
-RIM            ;1999;0;null
-RIM            ;2000;0;null
-RIM            ;2001;0;null
-RIM            ;2002;0;null
-RIM            ;2003;0;null
-RIM            ;2004;0;null
-RIM            ;2005;0;null
-RIM            ;2006;0;null
-RIM            ;2007;0;null
-RIM            ;2008;0;null
-RIM            ;2009;0;null
-RIM            ;2010;0;474516
-RIM            ;2011;0;515419
-RIM            ;2012;0;342103
-RIM            ;2013;0;null
-RIM            ;2014;0;null
-RIM            ;2015;0;null
-RIM            ;2016;0;null
-RIM            ;2017;0;null
-RIM            ;2018;0;null
-RIM            ;2019;0;null
-Sagem          ;1997;1;null
-Sagem          ;1998;4;null
-Sagem          ;1999;3;null
-Sagem          ;2000;5;null
-Sagem          ;2001;8;null
-Sagem          ;2002;4;null
-Sagem          ;2003;8;null
-Sagem          ;2004;17;null
-Sagem          ;2005;15;null
-Sagem          ;2006;20;null
-Sagem          ;2007;10;null
-Sagem          ;2008;24;null
-Sagem          ;2010;1;null
-Samsung        ;1992;0;null
-Samsung        ;1993;0;null
-Samsung        ;1994;0;null
-Samsung        ;1995;0;null
-Samsung        ;1996;0;null
-Samsung        ;1997;0;null
-Samsung        ;1998;0;4686
-Samsung        ;1999;3;17687
-Samsung        ;2000;5;20639
-Samsung        ;2001;11;28234
-Samsung        ;2002;11;41684
-Samsung        ;2003;28;54475
-Samsung        ;2004;31;85238
-Samsung        ;2005;54;103754
-Samsung        ;2006;77;116480
-Samsung        ;2007;67;154541
-Samsung        ;2008;96;199182
-Samsung        ;2009;127;235772
-Samsung        ;2010;109;2810658
-Samsung        ;2011;123;3139042
-Samsung        ;2012;91;3846312
-Samsung        ;2013;65;4444442
-Samsung        ;2014;89;392546
-Samsung        ;2015;57;3204
-Samsung        ;2016;41;3064466
-Samsung        ;2017;17;3212633
-Samsung        ;2018;0;2950437
-Samsung        ;2019;0;296194
-Sendo          ;2000;1;null
-Sendo          ;2001;3;null
-Sendo          ;2003;4;null
-Sendo          ;2004;5;null
-Sendo          ;2005;3;null
-Sendo          ;2401;2;null
-Sewon          ;2002;4;null
-Sewon          ;2004;19;null
-Sewon          ;2005;1;null
-Sharp          ;2002;2;null
-Sharp          ;2003;3;null
-Sharp          ;2004;9;null
-Sharp          ;2005;4;null
-Sharp          ;2006;5;null
-Sharp          ;2007;3;null
-Sharp          ;2008;5;null
-Sharp          ;2009;2;null
-Sharp          ;2010;3;null
-Sharp          ;2011;2;null
-Sharp          ;2012;2;null
-Sharp          ;2014;1;null
-Sharp          ;2015;2;null
-Sharp          ;2016;2;null
-Siemens        ;1992;0;null
-Siemens        ;1993;0;null
-Siemens        ;1994;0;null
-Siemens        ;1995;0;null
-Siemens        ;1996;0;null
-Siemens        ;1997;0;null
-Siemens        ;1998;5;null
-Siemens        ;1999;3;null
-Siemens        ;2000;9;26989
-Siemens        ;2001;8;29753
-Siemens        ;2002;4;34618
-Siemens        ;2003;21;43754
-Siemens        ;2004;19;48456
-Siemens        ;2005;23;28591
-Siemens        ;2006;0;null
-Siemens        ;2007;0;null
-Siemens        ;2008;0;null
-Siemens        ;2009;0;null
-Siemens        ;2010;0;null
-Siemens        ;2011;0;null
-Siemens        ;2012;0;null
-Siemens        ;2013;0;null
-Siemens        ;2014;0;null
-Siemens        ;2015;0;null
-Siemens        ;2016;0;null
-Siemens        ;2017;0;null
-Siemens        ;2018;0;null
-Siemens        ;2019;0;null
-Siemens        ;2491;1;null
-Siemens        ;2522;1;null
-Sonim          ;2007;1;null
-Sonim          ;2008;1;null
-Sonim          ;2009;1;null
-Sonim          ;2010;4;null
-Sonim          ;2011;4;null
-Sonim          ;2014;2;null
-Sony           ;1992;0;null
-Sony           ;1993;0;null
-Sony           ;1994;0;null
-Sony           ;1995;0;null
-Sony           ;1996;0;null
-Sony           ;1997;4;null
-Sony           ;1998;0;null
-Sony           ;1999;1;null
-Sony           ;2000;3;null
-Sony           ;2001;4;null
-Sony           ;2002;0;null
-Sony           ;2003;0;null
-Sony           ;2004;0;null
-Sony           ;2005;0;null
-Sony           ;2006;0;null
-Sony           ;2007;0;null
-Sony           ;2008;0;null
-Sony           ;2009;0;null
-Sony           ;2010;0;null
-Sony           ;2011;3;null
-Sony           ;2012;28;null
-Sony           ;2013;13;375957
-Sony           ;2014;25;37791
-Sony           ;2015;25;null
-Sony           ;2016;8;null
-Sony           ;2017;5;null
-Sony           ;2018;0;null
-Sony           ;2019;0;null
-Sony           ;2490;1;null
-Sony Ericsson  ;1992;0;null
-Sony Ericsson  ;1993;0;null
-Sony Ericsson  ;1994;0;null
-Sony Ericsson  ;1995;0;null
-Sony Ericsson  ;1996;0;null
-Sony Ericsson  ;1997;0;null
-Sony Ericsson  ;1998;0;null
-Sony Ericsson  ;1999;0;null
-Sony Ericsson  ;2000;0;null
-Sony Ericsson  ;2001;0;null
-Sony Ericsson  ;2002;4;null
-Sony Ericsson  ;2003;9;null
-Sony Ericsson  ;2004;12;null
-Sony Ericsson  ;2005;18;null
-Sony Ericsson  ;2006;25;null
-Sony Ericsson  ;2007;26;null
-Sony Ericsson  ;2008;34;934145
-Sony Ericsson  ;2009;21;548734
-Sony Ericsson  ;2010;17;418192
-Sony Ericsson  ;2011;17;325975
-Sony Ericsson  ;2012;0;null
-Sony Ericsson  ;2013;0;null
-Sony Ericsson  ;2014;0;null
-Sony Ericsson  ;2015;0;null
-Sony Ericsson  ;2016;0;null
-Sony Ericsson  ;2017;0;null
-Sony Ericsson  ;2018;0;null
-Sony Ericsson  ;2019;0;null
-Sony Ericsson  ;2461;1;null
-Sony Ericsson  ;2614;2;null
-Spice          ;2010;36;null
-Spice          ;2011;17;null
-Spice          ;2012;18;null
-Spice          ;2013;23;null
-Spice          ;2014;26;null
-T-Mobile       ;2006;3;null
-T-Mobile       ;2007;3;null
-T-Mobile       ;2008;3;null
-T-Mobile       ;2009;13;null
-T-Mobile       ;2010;10;null
-T-Mobile       ;2011;14;null
-T-Mobile       ;2012;4;null
-T-Mobile       ;2013;1;null
-TCL            ;1992;0;null
-TCL            ;1993;0;null
-TCL            ;1994;0;null
-TCL            ;1995;0;null
-TCL            ;1996;0;null
-TCL            ;1997;0;null
-TCL            ;1998;0;null
-TCL            ;1999;0;null
-TCL            ;2000;0;null
-TCL            ;2001;0;null
-TCL            ;2002;0;null
-TCL            ;2003;0;null
-TCL            ;2004;0;null
-TCL            ;2005;0;null
-TCL            ;2006;0;null
-TCL            ;2007;0;null
-TCL            ;2008;0;null
-TCL            ;2009;0;null
-TCL            ;2010;0;null
-TCL            ;2011;0;null
-TCL            ;2012;0;371766
-TCL            ;2013;0;495313
-TCL            ;2014;0;64026
-TCL            ;2015;0;null
-TCL            ;2016;0;null
-TCL            ;2017;0;null
-TCL            ;2018;0;null
-TCL            ;2019;0;null
-Tel.Me.        ;2002;1;null
-Tel.Me.        ;2003;3;null
-Tel.Me.        ;2004;1;null
-Telit          ;1999;5;null
-Telit          ;2002;2;null
-Telit          ;2003;3;null
-Telit          ;2004;4;null
-Telit          ;2005;9;null
-Telit          ;2006;6;null
-Telit          ;2675;1;null
-Thuraya        ;2007;1;null
-Toshiba        ;2005;5;null
-Toshiba        ;2006;8;null
-Toshiba        ;2007;2;null
-Toshiba        ;2008;4;null
-Toshiba        ;2009;1;null
-Toshiba        ;2010;2;null
-Toshiba        ;2011;4;null
-Toshiba        ;2012;4;null
-Toshiba        ;2013;3;null
-Toshiba        ;2014;2;null
-Unnecto        ;2011;6;null
-Unnecto        ;2012;5;null
-Unnecto        ;2013;2;null
-Unnecto        ;2014;3;null
-Unnecto        ;2015;8;null
-Unnecto        ;2016;6;null
-Vertu          ;2003;1;null
-Vertu          ;2004;1;null
-Vertu          ;2005;1;null
-Vertu          ;2006;1;null
-Vertu          ;2008;2;null
-Vertu          ;2009;2;null
-Vertu          ;2010;2;null
-Vertu          ;2011;2;null
-Vertu          ;2013;2;null
-Vertu          ;2014;2;null
-Vertu          ;2015;1;null
-verykool       ;2011;26;null
-verykool       ;2012;19;null
-verykool       ;2013;19;null
-verykool       ;2014;19;null
-verykool       ;2015;19;null
-verykool       ;2016;13;null
-verykool       ;2017;12;null
-Vivo           ;1992;0;null
-Vivo           ;1993;0;null
-Vivo           ;1994;0;null
-Vivo           ;1995;0;null
-Vivo           ;1996;0;null
-Vivo           ;1997;0;null
-Vivo           ;1998;0;null
-Vivo           ;1999;0;null
-Vivo           ;2000;0;null
-Vivo           ;2001;0;null
-Vivo           ;2002;0;null
-Vivo           ;2003;0;null
-Vivo           ;2004;0;null
-Vivo           ;2005;0;null
-Vivo           ;2006;0;null
-Vivo           ;2007;0;null
-Vivo           ;2008;0;null
-Vivo           ;2009;0;null
-Vivo           ;2010;0;null
-Vivo           ;2011;0;null
-Vivo           ;2012;0;null
-Vivo           ;2013;3;null
-Vivo           ;2014;7;null
-Vivo           ;2015;12;null
-Vivo           ;2016;13;null
-Vivo           ;2017;5;996848
-Vivo           ;2018;0;null
-Vivo           ;2019;0;null
-VK Mobile      ;2004;8;null
-VK Mobile      ;2005;14;null
-VK Mobile      ;2006;8;null
-VK Mobile      ;2008;1;null
-Vodafone       ;2006;1;null
-Vodafone       ;2007;6;null
-Vodafone       ;2008;7;null
-Vodafone       ;2009;16;null
-Vodafone       ;2010;13;null
-Vodafone       ;2011;2;null
-Vodafone       ;2012;6;null
-Vodafone       ;2013;5;null
-Vodafone       ;2014;6;null
-Vodafone       ;2015;6;null
-Vodafone       ;2016;6;null
-Vodafone       ;2017;1;null
-Wiko           ;2014;11;null
-Wiko           ;2015;17;null
-Wiko           ;2016;7;null
-WND            ;2007;5;null
-XCute          ;2005;2;null
-XCute          ;2006;2;null
-Xiaomi         ;1992;0;null
-Xiaomi         ;1993;0;null
-Xiaomi         ;1994;0;null
-Xiaomi         ;1995;0;null
-Xiaomi         ;1996;0;null
-Xiaomi         ;1997;0;null
-Xiaomi         ;1998;0;null
-Xiaomi         ;1999;0;null
-Xiaomi         ;2000;0;null
-Xiaomi         ;2001;0;null
-Xiaomi         ;2002;0;null
-Xiaomi         ;2003;0;null
-Xiaomi         ;2004;0;null
-Xiaomi         ;2005;0;null
-Xiaomi         ;2006;0;null
-Xiaomi         ;2007;0;null
-Xiaomi         ;2008;0;null
-Xiaomi         ;2009;0;null
-Xiaomi         ;2010;0;null
-Xiaomi         ;2011;0;null
-Xiaomi         ;2012;2;null
-Xiaomi         ;2013;4;null
-Xiaomi         ;2014;6;56529
-Xiaomi         ;2015;12;656186
-Xiaomi         ;2016;18;null
-Xiaomi         ;2017;7;null
-Xiaomi         ;2018;0;1223870
-Xiaomi         ;2019;0;1260492
-XOLO           ;2013;24;null
-XOLO           ;2014;37;null
-XOLO           ;2015;13;null
-XOLO           ;2016;5;null
-XOLO           ;2017;1;null
-Yezz           ;2011;8;null
-Yezz           ;2012;12;null
-Yezz           ;2013;14;null
-Yezz           ;2014;22;null
-Yezz           ;2015;21;null
-Yezz           ;2016;10;null
-Yota           ;2012;1;null
-Yota           ;2014;1;null
-YU             ;2015;5;null
-YU             ;2016;4;null
-YU             ;2017;1;null
-Yulong         ;1992;0;null
-Yulong         ;1993;0;null
-Yulong         ;1994;0;null
-Yulong         ;1995;0;null
-Yulong         ;1996;0;null
-Yulong         ;1997;0;null
-Yulong         ;1998;0;null
-Yulong         ;1999;0;null
-Yulong         ;2000;0;null
-Yulong         ;2001;0;null
-Yulong         ;2002;0;null
-Yulong         ;2003;0;null
-Yulong         ;2004;0;null
-Yulong         ;2005;0;null
-Yulong         ;2006;0;null
-Yulong         ;2007;0;null
-Yulong         ;2008;0;null
-Yulong         ;2009;0;null
-Yulong         ;2010;0;null
-Yulong         ;2011;0;null
-Yulong         ;2012;0;null
-Yulong         ;2013;0;326014
-Yulong         ;2014;0;null
-Yulong         ;2015;0;null
-Yulong         ;2016;0;null
-Yulong         ;2017;0;null
-Yulong         ;2018;0;null
-Yulong         ;2019;0;null
-ZTE            ;1992;0;null
-ZTE            ;1993;0;null
-ZTE            ;1994;0;null
-ZTE            ;1995;0;null
-ZTE            ;1996;0;null
-ZTE            ;1997;0;null
-ZTE            ;1998;0;null
-ZTE            ;1999;0;null
-ZTE            ;2000;0;null
-ZTE            ;2001;0;null
-ZTE            ;2002;0;null
-ZTE            ;2003;0;null
-ZTE            ;2004;0;null
-ZTE            ;2005;0;null
-ZTE            ;2006;0;null
-ZTE            ;2007;1;null
-ZTE            ;2008;2;null
-ZTE            ;2009;14;null
-ZTE            ;2010;16;287687
-ZTE            ;2011;20;568818
-ZTE            ;2012;38;673444
-ZTE            ;2013;24;598988
-ZTE            ;2014;26;5391
-ZTE            ;2015;38;null
-ZTE            ;2016;25;null
-ZTE            ;2017;14;null
-ZTE            ;2018;0;null
-ZTE            ;2019;0;null
+LG;1992;0;null
+LG;1993;0;null
+LG;1994;0;null
+LG;1995;0;null
+LG;1996;0;null
+LG;1997;0;null
+LG;1998;0;null
+LG;1999;0;null
+LG;2000;0;null
+LG;2001;0;null
+LG;2002;10;null
+LG;2003;12;262137
+LG;2004;23;422768
+LG;2005;36;549246
+LG;2006;36;61986
+LG;2007;30;785763
+LG;2008;46;1025554
+LG;2009;55;1220553
+LG;2010;81;1141546
+LG;2011;60;863709
+LG;2012;41;580159
+LG;2013;34;690245
+LG;2014;52;76096
+LG;2015;29;null
+LG;2016;30;null
+LG;2017;7;null
+LG;2018;0;null
+LG;2019;0;null
+LG;2522;1;null
+Maxon;1999;8;null
+Maxon;2000;4;null
+Maxon;2003;11;null
+Maxon;2004;8;null
+Maxwest;2013;13;null
+Maxwest;2014;10;null
+Maxwest;2015;10;null
+Maxwest;2016;8;null
+Meizu;2011;1;null
+Meizu;2012;2;null
+Meizu;2013;1;null
+Meizu;2014;3;null
+Meizu;2015;6;null
+Meizu;2016;15;null
+Meizu;2017;3;null
+Micromax;1992;0;null
+Micromax;1993;0;null
+Micromax;1994;0;null
+Micromax;1995;0;null
+Micromax;1996;0;null
+Micromax;1997;0;null
+Micromax;1998;0;null
+Micromax;1999;0;null
+Micromax;2000;0;null
+Micromax;2001;0;null
+Micromax;2002;0;null
+Micromax;2003;0;null
+Micromax;2004;0;null
+Micromax;2005;0;null
+Micromax;2006;0;null
+Micromax;2007;0;null
+Micromax;2008;1;null
+Micromax;2009;9;null
+Micromax;2010;33;null
+Micromax;2011;19;null
+Micromax;2012;40;null
+Micromax;2013;43;null
+Micromax;2014;34;37094
+Micromax;2015;49;null
+Micromax;2016;25;null
+Micromax;2017;8;null
+Micromax;2018;0;null
+Micromax;2019;0;null
+Microsoft;1992;0;null
+Microsoft;1993;0;null
+Microsoft;1994;0;null
+Microsoft;1995;0;null
+Microsoft;1996;0;null
+Microsoft;1997;0;null
+Microsoft;1998;0;null
+Microsoft;1999;0;null
+Microsoft;2000;0;null
+Microsoft;2001;0;null
+Microsoft;2002;0;null
+Microsoft;2003;0;null
+Microsoft;2004;0;null
+Microsoft;2005;0;null
+Microsoft;2006;0;null
+Microsoft;2007;0;null
+Microsoft;2008;0;null
+Microsoft;2009;0;null
+Microsoft;2010;4;null
+Microsoft;2011;0;null
+Microsoft;2012;1;null
+Microsoft;2013;1;null
+Microsoft;2014;2;18566
+Microsoft;2015;18;null
+Microsoft;2016;1;null
+Microsoft;2017;0;null
+Microsoft;2018;0;null
+Microsoft;2019;0;null
+Mitac;2003;2;null
+Mitac;2004;2;null
+Mitac;2005;1;null
+Mitac;2007;3;null
+Mitac;2009;4;null
+Mitsubishi;1999;4;null
+Mitsubishi;2000;7;null
+Mitsubishi;2001;2;null
+Mitsubishi;2002;1;null
+Mitsubishi;2003;4;null
+Mitsubishi;2004;7;null
+Modu;2009;7;null
+Modu;2010;1;null
+Motorola;1992;0;4
+Motorola;1993;0;null
+Motorola;1994;0;12
+Motorola;1995;0;null
+Motorola;1996;0;60
+Motorola;1997;5;25328
+Motorola;1998;5;32319
+Motorola;1999;7;47818
+Motorola;2000;9;60094
+Motorola;2001;8;59097
+Motorola;2002;9;64640
+Motorola;2003;32;75177
+Motorola;2004;38;104124
+Motorola;2005;37;144920
+Motorola;2006;14;209251
+Motorola;2007;19;164307
+Motorola;2008;30;10659
+Motorola;2009;25;584752
+Motorola;2010;53;385537
+Motorola;2011;57;40269
+Motorola;2012;35;339163
+Motorola;2013;7;null
+Motorola;2014;12;null
+Motorola;2015;16;null
+Motorola;2016;9;null
+Motorola;2017;9;null
+Motorola;2018;0;null
+Motorola;2019;0;null
+Motorola;2614;2;null
+Motorola;2644;3;null
+MWg;2007;2;null
+MWg;2008;3;null
+NEC;1992;0;2
+NEC;1993;0;null
+NEC;1994;0;6
+NEC;1995;0;null
+NEC;1996;0;null
+NEC;1997;1;null
+NEC;1998;0;null
+NEC;1999;2;null
+NEC;2000;2;null
+NEC;2001;2;null
+NEC;2002;2;null
+NEC;2003;14;null
+NEC;2004;28;null
+NEC;2005;14;null
+NEC;2006;7;null
+NEC;2007;0;null
+NEC;2008;0;null
+NEC;2009;0;null
+NEC;2010;0;null
+NEC;2011;0;null
+NEC;2012;0;null
+NEC;2013;1;null
+NEC;2014;0;null
+NEC;2015;0;null
+NEC;2016;0;null
+NEC;2017;0;null
+NEC;2018;0;null
+NEC;2019;0;null
+Neonode;2003;1;null
+Neonode;2005;1;null
+Neonode;2007;1;null
+NIU;2012;12;null
+NIU;2013;9;null
+NIU;2014;5;null
+NIU;2015;4;null
+Nokia;1992;0;3
+Nokia;1993;0;5
+Nokia;1994;0;9
+Nokia;1995;1;13
+Nokia;1996;0;18
+Nokia;1997;1;20593
+Nokia;1998;7;37374
+Nokia;1999;4;76335
+Nokia;2000;6;126369
+Nokia;2001;5;139672
+Nokia;2002;16;151422
+Nokia;2003;25;180672
+Nokia;2004;20;207231
+Nokia;2005;34;265615
+Nokia;2006;31;344916
+Nokia;2007;38;435453
+Nokia;2008;38;472315
+Nokia;2009;47;4408816
+Nokia;2010;38;4613182
+Nokia;2011;37;4224783
+Nokia;2012;30;333938
+Nokia;2013;26;2507931
+Nokia;2014;22;null
+Nokia;2015;8;null
+Nokia;2016;2;null
+Nokia;2017;4;null
+Nokia;2018;0;null
+Nokia;2019;0;null
+Nokia;2463;1;null
+Nokia;2523;1;null
+Nvidia;2014;2;null
+Nvidia;2015;1;null
+O2;2003;3;null
+O2;2004;8;null
+O2;2005;10;null
+O2;2006;10;null
+O2;2007;9;null
+O2;2008;4;null
+O2;2009;1;null
+OnePlus;2014;1;null
+OnePlus;2015;2;null
+OnePlus;2016;2;null
+OnePlus;2017;1;null
+Oppo;1992;0;null
+Oppo;1993;0;null
+Oppo;1994;0;null
+Oppo;1995;0;null
+Oppo;1996;0;null
+Oppo;1997;0;null
+Oppo;1998;0;null
+Oppo;1999;0;null
+Oppo;2000;0;null
+Oppo;2001;0;null
+Oppo;2002;0;null
+Oppo;2003;0;null
+Oppo;2004;0;null
+Oppo;2005;0;null
+Oppo;2006;0;null
+Oppo;2007;0;null
+Oppo;2008;0;null
+Oppo;2009;0;null
+Oppo;2010;0;null
+Oppo;2011;0;null
+Oppo;2012;8;null
+Oppo;2013;5;null
+Oppo;2014;13;null
+Oppo;2015;18;null
+Oppo;2016;9;852995
+Oppo;2017;5;112124
+Oppo;2018;0;1188375
+Oppo;2019;0;1186932
+Orange;2011;12;null
+Orange;2012;2;null
+Orange;2013;1;null
+Orange;2014;3;null
+Others;1992;0;null
+Others;1993;0;null
+Others;1994;0;null
+Others;1995;0;null
+Others;1996;0;null
+Others;1997;0;null
+Others;1998;0;null
+Others;1999;0;null
+Others;2000;0;null
+Others;2001;0;null
+Others;2002;0;null
+Others;2003;0;null
+Others;2004;0;null
+Others;2005;0;null
+Others;2006;0;null
+Others;2007;0;null
+Others;2008;0;248189
+Others;2009;0;2991792
+Others;2010;0;4885693
+Others;2011;0;5973269
+Others;2012;0;5873996
+Others;2013;0;61371
+Others;2014;0;62936
+Others;2015;0;6353685
+Others;2016;0;6823143
+Others;2017;0;6380047
+Others;2018;0;6070490
+Others;2019;0;565630
+Palm;2002;1;null
+Palm;2003;2;null
+Palm;2004;1;null
+Palm;2006;2;null
+Palm;2007;1;null
+Palm;2008;3;null
+Palm;2009;2;null
+Palm;2010;4;null
+Panasonic;1992;0;null
+Panasonic;1993;0;null
+Panasonic;1994;0;null
+Panasonic;1995;0;null
+Panasonic;1996;0;null
+Panasonic;1997;0;8627
+Panasonic;1998;1;13397
+Panasonic;1999;3;15581
+Panasonic;2000;2;null
+Panasonic;2001;3;null
+Panasonic;2002;2;null
+Panasonic;2003;6;null
+Panasonic;2004;13;null
+Panasonic;2005;11;null
+Panasonic;2006;0;null
+Panasonic;2007;0;null
+Panasonic;2008;0;null
+Panasonic;2009;0;null
+Panasonic;2010;0;null
+Panasonic;2011;4;null
+Panasonic;2012;2;null
+Panasonic;2013;5;null
+Panasonic;2014;11;null
+Panasonic;2015;10;null
+Panasonic;2016;14;null
+Panasonic;2017;7;null
+Panasonic;2018;0;null
+Panasonic;2019;0;null
+Panasonic;2675;1;null
+Pantech;2003;3;null
+Pantech;2004;11;null
+Pantech;2005;12;null
+Pantech;2006;11;null
+Pantech;2007;1;null
+Pantech;2008;2;null
+Pantech;2009;3;null
+Pantech;2010;11;null
+Pantech;2011;7;null
+Pantech;2012;8;null
+Pantech;2013;3;null
+Parla;2012;4;null
+Parla;2013;3;null
+Parla;2014;1;null
+Parla;2015;2;null
+Philips;1996;1;null
+Philips;1997;2;null
+Philips;1999;5;null
+Philips;2000;8;null
+Philips;2001;1;null
+Philips;2002;6;null
+Philips;2003;6;null
+Philips;2004;12;null
+Philips;2005;12;null
+Philips;2006;15;null
+Philips;2007;15;null
+Philips;2008;15;null
+Philips;2009;19;null
+Philips;2010;24;null
+Philips;2011;27;null
+Philips;2012;23;null
+Philips;2013;23;null
+Philips;2014;4;null
+Philips;2015;9;null
+Plum;2011;19;null
+Plum;2012;16;null
+Plum;2013;16;null
+Plum;2014;19;null
+Plum;2015;8;null
+Plum;2016;12;null
+Posh;2014;14;null
+Posh;2015;9;null
+Posh;2016;7;null
+Prestigio;2013;42;null
+Prestigio;2014;14;null
+QMobile;2013;5;null
+QMobile;2014;28;null
+QMobile;2015;35;null
+QMobile;2016;11;null
+Qtek;2003;1;null
+Qtek;2004;9;null
+Qtek;2005;7;null
+Qtek;2006;4;null
+RIM;1992;0;null
+RIM;1993;0;null
+RIM;1994;0;null
+RIM;1995;0;null
+RIM;1996;0;null
+RIM;1997;0;null
+RIM;1998;0;null
+RIM;1999;0;null
+RIM;2000;0;null
+RIM;2001;0;null
+RIM;2002;0;null
+RIM;2003;0;null
+RIM;2004;0;null
+RIM;2005;0;null
+RIM;2006;0;null
+RIM;2007;0;null
+RIM;2008;0;null
+RIM;2009;0;null
+RIM;2010;0;474516
+RIM;2011;0;515419
+RIM;2012;0;342103
+RIM;2013;0;null
+RIM;2014;0;null
+RIM;2015;0;null
+RIM;2016;0;null
+RIM;2017;0;null
+RIM;2018;0;null
+RIM;2019;0;null
+Sagem;1997;1;null
+Sagem;1998;4;null
+Sagem;1999;3;null
+Sagem;2000;5;null
+Sagem;2001;8;null
+Sagem;2002;4;null
+Sagem;2003;8;null
+Sagem;2004;17;null
+Sagem;2005;15;null
+Sagem;2006;20;null
+Sagem;2007;10;null
+Sagem;2008;24;null
+Sagem;2010;1;null
+Samsung;1992;0;null
+Samsung;1993;0;null
+Samsung;1994;0;null
+Samsung;1995;0;null
+Samsung;1996;0;null
+Samsung;1997;0;null
+Samsung;1998;0;4686
+Samsung;1999;3;17687
+Samsung;2000;5;20639
+Samsung;2001;11;28234
+Samsung;2002;11;41684
+Samsung;2003;28;54475
+Samsung;2004;31;85238
+Samsung;2005;54;103754
+Samsung;2006;77;116480
+Samsung;2007;67;154541
+Samsung;2008;96;199182
+Samsung;2009;127;235772
+Samsung;2010;109;2810658
+Samsung;2011;123;3139042
+Samsung;2012;91;3846312
+Samsung;2013;65;4444442
+Samsung;2014;89;392546
+Samsung;2015;57;3204
+Samsung;2016;41;3064466
+Samsung;2017;17;3212633
+Samsung;2018;0;2950437
+Samsung;2019;0;296194
+Sendo;2000;1;null
+Sendo;2001;3;null
+Sendo;2003;4;null
+Sendo;2004;5;null
+Sendo;2005;3;null
+Sendo;2401;2;null
+Sewon;2002;4;null
+Sewon;2004;19;null
+Sewon;2005;1;null
+Sharp;2002;2;null
+Sharp;2003;3;null
+Sharp;2004;9;null
+Sharp;2005;4;null
+Sharp;2006;5;null
+Sharp;2007;3;null
+Sharp;2008;5;null
+Sharp;2009;2;null
+Sharp;2010;3;null
+Sharp;2011;2;null
+Sharp;2012;2;null
+Sharp;2014;1;null
+Sharp;2015;2;null
+Sharp;2016;2;null
+Siemens;1992;0;null
+Siemens;1993;0;null
+Siemens;1994;0;null
+Siemens;1995;0;null
+Siemens;1996;0;null
+Siemens;1997;0;null
+Siemens;1998;5;null
+Siemens;1999;3;null
+Siemens;2000;9;26989
+Siemens;2001;8;29753
+Siemens;2002;4;34618
+Siemens;2003;21;43754
+Siemens;2004;19;48456
+Siemens;2005;23;28591
+Siemens;2006;0;null
+Siemens;2007;0;null
+Siemens;2008;0;null
+Siemens;2009;0;null
+Siemens;2010;0;null
+Siemens;2011;0;null
+Siemens;2012;0;null
+Siemens;2013;0;null
+Siemens;2014;0;null
+Siemens;2015;0;null
+Siemens;2016;0;null
+Siemens;2017;0;null
+Siemens;2018;0;null
+Siemens;2019;0;null
+Siemens;2491;1;null
+Siemens;2522;1;null
+Sonim;2007;1;null
+Sonim;2008;1;null
+Sonim;2009;1;null
+Sonim;2010;4;null
+Sonim;2011;4;null
+Sonim;2014;2;null
+Sony;1992;0;null
+Sony;1993;0;null
+Sony;1994;0;null
+Sony;1995;0;null
+Sony;1996;0;null
+Sony;1997;4;null
+Sony;1998;0;null
+Sony;1999;1;null
+Sony;2000;3;null
+Sony;2001;4;null
+Sony;2002;0;null
+Sony;2003;0;null
+Sony;2004;0;null
+Sony;2005;0;null
+Sony;2006;0;null
+Sony;2007;0;null
+Sony;2008;0;null
+Sony;2009;0;null
+Sony;2010;0;null
+Sony;2011;3;null
+Sony;2012;28;null
+Sony;2013;13;375957
+Sony;2014;25;37791
+Sony;2015;25;null
+Sony;2016;8;null
+Sony;2017;5;null
+Sony;2018;0;null
+Sony;2019;0;null
+Sony;2490;1;null
+Sony Ericsson;1992;0;null
+Sony Ericsson;1993;0;null
+Sony Ericsson;1994;0;null
+Sony Ericsson;1995;0;null
+Sony Ericsson;1996;0;null
+Sony Ericsson;1997;0;null
+Sony Ericsson;1998;0;null
+Sony Ericsson;1999;0;null
+Sony Ericsson;2000;0;null
+Sony Ericsson;2001;0;null
+Sony Ericsson;2002;4;null
+Sony Ericsson;2003;9;null
+Sony Ericsson;2004;12;null
+Sony Ericsson;2005;18;null
+Sony Ericsson;2006;25;null
+Sony Ericsson;2007;26;null
+Sony Ericsson;2008;34;934145
+Sony Ericsson;2009;21;548734
+Sony Ericsson;2010;17;418192
+Sony Ericsson;2011;17;325975
+Sony Ericsson;2012;0;null
+Sony Ericsson;2013;0;null
+Sony Ericsson;2014;0;null
+Sony Ericsson;2015;0;null
+Sony Ericsson;2016;0;null
+Sony Ericsson;2017;0;null
+Sony Ericsson;2018;0;null
+Sony Ericsson;2019;0;null
+Sony Ericsson;2461;1;null
+Sony Ericsson;2614;2;null
+Spice;2010;36;null
+Spice;2011;17;null
+Spice;2012;18;null
+Spice;2013;23;null
+Spice;2014;26;null
+T-Mobile;2006;3;null
+T-Mobile;2007;3;null
+T-Mobile;2008;3;null
+T-Mobile;2009;13;null
+T-Mobile;2010;10;null
+T-Mobile;2011;14;null
+T-Mobile;2012;4;null
+T-Mobile;2013;1;null
+TCL;1992;0;null
+TCL;1993;0;null
+TCL;1994;0;null
+TCL;1995;0;null
+TCL;1996;0;null
+TCL;1997;0;null
+TCL;1998;0;null
+TCL;1999;0;null
+TCL;2000;0;null
+TCL;2001;0;null
+TCL;2002;0;null
+TCL;2003;0;null
+TCL;2004;0;null
+TCL;2005;0;null
+TCL;2006;0;null
+TCL;2007;0;null
+TCL;2008;0;null
+TCL;2009;0;null
+TCL;2010;0;null
+TCL;2011;0;null
+TCL;2012;0;371766
+TCL;2013;0;495313
+TCL;2014;0;64026
+TCL;2015;0;null
+TCL;2016;0;null
+TCL;2017;0;null
+TCL;2018;0;null
+TCL;2019;0;null
+Tel.Me.;2002;1;null
+Tel.Me.;2003;3;null
+Tel.Me.;2004;1;null
+Telit;1999;5;null
+Telit;2002;2;null
+Telit;2003;3;null
+Telit;2004;4;null
+Telit;2005;9;null
+Telit;2006;6;null
+Telit;2675;1;null
+Thuraya;2007;1;null
+Toshiba;2005;5;null
+Toshiba;2006;8;null
+Toshiba;2007;2;null
+Toshiba;2008;4;null
+Toshiba;2009;1;null
+Toshiba;2010;2;null
+Toshiba;2011;4;null
+Toshiba;2012;4;null
+Toshiba;2013;3;null
+Toshiba;2014;2;null
+Unnecto;2011;6;null
+Unnecto;2012;5;null
+Unnecto;2013;2;null
+Unnecto;2014;3;null
+Unnecto;2015;8;null
+Unnecto;2016;6;null
+Vertu;2003;1;null
+Vertu;2004;1;null
+Vertu;2005;1;null
+Vertu;2006;1;null
+Vertu;2008;2;null
+Vertu;2009;2;null
+Vertu;2010;2;null
+Vertu;2011;2;null
+Vertu;2013;2;null
+Vertu;2014;2;null
+Vertu;2015;1;null
+verykool;2011;26;null
+verykool;2012;19;null
+verykool;2013;19;null
+verykool;2014;19;null
+verykool;2015;19;null
+verykool;2016;13;null
+verykool;2017;12;null
+Vivo;1992;0;null
+Vivo;1993;0;null
+Vivo;1994;0;null
+Vivo;1995;0;null
+Vivo;1996;0;null
+Vivo;1997;0;null
+Vivo;1998;0;null
+Vivo;1999;0;null
+Vivo;2000;0;null
+Vivo;2001;0;null
+Vivo;2002;0;null
+Vivo;2003;0;null
+Vivo;2004;0;null
+Vivo;2005;0;null
+Vivo;2006;0;null
+Vivo;2007;0;null
+Vivo;2008;0;null
+Vivo;2009;0;null
+Vivo;2010;0;null
+Vivo;2011;0;null
+Vivo;2012;0;null
+Vivo;2013;3;null
+Vivo;2014;7;null
+Vivo;2015;12;null
+Vivo;2016;13;null
+Vivo;2017;5;996848
+Vivo;2018;0;null
+Vivo;2019;0;null
+VK Mobile;2004;8;null
+VK Mobile;2005;14;null
+VK Mobile;2006;8;null
+VK Mobile;2008;1;null
+Vodafone;2006;1;null
+Vodafone;2007;6;null
+Vodafone;2008;7;null
+Vodafone;2009;16;null
+Vodafone;2010;13;null
+Vodafone;2011;2;null
+Vodafone;2012;6;null
+Vodafone;2013;5;null
+Vodafone;2014;6;null
+Vodafone;2015;6;null
+Vodafone;2016;6;null
+Vodafone;2017;1;null
+Wiko;2014;11;null
+Wiko;2015;17;null
+Wiko;2016;7;null
+WND;2007;5;null
+XCute;2005;2;null
+XCute;2006;2;null
+Xiaomi;1992;0;null
+Xiaomi;1993;0;null
+Xiaomi;1994;0;null
+Xiaomi;1995;0;null
+Xiaomi;1996;0;null
+Xiaomi;1997;0;null
+Xiaomi;1998;0;null
+Xiaomi;1999;0;null
+Xiaomi;2000;0;null
+Xiaomi;2001;0;null
+Xiaomi;2002;0;null
+Xiaomi;2003;0;null
+Xiaomi;2004;0;null
+Xiaomi;2005;0;null
+Xiaomi;2006;0;null
+Xiaomi;2007;0;null
+Xiaomi;2008;0;null
+Xiaomi;2009;0;null
+Xiaomi;2010;0;null
+Xiaomi;2011;0;null
+Xiaomi;2012;2;null
+Xiaomi;2013;4;null
+Xiaomi;2014;6;56529
+Xiaomi;2015;12;656186
+Xiaomi;2016;18;null
+Xiaomi;2017;7;null
+Xiaomi;2018;0;1223870
+Xiaomi;2019;0;1260492
+XOLO;2013;24;null
+XOLO;2014;37;null
+XOLO;2015;13;null
+XOLO;2016;5;null
+XOLO;2017;1;null
+Yezz;2011;8;null
+Yezz;2012;12;null
+Yezz;2013;14;null
+Yezz;2014;22;null
+Yezz;2015;21;null
+Yezz;2016;10;null
+Yota;2012;1;null
+Yota;2014;1;null
+YU;2015;5;null
+YU;2016;4;null
+YU;2017;1;null
+Yulong;1992;0;null
+Yulong;1993;0;null
+Yulong;1994;0;null
+Yulong;1995;0;null
+Yulong;1996;0;null
+Yulong;1997;0;null
+Yulong;1998;0;null
+Yulong;1999;0;null
+Yulong;2000;0;null
+Yulong;2001;0;null
+Yulong;2002;0;null
+Yulong;2003;0;null
+Yulong;2004;0;null
+Yulong;2005;0;null
+Yulong;2006;0;null
+Yulong;2007;0;null
+Yulong;2008;0;null
+Yulong;2009;0;null
+Yulong;2010;0;null
+Yulong;2011;0;null
+Yulong;2012;0;null
+Yulong;2013;0;326014
+Yulong;2014;0;null
+Yulong;2015;0;null
+Yulong;2016;0;null
+Yulong;2017;0;null
+Yulong;2018;0;null
+Yulong;2019;0;null
+ZTE;1992;0;null
+ZTE;1993;0;null
+ZTE;1994;0;null
+ZTE;1995;0;null
+ZTE;1996;0;null
+ZTE;1997;0;null
+ZTE;1998;0;null
+ZTE;1999;0;null
+ZTE;2000;0;null
+ZTE;2001;0;null
+ZTE;2002;0;null
+ZTE;2003;0;null
+ZTE;2004;0;null
+ZTE;2005;0;null
+ZTE;2006;0;null
+ZTE;2007;1;null
+ZTE;2008;2;null
+ZTE;2009;14;null
+ZTE;2010;16;287687
+ZTE;2011;20;568818
+ZTE;2012;38;673444
+ZTE;2013;24;598988
+ZTE;2014;26;5391
+ZTE;2015;38;null
+ZTE;2016;25;null
+ZTE;2017;14;null
+ZTE;2018;0;null
+ZTE;2019;0;null

@@ -1090,6 +1090,71 @@
     </GUI>
   </step>
   <step>
+    <name>Filter Outlier Years</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value to a constant</send_true_to>
+    <send_false_to>Sort rows 5</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>year</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2030</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>year</leftvalue>
+            <function>&lt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>1980</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get Year with Regex</name>
     <type>RegexEval</type>
     <description/>
@@ -2541,115 +2606,90 @@
     <fields>
       <field>
         <name>Model</name>
-        <rename/>
       </field>
       <field>
         <name>Brand</name>
-        <rename/>
       </field>
       <field>
         <name>year</name>
-        <rename/>
       </field>
       <field>
         <name>quarter</name>
-        <rename/>
       </field>
       <field>
         <name>month</name>
-        <rename/>
+      </field>
+      <field>
+        <name>month_id</name>
       </field>
       <field>
         <name>Audio_jack</name>
-        <rename/>
       </field>
       <field>
         <name>battery_removable</name>
-        <rename/>
       </field>
       <field>
         <name>battery_amps</name>
-        <rename/>
       </field>
       <field>
         <name>battery_type</name>
-        <rename/>
       </field>
       <field>
         <name>Bluetooth</name>
-        <rename/>
       </field>
       <field>
         <name>Display_type</name>
-        <rename/>
       </field>
       <field>
         <name>aspect_ratio</name>
-        <rename/>
       </field>
       <field>
         <name>screen_body_ratio</name>
-        <rename/>
       </field>
       <field>
         <name>GPS</name>
-        <rename/>
       </field>
       <field>
         <name>Radio</name>
-        <rename/>
       </field>
       <field>
         <name>ram_MB</name>
-        <rename/>
       </field>
       <field>
         <name>im_MB</name>
-        <rename/>
       </field>
       <field>
         <name>primary_camera_MP</name>
-        <rename/>
       </field>
       <field>
         <name>primary_camera_autofocus</name>
-        <rename/>
       </field>
       <field>
         <name>primary_camera_LED_flash</name>
-        <rename/>
       </field>
       <field>
         <name>primary_camera_VGA</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_accelerometer</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_fingerprint</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_fingerprint_mounted</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_heart_rate</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_iris_scanner</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_proximity</name>
-        <rename/>
       </field>
       <field>
         <name>sensor_temperature</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2795,6 +2835,40 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value to a constant</name>
+    <type>SetValueConstant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <usevar>N</usevar>
+    <fields>
+      <field>
+        <name>year</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1200</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3115,7 +3189,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>15</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3262,6 +3336,18 @@
       <field>
         <name>month</name>
         <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>null</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>month_id</name>
+        <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
@@ -3793,105 +3879,6 @@
     <GUI>
       <xloc>752</xloc>
       <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter Outlier Years</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value to a constant</send_true_to>
-    <send_false_to>Sort rows 5</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>year</leftvalue>
-            <function>&gt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2030</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>OR</operator>
-            <leftvalue>year</leftvalue>
-            <function>&lt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>1980</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value to a constant</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>year</name>
-        <value/>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1200</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
