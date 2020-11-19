@@ -1,5 +1,4 @@
 var dragHandler = d3.drag()
-
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
@@ -8,6 +7,7 @@ var brands_list
 var selected_brands = []
 
 var time_selection_svg
+
 var min_year
 var max_year
 var start_year = 2000
@@ -15,11 +15,19 @@ var end_year = 2015
 var time_scale
 
 var brand_selection_form
+var line_chart_1_svg
 
 const DatasetDir = "../Datasets/"
 
 function init() {
     d3.dsv(";", DatasetDir + "Brands_Parsed.csv").then(function (data) {
+        data.forEach(function(elem) {
+            elem['Year'] = parseInt(elem['Year'])
+            elem['# Models'] = parseInt(elem['# Models'])
+            if (elem['Sales'] == 'null') elem['Sales'] = 0
+            else elem['Sales'] = parseInt(elem['Sales'])
+        });
+        console.log(data)
         fulldataset_brands = data;
         dataset_brands = fulldataset_brands;
         brands_list = dataset_brands.map(elem => elem['Brand'])
@@ -38,6 +46,7 @@ function init() {
 
             build_time_selection_svg();
             build_brand_selection_form();
+            build_line_chart();
             
         });
     });
@@ -164,4 +173,78 @@ function build_brand_selection_form() {
         .attr("class", "brand_label")
         .text(datum => datum);
             
+}
+
+function build_line_chart(){
+    line_chart_1_svg = d3.select("svg#line_chart1");
+    var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
+    var padding = 50;
+    var xscaleData = dataset_brands.map((a) => a['Year'])
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort((a,b) => a - b);
+
+    var xscale = d3.scalePoint()
+        .domain(xscaleData)
+        .range([padding, svg_width - padding]);
+
+    var hscale = d3.scaleLinear()
+        .domain([0, d3.max(dataset_brands, function (d) {
+            return d['# Models'];
+            }),
+        ])
+        .range([svg_height - padding, padding]);
+
+    var g = line_chart_1_svg.append("g")
+    brands_list.forEach(function(brand) {
+        g.append("path")
+            .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
+            .attr("fill", "none")
+            .attr("stroke", "grey")
+            .attr("stroke-width", 1)
+            .attr("d", d3.line()
+                .x(datum => xscale(datum['Year']))
+                .y(datum => hscale(datum['# Models'])))
+    }) 
+
+    var yaxis = d3.axisLeft() // we are creating a d3 axis
+        .scale(hscale) // fit to our scale
+        .tickFormat(d3.format(".2s")) // format of each year
+        .tickSizeOuter(0);
+
+    line_chart_1_svg.append("g") // we are creating a 'g' element to match our yaxis
+        .attr("transform", "translate(" + padding + ",0)")
+        .attr("class", "yaxis") // we are giving it a css style
+        .call(yaxis);
+
+    line_chart_1_svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x", 0 - svg_height / 2)
+        .attr("dy", "1em")
+        .attr("class", "label")
+        .text("Models Developed");
+    
+    var xscaleDataFiltered = xscaleData.filter(function (d, i) {
+        if (i % 5 == 0) return d;
+    });
+    
+    var xaxis = d3.axisBottom() // we are creating a d3 axis
+        .scale(xscale) // we are adding our padding
+        .tickValues(xscaleDataFiltered)
+        .tickSizeOuter(0);
+        
+    line_chart_1_svg.append("g") // we are creating a 'g' element to match our x axis
+        .attr("transform", "translate(0," + (svg_height - padding) + ")")
+        .attr("class", "xaxis") // we are giving it a css style
+        .call(xaxis);
+    
+      // text label for the x axis
+    line_chart_1_svg.append("text")
+        .attr(
+          "transform",
+          "translate(" + svg_width / 2 + " ," + (svg_height - padding / 3) + ")"
+        )
+        .attr("class", "label")
+        .text("Year");                
 }
