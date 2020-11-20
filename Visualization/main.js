@@ -8,10 +8,10 @@ var selected_brands = []
 
 var time_selection_svg
 
-var min_year
-var max_year
-var start_year = 2000
-var end_year = 2015
+var min_date
+var max_date
+var start_date = new Date(2000, 0, 1)
+var end_date = new Date(2015, 0, 1)
 var time_scale
 
 var brand_selection_form
@@ -22,12 +22,15 @@ const DatasetDir = "../Datasets/"
 function init() {
     d3.dsv(";", DatasetDir + "Brands_Parsed.csv").then(function (data) {
         data.forEach(function(elem) {
-            elem['Year'] = parseInt(elem['Year'])
+            if (elem['Year'] == 'null') elem['Year'] = null;
+            else elem['Year'] = parseInt(elem['Year'])
+
             elem['# Models'] = parseInt(elem['# Models'])
-            if (elem['Sales'] == 'null') elem['Sales'] = 0
+            
+            if (elem['Sales'] == 'null') elem['Sales'] = 0;
             else elem['Sales'] = parseInt(elem['Sales'])
         });
-        console.log(data)
+
         fulldataset_brands = data;
         dataset_brands = fulldataset_brands;
         brands_list = dataset_brands.map(elem => elem['Brand'])
@@ -35,7 +38,12 @@ function init() {
         
         d3.dsv(";", DatasetDir + "Models_Parsed.csv").then(function (data) {
             data.forEach(element => {
-                element['year'] = parseInt(element['year'])
+                if (element['year'] == 'null') element['year'] = null;
+                else element['year'] = parseInt(element['year'])
+                if (element['quarter'] == 'null') element['quarter'] = null;
+                else element['quarter'] = parseInt(element['quarter'])
+                if (element['month_id'] == 'null') element['month_id'] = null;
+                else element['month_id'] = parseInt(element['month_id'])
             });
 
             fulldataset_models = data;
@@ -65,24 +73,38 @@ function build_time_selection_svg() {
         .attr("y", "50%")
         .attr("x", "1%");
     
-    min_year = d3.min(dataset_models.filter(elem => elem['year'] != "null"), datum => datum['year']);
-    max_year = d3.max(dataset_models.filter(elem => elem['year'] != "null"), datum => datum['year']);
-    // console.log(min_year)
-    // console.log(max_year)
+    var min_year = d3.min(dataset_models.filter(elem => elem['year']), datum => datum['year']);
+    var min_quarter = d3.min(dataset_brands.filter(elem => elem['year'] == min_year), datum => datum['quarter']);
+    var min_month;
+    if (min_quarter == undefined) {
+        min_quarter = 1;
+        min_month = 0;
+    } else {
+        min_month = d3.min(dataset_brands.filter(elem => elem['year'] == min_year && elem['quarter'] == min_quarter), datum => datum['month']);
+        if (min_month == undefined) min_month = min_quarter * 4;
+        else min_month = min_month - 1;
+    }
+    //console.log("Min Date: ", min_year, min_quarter, min_month);
+    min_date = new Date(min_year, min_quarter, min_month);
 
-    var domain_time = []
-    for (var i = min_year; i <= max_year; i++)
-        domain_time.push(i);
-    // console.log("Domain_time: ", domain_time);
+    var max_year = d3.max(dataset_models.filter(elem => elem['year']), datum => datum['year']);
+    var max_quarter = d3.max(dataset_brands.filter(elem => elem['year'] == max_year), datum => datum['quarter']);
+    var max_month;
+    if (max_quarter == undefined) {
+        max_quarter = 1;
+        max_month = 0;
+    } else {
+        max_month = d3.max(dataset_brands.filter(elem => elem['year'] == max_year && elem['quarter'] == max_quarter), datum => datum['month']);
+        if (max_month == undefined) max_month = max_quarter * 4;
+        else min_month = min_month - 1;
+    }
+    //console.log("Max Date: ", max_year, max_quarter, max_month);
+    max_date = new Date(max_year, max_quarter, max_month);
 
     const line_width = 1150;
-    time_scale = d3.scaleLinear()
+    time_scale = d3.scaleUtc()
         .range([0, line_width])
-        .domain([min_year, max_year]);
-    
-    // console.log(time_scale(max_year));
-    // console.log(time_scale(min_year));
-    // console.log(time_scale((max_year + min_year) / 2));
+        .domain([min_date, max_date]);
 
     var time_axis = d3.axisBottom()
         .scale(time_scale);
@@ -93,13 +115,13 @@ function build_time_selection_svg() {
         .call(time_axis);
     
     time_selection_svg.append("polygon")
-        .attr("points", getPointsTriangle(time_scale(start_year)))
+        .attr("points", getPointsTriangle(time_scale(start_date)))
         .attr("fill", "red")
         .attr("id", "start_triangle")
         .attr("class", "triangle_selector")
         .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")");
     time_selection_svg.append("polygon")
-        .attr("points", getPointsTriangle(time_scale(end_year)))
+        .attr("points", getPointsTriangle(time_scale(end_date)))
         .attr("fill", "red")
         .attr("id", "end_triangle")
         .attr("class", "triangle_selector")
@@ -120,19 +142,23 @@ function prepare_event_time_selection() {
 
     function dragged(event, datum) {
         var new_x = event.x - (svg_width - line_width) / 2;
-        var year = Math.round(time_scale.invert(new_x));
-        if (year < min_year) year = min_year;
-        if (year > max_year) year = max_year;
-        if (this.id == "end_triangle" && year <= start_year) year = start_year + 1;
-        if (this.id == "start_triangle" && year >= end_year) year = end_year - 1;
-        new_x = time_scale(year);
+        var date = time_scale.invert(new_x);
+        var date = new Date(date.getFullYear(), date.getMonth(), 1);
+
+        var closest_start_date = (new Date(start_date)).setFullYear(start_date.getFullYear() + 1);
+        var closest_end_date = (new Date(end_date)).setFullYear(end_date.getFullYear() - 1);
+        if (date < min_date) date = min_date;
+        if (date > max_date) date = max_date;
+        if (this.id == "end_triangle" && date <= closest_start_date) date = new Date(closest_start_date);
+        if (this.id == "start_triangle" && date >= closest_end_date ) date = new Date(closest_end_date);
+        new_x = time_scale(date);
 
         d3.select(this)
             .attr("points", getPointsTriangle(new_x))
             .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")");
         
-        if (this.id == "start_triangle") start_year = year;
-        else if (this.id == "end_triangle") end_year = year;
+        if (this.id == "start_triangle") start_date = date;
+        else if (this.id == "end_triangle") end_date = date;
         // console.log("Start: ", start_year);
         // console.log("End: ", end_year);
     }
