@@ -13,10 +13,59 @@
 
 #brands_selection {
     float: right;
-    width: 15%;
-    height: 37.5%;
+    width: 14.5%;
+    height: 37%;
     background-color: transparent;
-    display:flex;
+    display: block;
+    border-width: 0.5%;
+    border-style: solid;
+    border-color: black;
+}
+
+#brands_selection_top {
+    float: none;
+    width: 100%;
+    height: 9.3%;
+    background-color: transparent;
+    display: inline-block;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid;
+    border-color: black;
+}
+
+#selected_brands_div {
+    float: none;
+    width: 100%;
+    height: 29%;
+    background-color: transparent;
+    display: block;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid;
+    border-color: black;
+}
+
+#selected_brands_svg {
+    float: none;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background-color: transparent;
+}
+
+#unselected_brands_div {
+    float: none;
+    width: 100%;
+    height: 60%;
+    background-color: transparent;
+    display: block;
+    overflow-y: scroll;
+}
+
+#unselected_brands_svg {
+    float: none;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
 }
 
 #line_chart1 {
