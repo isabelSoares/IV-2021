@@ -19,6 +19,8 @@ var time_scale
 
 var brand_selection_form
 var line_chart_1_svg
+var line_chart_2_svg
+var spiral_chart_svg
 
 const DatasetDir = "../Datasets/"
 
@@ -59,6 +61,7 @@ function init() {
             build_brand_selection_form();
             build_line_chart_1();
             build_line_chart_2();
+            build_spiral_chart();
             
         });
     });
@@ -435,3 +438,226 @@ function build_line_chart_2(){
         .attr("class", "label")
         .text("Year");                
 }
+
+function build_spiral_chart() {
+    spiral_chart_svg = d3.select("svg#spiral_chart");
+    var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
+    const chartRadius = svg_height / 2
+    const margin = { "top": 40, "bottom": 40, "left": 40, "right": 40 }
+
+    let dateParse = d3.timeParse("%d/%m/%Y")
+    let yearFormat = d3.timeFormat("%Y")
+    let monthFormat = d3.timeFormat("%b")
+
+    //Colour scale
+    var colour = d3.scaleLinear().range([d3.rgb(153, 204, 255), d3.rgb(0, 76, 153)])
+
+    //Load the data, nest, sort and draw charts
+
+    //ENSURE THE DATA IS SORTED CORRECTLY, IN THIS CASE BY YEAR AND MONTH
+    //THE SPIRAL WILL START IN THE MIDDLE AND WORK OUTWARDS
+
+    var date1 = start_date.getFullYear();
+    var date2 = end_date.getFullYear();
+    var dataset_brands_year = dataset_brands.filter(elem => parseInt(elem['Year']) >= date1)
+                                            .filter(elem => parseInt(elem['Year']) <= date2)
+                                            .map((a) => ([parseInt(a['Year']), parseInt(a['# Models'])]));
+
+    var dataset_brands_filtered_year = {};
+    dataset_brands_year.forEach(function(datum) {
+        if (datum[0] in dataset_brands_filtered_year) {
+            dataset_brands_filtered_year[datum[0]] += datum[1];
+        }
+        else
+            dataset_brands_filtered_year[datum[0]] = 0;
+    });
+
+    var dataset_spiral_chart = [];
+    for (let key in dataset_brands_filtered_year)
+        dataset_spiral_chart.push({"Year": key, "Models": dataset_brands_filtered_year[key]});
+
+    console.log(dataset_brands_filtered_year)
+    colour.domain(d3.extent(dataset_spiral_chart, function (d) { return d["Models"]; }));
+
+    //set the options for the sprial heatmap
+    let heatmap = spiralHeatmap()
+        .radius(chartRadius)
+        .holeRadiusProportion(0)
+        .arcsPerCoil(4)
+        .coilPadding(0.05)
+        .arcLabel("month")
+        .coilLabel("year")
+
+    const g = spiral_chart_svg.append("g")
+        .attr("transform", "translate("
+        + (svg_width /2)
+        + ","
+        + (svg_height / 2) + ")");
+
+    g.datum(dataset_spiral_chart)
+        .call(heatmap);
+
+    g.selectAll(".arc").selectAll("path")
+        .style("fill", function (d) { return colour(d["Models"]); })
+
+    function convertTextToNumbers(d) {
+        d.value = +d.value;
+        d.date = dateParse(d.date);
+        d.year = yearFormat(d.date);
+        d.month = monthFormat(d.date);
+        return d;
+    };
+}
+
+
+
+/*var radians = 0.0174533;
+
+function x(angle, radius) {
+    let a = 540 - angle
+    return radius * Math.sin(a * radians)
+}
+
+function y(angle, radius) {
+    let a = 540 - angle
+    return radius * Math.cos(a * radians)
+}
+
+function build_spiral_chart() {
+    //TODO: Selected brands only in update
+    var date1 = start_date.getFullYear();
+    var date2 = end_date.getFullYear();
+    var dataset_brands_year = dataset_brands.filter(elem => parseInt(elem['Year']) >= date1)
+                                            .filter(elem => parseInt(elem['Year']) <= date2)
+                                            .map((a) => ([parseInt(a['Year']), parseInt(a['# Models'])]));
+
+    var dataset_brands_filtered_year = {};
+    dataset_brands_year.forEach(function(datum) {
+        if (datum[0] in dataset_brands_filtered_year) {
+            dataset_brands_filtered_year[datum[0]] += datum[1];
+        }
+        else
+            dataset_brands_filtered_year[datum[0]] = 0;
+    });
+
+    var dataset_spiral_chart = [];
+    for (var key in dataset_brands_filtered_year)
+        dataset_spiral_chart.push([key, dataset_brands_filtered_year[key]]);
+    
+    console.log(dataset_spiral_chart);
+
+    var arcsPerloop = 4
+    var radius = 300
+    var arcAngle = 360 / arcsPerloop
+    var loops = Math.ceil((date2 - date1 + 1) / arcsPerloop)
+    var loopWidth = radius / (loops + 1)
+
+    dataset_spiral_chart.forEach(function (datum, index) {
+        let loop = Math.floor(index / arcsPerloop)
+        let position = index - loop * arcsPerloop
+        let startAngle = position * arcAngle
+        let endAngle = (position + 1) * arcAngle
+        let startInnerRadius = index / arcsPerloop * loopWidth
+        let startOuterRadius = index / arcsPerloop * loopWidth + loopWidth
+        let endInnerRadius = (index + 1) / arcsPerloop * loopWidth
+        let endOuterRadius = (index + 1) / arcsPerloop * loopWidth + loopWidth
+
+        datum.x1 = x(startAngle, startInnerRadius)
+        datum.y1 = y(startAngle, startInnerRadius)
+        datum.x2 = x(endAngle, endInnerRadius)
+        datum.y2 = y(endAngle, endInnerRadius)
+        datum.x3 = x(endAngle, endOuterRadius)
+        datum.y3 = y(endAngle, endOuterRadius)
+        datum.x4 = x(startAngle, startOuterRadius)
+        datum.y4 = y(startAngle, startOuterRadius)
+
+        let midAngle = arcAngle / 2
+        let midInnerRadius = (index + 0.5) / arcsPerloop * loopWidth
+        let midOuterRadius = (index + 0.5) / arcsPerloop * loopWidth + loopWidth
+
+        datum.mid1x = x(midAngle, midInnerRadius)
+        datum.mid1y = y(midAngle, midInnerRadius)
+        datum.mid2x = x(midAngle, midOuterRadius)
+        datum.mid2y = y(midAngle, midOuterRadius)
+
+        datum.controlPoint1x = (datum.mid1x - 0.25 * datum.x1 - 0.25 * datum.x2) / 0.5
+        datum.controlPoint1y = (datum.mid1y - 0.25 * datum.y1 - 0.25 * datum.y2) / 0.5
+        datum.controlPoint2x = (datum.mid2x - 0.25 * datum.x3 - 0.25 * datum.x4) / 0.5
+        datum.controlPoint2y = (datum.mid2y - 0.25 * datum.y3 - 0.25 * datum.y4) / 0.5
+
+        datum.arcNumber = position
+        datum.loopNumber = loop
+    })
+
+    var spiral_chart_svg = d3.select("svg#spiral_chart");
+
+    var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
+
+    var spiral_chart_svg = spiral_chart_svg.append("g");
+
+    var spiral_chart_svg = spiral_chart_svg.selectAll('.arc')
+                               .data(dataset_spiral_chart)
+                               .enter()
+                               .append('g')
+                               .attr('class', 'arc')
+
+    spiral_chart_svg.append('path').attr('d', function (d) {
+        // start at vertice 1
+        let start = 'M ' + d.x1 + ' ' + d.y1
+        // inner curve to vertice 2
+        let side1 =
+        ' Q ' +
+        d.controlPoint1x +
+        ' ' +
+        d.controlPoint1y +
+        ' ' +
+        d.x2 +
+        ' ' +
+        d.y2
+        // straight line to vertice 3
+        let side2 = 'L ' + d.x3 + ' ' + d.y3
+        // outer curve vertice 4
+        let side3 =
+        ' Q ' +
+        d.controlPoint2x +
+        ' ' +
+        d.controlPoint2y +
+        ' ' +
+        d.x4 +
+        ' ' +
+        d.y4
+        // combine into string, with closure (Z) to vertice 1
+        return start + ' ' + side1 + ' ' + side2 + ' ' + side3 + ' Z'
+    })
+
+    var colour = d3.scaleSequential(d3.interpolateRdYlGn)
+
+    dataset_spiral_chart.forEach(function (datum) {
+
+        colour.domain(d3.extent(dataset_spiral_chart, function (d) { return d[1]; }));
+
+        //set the options for the sprial heatmap
+
+        //CREATE SVG AND A G PLACED IN THE CENTRE OF THE SVG
+        const div = d3.select("#spiral_chart").append("div")
+
+        div.append("p")
+            .text(datum.key)
+
+        const svg = div.append("svg")
+            .attr("width", 400)
+            .attr("height", 200);
+
+        const g = svg.append("g")
+            .attr("transform", "translate("
+            + (200)
+            + ","
+            + (200) + ")");
+
+        g.selectAll(".arc").selectAll("path")
+            .style("fill", function (d) { return colour(d.value); })
+
+    })
+}*/
