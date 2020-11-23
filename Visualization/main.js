@@ -1,26 +1,13 @@
-var dragHandler = d3.drag()
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
+
 var dataset_brands
 var brands_list
 var selected_brands = []
 
-var time_selection_svg
-
-const MAX_BRANDS_SELECTED = 4;
-var brands_selection_svgs = {}
-
-var min_date
-var max_date
 var start_date = new Date(2000, 0, 1)
 var end_date = new Date(2015, 0, 1)
-var time_scale
-
-var brand_selection_form
-var line_chart_1_svg
-var line_chart_2_svg
-var spiral_chart_svg
 
 const DatasetDir = "../Datasets/"
 
@@ -59,8 +46,7 @@ function init() {
 
             build_time_selection_svg();
             build_brand_selection_form();
-            build_line_chart_1();
-            build_line_chart_2();
+            build_line_charts();
             build_spiral_chart();
             
         });

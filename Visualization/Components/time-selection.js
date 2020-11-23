@@ -1,4 +1,14 @@
+var min_date
+var max_date
+var time_scale
+var time_axis
+var time_selection_svg
+
+const LINE_WIDTH = 1150;
+
 function build_time_selection_svg() {
+    const LINE_WIDTH = 1150;
+    
     time_selection_svg = d3.select("svg#time_selection");
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
 
@@ -38,17 +48,16 @@ function build_time_selection_svg() {
     //console.log("Max Date: ", max_year, max_quarter, max_month);
     max_date = new Date(max_year, max_quarter, max_month);
 
-    const line_width = 1150;
     time_scale = d3.scaleUtc()
-        .range([0, line_width])
+        .range([0, LINE_WIDTH])
         .domain([min_date, max_date]);
 
-    var time_axis = d3.axisBottom()
+    time_axis = d3.axisBottom()
         .scale(time_scale);
     
     time_selection_svg.append("g")
         .attr("class", "axis")
-        .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")")
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")")
         .call(time_axis);
     
     time_selection_svg.append("polygon")
@@ -56,13 +65,13 @@ function build_time_selection_svg() {
         .attr("fill", "red")
         .attr("id", "start_triangle")
         .attr("class", "triangle_selector")
-        .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")");
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
     time_selection_svg.append("polygon")
         .attr("points", getPointsTriangle(time_scale(end_date)))
         .attr("fill", "red")
         .attr("id", "end_triangle")
         .attr("class", "triangle_selector")
-        .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")");
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
     
     prepare_event_time_selection();
 }
@@ -75,10 +84,10 @@ function getPointsTriangle(center) {
 
 function prepare_event_time_selection() {
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
-    const line_width = 1150;
+    const LINE_WIDTH = 1150;
 
     function dragged(event, datum) {
-        var new_x = event.x - (svg_width - line_width) / 2;
+        var new_x = event.x - (svg_width - LINE_WIDTH) / 2;
         var date = time_scale.invert(new_x);
         var date = new Date(date.getFullYear(), date.getMonth(), 1);
 
@@ -92,7 +101,7 @@ function prepare_event_time_selection() {
 
         d3.select(this)
             .attr("points", getPointsTriangle(new_x))
-            .attr("transform", "translate(" + (svg_width - line_width) / 2 + "," + (17) + ")");
+            .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
         
         if (this.id == "start_triangle") start_date = date;
         else if (this.id == "end_triangle") end_date = date;

@@ -1,3 +1,8 @@
+const MAX_BRANDS_SELECTED = 4;
+
+var brand_selection_form
+var brands_selection_svgs = {}
+
 function build_brand_selection_form() {
     function update(object) {
         var target = object.target;

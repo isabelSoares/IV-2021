@@ -1,22 +1,57 @@
-function build_line_chart_1(){
+var line_chart_1_svg
+var line_chart_2_svg
+
+var xscaleData
+var xscale
+var xscaleDataFiltered
+var xaxis
+
+var hscale_models
+var yaxis_models
+var hscale_sales
+var yaxis_sales
+
+function build_line_charts() {
+    const PADDING = 50;
+
     line_chart_1_svg = d3.select("svg#line_chart1");
+    line_chart_2_svg = d3.select("svg#line_chart2");
+
     var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
-    var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
-    var padding = 50;
-    var xscaleData = dataset_brands.map((a) => a['Year'])
+
+    xscaleData = dataset_brands.map((a) => a['Year'])
         .filter((value, index, self) => self.indexOf(value) === index)
         .sort((a,b) => a - b);
 
-    var xscale = d3.scalePoint()
+    xscale = d3.scalePoint()
         .domain(xscaleData)
-        .range([padding, svg_width - padding]);
+        .range([PADDING, svg_width - PADDING]);
+    
+    xscaleDataFiltered = xscaleData.filter(function (d, i) {
+        if (i % 5 == 0) return d;
+    });
 
-    var hscale = d3.scaleLinear()
+    xaxis = d3.axisBottom() // we are creating a d3 axis
+        .scale(xscale) // we are adding our padding
+        .tickValues(xscaleDataFiltered)
+        .tickSizeOuter(0);
+
+    build_line_chart_1();
+    build_line_chart_2();
+}
+
+function build_line_chart_1(){
+    const PADDING = 50;
+
+    var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
+
+    hscale_models = d3.scaleLinear()
         .domain([0, d3.max(dataset_brands, function (d) {
             return d['# Models'];
             }),
         ])
-        .range([svg_height - padding, padding]);
+        .range([svg_height - PADDING, PADDING]);
 
     var g = line_chart_1_svg.append("g")
     brands_list.forEach(function(brand) {
@@ -27,18 +62,18 @@ function build_line_chart_1(){
             .attr("stroke-width", 1)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Year']))
-                .y(datum => hscale(datum['# Models'])))
+                .y(datum => hscale_models(datum['# Models'])))
     }) 
 
-    var yaxis = d3.axisLeft() // we are creating a d3 axis
-        .scale(hscale) // fit to our scale
+    yaxis_models = d3.axisLeft() // we are creating a d3 axis
+        .scale(hscale_models) // fit to our scale
         .tickFormat(d3.format(".2s")) // format of each year
         .tickSizeOuter(0);
 
     line_chart_1_svg.append("g") // we are creating a 'g' element to match our yaxis
-        .attr("transform", "translate(" + padding + ",0)")
+        .attr("transform", "translate(" + PADDING + ",0)")
         .attr("class", "yaxis") // we are giving it a css style
-        .call(yaxis);
+        .call(yaxis_models);
 
     line_chart_1_svg.append("text")
         .attr("transform", "rotate(-90)")
@@ -47,18 +82,9 @@ function build_line_chart_1(){
         .attr("dy", "1em")
         .attr("class", "label")
         .text("Models Developed");
-    
-    var xscaleDataFiltered = xscaleData.filter(function (d, i) {
-        if (i % 5 == 0) return d;
-    });
-    
-    var xaxis = d3.axisBottom() // we are creating a d3 axis
-        .scale(xscale) // we are adding our padding
-        .tickValues(xscaleDataFiltered)
-        .tickSizeOuter(0);
         
     line_chart_1_svg.append("g") // we are creating a 'g' element to match our x axis
-        .attr("transform", "translate(0," + (svg_height - padding) + ")")
+        .attr("transform", "translate(0," + (svg_height - PADDING) + ")")
         .attr("class", "xaxis") // we are giving it a css style
         .call(xaxis);
     
@@ -66,31 +92,24 @@ function build_line_chart_1(){
     line_chart_1_svg.append("text")
         .attr(
           "transform",
-          "translate(" + svg_width / 2 + " ," + (svg_height - padding / 3) + ")"
+          "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
         )
         .attr("class", "label")
         .text("Year");                
 }
 
 function build_line_chart_2(){
-    line_chart_2_svg = d3.select("svg#line_chart2");
+    const PADDING = 50;
+    
     var svg_width = parseInt(line_chart_2_svg.style("width").slice(0, -2));
     var svg_height = parseInt(line_chart_2_svg.style("height").slice(0, -2));
-    var padding = 50;
-    var xscaleData = dataset_brands.map((a) => a['Year'])
-        .filter((value, index, self) => self.indexOf(value) === index)
-        .sort((a,b) => a - b);
 
-    var xscale = d3.scalePoint()
-        .domain(xscaleData)
-        .range([padding, svg_width - padding]);
-
-    var hscale = d3.scaleLinear()
+    hscale_sales = d3.scaleLinear()
         .domain([0, d3.max(dataset_brands, function (d) {
             return d['Sales'];
             }),
         ])
-        .range([svg_height - padding, padding]);
+        .range([svg_height - PADDING, PADDING]);
 
     var g = line_chart_2_svg.append("g")
     brands_list.forEach(function(brand) {
@@ -101,18 +120,18 @@ function build_line_chart_2(){
             .attr("stroke-width", 1)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Year']))
-                .y(datum => hscale(datum['Sales'])))
+                .y(datum => hscale_sales(datum['Sales'])))
     }) 
 
-    var yaxis = d3.axisLeft() // we are creating a d3 axis
-        .scale(hscale) // fit to our scale
+    yaxis_sales = d3.axisLeft() // we are creating a d3 axis
+        .scale(hscale_sales) // fit to our scale
         .tickFormat(d3.format(".2s")) // format of each year
         .tickSizeOuter(0);
 
     line_chart_2_svg.append("g") // we are creating a 'g' element to match our yaxis
-        .attr("transform", "translate(" + padding + ",0)")
+        .attr("transform", "translate(" + PADDING + ",0)")
         .attr("class", "yaxis") // we are giving it a css style
-        .call(yaxis);
+        .call(yaxis_sales);
 
     line_chart_2_svg.append("text")
         .attr("transform", "rotate(-90)")
@@ -121,18 +140,9 @@ function build_line_chart_2(){
         .attr("dy", "1em")
         .attr("class", "label")
         .text("Sales");
-    
-    var xscaleDataFiltered = xscaleData.filter(function (d, i) {
-        if (i % 5 == 0) return d;
-    });
-    
-    var xaxis = d3.axisBottom() // we are creating a d3 axis
-        .scale(xscale) // we are adding our padding
-        .tickValues(xscaleDataFiltered)
-        .tickSizeOuter(0);
         
     line_chart_2_svg.append("g") // we are creating a 'g' element to match our x axis
-        .attr("transform", "translate(0," + (svg_height - padding) + ")")
+        .attr("transform", "translate(0," + (svg_height - PADDING) + ")")
         .attr("class", "xaxis") // we are giving it a css style
         .call(xaxis);
     
@@ -140,7 +150,7 @@ function build_line_chart_2(){
     line_chart_2_svg.append("text")
         .attr(
           "transform",
-          "translate(" + svg_width / 2 + " ," + (svg_height - padding / 3) + ")"
+          "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
         )
         .attr("class", "label")
         .text("Year");                
