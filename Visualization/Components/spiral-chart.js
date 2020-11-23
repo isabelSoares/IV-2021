@@ -1,5 +1,5 @@
 var spiral_chart_svg
-var selected_period_months = 12
+var selected_period_months = 12 
 
 const PERIODS_AVAILABLE = [
     {"display": "1 Sem", "months": 6},
@@ -57,6 +57,45 @@ function build_spiral_chart() {
 
     g.selectAll(".arc").selectAll("path")
         .style("fill", function (d) { return colour(d["Models"]); })
+
+    const BOX_HEIGHT = svg_height / 10;
+    var text_box_1 = spiral_chart_svg.append("g")
+        .attr("transform", "translate(" + 
+        (svg_width * 23/ 30) + "," + 
+        (svg_height / 50) + ")")
+        .attr("text-anchor", "end");
+
+    text_box_1.append("rect")
+            .attr("width", svg_width * 7 / 30 - 5 )
+            .attr("height", BOX_HEIGHT - 1)
+            .attr("stroke", "black")
+            .attr("stroke-width", 0.5)
+            .attr("fill", "none");
+
+    text_box_1.append("text")
+            .attr("x", svg_width * 7 / 30 - 9)
+            .attr("y", BOX_HEIGHT / 2)
+            .attr("dy", ".35em")
+            .text("# Models")
+
+    var text_box_2 = spiral_chart_svg.append("g")
+        .attr("transform", "translate(" + 
+        (svg_width * 23 / 30) + "," + 
+        (BOX_HEIGHT + svg_height / 50) + ")")
+        .attr("text-anchor", "end");
+
+    text_box_2.append("rect")
+            .attr("width", svg_width * 7 / 30 - 5)
+            .attr("height", BOX_HEIGHT - 1)
+            .attr("stroke", "black")
+            .attr("stroke-width", 0.5)
+            .attr("fill", "none");
+
+    text_box_2.append("text")
+            .attr("x", (svg_width * 7 / 30) - 9)
+            .attr("y", BOX_HEIGHT / 2)
+            .attr("dy", ".35em")
+            .text("Sales")
 
     addPeriodSelection();
 }
