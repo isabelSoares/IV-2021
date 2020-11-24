@@ -18,11 +18,7 @@ function build_spiral_chart() {
     const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
     const chartRadius = svg_height / 2 - margin.bottom
 
-    var date1 = start_date.getFullYear();
-    var date2 = end_date.getFullYear();
-    var dataset_brands_year = dataset_brands.filter(elem => parseInt(elem['Year']) >= date1)
-                                            .filter(elem => parseInt(elem['Year']) <= date2)
-                                            .map((a) => ([parseInt(a['Year']), parseInt(a['# Models'])]));
+    var dataset_brands_year = dataset_brands.map((a) => ([parseInt(a['Year']), parseInt(a['# Models'])]));
 
     var dataset_brands_filtered_year = {};
     dataset_brands_year.forEach( function(datum) {

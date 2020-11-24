@@ -4,49 +4,28 @@ var time_scale
 var time_axis
 var time_selection_svg
 
-const LINE_WIDTH = 1150;
-
 function build_time_selection_svg() {
-    const LINE_WIDTH = 1150;
-    
     time_selection_svg = d3.select("svg#time_selection");
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
 
+    const LINE_WIDTH = svg_width * 0.75;
     // console.log(time_selection_svg);
+    
+    var min_date_models = d3.min(fulldataset_models.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
+    var max_date_models = d3.max(fulldataset_models.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
+    var min_date_brands = d3.min(fulldataset_brands.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
+    var max_date_brands = d3.max(fulldataset_brands.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
+    min_date = new Date(Math.min(min_date_brands, min_date_models));
+    max_date = new Date(Math.max(max_date_brands, max_date_models));
+
+    // console.log("Min Available Date: ", min_date);
+    // console.log("Max Available Date: ", max_date);
 
     time_selection_svg.append("text")
         .attr("class", "selection_text")
         .text("Time Range")
         .attr("y", "50%")
         .attr("x", "1%");
-    
-    var min_year = d3.min(dataset_models.filter(elem => elem['year']), datum => datum['year']);
-    var min_quarter = d3.min(dataset_brands.filter(elem => elem['year'] == min_year), datum => datum['quarter']);
-    var min_month;
-    if (min_quarter == undefined) {
-        min_quarter = 1;
-        min_month = 0;
-    } else {
-        min_month = d3.min(dataset_brands.filter(elem => elem['year'] == min_year && elem['quarter'] == min_quarter), datum => datum['month']);
-        if (min_month == undefined) min_month = min_quarter * 4;
-        else min_month = min_month - 1;
-    }
-    //console.log("Min Date: ", min_year, min_quarter, min_month);
-    min_date = new Date(min_year, min_quarter, min_month);
-
-    var max_year = d3.max(dataset_models.filter(elem => elem['year']), datum => datum['year']);
-    var max_quarter = d3.max(dataset_brands.filter(elem => elem['year'] == max_year), datum => datum['quarter']);
-    var max_month;
-    if (max_quarter == undefined) {
-        max_quarter = 1;
-        max_month = 0;
-    } else {
-        max_month = d3.max(dataset_brands.filter(elem => elem['year'] == max_year && elem['quarter'] == max_quarter), datum => datum['month']);
-        if (max_month == undefined) max_month = max_quarter * 4;
-        else min_month = min_month - 1;
-    }
-    //console.log("Max Date: ", max_year, max_quarter, max_month);
-    max_date = new Date(max_year, max_quarter, max_month);
 
     time_scale = d3.scaleUtc()
         .range([0, LINE_WIDTH])
@@ -84,17 +63,17 @@ function getPointsTriangle(center) {
 
 function prepare_event_time_selection() {
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
-    const LINE_WIDTH = 1150;
+    const LINE_WIDTH = svg_width * 0.75;
 
     function dragged(event, datum) {
         var new_x = event.x - (svg_width - LINE_WIDTH) / 2;
-        var date = time_scale.invert(new_x);
-        var date = new Date(date.getFullYear(), date.getMonth(), 1);
+        var temp_date = time_scale.invert(new_x);
+        var date = new Date(temp_date.getFullYear(), Math.round(temp_date.getMonth() / 12) * 12 , 1);
 
-        var closest_start_date = (new Date(start_date)).setFullYear(start_date.getFullYear() + 1);
-        var closest_end_date = (new Date(end_date)).setFullYear(end_date.getFullYear() - 1);
-        if (date < min_date) date = min_date;
-        if (date > max_date) date = max_date;
+        var closest_start_date = (new Date(start_date)).setFullYear(start_date.getFullYear() + 2);
+        var closest_end_date = (new Date(end_date)).setFullYear(end_date.getFullYear() - 2);
+        if (date < min_date) date = new Date(min_date);
+        if (date > max_date) date = new Date(max_date);
         if (this.id == "end_triangle" && date <= closest_start_date) date = new Date(closest_start_date);
         if (this.id == "start_triangle" && date >= closest_end_date ) date = new Date(closest_end_date);
         new_x = time_scale(date);
@@ -103,13 +82,22 @@ function prepare_event_time_selection() {
             .attr("points", getPointsTriangle(new_x))
             .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
         
-        if (this.id == "start_triangle") start_date = date;
-        else if (this.id == "end_triangle") end_date = date;
+        if (this.id == "start_triangle") start_date = new Date(date);
+        else if (this.id == "end_triangle") end_date = new Date(date);
         // console.log("Start: ", start_year);
         // console.log("End: ", end_year);
     }
 
     time_selection_svg.selectAll("polygon")
         .call(d3.drag()
-            .on("drag", dragged));
+            .on("drag", dragged)
+            .on("end", updateSVGs));
+}
+
+function updateSVGs() {
+    //console.log("Start Date: ", start_date);
+    //console.log("End Date: ", end_date);
+
+    filterDatasets();
+    updateLineCharts();
 }
