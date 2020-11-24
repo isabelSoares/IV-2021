@@ -1,5 +1,6 @@
 var spiral_chart_svg
-var selected_period_months = 12 
+var selected_period_months = 12
+var spiral_color_scale
 
 const PERIODS_AVAILABLE = [
     {"display": "1 Sem", "months": 6},
@@ -17,8 +18,6 @@ function build_spiral_chart() {
     const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
     const chartRadius = svg_height / 2 - margin.bottom
 
-    var colour = d3.scaleLinear().range([d3.rgb(153, 204, 255), d3.rgb(0, 76, 153)])
-
     var date1 = start_date.getFullYear();
     var date2 = end_date.getFullYear();
     var dataset_brands_year = dataset_brands.filter(elem => parseInt(elem['Year']) >= date1)
@@ -35,8 +34,7 @@ function build_spiral_chart() {
     for (let key in dataset_brands_filtered_year)
         dataset_spiral_chart.push({"Year": key, "Models": dataset_brands_filtered_year[key]});
 
-    // console.log(dataset_brands_filtered_year)
-    colour.domain(d3.extent(dataset_spiral_chart, function (d) { return d["Models"]; }));
+    addColorScale(d3.extent(dataset_spiral_chart, datum => datum["Models"]), d3.rgb(153, 204, 255), d3.rgb(0, 76, 153));
 
     //set the options for the sprial heatmap
     let heatmap = spiralHeatmap()
@@ -56,7 +54,7 @@ function build_spiral_chart() {
         .call(heatmap);
 
     g.selectAll(".arc").selectAll("path")
-        .style("fill", function (d) { return colour(d["Models"]); })
+        .style("fill", function (d) { return spiral_color_scale(d["Models"]); })
 
     const BOX_HEIGHT = svg_height / 10;
     var text_box_1 = spiral_chart_svg.append("g")
@@ -98,6 +96,48 @@ function build_spiral_chart() {
             .text("Sales")
 
     addPeriodSelection();
+}
+
+function addColorScale(datum ,startColor, endColor) {
+    var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
+    const WIDTH = svg_width / 40
+    const HEIGHT = svg_height * 0.75
+
+    spiral_color_scale = d3.scaleLinear().range([startColor, endColor]);
+    spiral_color_scale.domain(datum);
+
+    var defs = spiral_chart_svg.append("defs");
+
+    var linearGradient = defs.append("linearGradient")
+        .attr("id", "linearGradient")
+        .attr("x1", "0%").attr("y1", "100%")
+        .attr("x2", "0%").attr("y2", "0%");
+    
+    linearGradient.append("stop")
+        .attr("offset", 0)
+        .attr("stop-color", startColor);
+    linearGradient.append("stop")
+        .attr("offset", 1)
+        .attr("stop-color", endColor);
+
+    var scale_g = spiral_chart_svg.append("g");
+
+    scale_g.append("rect")
+        .attr("x", svg_width / 20 + WIDTH / 2)
+        .attr("y", svg_height * 2 / 5 - HEIGHT / 2)
+        .attr("width", WIDTH)
+        .attr("height", HEIGHT)
+        .style("fill", "url(#linearGradient)");~
+
+    scale_g.append("text")
+        .attr("x", svg_width / 20 + WIDTH + 10)
+        .attr("y", HEIGHT)
+        .text(datum[0]);
+    scale_g.append("text")
+        .attr("x", svg_width / 20 + WIDTH + 10)
+        .attr("y", HEIGHT / 10)
+        .text(datum[1]);
 }
 
 function addPeriodSelection() {
