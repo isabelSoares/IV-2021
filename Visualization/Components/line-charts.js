@@ -52,6 +52,9 @@ function build_line_chart_1(){
             .attr("fill", "none")
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
+            .on("click", (event, datum) => clicked_line(brand))
+            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, brand))
+            .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_models(datum['# Models'])))
@@ -113,6 +116,9 @@ function build_line_chart_2(){
             .attr("fill", "none")
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
+            .on("click", (event, datum) => clicked_line(brand))
+            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, brand))
+            .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_sales(datum['Sales'])))
@@ -154,8 +160,8 @@ function build_line_chart_2(){
 }
 
 function updateLineCharts() {
-    console.log("New dataset brands: ", dataset_brands);
-    console.log("New dataset models: ", dataset_models);
+    // console.log("New dataset brands: ", dataset_brands);
+    // console.log("New dataset models: ", dataset_models);
 
     xscale.domain([start_date, end_date]);
     d3.selectAll(".line_chart").select(".xaxis")
@@ -172,7 +178,7 @@ function updateLineCharts() {
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
-                .y(datum => hscale_models(datum['# Models'])));
+                .y(datum => hscale_models(datum['# Models'])))
     });
 
     // -------------------- UPDATE LINE CHART 2 --------------------
@@ -192,16 +198,61 @@ function updateLineCharts() {
     });
 }
 
-function brandUpdateColor() {
-    brands_list.forEach((brand, index) => {
+function brandUpdateColor(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+
+    line_chart_1_svg.selectAll(".line_chart_paths")
+        .select("#path_line_1_" + index)
+        .transition().duration(1000)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+    
+    line_chart_2_svg.selectAll(".line_chart_paths")
+        .select("#path_line_2_" + index)
+        .transition().duration(1000)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+
+    if (selected) {
         line_chart_1_svg.selectAll(".line_chart_paths")
-            .select("#path_line_1_" + index)
-            .attr("stroke-width", (selected_brands.includes(brand)) ? 2 : 1)
-            .attr("stroke", (selected_brands.includes(brand)) ? getColorBrand(brand) : "grey");
-        
+            .select("#path_line_1_" + index).raise();
         line_chart_2_svg.selectAll(".line_chart_paths")
-            .select("#path_line_2_" + index)
-            .attr("stroke-width", (selected_brands.includes(brand)) ? 2 : 1)
-            .attr("stroke", (selected_brands.includes(brand)) ? getColorBrand(brand) : "grey");
-    });
+            .select("#path_line_2_" + index).raise();
+    }
+}
+
+function clicked_line(brand) {
+    if (selected_brands.includes(brand)) dispatch.call("unselectBrand", this, brand);
+    else dispatch.call("selectBrand", this, brand);
+}
+
+function highlight_line(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+
+    line_chart_1_svg.selectAll(".line_chart_paths")
+        .select("#path_line_1_" + index)
+        .attr("stroke-width", 3)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "black");
+        
+    line_chart_2_svg.selectAll(".line_chart_paths")
+        .select("#path_line_2_" + index)
+        .attr("stroke-width", 3)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
+}
+
+function remove_highlight_line(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+
+    line_chart_1_svg.selectAll(".line_chart_paths")
+        .select("#path_line_1_" + index)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        
+    line_chart_2_svg.selectAll(".line_chart_paths")
+        .select("#path_line_2_" + index)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
 }

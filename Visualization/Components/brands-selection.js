@@ -1,10 +1,12 @@
+
+
 const MAX_BRANDS_SELECTED = 4;
 
 var brand_selection_form
 var brands_selection_svgs = {}
 
 var brands_colors = [
-    { "Color": "red", "Brand": undefined },
+    { "Color": "blue", "Brand": undefined },
     { "Color": "yellow", "Brand": undefined },
     { "Color": "green", "Brand": undefined },
     { "Color": "orange", "Brand": undefined }
@@ -41,7 +43,7 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g")  
-                    .on("click", unselect_brand);
+                    .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
@@ -69,7 +71,7 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .on("click", select_brand);
+                    .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
@@ -92,12 +94,7 @@ function build_brand_selection_form() {
         .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
 }
 
-function select_brand(event, datum) {
-    if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
-    selected_brands.push(datum);
-    addBrandColor(datum);
-    brandUpdateColor();
-
+function update_brand_selection_selected_brand() {
     var svg_width = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
     const WIDTH_BOX = svg_width * 0.6;
     const HEIGHT_BOX = 25;
@@ -111,7 +108,7 @@ function select_brand(event, datum) {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .on("click", unselect_brand);
+                    .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
@@ -137,15 +134,11 @@ function select_brand(event, datum) {
         .selectAll("g")
         .data(unselected_brands, datum => datum)
         .join(exit => exit.remove())
+        .transition().duration(1000)
         .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
 }
 
-function unselect_brand(event, datum) {
-    const index = selected_brands.indexOf(datum);
-    selected_brands.splice(index, 1);
-    removeColorBrand(datum);
-    brandUpdateColor();
-
+function update_brand_selection_unselected_brand() {
     var svg_width = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
     const WIDTH_BOX = svg_width * 0.6;
     const HEIGHT_BOX = 25;
@@ -157,6 +150,7 @@ function unselect_brand(event, datum) {
         .selectAll("g")
         .data(selected_brands, datum => datum)
         .join(exit => exit.remove())
+        .transition().duration(1000)
         .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
 
     brands_selection_svgs.unselected.select("#unselected_brands")
@@ -165,7 +159,7 @@ function unselect_brand(event, datum) {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .on("click", select_brand);
+                    .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)

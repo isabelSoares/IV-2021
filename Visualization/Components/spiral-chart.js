@@ -53,43 +53,13 @@ function build_spiral_chart() {
         .style("fill", function (d) { return spiral_color_scale(d["Models"]); })
 
     const BOX_HEIGHT = svg_height / 10;
-    var text_box_1 = spiral_chart_svg.append("g")
-        .attr("transform", "translate(" + 
-        (svg_width * 23/ 30) + "," + 
-        (svg_height / 50) + ")")
-        .attr("text-anchor", "end");
-
-    text_box_1.append("rect")
-            .attr("width", svg_width * 7 / 30 - 5 )
-            .attr("height", BOX_HEIGHT - 1)
-            .attr("stroke", "black")
-            .attr("stroke-width", 0.5)
-            .attr("fill", "none");
-
-    text_box_1.append("text")
-            .attr("x", svg_width * 7 / 30 - 9)
-            .attr("y", BOX_HEIGHT / 2)
+    spiral_chart_svg.append("text")
+            .attr("x", svg_width * 2 / 3)
+            .attr("y", BOX_HEIGHT / 2 -  10 )
+            .attr("text-anchor", "right")
+            .attr("dominant-baseline", "middle")
             .attr("dy", ".35em")
-            .text("# Models")
-
-    var text_box_2 = spiral_chart_svg.append("g")
-        .attr("transform", "translate(" + 
-        (svg_width * 23 / 30) + "," + 
-        (BOX_HEIGHT + svg_height / 50) + ")")
-        .attr("text-anchor", "end");
-
-    text_box_2.append("rect")
-            .attr("width", svg_width * 7 / 30 - 5)
-            .attr("height", BOX_HEIGHT - 1)
-            .attr("stroke", "black")
-            .attr("stroke-width", 0.5)
-            .attr("fill", "none");
-
-    text_box_2.append("text")
-            .attr("x", (svg_width * 7 / 30) - 9)
-            .attr("y", BOX_HEIGHT / 2)
-            .attr("dy", ".35em")
-            .text("Sales")
+            .text("Number of Models")
 
     addPeriodSelection();
 }
@@ -98,7 +68,7 @@ function addColorScale(datum ,startColor, endColor) {
     var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
     const WIDTH = svg_width / 40
-    const HEIGHT = svg_height * 0.75
+    const HEIGHT = svg_height * 0.50
 
     spiral_color_scale = d3.scaleLinear().range([startColor, endColor]);
     spiral_color_scale.domain(datum);
@@ -120,19 +90,19 @@ function addColorScale(datum ,startColor, endColor) {
     var scale_g = spiral_chart_svg.append("g");
 
     scale_g.append("rect")
-        .attr("x", svg_width / 20 + WIDTH / 2)
-        .attr("y", svg_height * 2 / 5 - HEIGHT / 2)
+        .attr("x", svg_width - (svg_width / 10 + WIDTH / 2))
+        .attr("y", svg_height * 2 / 5 - HEIGHT / 3)
         .attr("width", WIDTH)
         .attr("height", HEIGHT)
-        .style("fill", "url(#linearGradient)");~
+        .style("fill", "url(#linearGradient)");
 
     scale_g.append("text")
-        .attr("x", svg_width / 20 + WIDTH + 10)
-        .attr("y", HEIGHT)
+        .attr("x",  svg_width - (svg_width / 20 + WIDTH + 15))
+        .attr("y", HEIGHT / 3 + 180)
         .text(datum[0]);
     scale_g.append("text")
-        .attr("x", svg_width / 20 + WIDTH + 10)
-        .attr("y", HEIGHT / 10)
+        .attr("x", svg_width - (svg_width / 20 + WIDTH + 20))
+        .attr("y", HEIGHT / 2 - 10)
         .text(datum[1]);
 }
 
@@ -194,7 +164,7 @@ function prepare_event_period_selection() {
             .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height - 40) + ")");
         
         selected_period_months = closest_period_monts;
-        console.log("New Selected Period Months: ", selected_period_months);
+        // console.log("New Selected Period Months: ", selected_period_months);
     }
 
     spiral_chart_svg.selectAll("circle")

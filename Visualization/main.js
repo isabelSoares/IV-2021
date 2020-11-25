@@ -1,6 +1,11 @@
+const show_images = false
+
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
+
+var dispatch = d3.dispatch("selectBrand",
+    "unselectBrand", "hover_brand", "hover_remove_brand");
 
 var dataset_brands
 var brands_list
@@ -57,6 +62,9 @@ function init() {
             build_line_charts();
             build_spiral_chart();
             
+            prepareEvents();
+            if (show_images) appendImages();
+            
         });
     });
 }
@@ -89,4 +97,60 @@ function computeDateModel(element) {
 
     if (year == null) element['Date'] = undefined;
     else element['Date'] = new Date(year, month - 1, 1);
+}
+
+function prepareEvents() {
+    /* --------------- SELECTION OF BRAND ------------------ */
+    dispatch.on("selectBrand", function(brand) {
+        if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
+        selected_brands.push(brand);
+        addBrandColor(brand);
+        brandUpdateColor(brand);
+
+        update_brand_selection_selected_brand();
+    });
+
+    /* --------------- UNSELECTION OF BRAND ------------------ */
+    dispatch.on("unselectBrand", function(brand) {
+        const index = selected_brands.indexOf(brand);
+        selected_brands.splice(index, 1);
+        removeColorBrand(brand);
+        brandUpdateColor(brand);
+
+        update_brand_selection_unselected_brand();
+    });
+
+    /* --------------- HOVER POINT OF BRAND ------------------ */
+    dispatch.on("hover_brand", function(brand) {
+        highlight_line(brand);
+    });
+    
+    dispatch.on("hover_remove_brand", function(brand) {
+        remove_highlight_line(brand);
+    });
+
+
+}
+
+function appendImages() {
+    var small_multiples = d3.select("svg#small_multiples_line_chart")
+                            .append("svg:image")
+                            .attr("xlink:href", "Resources/Small Multiples.png")
+                            .attr("height", "100%")
+                            .attr("width", "100%")
+                            .attr("preserveAspectRatio", "none");
+
+    var parallel_coords = d3.select("svg#parallel_coordinates_chart")
+                            .append("svg:image")
+                            .attr("xlink:href", "Resources/Parallel Line Charts.png")
+                            .attr("height", "100%")
+                            .attr("width", "100%")
+                            .attr("preserveAspectRatio", "none");
+
+    var glyph = d3.select("svg#glyph_chart")
+                  .append("svg:image")
+                  .attr("xlink:href", "Resources/Glyphs.png")
+                  .attr("height", "100%")
+                  .attr("width", "100%")
+                  .attr("preserveAspectRatio", "none");
 }
