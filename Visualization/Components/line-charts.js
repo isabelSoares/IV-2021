@@ -191,3 +191,17 @@ function updateLineCharts() {
                 .y(datum => hscale_sales(datum['Sales'])));
     });
 }
+
+function brandUpdateColor() {
+    brands_list.forEach((brand, index) => {
+        line_chart_1_svg.selectAll(".line_chart_paths")
+            .select("#path_line_1_" + index)
+            .attr("stroke-width", (selected_brands.includes(brand)) ? 2 : 1)
+            .attr("stroke", (selected_brands.includes(brand)) ? getColorBrand(brand) : "grey");
+        
+        line_chart_2_svg.selectAll(".line_chart_paths")
+            .select("#path_line_2_" + index)
+            .attr("stroke-width", (selected_brands.includes(brand)) ? 2 : 1)
+            .attr("stroke", (selected_brands.includes(brand)) ? getColorBrand(brand) : "grey");
+    });
+}
