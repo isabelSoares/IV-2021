@@ -121,14 +121,15 @@ function prepareEvents() {
     });
 
     /* --------------- HOVER POINT OF BRAND ------------------ */
-    dispatch.on("hover_brand", function(brand) {
+    dispatch.on("hover_brand", function(event, line_chart, brand) {
         highlight_line(brand);
+        show_circle(event, line_chart, brand);
     });
     
     dispatch.on("hover_remove_brand", function(brand) {
         remove_highlight_line(brand);
+        remove_circle();
     });
-
 
 }
 

@@ -53,7 +53,7 @@ function build_line_chart_1(){
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
             .on("click", (event, datum) => clicked_line(brand))
-            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, brand))
+            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, event, 1, brand))
             .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
@@ -92,7 +92,15 @@ function build_line_chart_1(){
           "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
         )
         .attr("class", "label")
-        .text("Year");                
+        .text("Year"); 
+    
+    line_chart_1_svg.append("circle")
+        .attr("class", "hover-circle")
+        .attr("r", 5)
+        .style("stroke", "black")
+        .style("fill", "red")
+        .style("stroke-width", "1px")
+        .style("opacity", "0");
 }
 
 function build_line_chart_2(){
@@ -117,7 +125,7 @@ function build_line_chart_2(){
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
             .on("click", (event, datum) => clicked_line(brand))
-            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, brand))
+            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, event, 2, brand))
             .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
@@ -156,7 +164,15 @@ function build_line_chart_2(){
           "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
         )
         .attr("class", "label")
-        .text("Year");                
+        .text("Year");    
+        
+    line_chart_2_svg.append("circle")
+        .attr("class", "hover-circle")
+        .attr("r", 5)
+        .style("stroke", "black")
+        .style("fill", "red")
+        .style("stroke-width", "1px")
+        .style("opacity", "0");
 }
 
 function updateLineCharts() {
@@ -242,6 +258,58 @@ function highlight_line(brand) {
         .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
 }
 
+function show_circle(event, line_chart, brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+
+    var coordinates = d3.pointer(event);
+    var x = coordinates[0];
+    var y = coordinates[1];
+    var path;
+
+    var number_models = hscale_models.invert(y)
+    var number_sales = hscale_sales.invert(y)
+    var y_models, y_sales;
+    
+    if (line_chart == 1) {
+        path = line_chart_2_svg.selectAll(".line_chart_paths")
+            .select("#path_line_2_" + index);
+
+        y_models = hscale_models(number_models);
+        y_sales = getClosestPoint(path.node(), x, 20);
+    } else {
+        path = line_chart_1_svg.selectAll(".line_chart_paths")
+            .select("#path_line_1_" + index);
+
+        y_models = getClosestPoint(path.node(), x, 20);
+        y_sales = hscale_sales(number_sales);
+    }
+
+    line_chart_1_svg.selectAll(".hover-circle")
+        .attr("cx", x)
+        .attr("cy", y_models)
+        .style("opacity", 1);
+
+    line_chart_2_svg.selectAll(".hover-circle")
+        .attr("cx", x)
+        .attr("cy", y_sales)
+        .style("opacity", 1);
+}
+
+function getClosestPoint(path, x, nSteps) {
+    var pathLength = path.getTotalLength();
+    var min = 0;
+    var max = 1;
+    var pos;
+
+    for (var i = 0; i < nSteps; i++) {
+        pos = path.getPointAtLength(pathLength * ((min + max) / 2));
+        if (pos.x < x) min = (min + max) / 2
+        else max = (min + max) / 2
+    }
+
+    return pos.y;
+}
+
 function remove_highlight_line(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
@@ -255,4 +323,16 @@ function remove_highlight_line(brand) {
         .select("#path_line_2_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
         .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
+}
+
+function remove_circle() {
+    line_chart_1_svg.selectAll(".hover-circle")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .style("opacity", 0);
+
+    line_chart_2_svg.selectAll(".hover-circle")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .style("opacity", 0);
 }
