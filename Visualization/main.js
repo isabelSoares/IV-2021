@@ -4,7 +4,7 @@ var fulldataset_models
 var dataset_models
 var fulldataset_brands
 
-var dispatch = d3.dispatch("clickBrand", "selectBrand", "unselectBrand",
+var dispatch = d3.dispatch("clickBrandLine", "clickClosestBrand", "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
     "hover_line_chart", "hover_remove_line_chart");
 
@@ -103,33 +103,43 @@ function computeDateModel(element) {
 
 function prepareEvents() {
     /* --------------- CLICKED LINE OF BRAND ------------------ */
-    dispatch.on("clickBrand", function() {
+    dispatch.on("clickBrandLine", function() {
         if (closeToBrand == undefined) return;
 
-        if (selected_brands.includes(closeToBrand)) dispatch.call("unselectBrand", this);
-        else dispatch.call("selectBrand", this);
+        if (selected_brands.includes(closeToBrand)) {
+            const index = selected_brands.indexOf(closeToBrand);
+            selected_brands.splice(index, 1);
+            removeColorBrand(closeToBrand);
+            brandUpdateColor(closeToBrand);
+
+            update_brand_selection_unselected_brand();
+        } else {
+            if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
+
+            selected_brands.push(closeToBrand);
+            addBrandColor(closeToBrand);
+            brandUpdateColor(closeToBrand);
+            
+            update_brand_selection_selected_brand();
+        }
     });
 
     /* --------------- SELECTION OF BRAND ------------------ */
-    dispatch.on("selectBrand", function() {
-        if (closeToBrand == undefined) return;
+    dispatch.on("selectBrand", function(brand) {
         if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
-
-        selected_brands.push(closeToBrand);
-        addBrandColor(closeToBrand);
-        brandUpdateColor(closeToBrand);
+        selected_brands.push(brand);
+        addBrandColor(brand);
+        brandUpdateColor(brand);
 
         update_brand_selection_selected_brand();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
-    dispatch.on("unselectBrand", function() {
-        if (closeToBrand == undefined) return;
-
-        const index = selected_brands.indexOf(closeToBrand);
+    dispatch.on("unselectBrand", function(brand) {
+        const index = selected_brands.indexOf(brand);
         selected_brands.splice(index, 1);
-        removeColorBrand(closeToBrand);
-        brandUpdateColor(closeToBrand);
+        removeColorBrand(brand);
+        brandUpdateColor(brand);
 
         update_brand_selection_unselected_brand();
     });

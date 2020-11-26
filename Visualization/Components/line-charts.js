@@ -46,7 +46,7 @@ function build_line_chart_1(){
     
     line_chart_1_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 1))
         .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
-        .on("click", (event, datum) => dispatch.call("clickBrand", this));
+        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     var g = line_chart_1_svg.append("g").attr("class", "line_chart_paths");
     brands_list.forEach(function(brand, index) {
@@ -119,7 +119,7 @@ function build_line_chart_2(){
 
     line_chart_2_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 2))
         .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
-        .on("click", (event, datum) => dispatch.call("clickBrand", this));
+        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     var g = line_chart_2_svg.append("g").attr("class", "line_chart_paths");
     brands_list.forEach(function(brand, index) {
