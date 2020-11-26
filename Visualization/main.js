@@ -119,7 +119,7 @@ function prepareEvents() {
             selected_brands.push(closeToBrand);
             addBrandColor(closeToBrand);
             brandUpdateColor(closeToBrand);
-            
+
             update_brand_selection_selected_brand();
         }
     });

@@ -13,13 +13,27 @@ var brands_colors = [
 ]
 
 function build_brand_selection_form() {
+    /* ---- CENTERING DIV UNSELECTED TAKING INTO ACCOUNT SCROLLBAR ---- */
+    var div_unselected = d3.select("div#unselected_brands_div");
+    var div_node = div_unselected.node();
+    var scrollbar_width = div_node.offsetWidth - div_node.clientWidth;
+    var margins = div_unselected.style("margin").replace("px", "").split(" ")
+        .map(elem => parseFloat(elem));
+    margins[3] += scrollbar_width / 2;
+    margins[1] -= scrollbar_width / 2;
+    margins = margins.map(elem => elem + 'px');
+    div_unselected.style("margin", margins.join(" "));
+
+
     var top = d3.select("svg#brands_selection_top");
     var selected = d3.select("svg#selected_brands_svg");
     var unselected = d3.select("svg#unselected_brands_svg");
     
-    var svg_width = parseInt(unselected.style("width").slice(0, -2));
-    const WIDTH_BOX = svg_width * 0.6;
-    const HEIGHT_BOX = 25;
+    var svg_width_selected = parseInt(selected.style("width").slice(0, -2));
+    var svg_width_unselected = parseInt(unselected.style("width").slice(0, -2));
+    const WIDTH_BOX = svg_width_unselected;
+    var selected_div = d3.select("div#selected_brands_div");
+    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
 
     brands_selection_svgs = {
         "top": top,
@@ -63,7 +77,7 @@ function build_brand_selection_form() {
             } ,
             exit => exit.remove()
         )
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_selected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 
     var unselected_g = unselected.append("g").attr("id", "unselected_brands");
     unselected_g.selectAll("g")
@@ -91,13 +105,15 @@ function build_brand_selection_form() {
             } ,
             exit => exit.remove()
         )
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_unselected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 }
 
 function update_brand_selection_selected_brand() {
-    var svg_width = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
-    const WIDTH_BOX = svg_width * 0.6;
-    const HEIGHT_BOX = 25;
+    var svg_width_selected = parseInt(brands_selection_svgs.selected.style("width").slice(0, -2));
+    var svg_width_unselected = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
+    const WIDTH_BOX = svg_width_unselected;
+    var selected_div = d3.select("div#selected_brands_div");
+    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
 
     var unselected_brands = brands_list.filter(elem => !selected_brands.includes(elem));
     brands_selection_svgs.unselected.attr("height", unselected_brands.length * HEIGHT_BOX);
@@ -128,20 +144,22 @@ function update_brand_selection_selected_brand() {
             } ,
             exit => exit.remove()
         )
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_selected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
         
     brands_selection_svgs.unselected.select("#unselected_brands")
         .selectAll("g")
         .data(unselected_brands, datum => datum)
         .join(exit => exit.remove())
         .transition().duration(1000)
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_unselected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 }
 
 function update_brand_selection_unselected_brand() {
-    var svg_width = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
-    const WIDTH_BOX = svg_width * 0.6;
-    const HEIGHT_BOX = 25;
+    var svg_width_selected = parseInt(brands_selection_svgs.selected.style("width").slice(0, -2));
+    var svg_width_unselected = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
+    const WIDTH_BOX = svg_width_unselected;
+    var selected_div = d3.select("div#selected_brands_div");
+    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
     
     var unselected_brands = brands_list.filter(elem => !selected_brands.includes(elem));
     brands_selection_svgs.unselected.attr("height", unselected_brands.length * HEIGHT_BOX);
@@ -151,7 +169,7 @@ function update_brand_selection_unselected_brand() {
         .data(selected_brands, datum => datum)
         .join(exit => exit.remove())
         .transition().duration(1000)
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_selected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 
     brands_selection_svgs.unselected.select("#unselected_brands")
         .selectAll("g")
@@ -178,7 +196,7 @@ function update_brand_selection_unselected_brand() {
                 return g;
             }
         )
-        .attr("transform", (datum, index) => "translate(" + (svg_width - WIDTH_BOX) / 2 + "," + index * 25 + ")");
+        .attr("transform", (datum, index) => "translate(" + (svg_width_unselected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 }
 
 function addBrandColor(brand) {

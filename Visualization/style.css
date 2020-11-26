@@ -15,9 +15,6 @@ body {
     height: 37%;
     background-color: transparent;
     display: block;
-    border-width: 0.5%;
-    border-style: solid;
-    border-color: black;
 }
 
 #brands_selection_top {
@@ -26,9 +23,6 @@ body {
     height: 9.3%;
     background-color: transparent;
     display: inline-block;
-    border-width: 0px 0px 3px 0px;
-    border-style: solid;
-    border-color: black;
 }
 
 #selected_brands_div {
@@ -37,9 +31,6 @@ body {
     height: 29%;
     background-color: transparent;
     display: block;
-    border-width: 0px 0px 3px 0px;
-    border-style: solid;
-    border-color: black;
 }
 
 #selected_brands_svg {
@@ -52,10 +43,11 @@ body {
 
 #unselected_brands_div {
     float: none;
-    width: 100%;
+    width: 70%;
     height: 60%;
     background-color: transparent;
     display: block;
+    margin: 0 auto;
     overflow-y: scroll;
 }
 
