@@ -44,6 +44,10 @@ function build_line_chart_1(){
         ])
         .range([svg_height - PADDING, PADDING]);
     
+    line_chart_1_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 1))
+        .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
+        .on("click", (event, datum) => dispatch.call("clickBrand", this));
+
     var g = line_chart_1_svg.append("g").attr("class", "line_chart_paths");
     brands_list.forEach(function(brand, index) {
         g.append("path")
@@ -52,9 +56,6 @@ function build_line_chart_1(){
             .attr("fill", "none")
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
-            .on("click", (event, datum) => clicked_line(brand))
-            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, event, 1, brand))
-            .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_models(datum['# Models'])))
@@ -116,6 +117,10 @@ function build_line_chart_2(){
         ])
         .range([svg_height - PADDING, PADDING]);
 
+    line_chart_2_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 2))
+        .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
+        .on("click", (event, datum) => dispatch.call("clickBrand", this));
+
     var g = line_chart_2_svg.append("g").attr("class", "line_chart_paths");
     brands_list.forEach(function(brand, index) {
         g.append("path")
@@ -124,9 +129,6 @@ function build_line_chart_2(){
             .attr("fill", "none")
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
-            .on("click", (event, datum) => clicked_line(brand))
-            .on("mouseover", (event, datum) => dispatch.call("hover_brand", this, event, 2, brand))
-            .on("mouseout", (event, datum) => dispatch.call("hover_remove_brand", this, brand))
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_sales(datum['Sales'])))
@@ -238,11 +240,6 @@ function brandUpdateColor(brand) {
     }
 }
 
-function clicked_line(brand) {
-    if (selected_brands.includes(brand)) dispatch.call("unselectBrand", this, brand);
-    else dispatch.call("selectBrand", this, brand);
-}
-
 function highlight_line(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
@@ -264,25 +261,16 @@ function show_circle(event, line_chart, brand) {
     var coordinates = d3.pointer(event);
     var x = coordinates[0];
     var y = coordinates[1];
-    var path;
 
-    var number_models = hscale_models.invert(y)
-    var number_sales = hscale_sales.invert(y)
+    var path;
     var y_models, y_sales;
     
-    if (line_chart == 1) {
-        path = line_chart_2_svg.selectAll(".line_chart_paths")
-            .select("#path_line_2_" + index);
-
-        y_models = hscale_models(number_models);
-        y_sales = getClosestPoint(path.node(), x, 20);
-    } else {
-        path = line_chart_1_svg.selectAll(".line_chart_paths")
-            .select("#path_line_1_" + index);
-
-        y_models = getClosestPoint(path.node(), x, 20);
-        y_sales = hscale_sales(number_sales);
-    }
+    path = line_chart_1_svg.selectAll(".line_chart_paths")
+        .select("#path_line_1_" + index);
+    y_models = getClosestPointCircle(path.node(), x, 30);;
+    path = line_chart_2_svg.selectAll(".line_chart_paths")
+        .select("#path_line_2_" + index);
+    y_sales = getClosestPointCircle(path.node(), x, 30);
 
     line_chart_1_svg.selectAll(".hover-circle")
         .attr("cx", x)
@@ -295,7 +283,7 @@ function show_circle(event, line_chart, brand) {
         .style("opacity", 1);
 }
 
-function getClosestPoint(path, x, nSteps) {
+function getClosestPointCircle(path, x, nSteps) {
     var pathLength = path.getTotalLength();
     var min = 0;
     var max = 1;
@@ -308,6 +296,49 @@ function getClosestPoint(path, x, nSteps) {
     }
 
     return pos.y;
+}
+
+function getClosestPath(event, line_chart, max_distance = 100) {
+    var paths;
+    var coordinates = d3.pointer(event);
+    var x = coordinates[0];
+    var y = coordinates[1];
+
+    if (line_chart == 1)
+        paths = line_chart_1_svg.selectAll(".line_chart_paths").selectAll("path");
+    else if (line_chart == 2)
+        paths = line_chart_2_svg.selectAll(".line_chart_paths").selectAll("path");
+    
+    var min_path = undefined;
+    var min_distance = undefined;
+    paths.each(function(datum, index) {
+        var distance = getDistanceToPath(this, x, y, 20)
+        if ((min_distance == undefined || min_distance >= distance) && distance <= max_distance && distance != undefined) {
+            min_distance = distance;
+            min_path = this;
+        }
+    });
+
+    // console.log("Min Distance: ", min_distance);
+    return min_path;
+}
+
+function getDistanceToPath(path, x, y, steps) {
+    var pathLength = path.getTotalLength();
+    var min_distance = undefined;
+    if (d3.select(path).attr("d") == null) return undefined;
+
+    for (var i = 0; i < steps; i++) {
+        pos = path.getPointAtLength(pathLength * i / steps);
+        var deltaX = x - pos.x;
+        var deltaY = y - pos.y;
+        var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        if (min_distance == undefined || min_distance >= distance)
+            min_distance = distance;
+    }
+
+    return min_distance;
 }
 
 function remove_highlight_line(brand) {

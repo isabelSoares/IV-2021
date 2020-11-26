@@ -4,11 +4,13 @@ var fulldataset_models
 var dataset_models
 var fulldataset_brands
 
-var dispatch = d3.dispatch("selectBrand",
-    "unselectBrand", "hover_brand", "hover_remove_brand");
+var dispatch = d3.dispatch("clickBrand", "selectBrand", "unselectBrand",
+    "hover_brand", "hover_remove_brand",
+    "hover_line_chart", "hover_remove_line_chart");
 
 var dataset_brands
 var brands_list
+var closeToBrand = undefined
 var selected_brands = []
 
 var start_date = new Date(1992, 0, 1)
@@ -100,22 +102,34 @@ function computeDateModel(element) {
 }
 
 function prepareEvents() {
+    /* --------------- CLICKED LINE OF BRAND ------------------ */
+    dispatch.on("clickBrand", function() {
+        if (closeToBrand == undefined) return;
+
+        if (selected_brands.includes(closeToBrand)) dispatch.call("unselectBrand", this);
+        else dispatch.call("selectBrand", this);
+    });
+
     /* --------------- SELECTION OF BRAND ------------------ */
-    dispatch.on("selectBrand", function(brand) {
+    dispatch.on("selectBrand", function() {
+        if (closeToBrand == undefined) return;
         if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
-        selected_brands.push(brand);
-        addBrandColor(brand);
-        brandUpdateColor(brand);
+
+        selected_brands.push(closeToBrand);
+        addBrandColor(closeToBrand);
+        brandUpdateColor(closeToBrand);
 
         update_brand_selection_selected_brand();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
-    dispatch.on("unselectBrand", function(brand) {
-        const index = selected_brands.indexOf(brand);
+    dispatch.on("unselectBrand", function() {
+        if (closeToBrand == undefined) return;
+
+        const index = selected_brands.indexOf(closeToBrand);
         selected_brands.splice(index, 1);
-        removeColorBrand(brand);
-        brandUpdateColor(brand);
+        removeColorBrand(closeToBrand);
+        brandUpdateColor(closeToBrand);
 
         update_brand_selection_unselected_brand();
     });
@@ -130,7 +144,32 @@ function prepareEvents() {
         remove_highlight_line(brand);
         remove_circle();
     });
+    
+    /* --------------- HOVER LINE CHART ------------------ */
+    dispatch.on("hover_line_chart", function(event, line_chart) {
+        var newCloseToBrand
+        var path = getClosestPath(event, line_chart, 20);
 
+        if (path != undefined) {
+            const index = parseInt(d3.select(path).attr("id").split("_")[3]);
+            newCloseToBrand = brands_list[index];
+        } else newCloseToBrand = undefined
+
+        if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+            dispatch.call("hover_remove_brand", this, closeToBrand)
+        }
+
+        if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+            dispatch.call("hover_brand", this, event, line_chart, newCloseToBrand);
+        }
+
+        closeToBrand = newCloseToBrand;   
+    });
+
+    dispatch.on("hover_remove_line_chart", function() {
+        dispatch.call("hover_remove_brand", this, closeToBrand)
+        closeToBrand = undefined;
+    });
 }
 
 function appendImages() {
