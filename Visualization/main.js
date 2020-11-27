@@ -147,12 +147,14 @@ function prepareEvents() {
     /* --------------- HOVER POINT OF BRAND ------------------ */
     dispatch.on("hover_brand", function(event, line_chart, brand) {
         highlight_line(brand);
-        show_circle(event, line_chart, brand);
+        var information = show_circle(event, line_chart, brand);
+        show_tooltip(event, line_chart, information);
     });
     
     dispatch.on("hover_remove_brand", function(brand) {
         remove_highlight_line(brand);
         remove_circle();
+        remove_tooltip();
     });
     
     /* --------------- HOVER LINE CHART ------------------ */

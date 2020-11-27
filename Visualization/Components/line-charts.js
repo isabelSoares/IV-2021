@@ -29,6 +29,7 @@ function build_line_charts() {
 
     build_line_chart_1();
     build_line_chart_2();
+    createTooltip();
 }
 
 function build_line_chart_1(){
@@ -75,7 +76,8 @@ function build_line_chart_1(){
     line_chart_1_svg.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0)
-        .attr("x", 0 - svg_height / 2)
+        .attr("x", - svg_height / 2)
+        .attr("text-anchor", "middle")
         .attr("dy", "1em")
         .attr("class", "label")
         .text("Models Developed");
@@ -88,20 +90,11 @@ function build_line_chart_1(){
     
       // text label for the x axis
     line_chart_1_svg.append("text")
-        .attr(
-          "transform",
-          "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
-        )
+        .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
         .attr("class", "label")
         .text("Year"); 
     
-    line_chart_1_svg.append("circle")
-        .attr("class", "hover-circle")
-        .attr("r", 5)
-        .style("stroke", "black")
-        .style("fill", "red")
-        .style("stroke-width", "1px")
-        .style("opacity", "0");
+    createHoverCircle(line_chart_1_svg);
 }
 
 function build_line_chart_2(){
@@ -147,8 +140,9 @@ function build_line_chart_2(){
 
     line_chart_2_svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0)
-        .attr("x", 0 - svg_height / 2)
+        .attr("y", - svg_width / 125)
+        .attr("x", - svg_height / 2)
+        .attr("text-anchor", "middle")
         .attr("dy", "1em")
         .attr("class", "label")
         .text("Sales");
@@ -161,20 +155,33 @@ function build_line_chart_2(){
     
       // text label for the x axis
     line_chart_2_svg.append("text")
-        .attr(
-          "transform",
-          "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")"
-        )
+        .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
         .attr("class", "label")
-        .text("Year");    
+        .text("Year");
         
-    line_chart_2_svg.append("circle")
+    createHoverCircle(line_chart_2_svg);
+}
+
+function createHoverCircle(element) {
+    element.append("circle")
         .attr("class", "hover-circle")
         .attr("r", 5)
         .style("stroke", "black")
         .style("fill", "red")
         .style("stroke-width", "1px")
         .style("opacity", "0");
+}
+
+function createTooltip() {
+    var mockInformation = {'Brand': 'Not Hovering', 'Models': 0, 'Sales': 0};
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip hidden")
+        .attr("id", "tooltip_line_chart")
+        .datum(mockInformation);
+        
+    tooltip.append("p").attr('id', 'TooltipBrandInfo').html(datum => "<b>Brand:</b> " + datum['Brand']);
+    tooltip.append("p").attr('id', 'TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + datum['Models']);
+    tooltip.append("p").attr('id', 'TooltipSalesInfo').html(datum => "<b>Sales:</b> " + Math.round((datum['Sales']) / 1000) / 1000 + " M");
 }
 
 function updateLineCharts() {
@@ -267,7 +274,7 @@ function show_circle(event, line_chart, brand) {
     
     path = line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index);
-    y_models = getClosestPointCircle(path.node(), x, 30);;
+    y_models = getClosestPointCircle(path.node(), x, 30);
     path = line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index);
     y_sales = getClosestPointCircle(path.node(), x, 30);
@@ -281,6 +288,37 @@ function show_circle(event, line_chart, brand) {
         .attr("cx", x)
         .attr("cy", y_sales)
         .style("opacity", 1);
+
+    return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales)};
+}
+
+function show_tooltip(event, line_chart, information) {
+    const PADDING = 50;
+    const distanceTooltip = parseInt(line_chart_1_svg.style("width").slice(0, -2)) / 3;
+
+    var coordinates = d3.pointer(event);
+    var x = coordinates[0];
+    var y = coordinates[1];
+
+    if (line_chart == 1) var top = line_chart_1_svg.node().getBoundingClientRect().y;
+    if (line_chart == 2) var top = line_chart_2_svg.node().getBoundingClientRect().y;
+
+    var tooltip = d3.select("div#tooltip_line_chart")
+        .datum(information);
+    
+    tooltip.select('#TooltipBrandInfo').html(datum => "<b>Brand:</b> " + datum['Brand']);
+    tooltip.select('#TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + Math.round(datum['Models']));
+    tooltip.select('#TooltipSalesInfo').html(datum => "<b>Sales:</b> " + Math.round((datum['Sales']) / 1000) / 1000 + " M");
+    
+    const box_width = parseFloat(tooltip.style("width").slice(0, -2));
+    const box_height = parseFloat(tooltip.style("height").slice(0, -2));
+    var new_y = y + top - box_height / 2;
+    var new_x = x - distanceTooltip;
+    if (new_x < PADDING) new_x = x + distanceTooltip - box_width;
+
+    tooltip.style("top", new_y).style("left", new_x);
+    tooltip.classed("hidden", false);
+    tooltip.classed("visible", true);
 }
 
 function getClosestPointCircle(path, x, nSteps) {
@@ -366,4 +404,11 @@ function remove_circle() {
         .attr("cx", 0)
         .attr("cy", 0)
         .style("opacity", 0);
+}
+
+function remove_tooltip() {
+    var tooltip = d3.select("div#tooltip_line_chart");
+
+    tooltip.classed("visible", false);
+    tooltip.classed("hidden", true);
 }
