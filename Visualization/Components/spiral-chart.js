@@ -1,14 +1,13 @@
-var spiral_chart_svg
-var selected_period_months = 12
-var spiral_color_scale
-
 const PERIODS_AVAILABLE = [
-    {"display": "1 Sem", "months": 6},
-    {"display": "1 Year", "months": 12},
-    {"display": "2 Years", "months": 24},
-    {"display": "3 Years", "months": 36},
-    {"display": "4 Years", "months": 48},
+    {"display": "1 Sem", "months": 6, "div": 6, "by": "month"},
+    {"display": "1 Year", "months": 12, "div": 12, "by": "month"},
+    {"display": "2 Years", "months": 24, "div": 8, "by": "quarter"},
+    {"display": "3 Years", "months": 36, "div": 12, "by": "quarter"},
+    {"display": "4 Years", "months": 48, "div": 8, "by": "semester"},
 ]
+var spiral_chart_svg
+var selected_period_months = PERIODS_AVAILABLE[1]
+var spiral_color_scale
 
 function build_spiral_chart() {
     spiral_chart_svg = d3.select("svg#spiral_chart");
@@ -16,7 +15,7 @@ function build_spiral_chart() {
     var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
 
     const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
-    const chartRadius = svg_height / 2 - margin.bottom
+    const chartRadius = svg_height / 2 - margin.bottom;
 
     var dataset_brands_year = dataset_brands.map((a) => ([parseInt(a['Year']), parseInt(a['# Models'])]));
 
@@ -108,37 +107,44 @@ function addColorScale(datum ,startColor, endColor) {
 
 function addPeriodSelection() {
     const LINE_WIDTH = 300;
+    const step = LINE_WIDTH / (PERIODS_AVAILABLE.length - 1);
 
     var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
-    var range = d3.range(0, 1, 1 / (PERIODS_AVAILABLE.length - 1)).concat(1).map(elem => elem * LINE_WIDTH);
 
-    // console.log(range);
-    // console.log(PERIODS_AVAILABLE.map(elem => elem.months));
-
-    period_scale = d3.scaleLinear()
-        .range(range)
-        .domain(PERIODS_AVAILABLE.map(elem => elem.months));
-
-    period_axis = d3.axisBottom()
-        .tickPadding(15)
-        .tickValues(PERIODS_AVAILABLE.map(elem => elem.months))
-        .tickFormat(datum => PERIODS_AVAILABLE.find(elem => elem.months == datum).display)
-        .scale(period_scale);
+    var axis = spiral_chart_svg.append("g").attr("class", "axis");
+    axis.append("path")
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()([[0 - 5, 0], [LINE_WIDTH + 5, 0]]))
     
-    spiral_chart_svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height - 40) + ")")
-        .call(period_axis);
+    PERIODS_AVAILABLE.forEach(function(elem, index) {
+        var tick = axis.append("g");
+        tick.append("circle")
+            .attr("class", "circle_point_axis")
+            .attr("cx", step * index)
+            .attr("cy", 0)
+            .attr("r", 4)
+            .attr("fill", "blue");
+        tick.append("text")
+            .attr("class", "text_point_axis")
+            .attr("x", step * index)
+            .attr("y", svg_height / 15)
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "middle")
+            .text(elem['display']);
 
-    spiral_chart_svg.append("circle")
-        .attr("cx", period_scale(selected_period_months))
+    });
+    axis.attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + svg_height * 0.90 + ")");
+
+    axis.append("circle")
+        .attr("cx", PERIODS_AVAILABLE.findIndex(elem => elem == selected_period_months) * step)
         .attr("cy", 0)
-        .attr("r", 7)
+        .attr("r", 8)
         .attr("fill", "blue")
         .attr("id", "period_circle")
-        .attr("class", "circle_selector")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height - 40) + ")");
+        .attr("class", "circle_selector");
 
     prepare_event_period_selection();
 }
@@ -149,21 +155,15 @@ function prepare_event_period_selection() {
     const LINE_WIDTH = 300;
 
     function dragged(event, datum) {
-        var new_x = event.x - (svg_width - LINE_WIDTH) / 2;
-        if (new_x < 0) new_x = 0;
-        else if (new_x > LINE_WIDTH) new_x = LINE_WIDTH;
-
-        var new_period_months = period_scale.invert(new_x);
-        var closest_period_monts = PERIODS_AVAILABLE.reduce(function(prev, curr) {
-            if ((Math.abs(curr.months - new_period_months) < Math.abs(prev.months - new_period_months))) return curr;
-            else return prev;
-        }).months;
-
-        d3.select(this)
-            .attr("cx", period_scale(closest_period_monts))
-            .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height - 40) + ")");
+        var new_x = event.x;
+        const step = LINE_WIDTH / (PERIODS_AVAILABLE.length - 1);
         
-        selected_period_months = closest_period_monts;
+        const index = Math.round(new_x / step);
+        if (index > PERIODS_AVAILABLE.length - 1) index = PERIODS_AVAILABLE.length - 1;
+        else if (index < 0) index = 0;
+
+        d3.select(this).attr("cx", index * step);
+        selected_period_months = PERIODS_AVAILABLE[index];
         // console.log("New Selected Period Months: ", selected_period_months);
     }
 
