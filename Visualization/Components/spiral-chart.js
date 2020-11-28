@@ -6,7 +6,7 @@ const PERIODS_AVAILABLE = [
     {"display": "4 Years", "months": 48, "div": 8, "by": "semester"},
 ]
 var spiral_chart_svg
-var selected_period_months = PERIODS_AVAILABLE[1]
+var selected_period_months = PERIODS_AVAILABLE[2]
 var spiral_color_scale
 var spiral_heatmap
 var dataset_spiral_chart
@@ -41,18 +41,23 @@ function build_spiral_chart() {
         .call(spiral_heatmap);
 
     g.selectAll(".arc").selectAll("path")
-        .style("fill", function (d) { return spiral_color_scale(d["Models"]); })
-
-    const BOX_HEIGHT = svg_height / 10;
+        .style("fill", datum => spiral_color_scale(datum["Models"]))
+        .on("mouseover", (event, datum) => dispatch.call("hover_spiral_chart", this, event, datum))
+        .on("mouseout", (event, datum) => dispatch.call("hover_remove_spiral_chart", this, event, datum));
+    
     spiral_chart_svg.append("text")
             .attr("x", svg_width * 2 / 3)
-            .attr("y", BOX_HEIGHT / 2 -  10 )
+            .attr("y", svg_height * 0.05)
             .attr("text-anchor", "right")
             .attr("dominant-baseline", "middle")
             .attr("dy", ".35em")
+            .attr("font-size", ".80em")
+            .attr("font-weight", 700)
             .text("Number of Models")
 
     addPeriodSelection();
+    addErrorMessage();
+    createTooltipSpiralChart();
 }
 
 function treatDataset() {
@@ -97,7 +102,7 @@ function treatDataset() {
         else break;
     }
 
-    console.log(sortedFinalDataset);
+    //console.log(sortedFinalDataset);
     return sortedFinalDataset;
 }
 
@@ -140,6 +145,7 @@ function addColorScale(datum ,startColor, endColor) {
         .attr("y", svg_height * 2 / 5 + HEIGHT * 2 / 3 + svg_height * 0.06)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
+        .attr("font-size","0.75em")
         .text(datum[0]);
     scale_g.append("text")
         .attr("class", "spiral_scale_number")
@@ -148,6 +154,7 @@ function addColorScale(datum ,startColor, endColor) {
         .attr("y", svg_height * 2 / 5 - HEIGHT / 3 - svg_height * 0.06)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
+        .attr("font-size","0.75em")
         .text(datum[1]);
 }
 
@@ -163,7 +170,7 @@ function addPeriodSelection() {
     var axis = spiral_chart_svg.append("g").attr("class", "axis");
     axis.append("path")
         .attr("fill", "none")
-        .attr("stroke", "steelblue")
+        .attr("stroke", "black")
         .attr("stroke-width", 1.5)
         .attr("d", d3.line()([[0 - 5, 0], [LINE_WIDTH + 5, 0]]))
     
@@ -173,28 +180,66 @@ function addPeriodSelection() {
             .attr("class", "circle_point_axis")
             .attr("cx", step * index)
             .attr("cy", 0)
-            .attr("r", 4)
+            .attr("r", 3)
             .attr("fill", "blue");
         tick.append("text")
             .attr("class", "text_point_axis")
             .attr("x", step * index)
-            .attr("y", svg_height / 15)
+            .attr("y", svg_height / 11)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
+            .attr("font-size", ".75em")
             .text(elem['display']);
 
     });
-    axis.attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + svg_height * 0.90 + ")");
+    axis.attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + svg_height * 0.88 + ")");
 
     axis.append("circle")
         .attr("cx", PERIODS_AVAILABLE.findIndex(elem => elem == selected_period_months) * step)
         .attr("cy", 0)
-        .attr("r", 8)
+        .attr("r", 6)
+        .attr("stroke", "black")
         .attr("fill", "blue")
         .attr("id", "period_circle")
         .attr("class", "circle_selector");
 
     prepare_event_period_selection();
+}
+
+function addErrorMessage() {
+    var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
+    const WIDTH = svg_width * 0.50;
+    const HEIGHT = svg_height * 0.50;
+
+    var errorMessage = spiral_chart_svg.append("g")
+        .attr("class", "ErrorMessage hidden");
+    
+    errorMessage.attr("transform", "translate(" + (svg_width - WIDTH) / 2 + ", " + (svg_height - HEIGHT) / 2 + ")");
+
+    errorMessage.append("rect")
+        .attr("width", WIDTH)
+        .attr("height", HEIGHT)
+        .attr("fill", "white")
+        .attr("stroke-width", 1)
+        .attr("rx", 15)
+        .attr("ry", 15)
+        .attr("stroke", "black");
+
+    var errorText = errorMessage.append("g")
+        .attr("class", "ErrorText");
+    
+    errorText.append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("dy", 0)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "hanging")
+        .text("Select a period of time big enough for at least one revolution!")
+        .call(wrap, WIDTH * 0.90);
+
+    var errorTextHeight = errorText.node().getBoundingClientRect().height;
+    errorText.attr("transform", "translate(" + WIDTH / 2 + ", " + (HEIGHT - errorTextHeight) / 2 + ")");
 }
 
 function prepare_event_period_selection() {
@@ -217,7 +262,7 @@ function prepare_event_period_selection() {
     spiral_chart_svg.selectAll("circle")
         .call(d3.drag()
             .on("drag", dragged)
-            .on("end", updateSpiralChart));
+            .on("end", (event, datum) => dispatch.call("changed_spiral_period", this)));
 }
 
 function updateSpiralChart() {
@@ -227,6 +272,20 @@ function updateSpiralChart() {
     const chartRadius = svg_height / 2 - margin.bottom;
 
     dataset_spiral_chart = treatDataset();
+    if (dataset_spiral_chart.length < selected_period_months['div']) {
+        spiral_chart_svg.select("g#spiral_group")
+            .classed("visible", false).classed("hidden", true);
+        spiral_chart_svg.select("g.ErrorMessage")
+            .classed("hidden", false).classed("visible", true);
+        
+        return;
+    }
+        
+    spiral_chart_svg.select("g#spiral_group")
+        .classed("hidden", false).classed("visible", true);
+    spiral_chart_svg.select("g.ErrorMessage")
+        .classed("visible", false).classed("hidden", true);
+    
     var domain = d3.extent(dataset_spiral_chart, datum => datum["Models"]);
     spiral_color_scale.domain(domain);
 
@@ -253,5 +312,88 @@ function updateSpiralChart() {
         .call(spiral_heatmap);
 
     g.selectAll(".arc").selectAll("path")
-        .style("fill", function (d) { return spiral_color_scale(d["Models"]); })
+        .style("fill", datum => spiral_color_scale(datum["Models"]))
+        .on("mouseover", (event, datum) => dispatch.call("hover_spiral_chart", this, event, datum))
+        .on("mouseout", (event, datum) => dispatch.call("hover_remove_spiral_chart", this, event, datum));
+}
+
+function wrap(text, width) {
+    text.each(function() {
+        var text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            y = text.attr("y"),
+            dy = parseFloat(text.attr("dy")),
+            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+            }
+        }
+    });
+}
+
+function createTooltipSpiralChart() {
+    var mockInformation = {'Date': new Date(0, 0, 1), 'Models': 0};
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip hidden")
+        .attr("id", "tooltip_spiral_chart")
+        .datum(mockInformation);
+        
+    tooltip.append("p").attr('id', 'TooltipDateInfo').html(datum => "<b>Date:</b> " + datum['Date']);
+    tooltip.append("p").attr('id', 'TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + datum['Models']);
+}
+
+function show_tooltip_spiral_chart(event, information) {
+    var tooltip = d3.select("div#tooltip_spiral_chart")
+        .datum(information);
+
+    const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
+    const distanceTooltip = parseInt(spiral_chart_svg.style("width").slice(0, -2)) / 15;
+
+    var coordinates = d3.pointer(event);
+    var x = coordinates[0];
+    var y = coordinates[1];
+
+    var left = spiral_chart_svg.node().getBoundingClientRect().x;
+    var top = spiral_chart_svg.node().getBoundingClientRect().y;
+    
+    tooltip.select('#TooltipDateInfo').html(datum => "<b>Date:</b> " + dateTextSpiralChart(datum));
+    tooltip.select('#TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + datum['Models']);
+
+    const box_width = parseFloat(tooltip.style("width").slice(0, -2));
+    const box_height = parseFloat(tooltip.style("height").slice(0, -2));
+    var new_y = y + top + distanceTooltip;
+    var new_x = x + left + distanceTooltip;
+    
+    tooltip.style("top", new_y).style("left", new_x);
+    tooltip.classed("hidden", false);
+    tooltip.classed("visible", true);
+}
+
+function dateTextSpiralChart(datum) {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+
+    var dateString = datum['Date'].getFullYear();
+    if (selected_period_months['by'] == 'month') dateString += " - " + monthNames[datum['Date'].getMonth()];
+    if (selected_period_months['by'] == 'quarter') dateString += " - Quarter " + ((datum['Date'].getMonth() / 3) + 1);
+    if (selected_period_months['by'] == 'semester') dateString += " - Semester " + ((datum['Date'].getMonth() / 6) + 1);
+
+    return dateString;
+}
+
+function remove_tooltip_spiral_chart() {
+    var tooltip = d3.select("div#tooltip_spiral_chart");
+
+    tooltip.classed("visible", false);
+    tooltip.classed("hidden", true);
 }

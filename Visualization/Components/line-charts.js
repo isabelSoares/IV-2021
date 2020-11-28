@@ -29,7 +29,7 @@ function build_line_charts() {
 
     build_line_chart_1();
     build_line_chart_2();
-    createTooltip();
+    createTooltipLineChart();
 }
 
 function build_line_chart_1(){
@@ -172,7 +172,7 @@ function createHoverCircle(element) {
         .style("opacity", "0");
 }
 
-function createTooltip() {
+function createTooltipLineChart() {
     var mockInformation = {'Brand': 'Not Hovering', 'Models': 0, 'Sales': 0};
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip hidden")
@@ -190,7 +190,7 @@ function updateLineCharts() {
 
     xscale.domain([start_date, end_date]);
     d3.selectAll(".line_chart").select(".xaxis")
-        .call(d3.axisBottom(xscale));
+.call(d3.axisBottom(xscale));
 
     // -------------------- UPDATE LINE CHART 1 --------------------
     hscale_models.domain([0, d3.max(dataset_brands, datum => datum['# Models'])]);
@@ -292,7 +292,7 @@ function show_circle(event, line_chart, brand) {
     return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales)};
 }
 
-function show_tooltip(event, line_chart, information) {
+function show_tooltip_line_chart(event, line_chart, information) {
     const PADDING = 50;
     const distanceTooltip = parseInt(line_chart_1_svg.style("width").slice(0, -2)) / 3;
 
@@ -406,7 +406,7 @@ function remove_circle() {
         .style("opacity", 0);
 }
 
-function remove_tooltip() {
+function remove_tooltip_line_chart() {
     var tooltip = d3.select("div#tooltip_line_chart");
 
     tooltip.classed("visible", false);

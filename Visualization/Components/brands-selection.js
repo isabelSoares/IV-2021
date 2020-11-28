@@ -6,10 +6,10 @@ var brand_selection_form
 var brands_selection_svgs = {}
 
 var brands_colors = [
-    { "Color": "blue", "Brand": undefined },
-    { "Color": "yellow", "Brand": undefined },
-    { "Color": "green", "Brand": undefined },
-    { "Color": "orange", "Brand": undefined }
+    { "Color": d3.rgb(70,130,180), "Brand": undefined },
+    { "Color": d3.rgb(255,255,0), "Brand": undefined },
+    { "Color": d3.rgb(255,140,0), "Brand": undefined },
+    { "Color": d3.rgb(50,205,50), "Brand": undefined }
 ]
 
 function build_brand_selection_form() {

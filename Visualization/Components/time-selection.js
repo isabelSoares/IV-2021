@@ -91,14 +91,5 @@ function prepare_event_time_selection() {
     time_selection_svg.selectAll("polygon")
         .call(d3.drag()
             .on("drag", dragged)
-            .on("end", updateSVGs));
-}
-
-function updateSVGs() {
-    //console.log("Start Date: ", start_date);
-    //console.log("End Date: ", end_date);
-
-    filterDatasets();
-    updateLineCharts();
-    updateSpiralChart();
+            .on("end", (event, datum) => dispatch.call("changed_time_period", this)));
 }

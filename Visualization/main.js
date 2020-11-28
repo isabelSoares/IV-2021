@@ -1,12 +1,15 @@
-const show_images = false
+const show_images = true
 
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
 
-var dispatch = d3.dispatch("clickBrandLine", "clickClosestBrand", "selectBrand", "unselectBrand",
+var dispatch = d3.dispatch("clickBrandLine", "clickClosestBrand",
+    "changed_time_period", "changed_spiral_period",
+    "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
-    "hover_line_chart", "hover_remove_line_chart");
+    "hover_line_chart", "hover_remove_line_chart",
+    "hover_spiral_chart", "hover_remove_spiral_chart");
 
 var dataset_brands
 var brands_list
@@ -102,6 +105,19 @@ function computeDateModel(element) {
 }
 
 function prepareEvents() {
+    /* --------------- CHANGED TIME PERIOD ------------------ */
+    dispatch.on("changed_time_period", function() {
+        console.log("OI");
+        filterDatasets();
+        updateLineCharts();
+        updateSpiralChart();
+    });
+
+    /* --------------- CHANGED SPIRAL PERIOD ------------------ */
+    dispatch.on("changed_spiral_period", function() {
+        updateSpiralChart();
+    });
+
     /* --------------- CLICKED LINE OF BRAND ------------------ */
     dispatch.on("clickBrandLine", function() {
         if (closeToBrand == undefined) return;
@@ -113,6 +129,7 @@ function prepareEvents() {
             brandUpdateColor(closeToBrand);
 
             update_brand_selection_unselected_brand();
+            updateSpiralChart();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -121,6 +138,7 @@ function prepareEvents() {
             brandUpdateColor(closeToBrand);
 
             update_brand_selection_selected_brand();
+            updateSpiralChart();
         }
     });
 
@@ -132,6 +150,7 @@ function prepareEvents() {
         brandUpdateColor(brand);
 
         update_brand_selection_selected_brand();
+        updateSpiralChart();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
@@ -142,19 +161,20 @@ function prepareEvents() {
         brandUpdateColor(brand);
 
         update_brand_selection_unselected_brand();
+        updateSpiralChart();
     });
 
     /* --------------- HOVER POINT OF BRAND ------------------ */
     dispatch.on("hover_brand", function(event, line_chart, brand) {
         highlight_line(brand);
         var information = show_circle(event, line_chart, brand);
-        show_tooltip(event, line_chart, information);
+        show_tooltip_line_chart(event, line_chart, information);
     });
     
     dispatch.on("hover_remove_brand", function(brand) {
         remove_highlight_line(brand);
         remove_circle();
-        remove_tooltip();
+        remove_tooltip_line_chart();
     });
     
     /* --------------- HOVER LINE CHART ------------------ */
@@ -181,6 +201,23 @@ function prepareEvents() {
     dispatch.on("hover_remove_line_chart", function() {
         dispatch.call("hover_remove_brand", this, closeToBrand)
         closeToBrand = undefined;
+    });
+
+    /* ------------- HOVER SPIRAL CHART ------------------- */
+    dispatch.on("hover_spiral_chart", function(event, datum) {
+        var target = d3.select(event.target);
+        target.style("stroke", "black")
+            .style("stroke-width", 2);
+
+        show_tooltip_spiral_chart(event, datum);
+    });
+
+    dispatch.on("hover_remove_spiral_chart", function(event, datum) {
+        var target = d3.select(event.target);
+        target.style("stroke", "none")
+            .style("stroke-width", 0);
+
+        remove_tooltip_spiral_chart();
     });
 }
 
