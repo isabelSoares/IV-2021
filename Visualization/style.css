@@ -3,19 +3,27 @@ body {
     background-color: lightblue;
 }
 
+#title {
+    float: left;
+    width: 20%;
+    height: 5%;
+    background-color: transparent;
+}
+
 #time_selection {
     float: left;
-    width: 85%;
+    width: 70%;
     height: 5%;
     background-color: transparent;
 }
 
 #brands_selection {
     float: right;
-    width: 14.5%;
+    width: 10%;
     height: 37%;
     background-color: transparent;
     display: block;
+    box-sizing: border-box;
 }
 
 #brands_selection_top {
@@ -44,8 +52,9 @@ body {
 
 #unselected_brands_div {
     float: none;
-    width: 70%;
-    height: 60%;
+    width: 90%;
+    min-height: 60%;
+    max-height: inherit;
     background-color: transparent;
     display: block;
     margin: 0 auto;
@@ -118,11 +127,54 @@ body {
     padding: 0.2em;
     margin: 0;
     font-size: 0.7em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.visible {
-    visibility: show;
+.triangle_selector {
+    fill: rgb(0, 76, 153);
+    stroke: rgb(0, 76, 153);
+    stroke-width: 1;
+    stroke-linejoin: round;
 }
+
+.text_title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.text_module_title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .80em;
+    font-weight: 700;
+}
+
+.text_axis_title {
+    text-anchor: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.text_axis_ticks {
+    text-anchor: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+
+.text_brands {
+    text-anchor: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+}
+
+.time_interval_rectangle{
+    stroke: black;
+    stroke-width: 1;
+    border-style: dotted;
+    fill: rgba(0, 76, 153, 0.2);
+}
+
+.text_center {
+    text-anchor: middle;
+}
+
 .hidden {
     visibility: hidden;
 }
