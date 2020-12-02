@@ -6,7 +6,7 @@ var brand_selection_form
 var brands_selection_svgs = {}
 
 var brands_colors = [
-    { "Color": d3.rgb(70,130,180), "Brand": undefined },
+    { "Color": d3.rgb(220,20,60), "Brand": undefined },
     { "Color": d3.rgb(255,255,0), "Brand": undefined },
     { "Color": d3.rgb(255,140,0), "Brand": undefined },
     { "Color": d3.rgb(50,205,50), "Brand": undefined }
@@ -32,8 +32,13 @@ function build_brand_selection_form() {
     var svg_width_selected = parseInt(selected.style("width").slice(0, -2));
     var svg_width_unselected = parseInt(unselected.style("width").slice(0, -2));
     const WIDTH_BOX = svg_width_unselected;
+    var brand_selection = d3.select("div#brands_selection");
+    var brand_selection_height = parseInt(brand_selection.style("height").slice(0, -2));
+    const HEIGHT_BOX = brand_selection_height * 0.29 / MAX_BRANDS_SELECTED;
     var selected_div = d3.select("div#selected_brands_div");
-    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
+    selected_div.style("height", HEIGHT_BOX * selected_brands.length);
+    var unselected_div = d3.select("div#unselected_brands_div");
+    unselected_div.style("height", brand_selection_height * 0.90 - HEIGHT_BOX * selected_brands.length);
 
     brands_selection_svgs = {
         "top": top,
@@ -44,8 +49,7 @@ function build_brand_selection_form() {
     top.append("text")
         .attr("x", "50%")
         .attr("y", "50%")
-        .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
+        .attr("class", "text_module_title text_center")
         .text("Select Brands");
     
     var unselected_brands = brands_list.filter(elem => !selected_brands.includes(elem));
@@ -69,8 +73,8 @@ function build_brand_selection_form() {
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
-                    .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "middle")
+                    .attr("class", "text_brands")
                     .text(datum => datum)
                 
                 return g;
@@ -97,8 +101,8 @@ function build_brand_selection_form() {
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
-                    .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "middle")
+                    .attr("class", "text_brands")
                     .text(datum => datum);
                 
                 return g;
@@ -112,8 +116,13 @@ function update_brand_selection_selected_brand() {
     var svg_width_selected = parseInt(brands_selection_svgs.selected.style("width").slice(0, -2));
     var svg_width_unselected = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
     const WIDTH_BOX = svg_width_unselected;
+    var brand_selection = d3.select("div#brands_selection");
+    var brand_selection_height = parseInt(brand_selection.style("height").slice(0, -2));
+    const HEIGHT_BOX = brand_selection_height * 0.29 / MAX_BRANDS_SELECTED;
     var selected_div = d3.select("div#selected_brands_div");
-    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
+    selected_div.style("height", HEIGHT_BOX * selected_brands.length);
+    var unselected_div = d3.select("div#unselected_brands_div");
+    unselected_div.style("height", brand_selection_height * 0.90 - HEIGHT_BOX * selected_brands.length);
 
     var unselected_brands = brands_list.filter(elem => !selected_brands.includes(elem));
     brands_selection_svgs.unselected.attr("height", unselected_brands.length * HEIGHT_BOX);
@@ -136,8 +145,8 @@ function update_brand_selection_selected_brand() {
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
-                    .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "middle")
+                    .attr("class", "text_brands")
                     .text(datum => datum)
                 
                 return g;
@@ -150,7 +159,6 @@ function update_brand_selection_selected_brand() {
         .selectAll("g")
         .data(unselected_brands, datum => datum)
         .join(exit => exit.remove())
-        .transition().duration(1000)
         .attr("transform", (datum, index) => "translate(" + (svg_width_unselected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 }
 
@@ -158,8 +166,13 @@ function update_brand_selection_unselected_brand() {
     var svg_width_selected = parseInt(brands_selection_svgs.selected.style("width").slice(0, -2));
     var svg_width_unselected = parseInt(brands_selection_svgs.unselected.style("width").slice(0, -2));
     const WIDTH_BOX = svg_width_unselected;
+    var brand_selection = d3.select("div#brands_selection");
+    var brand_selection_height = parseInt(brand_selection.style("height").slice(0, -2));
+    const HEIGHT_BOX = brand_selection_height * 0.29 / MAX_BRANDS_SELECTED;
     var selected_div = d3.select("div#selected_brands_div");
-    const HEIGHT_BOX = parseInt(selected_div.style("height").slice(0, -2)) / MAX_BRANDS_SELECTED;
+    selected_div.style("height", HEIGHT_BOX * selected_brands.length);
+    var unselected_div = d3.select("div#unselected_brands_div");
+    unselected_div.style("height", brand_selection_height * 0.90 - HEIGHT_BOX * selected_brands.length);
     
     var unselected_brands = brands_list.filter(elem => !selected_brands.includes(elem));
     brands_selection_svgs.unselected.attr("height", unselected_brands.length * HEIGHT_BOX);
@@ -168,7 +181,6 @@ function update_brand_selection_unselected_brand() {
         .selectAll("g")
         .data(selected_brands, datum => datum)
         .join(exit => exit.remove())
-        .transition().duration(1000)
         .attr("transform", (datum, index) => "translate(" + (svg_width_selected - WIDTH_BOX) / 2 + "," + index * HEIGHT_BOX + ")");
 
     brands_selection_svgs.unselected.select("#unselected_brands")
@@ -189,8 +201,10 @@ function update_brand_selection_unselected_brand() {
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
-                    .attr("text-anchor", "middle")
                     .attr("dominant-baseline", "middle")
+                    .attr("class", "text_brands")
+                    .text(datum => datum)
+                    .text(datum => datum)
                     .text(datum => datum)
                 
                 return g;

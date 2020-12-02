@@ -37,6 +37,7 @@ function build_line_chart_1(){
 
     var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
     var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
+    createSpiralHoverRegion(line_chart_1_svg);
 
     hscale_models = d3.scaleLinear()
         .domain([0, d3.max(dataset_brands, function (d) {
@@ -79,7 +80,7 @@ function build_line_chart_1(){
         .attr("x", - svg_height / 2)
         .attr("text-anchor", "middle")
         .attr("dy", "1em")
-        .attr("class", "label")
+        .attr("class", "text_axis_title")
         .text("Models Developed");
         
     line_chart_1_svg.append("g") // we are creating a 'g' element to match our x axis
@@ -91,7 +92,7 @@ function build_line_chart_1(){
       // text label for the x axis
     line_chart_1_svg.append("text")
         .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
-        .attr("class", "label")
+        .attr("class", "text_axis_title")
         .text("Year"); 
     
     createHoverCircle(line_chart_1_svg);
@@ -102,6 +103,7 @@ function build_line_chart_2(){
     
     var svg_width = parseInt(line_chart_2_svg.style("width").slice(0, -2));
     var svg_height = parseInt(line_chart_2_svg.style("height").slice(0, -2));
+    createSpiralHoverRegion(line_chart_2_svg);
 
     hscale_sales = d3.scaleLinear()
         .domain([0, d3.max(dataset_brands, function (d) {
@@ -140,11 +142,11 @@ function build_line_chart_2(){
 
     line_chart_2_svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", - svg_width / 125)
+        .attr("y", 0)
         .attr("x", - svg_height / 2)
         .attr("text-anchor", "middle")
         .attr("dy", "1em")
-        .attr("class", "label")
+        .attr("class", "text_axis_title")
         .text("Sales");
         
     line_chart_2_svg.append("g") // we are creating a 'g' element to match our x axis
@@ -156,7 +158,7 @@ function build_line_chart_2(){
       // text label for the x axis
     line_chart_2_svg.append("text")
         .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
-        .attr("class", "label")
+        .attr("class", "text_axis_title")
         .text("Year");
         
     createHoverCircle(line_chart_2_svg);
@@ -170,6 +172,21 @@ function createHoverCircle(element) {
         .style("fill", "red")
         .style("stroke-width", "1px")
         .style("opacity", "0");
+}
+
+function createSpiralHoverRegion(element) {
+    const PADDING = 50;
+    
+    var svg_width = parseInt(element.style("width").slice(0, -2));
+    var svg_height = parseInt(element.style("height").slice(0, -2));
+
+    var g = element.append("g").attr("id", "time_interval_lines");
+    g.append("rect")
+        .attr("x", PADDING)
+        .attr("y", PADDING)
+        .attr("width", 250)
+        .attr("height", svg_height - 2 * PADDING)
+        .attr("class", "time_interval_rectangle hidden");
 }
 
 function createTooltipLineChart() {
@@ -318,7 +335,17 @@ function show_tooltip_line_chart(event, line_chart, information) {
 
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);
-    tooltip.classed("visible", true);
+}
+
+function show_region_interval_line_chart(startTime, endTime) {
+    console.log(startTime, endTime);
+    var startX = xscale(startTime);
+    var endX = xscale(endTime);
+
+    d3.selectAll("rect.time_interval_rectangle")
+        .attr("x", startX)
+        .attr("width", endX - startX)
+        .classed("hidden", false);
 }
 
 function getClosestPointCircle(path, x, nSteps) {
@@ -408,7 +435,12 @@ function remove_circle() {
 
 function remove_tooltip_line_chart() {
     var tooltip = d3.select("div#tooltip_line_chart");
-
-    tooltip.classed("visible", false);
+    
     tooltip.classed("hidden", true);
+}
+
+function remove_region_line_chart() {
+    var regions = d3.selectAll("rect.time_interval_rectangle");
+
+    regions.classed("hidden", true);
 }

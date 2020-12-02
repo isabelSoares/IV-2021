@@ -48,12 +48,10 @@ function build_spiral_chart() {
     spiral_chart_svg.append("text")
             .attr("x", svg_width * 2 / 3)
             .attr("y", svg_height * 0.05)
-            .attr("text-anchor", "right")
             .attr("dominant-baseline", "middle")
             .attr("dy", ".35em")
-            .attr("font-size", ".80em")
-            .attr("font-weight", 700)
-            .text("Number of Models")
+            .attr("class", "text_module_title")
+            .text("Number of Models");
 
     addPeriodSelection();
     addErrorMessage();
@@ -188,6 +186,7 @@ function addPeriodSelection() {
             .attr("y", svg_height / 11)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
+            .attr("class","text_axis_ticks")
             .attr("font-size", ".75em")
             .text(elem['display']);
 
@@ -274,17 +273,17 @@ function updateSpiralChart() {
     dataset_spiral_chart = treatDataset();
     if (dataset_spiral_chart.length < selected_period_months['div']) {
         spiral_chart_svg.select("g#spiral_group")
-            .classed("visible", false).classed("hidden", true);
+            .classed("hidden", true);
         spiral_chart_svg.select("g.ErrorMessage")
-            .classed("hidden", false).classed("visible", true);
+            .classed("hidden", false);
         
         return;
     }
         
     spiral_chart_svg.select("g#spiral_group")
-        .classed("hidden", false).classed("visible", true);
+        .classed("hidden", false);
     spiral_chart_svg.select("g.ErrorMessage")
-        .classed("visible", false).classed("hidden", true);
+        .classed("hidden", true);
     
     var domain = d3.extent(dataset_spiral_chart, datum => datum["Models"]);
     spiral_color_scale.domain(domain);
@@ -376,7 +375,6 @@ function show_tooltip_spiral_chart(event, information) {
     
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);
-    tooltip.classed("visible", true);
 }
 
 function dateTextSpiralChart(datum) {
@@ -393,7 +391,6 @@ function dateTextSpiralChart(datum) {
 
 function remove_tooltip_spiral_chart() {
     var tooltip = d3.select("div#tooltip_spiral_chart");
-
-    tooltip.classed("visible", false);
+    
     tooltip.classed("hidden", true);
 }

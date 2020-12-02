@@ -210,6 +210,18 @@ function prepareEvents() {
             .style("stroke-width", 2);
 
         show_tooltip_spiral_chart(event, datum);
+        
+        var startRegionDate = new Date(datum['Date']);
+        var endRegionDate = new Date(datum['Date']);
+
+        if (selected_period_months['by'] == 'month')
+            endRegionDate = new Date(endRegionDate.setMonth(endRegionDate.getMonth() + 1));
+        else if (selected_period_months['by'] == 'quarter')
+            endRegionDate = new Date(endRegionDate.setMonth(endRegionDate.getMonth() + 3));
+        else if (selected_period_months['by'] == 'semester')
+            endRegionDate = new Date(endRegionDate.setMonth(endRegionDate.getMonth() + 6));
+
+        show_region_interval_line_chart(startRegionDate, endRegionDate);
     });
 
     dispatch.on("hover_remove_spiral_chart", function(event, datum) {
@@ -218,6 +230,7 @@ function prepareEvents() {
             .style("stroke-width", 0);
 
         remove_tooltip_spiral_chart();
+        remove_region_line_chart();
     });
 }
 

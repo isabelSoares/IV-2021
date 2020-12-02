@@ -8,7 +8,7 @@ function build_time_selection_svg() {
     time_selection_svg = d3.select("svg#time_selection");
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
 
-    const LINE_WIDTH = svg_width * 0.75;
+    const LINE_WIDTH = svg_width * 0.95;
     // console.log(time_selection_svg);
     
     var min_date_models = d3.min(fulldataset_models.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
@@ -20,12 +20,6 @@ function build_time_selection_svg() {
 
     // console.log("Min Available Date: ", min_date);
     // console.log("Max Available Date: ", max_date);
-
-    time_selection_svg.append("text")
-        .attr("class", "selection_text")
-        .text("Time Range")
-        .attr("y", "50%")
-        .attr("x", "1%");
 
     time_scale = d3.scaleUtc()
         .range([0, LINE_WIDTH])
@@ -41,13 +35,11 @@ function build_time_selection_svg() {
     
     time_selection_svg.append("polygon")
         .attr("points", getPointsTriangle(time_scale(start_date)))
-        .attr("fill", "red")
         .attr("id", "start_triangle")
         .attr("class", "triangle_selector")
         .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
     time_selection_svg.append("polygon")
         .attr("points", getPointsTriangle(time_scale(end_date)))
-        .attr("fill", "red")
         .attr("id", "end_triangle")
         .attr("class", "triangle_selector")
         .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
@@ -63,7 +55,7 @@ function getPointsTriangle(center) {
 
 function prepare_event_time_selection() {
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
-    const LINE_WIDTH = svg_width * 0.75;
+    const LINE_WIDTH = svg_width * 0.95;
 
     function dragged(event, datum) {
         var new_x = event.x - (svg_width - LINE_WIDTH) / 2;
