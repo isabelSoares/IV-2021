@@ -1,27 +1,33 @@
-
 body {
-    background-color: lightblue;
+    background: linear-gradient(140deg,rgb(199, 206, 255) 0%, rgb(8, 51, 78) 25%, rgb(199, 206, 255) 50%, rgb(8, 51, 78) 75%, rgb(199, 206, 255) 100%);
+}
+
+.block {
+    margin: 0.4% 0.4% 0.4% 0.4%;
+    border-radius: 10px;
+    background-color: rgb(213, 233, 253);
+    filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+    -webkit-filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 #title {
     float: left;
-    width: 20%;
-    height: 5%;
-    background-color: transparent;
+    width: 19%;
+    height: 4%;
 }
 
 #time_selection {
     float: left;
-    width: 70%;
-    height: 5%;
-    background-color: transparent;
+    width: 70.4%;
+    height: 4%;
 }
 
 #brands_selection {
     float: right;
-    width: 10%;
-    height: 37%;
-    background-color: transparent;
+    width: 9%;
+    height: 36%;
     display: block;
     box-sizing: border-box;
 }
@@ -29,8 +35,7 @@ body {
 #brands_selection_top {
     float: none;
     width: 100%;
-    height: 9.3%;
-    background-color: transparent;
+    height: 10%;
     display: inline-block;
 }
 
@@ -38,7 +43,6 @@ body {
     float: none;
     width: 100%;
     height: 29%;
-    background-color: transparent;
     display: block;
 }
 
@@ -47,7 +51,6 @@ body {
     width: 100%;
     height: auto;
     min-height: 100%;
-    background-color: transparent;
 }
 
 #unselected_brands_div {
@@ -55,7 +58,6 @@ body {
     width: 90%;
     min-height: 60%;
     max-height: inherit;
-    background-color: transparent;
     display: block;
     margin: 0 auto;
     overflow-y: scroll;
@@ -65,49 +67,52 @@ body {
     float: none;
     width: 100%;
     height: auto;
-    background-color: transparent;
+}
+
+#line_charts {
+    width: 29%;
+    height: 62.5%;
+    float: left;
+    display: block;
+    box-sizing: border-box;
 }
 
 #line_chart1 {
-    float: left;
-    width: 30%;
-    height: 32.5%;
-    background-color: transparent;
+    float: none;
+    width: 100%;
+    height: 50%;
+    display: inline;
 }
 
 #small_multiples_line_chart {
     float: right;
-    width: 55%;
-    height: 32.5%;
-    background-color: transparent;
+    width: 59.5%;
+    height: 30.5%;
 }
 
 #line_chart2 {
-    float: left;
-    width: 30%;
-    height: 32.5%;
-    background-color: transparent;
+    float: none;
+    width: 100%;
+    height: 50%;
+    display: inline;
 }
 
 #parallel_coordinates_chart {
     float: right;
-    width: 70%;
-    height: 32.5%;
-    background-color: transparent;
+    width: 69%;
+    height: 30.5%;
 }
 
 #glyph_chart {
     float: left;
-    width: 78%;
-    height: 30%;
-    background-color: transparent;
+    width: 77%;
+    height: 29%;
 }
 
 #spiral_chart {
     float: right;
-    width: 22%;
-    height: 30%;
-    background-color: transparent;
+    width: 21%;
+    height: 29%;
 }
 
 #form_div {
@@ -137,10 +142,20 @@ body {
     stroke-linejoin: round;
 }
 
+text {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .text_title{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     word-wrap: break-word;
+    font-size: 1.1em;
 }
 
 .text_module_title {
@@ -151,12 +166,17 @@ body {
 
 .text_axis_title {
     text-anchor: middle;
+    font-size: 0.80em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .text_axis_ticks {
     text-anchor: middle;
     font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+
+.text_left {
+    text-anchor: end;
 }
 
 .text_brands {

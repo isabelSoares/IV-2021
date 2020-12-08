@@ -11,6 +11,7 @@
    <script src="Components/brands-selection.js" charset="utf-8"></script>
    <script src="Components/line-charts.js" charset="utf-8"></script>
    <script src="Components/spiral-chart.js" charset="utf-8"></script>
+   <script src="Components/parallel-cordinates-chart.js" charset="utf-8"></script>
    <script src="main.js"></script>
    <!-- Go away favicon. -->
    <link rel="shortcut icon" href="">
@@ -18,8 +19,8 @@
 
   <body onload="init()">
       <div id="title" class="text_title"><span><b>The Evolution of Mobile Phones:<br> Brands and Specs</b></span></div>   
-      <svg class="selection" id="time_selection"></svg>
-      <div class="selection" id="brands_selection">
+      <svg class="block selection" id="time_selection"></svg>
+      <div class="block selection" id="brands_selection">
         <svg id="brands_selection_top"></svg>
         <div id="selected_brands_div">
           <svg class="selection" id="selected_brands_svg"></svg>
@@ -28,12 +29,16 @@
           <svg class="selection" id="unselected_brands_svg"></svg>
         </div>
       </div>
-      <svg class="idiom" id="line_chart1"></svg>
-      <svg class="idiom" id="small_multiples_line_chart"></svg>
-      <svg class="idiom" id="line_chart2"></svg>
-      <svg class="idiom" id="parallel_coordinates_chart"></svg>
-      <svg class="idiom" id="glyph_chart"></svg>
-      <svg class="idiom" id="spiral_chart"></svg>
+      <div class="block" id="line_charts">
+        <svg class="idiom" id="line_chart1"></svg>
+        <svg class="idiom" id="line_chart2"></svg>
+      </div>
+      <svg class="block idiom" id="small_multiples_line_chart"></svg>
+      <svg class="block idiom" id="parallel_coordinates_chart"></svg>
+      <svg class="block idiom" id="glyph_chart"></svg>
+      <svg class="block idiom" id="spiral_chart"></svg>
+      <!--
+      -->
   </body>
 
 </html>

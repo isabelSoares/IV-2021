@@ -14,8 +14,8 @@ var yaxis_sales
 function build_line_charts() {
     const PADDING = 50;
 
-    line_chart_1_svg = d3.select("svg#line_chart1").attr("class", "line_chart");
-    line_chart_2_svg = d3.select("svg#line_chart2").attr("class", "line_chart");
+    line_chart_1_svg = d3.select("svg#line_chart1").classed("line_chart", true);
+    line_chart_2_svg = d3.select("svg#line_chart2").classed("line_chart", true);
 
     var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
 
@@ -61,7 +61,7 @@ function build_line_chart_1(){
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_models(datum['# Models'])))
-    }) 
+    });
 
     yaxis_models = d3.axisLeft() // we are creating a d3 axis
         .scale(hscale_models) // fit to our scale
@@ -199,6 +199,7 @@ function createTooltipLineChart() {
     tooltip.append("p").attr('id', 'TooltipBrandInfo').html(datum => "<b>Brand:</b> " + datum['Brand']);
     tooltip.append("p").attr('id', 'TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + datum['Models']);
     tooltip.append("p").attr('id', 'TooltipSalesInfo').html(datum => "<b>Sales:</b> " + Math.round((datum['Sales']) / 1000) / 1000 + " M");
+    tooltip.append("p").attr('id', 'TooltipYearInfo').html(datum => "<b>Year:</b> " + datum['Year']);
 }
 
 function updateLineCharts() {
@@ -291,10 +292,10 @@ function show_circle(event, line_chart, brand) {
     
     path = line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index);
-    y_models = getClosestPointCircle(path.node(), x, 30);
+    y_models = getClosestPointCircle(path.node(), x, 300);
     path = line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index);
-    y_sales = getClosestPointCircle(path.node(), x, 30);
+    y_sales = getClosestPointCircle(path.node(), x, 300);
 
     line_chart_1_svg.selectAll(".hover-circle")
         .attr("cx", x)
@@ -306,7 +307,7 @@ function show_circle(event, line_chart, brand) {
         .attr("cy", y_sales)
         .style("opacity", 1);
 
-    return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales)};
+    return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales), 'Date': xscale.invert(x)};
 }
 
 function show_tooltip_line_chart(event, line_chart, information) {
@@ -326,7 +327,8 @@ function show_tooltip_line_chart(event, line_chart, information) {
     tooltip.select('#TooltipBrandInfo').html(datum => "<b>Brand:</b> " + datum['Brand']);
     tooltip.select('#TooltipModelsInfo').html(datum => "<b>Number of Models:</b> " + Math.round(datum['Models']));
     tooltip.select('#TooltipSalesInfo').html(datum => "<b>Sales:</b> " + Math.round((datum['Sales']) / 1000) / 1000 + " M");
-    
+    tooltip.select('#TooltipYearInfo').html(datum => "<b>Year:</b> " + datum['Date'].getFullYear());
+
     const box_width = parseFloat(tooltip.style("width").slice(0, -2));
     const box_height = parseFloat(tooltip.style("height").slice(0, -2));
     var new_y = y + top - box_height / 2;
@@ -387,7 +389,7 @@ function getClosestPath(event, line_chart, max_distance = 100) {
     // console.log("Min Distance: ", min_distance);
     return min_path;
 }
-
+    
 function getDistanceToPath(path, x, y, steps) {
     var pathLength = path.getTotalLength();
     var min_distance = undefined;
@@ -414,11 +416,11 @@ function remove_highlight_line(brand) {
         .select("#path_line_1_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
         .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
-        
+       
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");  
 }
 
 function remove_circle() {

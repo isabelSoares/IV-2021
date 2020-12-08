@@ -1,14 +1,15 @@
-const show_images = true
+const show_images = false
 
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
 
-var dispatch = d3.dispatch("clickBrandLine", "clickClosestBrand",
+var dispatch = d3.dispatch("clickBrandLine",
     "changed_time_period", "changed_spiral_period",
     "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
     "hover_line_chart", "hover_remove_line_chart",
+    "hover_parallel_line_chart", "hover_remove_parallel_line_chart",
     "hover_spiral_chart", "hover_remove_spiral_chart");
 
 var dataset_brands
@@ -47,6 +48,34 @@ function init() {
                 else element['quarter'] = parseInt(element['quarter'])
                 if (element['month_id'] == 'null') element['month_id'] = null;
                 else element['month_id'] = parseInt(element['month_id'])
+                
+                if (element['battery_amps'] == 'null') element['battery_amps'] = null;
+                else element['battery_amps'] = parseFloat(element['battery_amps']);
+                if (element['im_MB'] == 'null') element['im_MB'] = null;
+                else element['im_MB'] = parseFloat(element['im_MB']);
+                if (element['ram_MB'] == 'null') element['ram_MB'] = null;
+                else element['ram_MB'] = parseFloat(element['ram_MB']);
+                if (element['primary_camera_MP'] == 'null') element['primary_camera_MP'] = null;
+                else element['primary_camera_MP'] = parseFloat(element['primary_camera_MP']);
+                if (element['aspect_ratio'] == 'null') element['aspect_ratio'] = null;
+                else element['aspect_ratio'] = parseFloat(element['aspect_ratio']);
+                if (element['screen_body_ratio'] == 'null') element['screen_body_ratio'] = null;
+                else element['screen_body_ratio'] = parseFloat(element['screen_body_ratio']);
+                
+                if (element['sensor_accelerometer'] == 'Y') element['sensor_accelerometer'] = 1;
+                else element['sensor_accelerometer'] = 0;
+                if (element['sensor_fingerprint'] == 'Y') element['sensor_fingerprint'] = 1;
+                else element['sensor_fingerprint'] = 0;
+                if (element['sensor_fingerprint_mounted'] == 'Y') element['sensor_fingerprint_mounted'] = 1;
+                else element['sensor_fingerprint_mounted'] = 0;
+                if (element['sensor_heart_rate'] == 'Y') element['sensor_heart_rate'] = 1;
+                else element['sensor_heart_rate'] = 0;
+                if (element['sensor_iris_scanner'] == 'Y') element['sensor_iris_scanner'] = 1;
+                else element['sensor_iris_scanner'] = 0;
+                if (element['sensor_proximity'] == 'Y') element['sensor_proximity'] = 1;
+                else element['sensor_proximity'] = 0;
+                if (element['sensor_temperature'] == 'Y') element['sensor_temperature'] = 1;
+                else element['sensor_temperature'] = 0;
 
                 computeDateModel(element);
             });
@@ -66,6 +95,7 @@ function init() {
             build_brand_selection_form();
             build_line_charts();
             build_spiral_chart();
+            build_parallel_coordinates_chart();
             
             prepareEvents();
             if (show_images) appendImages();
@@ -110,6 +140,7 @@ function prepareEvents() {
         console.log("OI");
         filterDatasets();
         updateLineCharts();
+        updateParallelLineChart();
         updateSpiralChart();
     });
 
@@ -127,6 +158,7 @@ function prepareEvents() {
             selected_brands.splice(index, 1);
             removeColorBrand(closeToBrand);
             brandUpdateColor(closeToBrand);
+            brandUpdateColorParallelCoordinates(closeToBrand);
 
             update_brand_selection_unselected_brand();
             updateSpiralChart();
@@ -136,6 +168,7 @@ function prepareEvents() {
             selected_brands.push(closeToBrand);
             addBrandColor(closeToBrand);
             brandUpdateColor(closeToBrand);
+            brandUpdateColorParallelCoordinates(closeToBrand);
 
             update_brand_selection_selected_brand();
             updateSpiralChart();
@@ -148,6 +181,7 @@ function prepareEvents() {
         selected_brands.push(brand);
         addBrandColor(brand);
         brandUpdateColor(brand);
+        brandUpdateColorParallelCoordinates(brand);
 
         update_brand_selection_selected_brand();
         updateSpiralChart();
@@ -159,6 +193,7 @@ function prepareEvents() {
         selected_brands.splice(index, 1);
         removeColorBrand(brand);
         brandUpdateColor(brand);
+        brandUpdateColorParallelCoordinates(brand);
 
         update_brand_selection_unselected_brand();
         updateSpiralChart();
@@ -167,12 +202,18 @@ function prepareEvents() {
     /* --------------- HOVER POINT OF BRAND ------------------ */
     dispatch.on("hover_brand", function(event, line_chart, brand) {
         highlight_line(brand);
-        var information = show_circle(event, line_chart, brand);
-        show_tooltip_line_chart(event, line_chart, information);
+        highlight_lineParallelCoordinates(brand);
+        
+        if (line_chart != undefined) {
+            var information = show_circle(event, line_chart, brand);
+            show_tooltip_line_chart(event, line_chart, information);
+        }
     });
     
     dispatch.on("hover_remove_brand", function(brand) {
         remove_highlight_line(brand);
+        remove_highlight_lineParallelCoordinateaChart(brand);
+
         remove_circle();
         remove_tooltip_line_chart();
     });
@@ -180,7 +221,7 @@ function prepareEvents() {
     /* --------------- HOVER LINE CHART ------------------ */
     dispatch.on("hover_line_chart", function(event, line_chart) {
         var newCloseToBrand
-        var path = getClosestPath(event, line_chart, 20);
+        var path = getClosestPath(event, line_chart, 50);
 
         if (path != undefined) {
             const index = parseInt(d3.select(path).attr("id").split("_")[3]);
@@ -199,6 +240,32 @@ function prepareEvents() {
     });
 
     dispatch.on("hover_remove_line_chart", function() {
+        dispatch.call("hover_remove_brand", this, closeToBrand)
+        closeToBrand = undefined;
+    });
+
+    /* --------------- HOVER LINE CHART ------------------ */
+    dispatch.on("hover_parallel_line_chart", function(event) {
+        var newCloseToBrand
+        var path = getClosestPathParallelLineChart(event, 50);
+
+        if (path != undefined) {
+            const index = parseInt(d3.select(path).attr("id").split("_")[2]);
+            newCloseToBrand = brands_list[index];
+        } else newCloseToBrand = undefined
+
+        if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+            dispatch.call("hover_remove_brand", this, closeToBrand)
+        }
+
+        if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+            dispatch.call("hover_brand", this, event, undefined, newCloseToBrand);
+        }
+
+        closeToBrand = newCloseToBrand;   
+    });
+
+    dispatch.on("hover_remove_parallel_line_chart", function() {
         dispatch.call("hover_remove_brand", this, closeToBrand)
         closeToBrand = undefined;
     });
@@ -238,13 +305,6 @@ function appendImages() {
     var small_multiples = d3.select("svg#small_multiples_line_chart")
                             .append("svg:image")
                             .attr("xlink:href", "Resources/Small Multiples.png")
-                            .attr("height", "100%")
-                            .attr("width", "100%")
-                            .attr("preserveAspectRatio", "none");
-
-    var parallel_coords = d3.select("svg#parallel_coordinates_chart")
-                            .append("svg:image")
-                            .attr("xlink:href", "Resources/Parallel Line Charts.png")
                             .attr("height", "100%")
                             .attr("width", "100%")
                             .attr("preserveAspectRatio", "none");
