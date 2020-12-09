@@ -87,7 +87,12 @@ function build_small_multiples(){
         .attr("y", - stepY * 0.90)
         .text(datum => datum['Name'])
 
-    var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths");
+    var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths")
+        .attr("id", datum => "paths_" + datum['attribute'])
+        .on("mousemove", (event, datum, index) => hover_brand_small_multiples_chart(event, datum))
+        .on("mouseout", (event, datum) => hover_brand_remove_small_multiples_chart())
+        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
+    
     brands_list.forEach(function(brand, index) {
         groupPaths.append("path")
             .datum(datum => treatDatasetPath(brand, datum))
@@ -198,4 +203,50 @@ function remove_highlight_lineSmallMultiples(brand) {
     small_multiples_svg.selectAll("#path_line_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
         .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
+}
+
+function getClosestPathSmallMultiplesChart(event, small_multiple, max_distance = 100) {
+    var paths;
+    var coordinates = d3.pointer(event);
+    var x = coordinates[0];
+    var y = coordinates[1];
+
+    paths = small_multiples_svg.select(".line_chart_paths#paths_" + small_multiple['attribute']).selectAll("path");
+    
+    var min_path = undefined;
+    var min_distance = undefined;
+    paths.each(function(datum, index) {
+        var distance = getDistanceToPath(this, x, y, 20)
+        if ((min_distance == undefined || min_distance >= distance) && distance <= max_distance && distance != undefined) {
+            min_distance = distance;
+            min_path = this;
+        }
+    });
+    return min_path;
+}
+
+function hover_brand_small_multiples_chart(event, element){
+    var newCloseToBrand
+    var path = getClosestPathSmallMultiplesChart(event, element, 50);
+
+    if (path != undefined) {
+        const index = parseInt(d3.select(path).attr("id").split("_")[2]);
+        newCloseToBrand = brands_list[index];
+    } else newCloseToBrand = undefined
+
+    if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_remove_brand", this, closeToBrand)
+    }
+
+    if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_brand", this, event, undefined, newCloseToBrand);
+    }
+
+    closeToBrand = newCloseToBrand;
+}
+
+function hover_brand_remove_small_multiples_chart() {
+    /*
+    dispatch.call("hover_remove_brand", this, closeToBrand)
+    closeToBrand = undefined; */
 }

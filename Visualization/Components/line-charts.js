@@ -46,8 +46,8 @@ function build_line_chart_1(){
         ])
         .range([svg_height - PADDING, PADDING]);
     
-    line_chart_1_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 1))
-        .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
+    line_chart_1_svg.on("mousemove", (event, datum) => hover_brand_line_chart(event, 1))
+        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     var g = line_chart_1_svg.append("g").attr("class", "line_chart_paths");
@@ -112,8 +112,8 @@ function build_line_chart_2(){
         ])
         .range([svg_height - PADDING, PADDING]);
 
-    line_chart_2_svg.on("mousemove", (event, datum) => dispatch.call("hover_line_chart", this, event, 2))
-        .on("mouseout", (event, datum) => dispatch.call("hover_remove_line_chart", this))
+    line_chart_2_svg.on("mousemove", (event, datum) => hover_brand_line_chart(event, 2))
+        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     var g = line_chart_2_svg.append("g").attr("class", "line_chart_paths");
@@ -445,4 +445,29 @@ function remove_region_line_chart() {
     var regions = d3.selectAll("rect.time_interval_rectangle");
 
     regions.classed("hidden", true);
+}
+
+function hover_brand_line_chart(event, line_chart) {
+    var newCloseToBrand
+    var path = getClosestPath(event, line_chart, 50);
+
+    if (path != undefined) {
+        const index = parseInt(d3.select(path).attr("id").split("_")[3]);
+        newCloseToBrand = brands_list[index];
+    } else newCloseToBrand = undefined
+
+    if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_remove_brand", this, closeToBrand)
+    }
+
+    if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_brand", this, event, line_chart, newCloseToBrand);
+    }
+
+    closeToBrand = newCloseToBrand; 
+}
+
+function hover_remove_brand_line_chart() {
+    dispatch.call("hover_remove_brand", this, closeToBrand)
+    closeToBrand = undefined;
 }

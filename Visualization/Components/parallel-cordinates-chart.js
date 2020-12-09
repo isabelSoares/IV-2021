@@ -61,6 +61,23 @@ function build_parallel_coordinates_chart() {
         .attr("x", datum => xPositionScaleParallelCoordinates(datum['Name']) - 5)
         .attr("y", svg_height - margins.bottom)
         .text(datum => datum['min']);
+
+    const tickWidth = 50;
+    const tickHeight = 20;
+    var group_tick = group_axis.append("g").classed("value_tick hidden", true)
+        .attr("transform", datum => "translate(" + (xPositionScaleParallelCoordinates(datum['Name']) - tickWidth - 5) +
+             "," + 100 + ")");
+    group_tick.append("rect")
+        .attr("fill", "white")
+        .attr("width", tickWidth)
+        .attr("height", tickHeight);
+    group_tick.append("text")
+        .classed("text_axis_ticks text_left", true)
+        .attr("x", tickWidth - 5)
+        .attr("y", tickHeight / 2)
+        .attr("font_weight", "bold")
+        .attr("dominant-baseline", "middle")
+        .text(0);
     
     var group_paths = parallel_coordinates_svg.append("g").attr("class", "line_chart_paths");
     group_paths.selectAll("path.line_chart_path")
@@ -72,9 +89,11 @@ function build_parallel_coordinates_chart() {
         .attr("stroke-width", 1)
         .attr("d", datum => createPathParallelCoordinates(datum));
 
-    parallel_coordinates_svg.on("mousemove", (event, datum) => dispatch.call("hover_parallel_line_chart", this, event))
-        .on("mouseout", (event, datum) => dispatch.call("hover_remove_parallel_line_chart", this))
+    parallel_coordinates_svg.on("mousemove", (event, datum) => hover_brand_parallel_line_chart(event))
+        .on("mouseout", (event, datum) => hover_remove_brand_parallel_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
+
+    
 }
 
 function treatParallelCoordinatesDataset() {
@@ -214,4 +233,49 @@ function updateParallelLineChart() {
     parallel_coordinates_svg.selectAll("path.line_chart_path")
         .data(datasetParallelCoordinates)
         .attr("d", datum => createPathParallelCoordinates(datum));
+}
+
+function hover_brand_parallel_line_chart(event){
+    var newCloseToBrand
+    var path = getClosestPathParallelLineChart(event, 50);
+
+    if (path != undefined) {
+        const index = parseInt(d3.select(path).attr("id").split("_")[2]);
+        newCloseToBrand = brands_list[index];
+    } else newCloseToBrand = undefined
+
+    if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_remove_brand", this, closeToBrand)
+    }
+
+    if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+        dispatch.call("hover_brand", this, event, undefined, newCloseToBrand);
+    }
+
+    closeToBrand = newCloseToBrand;   
+}
+
+function hover_remove_brand_parallel_line_chart() {
+    dispatch.call("hover_remove_brand", this, closeToBrand)
+    closeToBrand = undefined;
+}
+
+function showAxisValue(brand) {
+    const tickWidth = 50;
+    const tickHeight = 20;
+    var information = datasetParallelCoordinates.find(elem => elem['Brand'] == brand);
+    if (information == undefined) hideAxisValue();
+
+    var ticks = parallel_coordinates_svg.selectAll("g.value_tick")
+        .attr("transform", datum => "translate(" + (xPositionScaleParallelCoordinates(datum['Name']) - tickWidth - 5) +
+             "," + datum['scale'](information[datum['Name']]) + ")");
+
+    ticks.classed("hidden", false).raise();
+    ticks.select("text")
+        .text(datum => Math.round(information[datum['Name']]));
+}
+
+function hideAxisValue() {
+    var ticks = parallel_coordinates_svg.selectAll("g.value_tick")
+        .classed("hidden", true);
 }

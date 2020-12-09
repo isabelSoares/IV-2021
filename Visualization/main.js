@@ -8,9 +8,6 @@ var dispatch = d3.dispatch("clickBrandLine",
     "changed_time_period", "changed_spiral_period",
     "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
-    "hover_line_chart", "hover_remove_line_chart",
-    "hover_parallel_line_chart", "hover_remove_parallel_line_chart",
-    //"hover_small_multiples_line_chart", "hover_remove_small_multiples_line_chart",
     "hover_spiral_chart", "hover_remove_spiral_chart");
 
 var dataset_brands
@@ -217,6 +214,7 @@ function prepareEvents() {
         highlight_line(brand);
         highlight_lineParallelCoordinates(brand);
         highlightSmallMultiples(brand);
+        showAxisValue(brand);
         
         if (line_chart != undefined) {
             var information = show_circle(event, line_chart, brand);
@@ -228,61 +226,10 @@ function prepareEvents() {
         remove_highlight_line(brand);
         remove_highlight_lineParallelCoordinateaChart(brand);
         remove_highlight_lineSmallMultiples(brand);
+        hideAxisValue();
 
         remove_circle();
         remove_tooltip_line_chart();
-    });
-    
-    /* --------------- HOVER LINE CHART ------------------ */
-    dispatch.on("hover_line_chart", function(event, line_chart) {
-        var newCloseToBrand
-        var path = getClosestPath(event, line_chart, 50);
-
-        if (path != undefined) {
-            const index = parseInt(d3.select(path).attr("id").split("_")[3]);
-            newCloseToBrand = brands_list[index];
-        } else newCloseToBrand = undefined
-
-        if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
-            dispatch.call("hover_remove_brand", this, closeToBrand)
-        }
-
-        if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
-            dispatch.call("hover_brand", this, event, line_chart, newCloseToBrand);
-        }
-
-        closeToBrand = newCloseToBrand;   
-    });
-
-    dispatch.on("hover_remove_line_chart", function() {
-        dispatch.call("hover_remove_brand", this, closeToBrand)
-        closeToBrand = undefined;
-    });
-
-    /* --------------- HOVER LINE CHART ------------------ */
-    dispatch.on("hover_parallel_line_chart", function(event) {
-        var newCloseToBrand
-        var path = getClosestPathParallelLineChart(event, 50);
-
-        if (path != undefined) {
-            const index = parseInt(d3.select(path).attr("id").split("_")[2]);
-            newCloseToBrand = brands_list[index];
-        } else newCloseToBrand = undefined
-
-        if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
-            dispatch.call("hover_remove_brand", this, closeToBrand)
-        }
-
-        if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
-            dispatch.call("hover_brand", this, event, undefined, newCloseToBrand);
-        }
-
-        closeToBrand = newCloseToBrand;   
-    });
-
-    dispatch.on("hover_remove_parallel_line_chart", function() {
-        dispatch.call("hover_remove_brand", this, closeToBrand)
-        closeToBrand = undefined;
     });
 
     /* ------------- HOVER SPIRAL CHART ------------------- */
