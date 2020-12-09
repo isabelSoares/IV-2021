@@ -1,5 +1,3 @@
-const show_images = false
-
 var fulldataset_models
 var dataset_models
 var fulldataset_brands
@@ -104,9 +102,9 @@ function init() {
             build_spiral_chart();
             build_parallel_coordinates_chart();
             build_small_multiples();
+            build_glyph_chart();
             
             prepareEvents();
-            if (show_images) appendImages();
             
         });
     });
@@ -261,13 +259,4 @@ function prepareEvents() {
         remove_tooltip_spiral_chart();
         remove_region_line_chart();
     });
-}
-
-function appendImages() {
-    var glyph = d3.select("svg#glyph_chart")
-                  .append("svg:image")
-                  .attr("xlink:href", "Resources/Glyphs.png")
-                  .attr("height", "100%")
-                  .attr("width", "100%")
-                  .attr("preserveAspectRatio", "none");
 }

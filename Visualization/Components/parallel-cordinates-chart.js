@@ -11,13 +11,13 @@ function build_parallel_coordinates_chart() {
     const margins = {top: 50, right: 70, bottom: 35, left: 70}
     
     axesParallelCoordinates = [
-        {Name: "Battery Amps/h", attribute: ["battery_amps"]},
-        {Name: "Internal Memory MB", attribute: ["im_MB"]},
-        {Name: "RAM MB", attribute: ["ram_MB"]},
-        {Name: "Camera MP", attribute: ["primary_camera_MP"]},
-        {Name: "Number of Sensors/ Model", attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"]},
-        {Name: "Aspect Ratio", attribute: ["aspect_ratio"]},
-        {Name: "Screen/Body Ratio", attribute: ["screen_body_ratio"]},
+        {Name: "Battery Amps/h", round: 0,attribute: ["battery_amps"]},
+        {Name: "Internal Memory MB", round: 0,attribute: ["im_MB"]},
+        {Name: "RAM MB", round: 1,attribute: ["ram_MB"]},
+        {Name: "Camera MP", round: 1, attribute: ["primary_camera_MP"]},
+        {Name: "Number of Sensors/ Model", round: 2, attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"]},
+        {Name: "Aspect Ratio", round: 2, attribute: ["aspect_ratio"]},
+        {Name: "Screen/Body Ratio", round: 2, attribute: ["screen_body_ratio"]},
     ]
     
     parallel_coordinates_svg.append("text")
@@ -55,7 +55,7 @@ function build_parallel_coordinates_chart() {
         .attr("id", "axis_tick_max")
         .attr("x", datum => xPositionScaleParallelCoordinates(datum['Name']) - 5)
         .attr("y", margins.top)
-        .text(datum => datum['max']);
+        .text(datum => datum['max'].toFixed(datum['round']));
     group_axis.append("text")
         .classed("text_axis_ticks text_left", true)
         .attr("x", datum => xPositionScaleParallelCoordinates(datum['Name']) - 5)
@@ -68,9 +68,10 @@ function build_parallel_coordinates_chart() {
         .attr("transform", datum => "translate(" + (xPositionScaleParallelCoordinates(datum['Name']) - tickWidth - 5) +
              "," + 100 + ")");
     group_tick.append("rect")
-        .attr("fill", "white")
         .attr("width", tickWidth)
-        .attr("height", tickHeight);
+        .attr("height", tickHeight)
+        .attr("rx", 5)
+        .attr("ry", 5);
     group_tick.append("text")
         .classed("text_axis_ticks text_left", true)
         .attr("x", tickWidth - 5)
@@ -93,7 +94,7 @@ function build_parallel_coordinates_chart() {
         .on("mouseout", (event, datum) => hover_remove_brand_parallel_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
-    
+    group_axes.raise();
 }
 
 function treatParallelCoordinatesDataset() {
@@ -137,7 +138,7 @@ function treatParallelCoordinatesDataset() {
 function treatAxesParallel(range) {
     axesParallelCoordinates.forEach(function(axis) {
         axis['min'] = 0;
-        axis['max'] = d3.max(datasetParallelCoordinates, datum => Math.round(datum[axis['Name']] * 1.1));
+        axis['max'] = d3.max(datasetParallelCoordinates, datum => Math.round(datum[axis['Name']] * 1.05));
 
         var scale = d3.scaleLinear()
             .domain([0, axis['max']])
@@ -180,7 +181,8 @@ function highlight_lineParallelCoordinates(brand) {
     parallel_coordinates_svg.selectAll(".line_chart_paths")
         .select("#path_line_" + index)
         .attr("stroke-width", 3)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
+        .attr("stroke", (selected) ? getColorBrand(brand) : "black")
+        .raise();   
 }
 
 function remove_highlight_lineParallelCoordinateaChart(brand) {
@@ -264,15 +266,28 @@ function showAxisValue(brand) {
     const tickWidth = 50;
     const tickHeight = 20;
     var information = datasetParallelCoordinates.find(elem => elem['Brand'] == brand);
-    if (information == undefined) hideAxisValue();
+    if (information == undefined) { hideAxisValue(); return };
 
     var ticks = parallel_coordinates_svg.selectAll("g.value_tick")
         .attr("transform", datum => "translate(" + (xPositionScaleParallelCoordinates(datum['Name']) - tickWidth - 5) +
-             "," + datum['scale'](information[datum['Name']]) + ")");
+             "," + moveYParallelLineChartTooltip(information, datum, datum['scale'](information[datum['Name']])) + ")");
 
-    ticks.classed("hidden", false).raise();
+    //ticks.attr("fill", datum => console.log(datum['scale'].range()));
+    ticks.classed("hidden", false);
     ticks.select("text")
-        .text(datum => Math.round(information[datum['Name']]));
+        .text(datum => (Math.round(information[datum['Name']] * Math.pow(10, datum['round'])) / Math.pow(10, datum['round'])).toFixed(datum['round']));
+}
+
+function moveYParallelLineChartTooltip(infomation, datum, value) {
+    const tickWidth = 50;
+    const tickHeight = 20;
+    const variance = 15;
+
+    const range = datum['scale'].range()
+    const threshold = Math.abs(range[0] - range[1]) / 2;
+
+    if (value > threshold) return value - tickHeight - variance
+    else return value + variance
 }
 
 function hideAxisValue() {

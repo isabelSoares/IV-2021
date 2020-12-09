@@ -142,6 +142,12 @@ body {
     stroke-linejoin: round;
 }
 
+.value_tick rect {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+}
+
 text {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
