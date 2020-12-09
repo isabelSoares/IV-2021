@@ -234,6 +234,7 @@ function addErrorMessage() {
         .attr("dy", 0)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "hanging")
+        .attr("font-family", "Verdana, Geneva, Tahoma, sans-serif")
         .text("Select a period of time big enough for at least one revolution!")
         .call(wrap, WIDTH * 0.90);
 

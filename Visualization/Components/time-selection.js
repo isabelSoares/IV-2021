@@ -16,7 +16,9 @@ function build_time_selection_svg() {
     var min_date_brands = d3.min(fulldataset_brands.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
     var max_date_brands = d3.max(fulldataset_brands.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
     min_date = new Date(Math.min(min_date_brands, min_date_models));
-    max_date = new Date(Math.max(max_date_brands, max_date_models));
+    max_date = new Date(Math.min(max_date_brands, max_date_models));
+
+    max_date = new Date(max_date.getFullYear(), 0 , 1);
 
     // console.log("Min Available Date: ", min_date);
     // console.log("Max Available Date: ", max_date);

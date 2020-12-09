@@ -7,9 +7,9 @@ var brands_selection_svgs = {}
 
 var brands_colors = [
     { "Color": d3.rgb(162,50,22), "Brand": undefined },
-    { "Color": d3.rgb(226,115,18), "Brand": undefined },
+    { "Color": d3.rgb(226,115,18), "Brand": "OnePlus" },
     { "Color": d3.rgb(243,175,22), "Brand": undefined },
-    { "Color": d3.rgb(46,112,61), "Brand": undefined }
+    { "Color": d3.rgb(46,112,61), "Brand": "Mitac" }
 ]
 
 function build_brand_selection_form() {

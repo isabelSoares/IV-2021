@@ -246,7 +246,6 @@ function hover_brand_small_multiples_chart(event, element){
 }
 
 function hover_brand_remove_small_multiples_chart() {
-    /*
     dispatch.call("hover_remove_brand", this, closeToBrand)
-    closeToBrand = undefined; */
+    closeToBrand = undefined;
 }

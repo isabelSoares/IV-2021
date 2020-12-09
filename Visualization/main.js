@@ -11,10 +11,10 @@ var dispatch = d3.dispatch("clickBrandLine",
 var dataset_brands
 var brands_list
 var closeToBrand = undefined
-var selected_brands = []
+var selected_brands = ["OnePlus", "Mitac"]
 
 var start_date = new Date(1992, 0, 1)
-var end_date = new Date(2019, 0, 1)
+var end_date = new Date(2017, 0, 1)
 
 const DatasetDir = "../Datasets/"
 
@@ -148,6 +148,7 @@ function prepareEvents() {
         updateParallelLineChart();
         updateSpiralChart();
         updateSmallMultiplesChart();
+        updateGlyphChart();
     });
 
     /* --------------- CHANGED SPIRAL PERIOD ------------------ */
@@ -168,6 +169,7 @@ function prepareEvents() {
 
             update_brand_selection_unselected_brand();
             updateSpiralChart();
+            updateGlyphChart();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -178,6 +180,7 @@ function prepareEvents() {
 
             update_brand_selection_selected_brand();
             updateSpiralChart();
+            updateGlyphChart();
         }
     });
 
@@ -192,6 +195,7 @@ function prepareEvents() {
 
         update_brand_selection_selected_brand();
         updateSpiralChart();
+        updateGlyphChart();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
@@ -205,6 +209,7 @@ function prepareEvents() {
 
         update_brand_selection_unselected_brand();
         updateSpiralChart();
+        updateGlyphChart();
     });
 
     /* --------------- HOVER POINT OF BRAND ------------------ */
