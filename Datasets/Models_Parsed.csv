@@ -97,362 +97,362 @@ _Iconia Tab 10 A3-A40;Acer;2016;2;April;4;Y;N;null;Li-Ion;Y;IPS LCD capacitive t
 _Iconia Talk S;Acer;2016;3;August;8;Y;N;3400;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;69;Y;Y;2000.0;32000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
 _Liquid Z6 Plus;Acer;2016;3;August;8;Y;Y;4080;Li-Po;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;3000.0;32000.0;3.0;Y;Y;N;Y;Y;front;N;N;Y;N
 _Liquid Z6;Acer;2016;3;August;8;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;null;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_View;alcatel;null;null;null;null;Y;Y;1500;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6666666667;null;Y;N;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_HC 1000;alcatel;1997;null;null;null;N;Y;600;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT COM;alcatel;1998;null;null;null;N;Y;880;NiMH;N;Monochrome resistive touchscreen;1.49375;null;N;N;null;0.512;null;N;N;N;N;N;null;N;N;N;N
-_OT Club +;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Club;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Easy HF;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Max;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Pro;alcatel;1998;null;null;null;N;Y;600;NiMH;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Easy;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT View;alcatel;1998;null;null;null;N;Y;580;NiMH;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Pocket;alcatel;1999;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT View db;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT View db @;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 700;alcatel;2000;null;null;null;N;Y;780;Li-Po;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Club db;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Easy db;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Max db;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT Gum db;alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 300;alcatel;2000;null;null;null;N;Y;null;Li-Ion;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 500;alcatel;2000;null;null;null;N;Y;null;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 311;alcatel;2001;null;null;null;N;Y;700;NiMH;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 511;alcatel;2001;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 715;alcatel;2002;null;null;null;N;Y;null;Li-Po;N;Grayscale graphic  4 shades;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 512;alcatel;2002;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 525;alcatel;2002;4;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 332;alcatel;2003;null;null;null;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 320;alcatel;2003;1;null;null;N;Y;700;Li-Ion;N;Monochrome graphic;1.75;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 526;alcatel;2003;1;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 531;alcatel;2003;1;March;3;N;Y;900;Li-Ion;N;CSTN  4096 colors;1.1015625;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 331;alcatel;2003;2;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 535;alcatel;2003;3;July;7;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;1.0;null;N;N;N;N;N;null;N;N;N;N
-_OT 735;alcatel;2003;3;September;9;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 556;alcatel;2004;1;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT 756;alcatel;2004;1;null;null;N;Y;950;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT 835;alcatel;2004;1;null;null;N;Y;785;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT 735i;alcatel;2004;1;null;null;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 156;alcatel;2004;1;null;null;N;Y;720;Li-Ion;N;LCD  4096 colors;1.2625;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 155;alcatel;2004;1;null;null;N;Y;null;Li-Ion;N;Grayscale graphic;1.5538461538;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 355;alcatel;2004;1;null;null;N;Y;720;Li-Ion;N;CSTN  64K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 557;alcatel;2004;3;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT 153;alcatel;2004;3;null;null;N;Y;700;Li-Ion;N;Grayscale graphic;1.75;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT 565;alcatel;2004;4;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT 757;alcatel;2004;4;null;null;N;Y;950;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C551;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C555;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C652;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C656;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C651;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;5.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-S853;alcatel;2005;1;null;null;N;Y;800;Li-Ion;Y;TFT  256K colors;1.25;26;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-E252;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E157;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;Grayscale graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E159;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E158;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;Grayscale graphic  STN;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E256;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E259;alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S850;alcatel;2005;2;null;null;N;Y;500;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;3.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-C552;alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C750;alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-E160;alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E257;alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-C635;alcatel;2006;null;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-E260;alcatel;2006;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-C560;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;22;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C550;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;22;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C630;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-E100;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;Color graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E105;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;Monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E265;alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E801;alcatel;2006;1;February;2;N;Y;null;Li-Ion;N;CSTN  65K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E205;alcatel;2006;4;October;10;N;Y;650;Li-Ion;N;4K colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-C700A;alcatel;2007;null;null;null;N;Y;750;Li-Ion;N;TFT  65K colors;1.25;25;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-E207;alcatel;2007;null;null;null;N;Y;720;Li-Ion;N;CSTN  65K colors;1.2631578947;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-C507;alcatel;2007;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.0;16;N;N;null;1.0;null;N;N;Y;N;N;null;N;N;N;N
-_Lollipops;alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C707;alcatel;2007;1;February;2;N;Y;750;Li-Ion;;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-C701;alcatel;2007;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_ELLE No 3;alcatel;2007;1;February;2;N;Y;700;Li-Ion;Y;TFT  256K colors;1.25;23;N;N;null;12.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-C825;alcatel;2007;1;February;2;N;Y;700;Li-Ion;Y;TFT  256K colors;1.25;null;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-C717;alcatel;2007;1;February;2;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;24;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-E201;alcatel;2007;1;February;2;N;Y;720;Li-Ion;N;CSTN  65K colors;1.2631578947;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E101;alcatel;2007;1;February;2;N;Y;720;Li-Ion;N;Monochrome graphic;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E225;alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;Monochrome graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E220;alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;4K colors;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E221;alcatel;2007;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E227;alcatel;2007;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E230;alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;13;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-E805;alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_Mandarina Duck;alcatel;2007;4;October;10;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-S521A;alcatel;2008;null;null;null;N;Y;750;Li-Ion;N;STN;1.25;21;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-V570;alcatel;2008;null;null;null;N;Y;750;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-S626A;alcatel;2008;null;null;null;N;Y;750;Li-Ion;Y;CSTN  65K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-S211;alcatel;2008;null;null;null;N;Y;670;Li-Ion;N;CSTN  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S215A;alcatel;2008;null;null;null;N;Y;670;Li-Ion;N;CSTN  65K colors;1.25;23;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-S320;alcatel;2008;null;null;null;N;Y;750;Li-Ion;Y;STN  65K colors;1.25;25;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-V607A;alcatel;2008;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.25;24;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-V670;alcatel;2008;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-V212;alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;CSTN  65K colors;1.0;16;N;null;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S621;alcatel;2008;1;February;2;N;Y;750;Li-Ion;Y;STN  65K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-S920;alcatel;2008;1;February;2;N;Y;800;Li-Ion;Y;TFT  256K colors;1.25;23;N;N;null;40.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-I650 SPORT;alcatel;2008;1;February;2;N;Y;1000;Li-Ion;Y;OLED  65K colors;1.25;22;N;N;null;2.0;1.3;N;N;N;Y;N;null;N;N;N;N
-_OT-I650 PRO;alcatel;2008;1;February;2;N;Y;1000;Li-Ion;Y;OLED  65K colors;1.25;22;N;Y;null;2.0;1.3;N;N;N;Y;N;null;N;N;N;N
-_OT-S210;alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;STN  65K colors;1.0;16;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S107;alcatel;2008;1;February;2;N;Y;720;Li-Ion;N;STN  monochrome graphics;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S120;alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.5;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S319;alcatel;2008;1;February;2;N;Y;750;Li-Ion;N;STN  65K colors;1.25;25;N;N;null;2.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-S218;alcatel;2008;1;February;2;N;Y;670;Li-Ion;Y;STN  65K colors;1.25;23;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-V770;alcatel;2008;1;January;1;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-V270;alcatel;2008;1;January;1;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_Mandarina Duck Moon;alcatel;2008;4;November;11;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-222;alcatel;2009;null;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S520;alcatel;2009;1;February;2;N;Y;750;Li-Ion;N;STN  65K colors;1.25;22;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-102;alcatel;2009;1;February;2;N;Y;720;Li-Ion;N;STN  monochrome graphics;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-111;alcatel;2009;1;February;2;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.53125;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-202;alcatel;2009;1;February;2;N;Y;720;Li-Ion;N;CSTN  65K colors;1.5;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-303;alcatel;2009;1;March;3;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-363;alcatel;2009;1;March;3;N;Y;650;Li-Ion;Y;CSTN  65K colors;1.25;25;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-600;alcatel;2009;1;March;3;N;Y;750;Li-Ion;Y;CSTN  65K colors;1.25;21;N;null;null;2.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-280;alcatel;2009;1;March;3;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;24;N;N;null;0.5;null;N;N;N;N;N;null;N;N;N;N
-_OT-383;alcatel;2009;2;June;6;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;24;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-660;alcatel;2009;2;June;6;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;23;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-708 One Touch MINI;alcatel;2009;2;June;6;N;Y;750;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;35;N;Y;null;5.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-203;alcatel;2009;2;June;6;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-S121;alcatel;2009;2;June;6;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.53125;11;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-103;alcatel;2009;2;June;6;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-800 One Touch Tribe;alcatel;2009;2;June;6;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;23;N;Y;null;20.0;2.0;N;N;N;N;N;null;N;N;N;N
-_Roadsign;alcatel;2009;3;August;8;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-800 One Touch CHROME;alcatel;2009;3;August;8;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;23;N;Y;null;20.0;2.0;N;N;N;N;N;null;N;N;N;N
-_ELLE GlamPhone;alcatel;2009;3;July;7;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;24;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_Miss Sixty 2009;alcatel;2009;3;July;7;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;23;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-106;alcatel;2009;4;December;12;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.46875;9;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-802 Wave;alcatel;2009;4;December;12;N;Y;850;Li-Ion;Y;TFT   256K colors;1.3333333333;27;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
-_Crystal;alcatel;2009;4;October;10;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;23;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-706;alcatel;2010;null;null;null;Y;Y;650;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;35;N;Y;null;1.0;1.3;N;N;N;N;N;null;N;N;N;N
-_OT-223;alcatel;2010;null;null;null;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-105;alcatel;2010;null;null;null;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-300;alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-216;alcatel;2010;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
-_OT-305;alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-301;alcatel;2010;1;February;2;N;Y;500;Li-Ion;Y;CSTN  65K colors;1.0;14;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-505;alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-508A;alcatel;2010;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-380;alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;24;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-565;alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT   65K colors;1.25;21;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-606 One Touch CHAT;alcatel;2010;1;February;2;Y;Y;670;Li-Ion;Y;TFT  256K colors;1.3333333333;27;N;Y;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-208;alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-108;alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;STN  monochrome graphics;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-252;alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-808;alcatel;2010;1;February;2;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;35;N;Y;null;80.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-806;alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;34;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-880 One Touch XTRA;alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;29;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-980;alcatel;2010;1;February;2;Y;Y;1150;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;37;Y;N;null;194.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-255;alcatel;2010;1;February;2;N;Y;650;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;8.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-909 One Touch MAX;alcatel;2010;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;37;Y;Y;null;88.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Miss Sixty;alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  65K colors;1.3333333333;29;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-710;alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;41;N;Y;null;5.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-206;alcatel;2010;2;April;4;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
-_Net;alcatel;2010;2;June;6;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;27;N;Y;null;80.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-910;alcatel;2011;null;null;null;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;35;Y;Y;null;150.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-810D;alcatel;2011;null;null;null;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;36;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-813F;alcatel;2011;null;null;null;Y;Y;null;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-908F;alcatel;2011;null;null;null;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;null;2.0;N;N;N;Y;N;null;N;N;Y;N
-_OT-330;alcatel;2011;null;null;null;Y;Y;850;Li-Ion;N;TFT  256K colors;1.25;19;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-690;alcatel;2011;null;null;null;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;23;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-818;alcatel;2011;1;null;null;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.6666666667;49;N;Y;null;50.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-306;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-355;alcatel;2011;1;February;2;Y;Y;650;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;7.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-361;alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;24;N;Y;null;8.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-990;alcatel;2011;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;null;150.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-112;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-890;alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-891 Soul;alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;39;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-113;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-213;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-109;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-209;alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-799 Play;alcatel;2011;1;February;2;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;27;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-803;alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-807;alcatel;2011;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;34;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-900;alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-908;alcatel;2011;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;Y;N
-_OT-506;alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-665;alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;21;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-905;alcatel;2011;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-888;alcatel;2011;2;null;null;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.6666666667;45;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-890D;alcatel;2011;2;May;5;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-813D;alcatel;2011;2;May;5;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-918D;alcatel;2011;3;null;null;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;256.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_OT-385;alcatel;2011;3;August;8;Y;Y;850;Li-Ion;N;TFT  256K colors;1.25;20;N;Y;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-117;alcatel;2011;3;August;8;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-217;alcatel;2011;3;August;8;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-585;alcatel;2011;3;July;7;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;20;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-906;alcatel;2011;3;July;7;Y;Y;1150;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;39;Y;Y;null;200.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_OT-602;alcatel;2011;3;July;7;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;33;N;Y;null;3.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-282;alcatel;2011;4;December;12;N;Y;1000;Li-Ion;N;TFT  65K colors;1.25;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-918;alcatel;2011;4;November;11;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;256.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_OT-810;alcatel;2011;4;October;10;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;36;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-978;alcatel;2012;null;null;null;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;54;Y;Y;null;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_OT-819 Soul;alcatel;2012;null;null;null;null;Y;null;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-992D;alcatel;2012;null;null;null;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
-_OT-308;alcatel;2012;1;February;2;Y;Y;500;Li-Ion;N;TFT  65K colors;1.0;14;N;Y;null;1.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-991;alcatel;2012;1;February;2;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;57;Y;Y;null;150.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
-_OT-995;alcatel;2012;1;February;2;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;60;Y;Y;512.0;2000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-915;alcatel;2012;1;February;2;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;35;Y;Y;null;null;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-310;alcatel;2012;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;4.0;null;N;N;N;N;N;null;N;N;N;N
-_OT-292;alcatel;2012;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;24;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-318D;alcatel;2012;1;January;1;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.3333333333;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-228;alcatel;2012;1;January;1;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_OT-317D;alcatel;2012;1;March;3;Y;Y;650;Li-Ion;N;TFT  256K colors;1.3333333333;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-985;alcatel;2012;1;March;3;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;256.0;512.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
-_OT-870;alcatel;2012;1;March;3;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;20;Y;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-916;alcatel;2012;2;April;4;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  256K colors;null;27;Y;Y;null;150.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
-_OT-358;alcatel;2012;2;April;4;Y;Y;650;Li-Ion;N;TFT  256K colors;1.25;20;N;Y;null;8.0;null;N;N;Y;N;N;null;N;N;N;N
-_OT-595;alcatel;2012;2;April;4;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;24;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-838;alcatel;2012;2;April;4;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-720;alcatel;2012;2;April;4;Y;Y;1000;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;40;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-902;alcatel;2012;2;June;6;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;50.0;3.15;N;N;N;N;N;null;N;N;N;N
-_OT-986;alcatel;2012;2;May;5;Y;Y;1800;Li-Ion;Y;IPS LCD  capacitive touchscreen  16M colors;1.7777777778;61;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-605;alcatel;2012;3;August;8;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;33;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
-_OT-997;alcatel;2012;3;August;8;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;59;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-993;alcatel;2012;3;August;8;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;null;3000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-903;alcatel;2012;3;August;8;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;Y;N
-_OT-668;alcatel;2012;3;August;8;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;23;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
-_OT-997D;alcatel;2012;3;July;7;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;59;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_OT-983;alcatel;2012;4;November;11;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_OT-988 Shockwave;alcatel;2012;4;October;10;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;512.0;1000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_Idol X;alcatel;2013;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Snap;alcatel;2013;1;February;2;Y;Y;1800;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Snap LTE;alcatel;2013;1;February;2;Y;Y;2200;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7791666667;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Fire;alcatel;2013;1;February;2;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;512.0;160.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_One Touch Scribe Easy;alcatel;2013;1;February;2;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;63;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Star;alcatel;2013;1;February;2;Y;Y;1500;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.6666666667;63;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Evo 7;alcatel;2013;1;January;1;N;N;null;Li-Ion;Y;TFT touchscreen;1.7066666667;56;Y;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
-_One Touch Tab 7;alcatel;2013;1;January;1;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;59;N;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
-_One Touch Idol Ultra;alcatel;2013;1;January;1;N;N;1800;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;64;Y;Y;1000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch S'Pop;alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;51;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_One Touch Idol;alcatel;2013;1;January;1;Y;N;1800;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;66;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Scribe HD;alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Scribe X;alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;2.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Scribe HD-LTE;alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch T'Pop;alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;256.0;512.0;3.2;N;N;N;Y;N;null;N;N;Y;N
-_One Touch X'Pop;alcatel;2013;1;January;1;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;62;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch M'Pop;alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;1000.0;4000.0;5.0;Y;N;N;Y;N;null;N;N;Y;N
-_One Touch Tab 8 HD;alcatel;2013;1;January;1;Y;N;null;Li-Ion;Y;IPS LCD capacitive touchscreen;1.3333333333;63;Y;N;1000.0;8000.0;2.0;N;N;N;N;N;null;N;N;N;N
-_One Touch Tab 7 HD;alcatel;2013;1;January;1;Y;N;3300;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;59;Y;N;1000.0;8000.0;2.0;N;N;N;N;N;null;N;N;N;N
-_One Touch Evo 7 HD;alcatel;2013;1;January;1;N;N;null;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;60;Y;N;1000.0;4000.0;3.0;N;N;N;N;N;null;N;N;N;N
-_One Touch T10;alcatel;2013;2;null;null;Y;N;3000;Li-Ion;N;TFT capacitive touchscreen;1.6666666667;61;N;N;1000.0;4000.0;null;N;N;Y;Y;N;null;N;N;N;N
-_Idol S;alcatel;2013;3;August;8;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol Mini;alcatel;2013;3;August;8;Y;N;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;8000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_One Touch Pixi;alcatel;2013;3;August;8;Y;Y;1300;Li-Ion;Y;TFT touchscreen  256K colors;1.5;50;N;Y;256.0;512.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_One Touch Evo 8HD;alcatel;2013;3;September;9;Y;N;4160;Li-Ion;Y;IPS LCD capacitive touchscreen;1.3333333333;58;Y;N;1000.0;4000.0;3.15;N;N;N;N;N;null;N;N;N;N
-_Hero;alcatel;2013;3;September;9;Y;N;3400;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;77;Y;Y;2000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol Alpha;alcatel;2013;3;September;9;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;66;Y;Y;1000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop C7;alcatel;2013;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Fierce;alcatel;2013;3;September;9;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop C3;alcatel;2013;3;September;9;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
-_Pop C5;alcatel;2013;3;September;9;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;62;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
-_Evolve;alcatel;2013;3;September;9;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;N;N;Y;N;null;N;N;Y;N
-_Pop C1;alcatel;2013;3;September;9;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_2000;alcatel;2013;4;November;11;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
-_2001;alcatel;2013;4;November;11;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
-_2052;alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT;1.25;21;N;Y;null;128.0;null;N;N;Y;N;N;null;N;N;N;N
-_2040;alcatel;2014;null;null;null;Y;Y;850;Li-Ion;N;TFT  256K colors;1.3333333333;28;N;Y;4.0;4.0;null;N;N;Y;N;N;null;N;N;N;N
-_2012;alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;42;N;Y;null;16.0;3.15;N;N;N;N;N;null;N;N;N;N
-_2010;alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;32;N;Y;64.0;128.0;2.0;N;N;N;N;N;null;N;N;N;N
-_2005;alcatel;2014;null;null;null;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;29;N;Y;null;128.0;2.0;N;N;N;N;N;null;N;N;N;N
-_Fire 7;alcatel;2014;1;February;2;Y;N;null;Li-Ion;Y;Capacitive touchscreen;1.7777777778;null;Y;Y;null;null;null;N;N;Y;Y;N;null;N;N;N;N
-_Pixi 7;alcatel;2014;1;February;2;Y;N;2840;Li-Ion;;TFT capacitive touchscreen;1.7777777778;62;N;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
-_Fire C;alcatel;2014;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;null;N;N;Y;Y;N;null;N;N;Y;N
-_Idol 2 Mini;alcatel;2014;1;February;2;Y;N;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 2 Mini S;alcatel;2014;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 2;alcatel;2014;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 2 S;alcatel;2014;1;February;2;Y;N;2150;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Fire S;alcatel;2014;1;February;2;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop S7;alcatel;2014;1;February;2;Y;Y;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop S3;alcatel;2014;1;February;2;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop S9;alcatel;2014;1;February;2;Y;Y;3400;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Fire E;alcatel;2014;1;February;2;Y;Y;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop Fit;alcatel;2014;1;February;2;Y;Y;1000;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;44;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;Y;N
-_Idol X+;alcatel;2014;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop C9;alcatel;2014;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_POP 7;alcatel;2014;1;January;1;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;63;Y;N;1000.0;4000.0;2.0;N;N;N;N;N;null;N;N;N;N
-_POP 8;alcatel;2014;1;January;1;Y;N;4100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;72;Y;N;1000.0;4000.0;2.0;N;N;N;N;N;null;N;N;N;N
-_POP 7S;alcatel;2014;1;January;1;Y;N;3240;Li-Ion;Y;IPS LCD capacitive touchscreen;1.7066666667;63;Y;N;1000.0;4000.0;3.0;N;N;N;N;N;null;N;N;N;N
-_Pixi 8;alcatel;2014;2;June;6;Y;N;3240;Li-Ion;N;TFT capacitive touchscreen;1.6;71;Y;N;1000.0;8000.0;null;N;N;Y;N;N;null;N;N;N;N
-_Pixi 2;alcatel;2014;2;May;5;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Fierce 2;alcatel;2014;3;August;8;Y;Y;null;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop D3;alcatel;2014;3;August;8;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
-_Pop D5;alcatel;2014;3;August;8;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;62;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
-_Pop D1;alcatel;2014;3;August;8;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;Y;N
-_Pop C2;alcatel;2014;3;July;7;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;N;N
-_Hero 2;alcatel;2014;3;September;9;Y;N;3100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;75;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
-_Hero 8;alcatel;2014;3;September;9;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;72;Y;Y;2000.0;32000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 2 (4.5);alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 2 (4.5) Dual SIM;alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 2 (4);alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
-_Flash;alcatel;2014;3;September;9;Y;Y;3200;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 2 (5) Premium;alcatel;2014;3;September;9;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop Icon;alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 2 (5);alcatel;2014;3;September;9;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
-_POP 8S;alcatel;2014;3;September;9;Y;N;4100;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;69;Y;N;1000.0;8000.0;5.0;Y;N;N;Y;N;null;N;N;N;N
-_Fire C 2G;alcatel;2014;4;October;10;Y;Y;1000;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;N;Y;128.0;256.0;1.3;N;N;N;Y;N;null;N;N;N;N
-_Evolve 2;alcatel;2014;4;October;10;Y;Y;1400;Li-Ion;Y;Capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
-_2007;alcatel;2015;null;null;null;N;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;30;N;Y;16.0;null;3.15;N;N;N;N;N;null;N;N;N;N
-_10.16G;alcatel;2015;null;null;null;null;Y;400;Li-Ion;N;TFT;null;null;N;Y;null;4.0;null;N;N;N;N;N;null;N;N;N;N
-_Pixi 3 (5);alcatel;2015;1;January;1;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;512.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
-_Pixi 3 (4.5);alcatel;2015;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;512.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
-_Pixi 3 (3.5);alcatel;2015;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;N;N
-_Pixi 3 (4);alcatel;2015;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
-_Pixi 3 (3.5) Firefox;alcatel;2015;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;512.0;2.0;N;Y;N;Y;N;null;N;N;N;N
-_POP 10;alcatel;2015;1;January;1;Y;N;4600;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;74;Y;Y;1000.0;8000.0;5.0;N;N;N;Y;N;null;N;N;Y;N
-_Idol 3 (5.5);alcatel;2015;1;March;3;Y;N;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 3 (4.7);alcatel;2015;1;March;3;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;5000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pixi 3 (5.5) LTE;alcatel;2015;1;March;3;Y;Y;2800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;null;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pixi 3 (5.5);alcatel;2015;1;March;3;Y;Y;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;null;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
-_Orange Klif;alcatel;2015;1;March;3;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;256.0;512.0;2.0;N;Y;N;Y;N;null;N;N;N;N
-_Pixi 3 (7) LTE;alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;66;Y;N;1000.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Pixi 3 (8) 3G;alcatel;2015;1;March;3;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen;1.6;71;Y;N;1000.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Pixi 3 (7) 3G;alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;65;Y;N;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Pixi 3 (7);alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;65;N;N;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_Pop Astro;alcatel;2015;2;April;4;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;64;Y;Y;1000.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
-_Flash Plus;alcatel;2015;2;May;5;Y;Y;3500;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 3C;alcatel;2015;3;September;9;Y;N;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Flash 2;alcatel;2015;3;September;9;Y;N;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
-_Pop Up;alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Go Play;alcatel;2015;3;September;9;Y;Y;2500;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;65;Y;Y;1000.0;8000.0;8.0;Y;Y;N;N;N;null;N;N;N;N
-_Pop Star;alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop Star LTE;alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_GO Watch;alcatel;2015;3;September;9;N;N;225;Li-Ion;Y;Capacitive touchscreen  256K colors;1.1764705882;18;N;N;8.0;null;null;N;N;N;Y;N;null;Y;N;N;N
-_Watch;alcatel;2015;3;September;9;N;N;210;Li-Ion;Y;IPS LCD capacitive touchscreen  256K colors;1.1764705882;27;N;N;8.0;null;null;N;N;N;Y;N;null;Y;N;N;N
-_Pixi First;alcatel;2015;3;September;9;Y;Y;1450;Li-Ion;Y;Capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;512.0;4000.0;5.0;N;Y;N;N;N;null;N;N;N;N
-_Pixi 3 (10);alcatel;2015;3;September;9;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;74;Y;N;1000.0;16000.0;5.0;N;N;N;Y;N;null;N;N;N;N
-_Pop 3 (5);alcatel;2015;4;null;null;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
-_X1;alcatel;2015;4;December;12;Y;N;2150;Li-Po;Y;Super AMOLED capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
-_Fierce XL;alcatel;2015;4;October;10;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Idol 4;alcatel;2016;1;February;2;Y;N;2610;Li-Ion;Y;LTPS IPS LCD capacitive touchscreen  16M colors;1.7777777778;69;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
-_Idol 4s;alcatel;2016;1;February;2;Y;N;3000;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;3000.0;32000.0;6.0;Y;N;N;Y;N;null;N;N;Y;N
-_Pop 4S;alcatel;2016;1;February;2;Y;Y;2960;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;front;N;N;Y;N
-_Pop 3 (5.5);alcatel;2016;1;February;2;Y;Y;2910;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;70;Y;N;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;N;N
-_Pop 4;alcatel;2016;1;February;2;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pop 4+;alcatel;2016;1;February;2;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;5000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pixi 3 (8) LTE;alcatel;2016;1;February;2;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;71;Y;N;1000.0;8000.0;5.0;N;N;N;Y;N;null;N;N;N;N
-_Fierce XL (Windows);alcatel;2016;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_CareTime;alcatel;2016;1;January;1;N;N;380;Li-Ion;Y;OLED (single white color);1.5;16;Y;N;null;null;null;N;N;N;N;N;null;N;N;N;N
-_Pixi 4 (6);alcatel;2016;1;January;1;Y;Y;2580;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pixi 4 (4);alcatel;2016;1;January;1;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
-_Pixi 4 (3.5);alcatel;2016;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.5;50;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;N;N
-_Pixi 4 (7);alcatel;2016;1;January;1;Y;N;2580;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;67;Y;Y;1000.0;8000.0;2.0;N;N;N;Y;N;null;N;N;N;N
-_POP 7 LTE;alcatel;2016;2;April;4;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;65;Y;N;1000.0;8000.0;5.0;N;N;N;N;N;null;N;N;N;N
-_Pixi 4 (6) 3G;alcatel;2016;2;June;6;Y;Y;2580;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Pixi 4 (5);alcatel;2016;2;June;6;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7791666667;67;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
-_Flash Plus 2;alcatel;2016;2;May;5;Y;N;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;front;N;N;Y;N
-_Idol 4s Windows;alcatel;2016;3;null;null;Y;N;3000;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;71;Y;N;4000.0;64000.0;1.0;Y;N;N;Y;N;null;N;N;Y;N
-_Fierce 4;alcatel;2016;3;August;8;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
-_Shine Lite;alcatel;2016;3;September;9;Y;N;2460;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;rear;N;N;Y;N
-_A3 XL;alcatel;2017;1;January;1;Y;N;3000;Li-Ion;Y;IPS FL LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;Y;rear;N;N;Y;N
-_Flash (2017);alcatel;2017;2;April;4;Y;N;3100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;3000.0;32000.0;3.0;Y;N;N;Y;Y;rear;N;N;Y;N
+_View;Alcatel;null;null;null;null;Y;Y;1500;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6666666667;null;Y;N;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_HC 1000;Alcatel;1997;null;null;null;N;Y;600;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT COM;Alcatel;1998;null;null;null;N;Y;880;NiMH;N;Monochrome resistive touchscreen;1.49375;null;N;N;null;0.512;null;N;N;N;N;N;null;N;N;N;N
+_OT Club +;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Club;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Easy HF;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Max;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Pro;Alcatel;1998;null;null;null;N;Y;600;NiMH;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Easy;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT View;Alcatel;1998;null;null;null;N;Y;580;NiMH;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Pocket;Alcatel;1999;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT View db;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT View db @;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 700;Alcatel;2000;null;null;null;N;Y;780;Li-Po;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Club db;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Easy db;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Max db;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT Gum db;Alcatel;2000;null;null;null;N;Y;650;NiMH;N;Alphanumeric;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 300;Alcatel;2000;null;null;null;N;Y;null;Li-Ion;N;Monochrome graphic;null;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 500;Alcatel;2000;null;null;null;N;Y;null;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 311;Alcatel;2001;null;null;null;N;Y;700;NiMH;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 511;Alcatel;2001;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 715;Alcatel;2002;null;null;null;N;Y;null;Li-Po;N;Grayscale graphic  4 shades;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 512;Alcatel;2002;null;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 525;Alcatel;2002;4;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 332;Alcatel;2003;null;null;null;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 320;Alcatel;2003;1;null;null;N;Y;700;Li-Ion;N;Monochrome graphic;1.75;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 526;Alcatel;2003;1;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 531;Alcatel;2003;1;March;3;N;Y;900;Li-Ion;N;CSTN  4096 colors;1.1015625;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 331;Alcatel;2003;2;null;null;N;Y;600;Li-Ion;N;Monochrome graphic;1.4769230769;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 535;Alcatel;2003;3;July;7;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;1.0;null;N;N;N;N;N;null;N;N;N;N
+_OT 735;Alcatel;2003;3;September;9;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 556;Alcatel;2004;1;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT 756;Alcatel;2004;1;null;null;N;Y;950;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT 835;Alcatel;2004;1;null;null;N;Y;785;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT 735i;Alcatel;2004;1;null;null;N;Y;null;Li-Ion;N;CSTN  4096 colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 156;Alcatel;2004;1;null;null;N;Y;720;Li-Ion;N;LCD  4096 colors;1.2625;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 155;Alcatel;2004;1;null;null;N;Y;null;Li-Ion;N;Grayscale graphic;1.5538461538;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 355;Alcatel;2004;1;null;null;N;Y;720;Li-Ion;N;CSTN  64K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 557;Alcatel;2004;3;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT 153;Alcatel;2004;3;null;null;N;Y;700;Li-Ion;N;Grayscale graphic;1.75;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT 565;Alcatel;2004;4;null;null;N;Y;800;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT 757;Alcatel;2004;4;null;null;N;Y;950;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C551;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C555;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C652;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C656;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C651;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;5.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-S853;Alcatel;2005;1;null;null;N;Y;800;Li-Ion;Y;TFT  256K colors;1.25;26;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-E252;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E157;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;Grayscale graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E159;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E158;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;Grayscale graphic  STN;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E256;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E259;Alcatel;2005;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S850;Alcatel;2005;2;null;null;N;Y;500;Li-Ion;N;TFT  256K colors;1.25;null;N;N;null;3.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-C552;Alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C750;Alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;null;N;N;null;3.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-E160;Alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E257;Alcatel;2005;3;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-C635;Alcatel;2006;null;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-E260;Alcatel;2006;1;null;null;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-C560;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;22;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C550;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;22;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C630;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-E100;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;Color graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E105;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;Monochrome graphics;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E265;Alcatel;2006;1;February;2;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E801;Alcatel;2006;1;February;2;N;Y;null;Li-Ion;N;CSTN  65K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E205;Alcatel;2006;4;October;10;N;Y;650;Li-Ion;N;4K colors;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-C700A;Alcatel;2007;null;null;null;N;Y;750;Li-Ion;N;TFT  65K colors;1.25;25;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-E207;Alcatel;2007;null;null;null;N;Y;720;Li-Ion;N;CSTN  65K colors;1.2631578947;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-C507;Alcatel;2007;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.0;16;N;N;null;1.0;null;N;N;Y;N;N;null;N;N;N;N
+_Lollipops;Alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C707;Alcatel;2007;1;February;2;N;Y;750;Li-Ion;;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-C701;Alcatel;2007;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_ELLE No 3;Alcatel;2007;1;February;2;N;Y;700;Li-Ion;Y;TFT  256K colors;1.25;23;N;N;null;12.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-C825;Alcatel;2007;1;February;2;N;Y;700;Li-Ion;Y;TFT  256K colors;1.25;null;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-C717;Alcatel;2007;1;February;2;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;24;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-E201;Alcatel;2007;1;February;2;N;Y;720;Li-Ion;N;CSTN  65K colors;1.2631578947;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E101;Alcatel;2007;1;February;2;N;Y;720;Li-Ion;N;Monochrome graphic;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E225;Alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;Monochrome graphic;1.275;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E220;Alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;4K colors;1.5;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E221;Alcatel;2007;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E227;Alcatel;2007;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E230;Alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  4096 colors;1.275;13;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-E805;Alcatel;2007;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;null;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_Mandarina Duck;Alcatel;2007;4;October;10;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-S521A;Alcatel;2008;null;null;null;N;Y;750;Li-Ion;N;STN;1.25;21;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-V570;Alcatel;2008;null;null;null;N;Y;750;Li-Ion;N;CSTN  65K colors;1.25;25;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-S626A;Alcatel;2008;null;null;null;N;Y;750;Li-Ion;Y;CSTN  65K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-S211;Alcatel;2008;null;null;null;N;Y;670;Li-Ion;N;CSTN  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S215A;Alcatel;2008;null;null;null;N;Y;670;Li-Ion;N;CSTN  65K colors;1.25;23;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-S320;Alcatel;2008;null;null;null;N;Y;750;Li-Ion;Y;STN  65K colors;1.25;25;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-V607A;Alcatel;2008;1;February;2;N;Y;750;Li-Ion;N;TFT  65K colors;1.25;24;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-V670;Alcatel;2008;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-V212;Alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;CSTN  65K colors;1.0;16;N;null;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S621;Alcatel;2008;1;February;2;N;Y;750;Li-Ion;Y;STN  65K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-S920;Alcatel;2008;1;February;2;N;Y;800;Li-Ion;Y;TFT  256K colors;1.25;23;N;N;null;40.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-I650 SPORT;Alcatel;2008;1;February;2;N;Y;1000;Li-Ion;Y;OLED  65K colors;1.25;22;N;N;null;2.0;1.3;N;N;N;Y;N;null;N;N;N;N
+_OT-I650 PRO;Alcatel;2008;1;February;2;N;Y;1000;Li-Ion;Y;OLED  65K colors;1.25;22;N;Y;null;2.0;1.3;N;N;N;Y;N;null;N;N;N;N
+_OT-S210;Alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;STN  65K colors;1.0;16;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S107;Alcatel;2008;1;February;2;N;Y;720;Li-Ion;N;STN  monochrome graphics;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S120;Alcatel;2008;1;February;2;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.5;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S319;Alcatel;2008;1;February;2;N;Y;750;Li-Ion;N;STN  65K colors;1.25;25;N;N;null;2.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-S218;Alcatel;2008;1;February;2;N;Y;670;Li-Ion;Y;STN  65K colors;1.25;23;N;Y;null;2.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-V770;Alcatel;2008;1;January;1;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.25;21;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-V270;Alcatel;2008;1;January;1;N;Y;750;Li-Ion;N;TFT  65K colors;1.0;18;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_Mandarina Duck Moon;Alcatel;2008;4;November;11;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;null;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-222;Alcatel;2009;null;null;null;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S520;Alcatel;2009;1;February;2;N;Y;750;Li-Ion;N;STN  65K colors;1.25;22;N;N;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-102;Alcatel;2009;1;February;2;N;Y;720;Li-Ion;N;STN  monochrome graphics;1.5;12;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-111;Alcatel;2009;1;February;2;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.53125;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-202;Alcatel;2009;1;February;2;N;Y;720;Li-Ion;N;CSTN  65K colors;1.5;11;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-303;Alcatel;2009;1;March;3;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-363;Alcatel;2009;1;March;3;N;Y;650;Li-Ion;Y;CSTN  65K colors;1.25;25;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-600;Alcatel;2009;1;March;3;N;Y;750;Li-Ion;Y;CSTN  65K colors;1.25;21;N;null;null;2.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-280;Alcatel;2009;1;March;3;N;Y;650;Li-Ion;N;CSTN  65K colors;1.25;24;N;N;null;0.5;null;N;N;N;N;N;null;N;N;N;N
+_OT-383;Alcatel;2009;2;June;6;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;24;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-660;Alcatel;2009;2;June;6;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;23;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-708 One Touch MINI;Alcatel;2009;2;June;6;N;Y;750;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;35;N;Y;null;5.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-203;Alcatel;2009;2;June;6;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-S121;Alcatel;2009;2;June;6;N;Y;670;Li-Ion;N;STN  monochrome graphics;1.53125;11;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-103;Alcatel;2009;2;June;6;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-800 One Touch Tribe;Alcatel;2009;2;June;6;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;23;N;Y;null;20.0;2.0;N;N;N;N;N;null;N;N;N;N
+_Roadsign;Alcatel;2009;3;August;8;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;25;N;N;null;10.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-800 One Touch CHROME;Alcatel;2009;3;August;8;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;23;N;Y;null;20.0;2.0;N;N;N;N;N;null;N;N;N;N
+_ELLE GlamPhone;Alcatel;2009;3;July;7;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;24;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_Miss Sixty 2009;Alcatel;2009;3;July;7;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;23;N;Y;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-106;Alcatel;2009;4;December;12;N;Y;650;Li-Ion;N;STN  monochrome graphics;1.46875;9;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-802 Wave;Alcatel;2009;4;December;12;N;Y;850;Li-Ion;Y;TFT   256K colors;1.3333333333;27;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
+_Crystal;Alcatel;2009;4;October;10;N;Y;720;Li-Ion;Y;TFT  65K colors;1.25;23;N;N;null;10.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-706;Alcatel;2010;null;null;null;Y;Y;650;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;35;N;Y;null;1.0;1.3;N;N;N;N;N;null;N;N;N;N
+_OT-223;Alcatel;2010;null;null;null;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-105;Alcatel;2010;null;null;null;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-300;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-216;Alcatel;2010;1;February;2;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
+_OT-305;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-301;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;Y;CSTN  65K colors;1.0;14;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-505;Alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-508A;Alcatel;2010;1;February;2;N;Y;750;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-380;Alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT  65K colors;1.25;24;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-565;Alcatel;2010;1;February;2;N;Y;650;Li-Ion;Y;TFT   65K colors;1.25;21;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-606 One Touch CHAT;Alcatel;2010;1;February;2;Y;Y;670;Li-Ion;Y;TFT  256K colors;1.3333333333;27;N;Y;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-208;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-108;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;STN  monochrome graphics;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-252;Alcatel;2010;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-808;Alcatel;2010;1;February;2;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;35;N;Y;null;80.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-806;Alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;34;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-880 One Touch XTRA;Alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;29;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-980;Alcatel;2010;1;February;2;Y;Y;1150;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;37;Y;N;null;194.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-255;Alcatel;2010;1;February;2;N;Y;650;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;8.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-909 One Touch MAX;Alcatel;2010;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;37;Y;Y;null;88.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Miss Sixty;Alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  65K colors;1.3333333333;29;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-710;Alcatel;2010;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;41;N;Y;null;5.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-206;Alcatel;2010;2;April;4;N;Y;650;Li-Ion;N;CSTN  65K colors;1.0;14;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
+_Net;Alcatel;2010;2;June;6;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;27;N;Y;null;80.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-910;Alcatel;2011;null;null;null;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;35;Y;Y;null;150.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-810D;Alcatel;2011;null;null;null;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;36;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-813F;Alcatel;2011;null;null;null;Y;Y;null;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-908F;Alcatel;2011;null;null;null;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;null;2.0;N;N;N;Y;N;null;N;N;Y;N
+_OT-330;Alcatel;2011;null;null;null;Y;Y;850;Li-Ion;N;TFT  256K colors;1.25;19;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-690;Alcatel;2011;null;null;null;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;23;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-818;Alcatel;2011;1;null;null;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.6666666667;49;N;Y;null;50.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-306;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-355;Alcatel;2011;1;February;2;Y;Y;650;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;7.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-361;Alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;24;N;Y;null;8.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-990;Alcatel;2011;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;null;150.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-112;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-890;Alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-891 Soul;Alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;39;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-113;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-213;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-109;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-209;Alcatel;2011;1;February;2;N;Y;500;Li-Ion;N;CSTN  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-799 Play;Alcatel;2011;1;February;2;N;Y;850;Li-Ion;Y;TFT  65K colors;1.3333333333;27;N;Y;null;70.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-803;Alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-807;Alcatel;2011;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;34;N;Y;null;60.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-900;Alcatel;2011;1;February;2;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-908;Alcatel;2011;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;Y;N
+_OT-506;Alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  65K colors;1.25;20;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-665;Alcatel;2011;1;February;2;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;21;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-905;Alcatel;2011;1;February;2;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-888;Alcatel;2011;2;null;null;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.6666666667;45;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-890D;Alcatel;2011;2;May;5;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-813D;Alcatel;2011;2;May;5;Y;Y;1000;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-918D;Alcatel;2011;3;null;null;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;256.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_OT-385;Alcatel;2011;3;August;8;Y;Y;850;Li-Ion;N;TFT  256K colors;1.25;20;N;Y;null;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-117;Alcatel;2011;3;August;8;N;Y;500;Li-Ion;N;Monochrome graphic;1.5;10;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-217;Alcatel;2011;3;August;8;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-585;Alcatel;2011;3;July;7;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;20;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-906;Alcatel;2011;3;July;7;Y;Y;1150;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;39;Y;Y;null;200.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_OT-602;Alcatel;2011;3;July;7;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;33;N;Y;null;3.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-282;Alcatel;2011;4;December;12;N;Y;1000;Li-Ion;N;TFT  65K colors;1.25;16;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-918;Alcatel;2011;4;November;11;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;256.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_OT-810;Alcatel;2011;4;October;10;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;36;N;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-978;Alcatel;2012;null;null;null;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;54;Y;Y;null;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_OT-819 Soul;Alcatel;2012;null;null;null;null;Y;null;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;25;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-992D;Alcatel;2012;null;null;null;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
+_OT-308;Alcatel;2012;1;February;2;Y;Y;500;Li-Ion;N;TFT  65K colors;1.0;14;N;Y;null;1.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-991;Alcatel;2012;1;February;2;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;57;Y;Y;null;150.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
+_OT-995;Alcatel;2012;1;February;2;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;60;Y;Y;512.0;2000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-915;Alcatel;2012;1;February;2;Y;Y;null;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;35;Y;Y;null;null;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-310;Alcatel;2012;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;17;N;Y;null;4.0;null;N;N;N;N;N;null;N;N;N;N
+_OT-292;Alcatel;2012;1;February;2;N;Y;500;Li-Ion;N;TFT  65K colors;1.25;24;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-318D;Alcatel;2012;1;January;1;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.3333333333;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-228;Alcatel;2012;1;January;1;N;Y;500;Li-Ion;N;TFT  65K colors;1.0;13;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_OT-317D;Alcatel;2012;1;March;3;Y;Y;650;Li-Ion;N;TFT  256K colors;1.3333333333;20;N;Y;null;2.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-985;Alcatel;2012;1;March;3;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;256.0;512.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
+_OT-870;Alcatel;2012;1;March;3;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;20;Y;Y;null;50.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-916;Alcatel;2012;2;April;4;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  256K colors;null;27;Y;Y;null;150.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
+_OT-358;Alcatel;2012;2;April;4;Y;Y;650;Li-Ion;N;TFT  256K colors;1.25;20;N;Y;null;8.0;null;N;N;Y;N;N;null;N;N;N;N
+_OT-595;Alcatel;2012;2;April;4;Y;Y;850;Li-Ion;Y;TFT  256K colors;1.25;24;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-838;Alcatel;2012;2;April;4;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-720;Alcatel;2012;2;April;4;Y;Y;1000;Li-Ion;Y;TFT touchscreen  256K colors;1.3333333333;40;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-902;Alcatel;2012;2;June;6;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;50.0;3.15;N;N;N;N;N;null;N;N;N;N
+_OT-986;Alcatel;2012;2;May;5;Y;Y;1800;Li-Ion;Y;IPS LCD  capacitive touchscreen  16M colors;1.7777777778;61;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-605;Alcatel;2012;3;August;8;Y;Y;850;Li-Ion;Y;TFT resistive touchscreen  256K colors;1.3333333333;33;N;Y;null;null;null;N;N;Y;N;N;null;N;N;N;N
+_OT-997;Alcatel;2012;3;August;8;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;59;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-993;Alcatel;2012;3;August;8;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;null;3000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-903;Alcatel;2012;3;August;8;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;38;Y;Y;null;150.0;2.0;N;N;N;Y;N;null;N;N;Y;N
+_OT-668;Alcatel;2012;3;August;8;Y;Y;650;Li-Ion;Y;TFT  256K colors;1.25;23;N;Y;null;2.0;2.0;N;N;N;N;N;null;N;N;N;N
+_OT-997D;Alcatel;2012;3;July;7;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;59;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_OT-983;Alcatel;2012;4;November;11;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;512.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_OT-988 Shockwave;Alcatel;2012;4;October;10;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;46;Y;Y;512.0;1000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_Idol X;Alcatel;2013;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Snap;Alcatel;2013;1;February;2;Y;Y;1800;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Snap LTE;Alcatel;2013;1;February;2;Y;Y;2200;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7791666667;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Fire;Alcatel;2013;1;February;2;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;512.0;160.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_One Touch Scribe Easy;Alcatel;2013;1;February;2;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;63;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Star;Alcatel;2013;1;February;2;Y;Y;1500;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.6666666667;63;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Evo 7;Alcatel;2013;1;January;1;N;N;null;Li-Ion;Y;TFT touchscreen;1.7066666667;56;Y;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
+_One Touch Tab 7;Alcatel;2013;1;January;1;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;59;N;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
+_One Touch Idol Ultra;Alcatel;2013;1;January;1;N;N;1800;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;64;Y;Y;1000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch S'Pop;Alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;51;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_One Touch Idol;Alcatel;2013;1;January;1;Y;N;1800;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;66;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Scribe HD;Alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Scribe X;Alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;2.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Scribe HD-LTE;Alcatel;2013;1;January;1;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch T'Pop;Alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;50;Y;Y;256.0;512.0;3.2;N;N;N;Y;N;null;N;N;Y;N
+_One Touch X'Pop;Alcatel;2013;1;January;1;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;62;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch M'Pop;Alcatel;2013;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;1000.0;4000.0;5.0;Y;N;N;Y;N;null;N;N;Y;N
+_One Touch Tab 8 HD;Alcatel;2013;1;January;1;Y;N;null;Li-Ion;Y;IPS LCD capacitive touchscreen;1.3333333333;63;Y;N;1000.0;8000.0;2.0;N;N;N;N;N;null;N;N;N;N
+_One Touch Tab 7 HD;Alcatel;2013;1;January;1;Y;N;3300;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;59;Y;N;1000.0;8000.0;2.0;N;N;N;N;N;null;N;N;N;N
+_One Touch Evo 7 HD;Alcatel;2013;1;January;1;N;N;null;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;60;Y;N;1000.0;4000.0;3.0;N;N;N;N;N;null;N;N;N;N
+_One Touch T10;Alcatel;2013;2;null;null;Y;N;3000;Li-Ion;N;TFT capacitive touchscreen;1.6666666667;61;N;N;1000.0;4000.0;null;N;N;Y;Y;N;null;N;N;N;N
+_Idol S;Alcatel;2013;3;August;8;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol Mini;Alcatel;2013;3;August;8;Y;N;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;8000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_One Touch Pixi;Alcatel;2013;3;August;8;Y;Y;1300;Li-Ion;Y;TFT touchscreen  256K colors;1.5;50;N;Y;256.0;512.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_One Touch Evo 8HD;Alcatel;2013;3;September;9;Y;N;4160;Li-Ion;Y;IPS LCD capacitive touchscreen;1.3333333333;58;Y;N;1000.0;4000.0;3.15;N;N;N;N;N;null;N;N;N;N
+_Hero;Alcatel;2013;3;September;9;Y;N;3400;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;77;Y;Y;2000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol Alpha;Alcatel;2013;3;September;9;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;66;Y;Y;1000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop C7;Alcatel;2013;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Fierce;Alcatel;2013;3;September;9;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;63;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop C3;Alcatel;2013;3;September;9;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;Y;N
+_Pop C5;Alcatel;2013;3;September;9;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;62;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
+_Evolve;Alcatel;2013;3;September;9;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;N;N;Y;N;null;N;N;Y;N
+_Pop C1;Alcatel;2013;3;September;9;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_2000;Alcatel;2013;4;November;11;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;null;null;N;N;N;N;N;null;N;N;N;N
+_2001;Alcatel;2013;4;November;11;Y;Y;1000;Li-Ion;Y;TFT  256K colors;1.3333333333;25;N;Y;null;null;2.0;N;N;N;N;N;null;N;N;N;N
+_2052;Alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT;1.25;21;N;Y;null;128.0;null;N;N;Y;N;N;null;N;N;N;N
+_2040;Alcatel;2014;null;null;null;Y;Y;850;Li-Ion;N;TFT  256K colors;1.3333333333;28;N;Y;4.0;4.0;null;N;N;Y;N;N;null;N;N;N;N
+_2012;Alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;42;N;Y;null;16.0;3.15;N;N;N;N;N;null;N;N;N;N
+_2010;Alcatel;2014;null;null;null;Y;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;32;N;Y;64.0;128.0;2.0;N;N;N;N;N;null;N;N;N;N
+_2005;Alcatel;2014;null;null;null;N;Y;850;Li-Ion;Y;TFT  256K colors;1.3333333333;29;N;Y;null;128.0;2.0;N;N;N;N;N;null;N;N;N;N
+_Fire 7;Alcatel;2014;1;February;2;Y;N;null;Li-Ion;Y;Capacitive touchscreen;1.7777777778;null;Y;Y;null;null;null;N;N;Y;Y;N;null;N;N;N;N
+_Pixi 7;Alcatel;2014;1;February;2;Y;N;2840;Li-Ion;;TFT capacitive touchscreen;1.7777777778;62;N;N;1000.0;4000.0;null;N;N;Y;N;N;null;N;N;N;N
+_Fire C;Alcatel;2014;1;February;2;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;null;N;N;Y;Y;N;null;N;N;Y;N
+_Idol 2 Mini;Alcatel;2014;1;February;2;Y;N;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 2 Mini S;Alcatel;2014;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 2;Alcatel;2014;1;February;2;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 2 S;Alcatel;2014;1;February;2;Y;N;2150;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Fire S;Alcatel;2014;1;February;2;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop S7;Alcatel;2014;1;February;2;Y;Y;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop S3;Alcatel;2014;1;February;2;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop S9;Alcatel;2014;1;February;2;Y;Y;3400;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Fire E;Alcatel;2014;1;February;2;Y;Y;1700;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;512.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop Fit;Alcatel;2014;1;February;2;Y;Y;1000;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.3333333333;44;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;Y;N
+_Idol X+;Alcatel;2014;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop C9;Alcatel;2014;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;1000.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_POP 7;Alcatel;2014;1;January;1;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;63;Y;N;1000.0;4000.0;2.0;N;N;N;N;N;null;N;N;N;N
+_POP 8;Alcatel;2014;1;January;1;Y;N;4100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;72;Y;N;1000.0;4000.0;2.0;N;N;N;N;N;null;N;N;N;N
+_POP 7S;Alcatel;2014;1;January;1;Y;N;3240;Li-Ion;Y;IPS LCD capacitive touchscreen;1.7066666667;63;Y;N;1000.0;4000.0;3.0;N;N;N;N;N;null;N;N;N;N
+_Pixi 8;Alcatel;2014;2;June;6;Y;N;3240;Li-Ion;N;TFT capacitive touchscreen;1.6;71;Y;N;1000.0;8000.0;null;N;N;Y;N;N;null;N;N;N;N
+_Pixi 2;Alcatel;2014;2;May;5;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Fierce 2;Alcatel;2014;3;August;8;Y;Y;null;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop D3;Alcatel;2014;3;August;8;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
+_Pop D5;Alcatel;2014;3;August;8;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;62;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
+_Pop D1;Alcatel;2014;3;August;8;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;Y;N
+_Pop C2;Alcatel;2014;3;July;7;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;N;N;Y;N;null;N;N;N;N
+_Hero 2;Alcatel;2014;3;September;9;Y;N;3100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;75;Y;Y;2000.0;16000.0;3.1;Y;Y;N;Y;N;null;N;N;Y;N
+_Hero 8;Alcatel;2014;3;September;9;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;72;Y;Y;2000.0;32000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 2 (4.5);Alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 2 (4.5) Dual SIM;Alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 2 (4);Alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;3.15;N;Y;N;Y;N;null;N;N;Y;N
+_Flash;Alcatel;2014;3;September;9;Y;Y;3200;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 2 (5) Premium;Alcatel;2014;3;September;9;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop Icon;Alcatel;2014;3;September;9;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;4000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 2 (5);Alcatel;2014;3;September;9;Y;Y;2500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;1000.0;8000.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
+_POP 8S;Alcatel;2014;3;September;9;Y;N;4100;Li-Ion;Y;IPS LCD capacitive touchscreen;1.6;69;Y;N;1000.0;8000.0;5.0;Y;N;N;Y;N;null;N;N;N;N
+_Fire C 2G;Alcatel;2014;4;October;10;Y;Y;1000;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;N;Y;128.0;256.0;1.3;N;N;N;Y;N;null;N;N;N;N
+_Evolve 2;Alcatel;2014;4;October;10;Y;Y;1400;Li-Ion;Y;Capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
+_2007;Alcatel;2015;null;null;null;N;Y;750;Li-Ion;Y;TFT  256K colors;1.3333333333;30;N;Y;16.0;null;3.15;N;N;N;N;N;null;N;N;N;N
+_10.16G;Alcatel;2015;null;null;null;null;Y;400;Li-Ion;N;TFT;null;null;N;Y;null;4.0;null;N;N;N;N;N;null;N;N;N;N
+_Pixi 3 (5);Alcatel;2015;1;January;1;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;Y;512.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
+_Pixi 3 (4.5);Alcatel;2015;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;64;Y;Y;512.0;4000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
+_Pixi 3 (3.5);Alcatel;2015;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;N;N
+_Pixi 3 (4);Alcatel;2015;1;January;1;Y;Y;1400;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
+_Pixi 3 (3.5) Firefox;Alcatel;2015;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;512.0;512.0;2.0;N;Y;N;Y;N;null;N;N;N;N
+_POP 10;Alcatel;2015;1;January;1;Y;N;4600;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;74;Y;Y;1000.0;8000.0;5.0;N;N;N;Y;N;null;N;N;Y;N
+_Idol 3 (5.5);Alcatel;2015;1;March;3;Y;N;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 3 (4.7);Alcatel;2015;1;March;3;Y;N;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;5000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pixi 3 (5.5) LTE;Alcatel;2015;1;March;3;Y;Y;2800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;null;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pixi 3 (5.5);Alcatel;2015;1;March;3;Y;Y;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;null;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
+_Orange Klif;Alcatel;2015;1;March;3;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  256K colors;1.5;52;Y;Y;256.0;512.0;2.0;N;Y;N;Y;N;null;N;N;N;N
+_Pixi 3 (7) LTE;Alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;66;Y;N;1000.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Pixi 3 (8) 3G;Alcatel;2015;1;March;3;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen;1.6;71;Y;N;1000.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Pixi 3 (7) 3G;Alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;65;Y;N;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Pixi 3 (7);Alcatel;2015;1;March;3;Y;N;2820;Li-Ion;Y;TFT capacitive touchscreen;1.7066666667;65;N;N;512.0;4000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_Pop Astro;Alcatel;2015;2;April;4;Y;Y;2000;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;64;Y;Y;1000.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;Y;N
+_Flash Plus;Alcatel;2015;2;May;5;Y;Y;3500;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 3C;Alcatel;2015;3;September;9;Y;N;2910;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Flash 2;Alcatel;2015;3;September;9;Y;N;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
+_Pop Up;Alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;2000.0;16000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Go Play;Alcatel;2015;3;September;9;Y;Y;2500;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;65;Y;Y;1000.0;8000.0;8.0;Y;Y;N;N;N;null;N;N;N;N
+_Pop Star;Alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop Star LTE;Alcatel;2015;3;September;9;Y;Y;2000;Li-Ion;Y;Capacitive touchscreen  16M colors;1.7777777778;67;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_GO Watch;Alcatel;2015;3;September;9;N;N;225;Li-Ion;Y;Capacitive touchscreen  256K colors;1.1764705882;18;N;N;8.0;null;null;N;N;N;Y;N;null;Y;N;N;N
+_Watch;Alcatel;2015;3;September;9;N;N;210;Li-Ion;Y;IPS LCD capacitive touchscreen  256K colors;1.1764705882;27;N;N;8.0;null;null;N;N;N;Y;N;null;Y;N;N;N
+_Pixi First;Alcatel;2015;3;September;9;Y;Y;1450;Li-Ion;Y;Capacitive touchscreen  16M colors;1.6666666667;57;Y;Y;512.0;4000.0;5.0;N;Y;N;N;N;null;N;N;N;N
+_Pixi 3 (10);Alcatel;2015;3;September;9;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;74;Y;N;1000.0;16000.0;5.0;N;N;N;Y;N;null;N;N;N;N
+_Pop 3 (5);Alcatel;2015;4;null;null;Y;Y;1800;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7791666667;68;Y;N;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
+_X1;Alcatel;2015;4;December;12;Y;N;2150;Li-Po;Y;Super AMOLED capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
+_Fierce XL;Alcatel;2015;4;October;10;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Idol 4;Alcatel;2016;1;February;2;Y;N;2610;Li-Ion;Y;LTPS IPS LCD capacitive touchscreen  16M colors;1.7777777778;69;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;N;null;N;N;Y;N
+_Idol 4s;Alcatel;2016;1;February;2;Y;N;3000;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;3000.0;32000.0;6.0;Y;N;N;Y;N;null;N;N;Y;N
+_Pop 4S;Alcatel;2016;1;February;2;Y;Y;2960;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;front;N;N;Y;N
+_Pop 3 (5.5);Alcatel;2016;1;February;2;Y;Y;2910;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7777777778;70;Y;N;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;N;N
+_Pop 4;Alcatel;2016;1;February;2;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pop 4+;Alcatel;2016;1;February;2;Y;Y;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;5000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pixi 3 (8) LTE;Alcatel;2016;1;February;2;Y;N;4060;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.6;71;Y;N;1000.0;8000.0;5.0;N;N;N;Y;N;null;N;N;N;N
+_Fierce XL (Windows);Alcatel;2016;1;January;1;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;70;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_CareTime;Alcatel;2016;1;January;1;N;N;380;Li-Ion;Y;OLED (single white color);1.5;16;Y;N;null;null;null;N;N;N;N;N;null;N;N;N;N
+_Pixi 4 (6);Alcatel;2016;1;January;1;Y;Y;2580;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pixi 4 (4);Alcatel;2016;1;January;1;Y;Y;1500;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.6666666667;58;Y;Y;512.0;4000.0;5.0;N;Y;N;Y;N;null;N;N;N;N
+_Pixi 4 (3.5);Alcatel;2016;1;January;1;Y;Y;1300;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.5;50;Y;Y;512.0;4000.0;2.0;N;Y;N;Y;N;null;N;N;N;N
+_Pixi 4 (7);Alcatel;2016;1;January;1;Y;N;2580;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;67;Y;Y;1000.0;8000.0;2.0;N;N;N;Y;N;null;N;N;N;N
+_POP 7 LTE;Alcatel;2016;2;April;4;Y;N;3240;Li-Ion;Y;TFT capacitive touchscreen  16M colors;1.7066666667;65;Y;N;1000.0;8000.0;5.0;N;N;N;N;N;null;N;N;N;N
+_Pixi 4 (6) 3G;Alcatel;2016;2;June;6;Y;Y;2580;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;1000.0;8000.0;3.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Pixi 4 (5);Alcatel;2016;2;June;6;Y;Y;2000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7791666667;67;Y;Y;1000.0;8000.0;8.0;Y;Y;N;Y;N;null;N;N;N;N
+_Flash Plus 2;Alcatel;2016;2;May;5;Y;N;3000;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;front;N;N;Y;N
+_Idol 4s Windows;Alcatel;2016;3;null;null;Y;N;3000;Li-Ion;Y;AMOLED capacitive touchscreen  16M colors;1.7777777778;71;Y;N;4000.0;64000.0;1.0;Y;N;N;Y;N;null;N;N;Y;N
+_Fierce 4;Alcatel;2016;3;August;8;Y;N;2500;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;71;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N
+_Shine Lite;Alcatel;2016;3;September;9;Y;N;2460;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;68;Y;Y;2000.0;16000.0;3.0;Y;N;N;Y;Y;rear;N;N;Y;N
+_A3 XL;Alcatel;2017;1;January;1;Y;N;3000;Li-Ion;Y;IPS FL LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;2000.0;16000.0;8.0;Y;Y;N;Y;Y;rear;N;N;Y;N
+_Flash (2017);Alcatel;2017;2;April;4;Y;N;3100;Li-Ion;Y;IPS LCD capacitive touchscreen  16M colors;1.7777777778;72;Y;Y;3000.0;32000.0;3.0;Y;N;N;Y;Y;rear;N;N;Y;N
 _P1 AllDro;Allview;2011;4;October;10;null;Y;1500;Li-Ion;Y;TFT capacitive touchscreen;1.5;50;Y;N;256000.0;512.0;5.0;Y;Y;N;Y;N;null;N;N;Y;N
 _M6 Stark;Allview;2012;1;February;2;Y;Y;950;Li-Ion;Y;TFT  256K colors;1.25;24;N;Y;null;null;1.3;N;N;N;N;N;null;N;N;N;N
 _P3 AllDro;Allview;2012;1;January;1;Y;Y;1900;Li-Ion;Y;TFT capacitive touchscreen;1.6666666667;60;Y;N;512.0;512.0;8.0;Y;Y;N;Y;N;null;N;N;Y;N

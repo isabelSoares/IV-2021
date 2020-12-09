@@ -171,6 +171,7 @@ text {
 }
 
 .text_axis_ticks {
+    font-size: 0.70em;
     text-anchor: middle;
     font-family: Verdana, Geneva, Tahoma, sans-serif;  
 }

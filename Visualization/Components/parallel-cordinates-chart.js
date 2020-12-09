@@ -5,8 +5,8 @@ var xPositionScaleParallelCoordinates
 
 function build_parallel_coordinates_chart() {
     parallel_coordinates_svg = d3.select("#parallel_coordinates_chart");
-    var svg_width = parallel_coordinates_svg.style("width").slice(0, -2);
-    var svg_height = parallel_coordinates_svg.style("height").slice(0, -2);
+    var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
 
     const margins = {top: 50, right: 70, bottom: 35, left: 70}
     
@@ -15,7 +15,7 @@ function build_parallel_coordinates_chart() {
         {Name: "Internal Memory MB", attribute: ["im_MB"]},
         {Name: "RAM MB", attribute: ["ram_MB"]},
         {Name: "Camera MP", attribute: ["primary_camera_MP"]},
-        {Name: "Number of Sensors/ Model", attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_fingerprint_mounted","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"]},
+        {Name: "Number of Sensors/ Model", attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"]},
         {Name: "Aspect Ratio", attribute: ["aspect_ratio"]},
         {Name: "Screen/Body Ratio", attribute: ["screen_body_ratio"]},
     ]
@@ -29,14 +29,9 @@ function build_parallel_coordinates_chart() {
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
     treatAxesParallel([svg_height - margins.bottom, margins.top]);
 
-    var rangeStep = (svg_width - margins.left - margins.right) / (axesParallelCoordinates.length - 1)
-    var ranges = []
-    for (var i = 0; i < axesParallelCoordinates.length; i++)
-        ranges.push(margins.left + i * rangeStep);
-
-    xPositionScaleParallelCoordinates = d3.scaleOrdinal()
+    xPositionScaleParallelCoordinates = d3.scalePoint()
         .domain(axesParallelCoordinates.map(elem => elem['Name']))
-        .range(ranges)
+        .range([margins.left, svg_width - margins.right])
 
     var group_axes = parallel_coordinates_svg.append("g");
     var group_axis = group_axes.selectAll("g.axis")
@@ -56,13 +51,13 @@ function build_parallel_coordinates_chart() {
         .attr("y", svg_height - margins.bottom * 0.50)
         .text(datum => datum['Name']);
     group_axis.append("text")
-        .classed("text_axis_tick text_left", true)
+        .classed("text_axis_ticks text_left", true)
         .attr("id", "axis_tick_max")
         .attr("x", datum => xPositionScaleParallelCoordinates(datum['Name']) - 5)
         .attr("y", margins.top)
         .text(datum => datum['max']);
     group_axis.append("text")
-        .classed("text_axis_tick text_left", true)
+        .classed("text_axis_ticks text_left", true)
         .attr("x", datum => xPositionScaleParallelCoordinates(datum['Name']) - 5)
         .attr("y", svg_height - margins.bottom)
         .text(datum => datum['min']);
@@ -131,7 +126,7 @@ function treatAxesParallel(range) {
         axis['scale'] = scale;
     });
 
-    console.log(axesParallelCoordinates);
+    //console.log(axesParallelCoordinates);
 }
 
 function createPathParallelCoordinates(datum) {
@@ -146,11 +141,6 @@ function createPathParallelCoordinates(datum) {
 function brandUpdateColorParallelCoordinates(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
-
-    console.log("Index: " + index);
-
-    console.log(parallel_coordinates_svg.selectAll(".line_chart_paths"));
-    console.log(parallel_coordinates_svg.selectAll(".line_chart_paths").select("#path_line_" + index));
     
     parallel_coordinates_svg.selectAll(".line_chart_paths")
         .select("#path_line_" + index)
@@ -207,8 +197,8 @@ function getClosestPathParallelLineChart(event, max_distance = 100) {
 }
 
 function updateParallelLineChart() {
-    var svg_width = parallel_coordinates_svg.style("width").slice(0, -2);
-    var svg_height = parallel_coordinates_svg.style("height").slice(0, -2);
+    var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
     const margins = {top: 50, right: 70, bottom: 35, left: 70}
 
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
@@ -220,8 +210,6 @@ function updateParallelLineChart() {
     parallel_coordinates_svg.selectAll("g.axis")
         .selectAll("#axis_tick_max")
         .text(datum => datum['max']);
-
-    console.log(parallel_coordinates_svg.selectAll("path.line_chart_path"))
 
     parallel_coordinates_svg.selectAll("path.line_chart_path")
         .data(datasetParallelCoordinates)

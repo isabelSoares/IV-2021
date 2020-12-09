@@ -169,7 +169,7 @@ function createHoverCircle(element) {
         .attr("class", "hover-circle")
         .attr("r", 5)
         .style("stroke", "black")
-        .style("fill", "red")
+        .style("fill", d3.rgb(0, 76, 153))
         .style("stroke-width", "1px")
         .style("opacity", "0");
 }
@@ -340,7 +340,7 @@ function show_tooltip_line_chart(event, line_chart, information) {
 }
 
 function show_region_interval_line_chart(startTime, endTime) {
-    console.log(startTime, endTime);
+    // console.log(startTime, endTime);
     var startX = xscale(startTime);
     var endX = xscale(endTime);
 

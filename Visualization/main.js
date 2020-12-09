@@ -10,6 +10,7 @@ var dispatch = d3.dispatch("clickBrandLine",
     "hover_brand", "hover_remove_brand",
     "hover_line_chart", "hover_remove_line_chart",
     "hover_parallel_line_chart", "hover_remove_parallel_line_chart",
+    //"hover_small_multiples_line_chart", "hover_remove_small_multiples_line_chart",
     "hover_spiral_chart", "hover_remove_spiral_chart");
 
 var dataset_brands
@@ -66,8 +67,6 @@ function init() {
                 else element['sensor_accelerometer'] = 0;
                 if (element['sensor_fingerprint'] == 'Y') element['sensor_fingerprint'] = 1;
                 else element['sensor_fingerprint'] = 0;
-                if (element['sensor_fingerprint_mounted'] == 'Y') element['sensor_fingerprint_mounted'] = 1;
-                else element['sensor_fingerprint_mounted'] = 0;
                 if (element['sensor_heart_rate'] == 'Y') element['sensor_heart_rate'] = 1;
                 else element['sensor_heart_rate'] = 0;
                 if (element['sensor_iris_scanner'] == 'Y') element['sensor_iris_scanner'] = 1;
@@ -76,7 +75,18 @@ function init() {
                 else element['sensor_proximity'] = 0;
                 if (element['sensor_temperature'] == 'Y') element['sensor_temperature'] = 1;
                 else element['sensor_temperature'] = 0;
-
+                
+                if (element['Bluetooth'] == 'Y') element['Bluetooth'] = 1;
+                else element['Bluetooth'] = 0;
+                if (element['Audio_jack'] == 'Y') element['Audio_jack'] = 1;
+                else element['Audio_jack'] = 0;
+                if (element['GPS'] == 'Y') element['GPS'] = 1;
+                else element['GPS'] = 0;
+                if (element['Radio'] == 'Y') element['Radio'] = 1;
+                else element['Radio'] = 0;
+                if (element['battery_removable'] == 'Y') element['battery_removable'] = 1;
+                else element['battery_removable'] = 0;
+                
                 computeDateModel(element);
             });
 
@@ -96,6 +106,7 @@ function init() {
             build_line_charts();
             build_spiral_chart();
             build_parallel_coordinates_chart();
+            build_small_multiples();
             
             prepareEvents();
             if (show_images) appendImages();
@@ -137,7 +148,6 @@ function computeDateModel(element) {
 function prepareEvents() {
     /* --------------- CHANGED TIME PERIOD ------------------ */
     dispatch.on("changed_time_period", function() {
-        console.log("OI");
         filterDatasets();
         updateLineCharts();
         updateParallelLineChart();
@@ -302,13 +312,6 @@ function prepareEvents() {
 }
 
 function appendImages() {
-    var small_multiples = d3.select("svg#small_multiples_line_chart")
-                            .append("svg:image")
-                            .attr("xlink:href", "Resources/Small Multiples.png")
-                            .attr("height", "100%")
-                            .attr("width", "100%")
-                            .attr("preserveAspectRatio", "none");
-
     var glyph = d3.select("svg#glyph_chart")
                   .append("svg:image")
                   .attr("xlink:href", "Resources/Glyphs.png")
