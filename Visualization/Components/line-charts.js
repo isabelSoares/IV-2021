@@ -208,7 +208,7 @@ function updateLineCharts() {
 
     xscale.domain([start_date, end_date]);
     d3.selectAll(".line_chart").select(".xaxis")
-.call(d3.axisBottom(xscale));
+        .call(d3.axisBottom(xscale));
 
     // -------------------- UPDATE LINE CHART 1 --------------------
     hscale_models.domain([0, d3.max(dataset_brands, datum => datum['# Models'])]);

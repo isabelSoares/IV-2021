@@ -152,6 +152,7 @@ function prepareEvents() {
         updateLineCharts();
         updateParallelLineChart();
         updateSpiralChart();
+        updateSmallMultiplesChart();
     });
 
     /* --------------- CHANGED SPIRAL PERIOD ------------------ */
@@ -192,6 +193,7 @@ function prepareEvents() {
         addBrandColor(brand);
         brandUpdateColor(brand);
         brandUpdateColorParallelCoordinates(brand);
+        brandUpdateColorSmallMultiples(brand);
 
         update_brand_selection_selected_brand();
         updateSpiralChart();
@@ -204,6 +206,7 @@ function prepareEvents() {
         removeColorBrand(brand);
         brandUpdateColor(brand);
         brandUpdateColorParallelCoordinates(brand);
+        brandUpdateColorSmallMultiples(brand);
 
         update_brand_selection_unselected_brand();
         updateSpiralChart();
@@ -213,6 +216,7 @@ function prepareEvents() {
     dispatch.on("hover_brand", function(event, line_chart, brand) {
         highlight_line(brand);
         highlight_lineParallelCoordinates(brand);
+        highlightSmallMultiples(brand);
         
         if (line_chart != undefined) {
             var information = show_circle(event, line_chart, brand);
@@ -223,6 +227,7 @@ function prepareEvents() {
     dispatch.on("hover_remove_brand", function(brand) {
         remove_highlight_line(brand);
         remove_highlight_lineParallelCoordinateaChart(brand);
+        remove_highlight_lineSmallMultiples(brand);
 
         remove_circle();
         remove_tooltip_line_chart();

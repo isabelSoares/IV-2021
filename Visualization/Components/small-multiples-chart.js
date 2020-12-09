@@ -58,12 +58,12 @@ function build_small_multiples(){
         .range(range);
 
     numberModelsSmallMultiplesScale = d3.scaleLinear()
-        .domain([0, 20])
+        .domain([0, 150])
         .range([0, - (stepY - subMargins.top - subMargins.bottom)]);
 
     numberModelsSmallMultiplesAxis = d3.axisLeft()
         .scale(numberModelsSmallMultiplesScale)
-        .tickValues([0, 20]);
+        .tickValues([0, 150]);
 
     var smallMultiplesGroups = small_multiples_svg.selectAll("g.multiple")
         .data(multiplesAxes).enter()
@@ -87,23 +87,30 @@ function build_small_multiples(){
         .attr("y", - stepY * 0.90)
         .text(datum => datum['Name'])
 
-    /*
     var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths");
     brands_list.forEach(function(brand, index) {
         groupPaths.append("path")
-            .datum(dataset_multiples.filter(elem => elem['Brand'] == brand))
+            .datum(datum => treatDatasetPath(brand, datum))
             .attr("id", "path_line_" + index)
             .attr("fill", "none")
             .attr("stroke", "grey")
             .attr("stroke-width", 1)
             .attr("d", d3.line()
-                .x(datum => {console.log(new Date(datum['year'], 0, 1)); timeSmallMultiplesScale(new Date(datum['year'], 0, 1))})
-                .y(datum => 0));
+                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
+                .y(datum => numberModelsSmallMultiplesScale(datum['value']) - subMargins.bottom));
     });
-    */
 
     smallMultiplesGroups.attr("transform", datum => "translate(" + (xScaleSmallMultiples(datum['Name'])) +
         ", " + (yScaleSmallMultiples(datum['Name'])) +")")
+}
+
+function treatDatasetPath(brand, axis) {
+    var treated = []
+    dataset_multiples.filter(elem => elem['Brand'] == brand)
+        .forEach(elem => treated.push({Brand: elem['Brand'], year: elem['year'], value: elem[axis['Name']]}));
+
+    //console.log(treated)
+    return treated;
 }
 
 function treatMultiples() {
@@ -117,7 +124,7 @@ function treatMultiples() {
         axis['scale'] = scale;
     });
 
-    console.log(multiplesAxes);
+    //console.log(multiplesAxes);
 }
 
 function treatdatasetMultiples() {
@@ -135,4 +142,60 @@ function treatdatasetMultiples() {
     });
 
     console.log("Small Multiples: ", dataset_multiples);
+}
+
+function updateSmallMultiplesChart() {
+    var svg_width = parseInt(small_multiples_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(small_multiples_svg.style("height").slice(0, -2));
+    const margins = {top: 35, right: 35, bottom: 15, left: 35}
+    const subMargins = {top: 10, right: 15, bottom: 20, left: 15}
+
+    treatdatasetMultiples();
+
+    timeSmallMultiplesScale.domain([start_date, end_date]);
+    small_multiples_svg.selectAll(".xaxis")
+        .call(d3.axisBottom(timeSmallMultiplesScale));
+    
+    /* TODO: UPDATE YAXIS SCALE */
+    
+    var groupPaths = small_multiples_svg.selectAll("g.multiple").select("g.line_chart_paths");
+    brands_list.forEach(function(brand, index) {
+        groupPaths.select("path#path_line_" + index)
+            .datum(datum => treatDatasetPath(brand, datum))
+            .attr("d", d3.line()
+                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
+                .y(datum => numberModelsSmallMultiplesScale(datum['value']) - subMargins.bottom));
+    });
+}
+
+function brandUpdateColorSmallMultiples(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+    
+    small_multiples_svg.selectAll("#path_line_" + index)
+        .transition().duration(1000)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+
+    if (selected) {
+        small_multiples_svg.selectAll("#path_line_" + index).raise();
+    }
+}
+
+function highlightSmallMultiples(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+        
+    small_multiples_svg.selectAll("#path_line_" + index)
+        .attr("stroke-width", 3)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
+}
+
+function remove_highlight_lineSmallMultiples(brand) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    const selected = selected_brands.includes(brand);
+    
+    small_multiples_svg.selectAll("#path_line_" + index)
+        .attr("stroke-width", (selected) ? 2 : 1)
+        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
 }
