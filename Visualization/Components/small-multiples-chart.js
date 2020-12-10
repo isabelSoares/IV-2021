@@ -98,7 +98,7 @@ function build_small_multiples(){
             .datum(datum => treatDatasetPath(brand, datum))
             .attr("id", "path_line_" + index)
             .attr("fill", "none")
-            .attr("stroke", "grey")
+            .attr("stroke", "darkgrey")
             .attr("stroke-width", 1)
             .attr("d", d3.line()
                 .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
@@ -180,7 +180,7 @@ function brandUpdateColorSmallMultiples(brand) {
     small_multiples_svg.selectAll("#path_line_" + index)
         .transition().duration(1000)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         small_multiples_svg.selectAll("#path_line_" + index).raise();
@@ -202,7 +202,7 @@ function remove_highlight_lineSmallMultiples(brand) {
     
     small_multiples_svg.selectAll("#path_line_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");   
 }
 
 function getClosestPathSmallMultiplesChart(event, small_multiple, max_distance = 100) {

@@ -86,7 +86,7 @@ function build_parallel_coordinates_chart() {
         .append("path").attr("class", "line_chart_path")
         .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
         .attr("fill", "none")
-        .attr("stroke", "grey")
+        .attr("stroke", "darkgrey")
         .attr("stroke-width", 1)
         .attr("d", datum => createPathParallelCoordinates(datum));
 
@@ -166,7 +166,7 @@ function brandUpdateColorParallelCoordinates(brand) {
         .select("#path_line_" + index)
         .transition().duration(1000)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         line_chart_1_svg.selectAll(".line_chart_paths")
@@ -192,7 +192,7 @@ function remove_highlight_lineParallelCoordinateaChart(brand) {
     parallel_coordinates_svg.selectAll(".line_chart_paths")
         .select("#path_line_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");   
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");   
 }
 
 function getClosestPathParallelLineChart(event, max_distance = 100) {

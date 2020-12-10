@@ -56,7 +56,7 @@ function build_line_chart_1(){
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
             .attr("id", "path_line_1_" + index)
             .attr("fill", "none")
-            .attr("stroke", "grey")
+            .attr("stroke", "darkgrey")
             .attr("stroke-width", 1)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
@@ -122,7 +122,7 @@ function build_line_chart_2(){
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
             .attr("id", "path_line_2_" + index)
             .attr("fill", "none")
-            .attr("stroke", "grey")
+            .attr("stroke", "darkgrey")
             .attr("stroke-width", 1)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
@@ -249,13 +249,13 @@ function brandUpdateColor(brand) {
         .select("#path_line_1_" + index)
         .transition().duration(1000)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
     
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
         .transition().duration(1000)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         line_chart_1_svg.selectAll(".line_chart_paths")
@@ -415,12 +415,12 @@ function remove_highlight_line(brand) {
     line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
        
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
         .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "grey");  
+        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");  
 }
 
 function remove_circle() {

@@ -1,4 +1,5 @@
 var glyph_chart_svg
+var glyph_chart_svg_zoomable
 var dataset_glyph
 var xScaleGlyph
 var yScaleGlyph
@@ -9,7 +10,11 @@ function build_glyph_chart() {
     glyph_chart_svg = d3.select("#glyph_chart");
     var svg_width = parseInt(glyph_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
-
+    
+    glyph_chart_svg_zoomable = glyph_chart_svg.append("g")
+        .attr("id", "zoomable_section")
+        .attr("class", "zoomable");
+    
     const margins = {top: 35, right: 100, bottom: 15, left: 100}
 
     glyph_chart_svg.append("text")
@@ -26,6 +31,9 @@ function build_glyph_chart() {
         .range([margins.top, svg_height - margins.bottom]);
     var stepY = yScaleGlyph.bandwidth();
 
+    var maxModels = Math.max(...numberModelsByBrand.values());
+    const maxArea = ((svg_width - margins.left - margins.right) * (svg_height - margins.top - margins.bottom)) / (maxModels * selected_brands.length)
+    console.log(maxArea);
     xScaleGlyph = d3.scalePoint()
         .domain(Array.from({length: Math.max(...numberModelsByBrand.values())}, (x, i) => i))
         .range([margins.left, svg_width - margins.right]);
@@ -34,7 +42,7 @@ function build_glyph_chart() {
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['battery_amps']), datum => datum['Brand']);
     sizeScaleGlyphs = d3.scaleLinear()
         .domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
-        .range([1000, 7000]);
+        .range([0.02 * maxArea, 0.50 * maxArea]);
 
     var minimums = d3.rollup(dataset_glyph, values => d3.min(values, datum => datum['im_MB']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['im_MB']), datum => datum['Brand']);
@@ -43,29 +51,56 @@ function build_glyph_chart() {
         .range([0.3, 1]);
 
     var modelsByBrand = d3.group(dataset_glyph, datum => datum['Brand']);
-    var phones = glyph_chart_svg.append("g").attr("id", "allPhones");
+    modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
+        const indexA = selected_brands.findIndex(elem => elem == a[0]);
+        const indexB = selected_brands.findIndex(elem => elem == b[0]);
+        //console.log("Index A: ", indexA);
+        //console.log("Index B: ", indexB);
+
+        return indexA - indexB;
+    }));
+
+    var phones = glyph_chart_svg_zoomable.append("g").attr("id", "allPhones");
+
+    console.log("Models By Brand: ", modelsByBrand);
 
     var brandsLines = phones.selectAll("g.phoneByBrand")
-        .data(modelsByBrand, datum => datum['Brand'])
-        .join(
-            enter => enter.append("g").classed("phoneByBrand", true)
-                .attr("id", datum => datum[0])
-                .attr("transform", datum => "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")"),
-
-            exit => exit.remove()
-        );
+        .data(modelsByBrand, datum => datum[0]).enter()
+        .append("g").classed("phoneByBrand", true)
+        .attr("id", datum => datum[0])
+        .attr("transform", function(datum) {
+            console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
+            return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
+        })
 
     brandsLines.selectAll("g.mock_phone")
-        .data(datum => datum[1], datum => datum['Model'])
-        .join(
-            enter => enter.append(datum => createMockPhone(datum['battery_amps'], getColorGlyph(datum)))
-                .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)"),
+        .data(datum => datum[1], datum => datum['Model']).enter()
+        .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
+        .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
-            exit => exit.remove()
-        );
+    const x = d3.scaleLinear([0, 1], [0, 100]);
+    const y = d3.scaleLinear([0, 1], [0, 100]);
+        
+    const points = glyph_chart_svg_zoomable.selectAll("circle")
+        .data([[0, 0], [1.5, 0.1], [1, 0.40]])
+        .join("circle")
+        .attr("cx", d => x(d[0]))
+        .attr("cy", d => y(d[1]));
+
+    const zoom = d3.zoom()
+        .scaleExtent([1, 2])
+        .translateExtent([[0, 0], [svg_width, svg_height]])
+        .on("zoom", e => {
+            glyph_chart_svg_zoomable.attr("transform", (transform = e.transform));
+            glyph_chart_svg_zoomable.style("stroke-width", 3 / Math.sqrt(transform.k));
+        });
+
+    glyph_chart_svg.call(zoom)
+        .call(zoom.transform, d3.zoomIdentity);
 }
 
-function createMockPhone(size, color = 'grey', colorComponent = 'white') {
+function createMockPhone(size, color = 'darkgrey', colorComponent = 'white') {
+    //console.log("Size: ", size);
     const screenRatio = 0.60
     const sizeCamera = 0.006
     const sizeWidthSpeaker = 0.4
@@ -132,7 +167,8 @@ function createSymbol(proportionHeight, curveFactor) {
 }
 
 function treatDatasetGlyph() {
-    dataset_glyph = dataset_models.filter(elem => selected_brands.includes(elem['Brand']))
+    // TODO: Not the way to deal with nulls on battery amps
+    dataset_glyph = dataset_models.filter(elem => selected_brands.includes(elem['Brand']) && elem['battery_amps'] != null)
 
     console.log("Dataset Glyph: ", dataset_glyph);
 }
@@ -148,41 +184,60 @@ function updateGlyphChart() {
     var svg_width = parseInt(glyph_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
 
+    const margins = {top: 35, right: 100, bottom: 15, left: 100}
+
     treatDatasetGlyph();
     var numberModelsByBrand = d3.rollup(dataset_glyph, value => value.length, datum => datum['Brand']);
 
     yScaleGlyph.domain(selected_brands);
     var stepY = yScaleGlyph.bandwidth();
 
+    var maxModels = Math.max(...numberModelsByBrand.values());
+    const maxArea = ((svg_width - margins.left - margins.right) * (svg_height - margins.top - margins.bottom)) / (maxModels * selected_brands.length)
     xScaleGlyph.domain(Array.from({length: Math.max(...numberModelsByBrand.values())}, (x, i) => i));
 
     var minimums = d3.rollup(dataset_glyph, values => d3.min(values, datum => datum['battery_amps']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['battery_amps']), datum => datum['Brand']);
-    sizeScaleGlyphs.domain([Math.min(...minimums.values()), Math.max(...maximums.values())]);
+    sizeScaleGlyphs.domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
+        .range([0.02 * maxArea, 0.50 * maxArea]);
 
     var minimums = d3.rollup(dataset_glyph, values => d3.min(values, datum => datum['im_MB']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['im_MB']), datum => datum['Brand']);
     saturationScaleGlyphs.domain([Math.min(...minimums.values()), Math.max(...maximums.values())]);
 
     var modelsByBrand = d3.group(dataset_glyph, datum => datum['Brand']);
-    var phones = glyph_chart_svg.select("g#allPhones");
+    modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
+        const indexA = selected_brands.findIndex(elem => elem == a[0]);
+        const indexB = selected_brands.findIndex(elem => elem == b[0]);
+        //console.log("Index A: ", indexA);
+        //console.log("Index B: ", indexB);
+
+        return indexA - indexB;
+    }));
+
+    var phones = glyph_chart_svg_zoomable.select("g#allPhones");
 
     var brandsLines = phones.selectAll("g.phoneByBrand")
-        .data(modelsByBrand, datum => datum['Brand'])
-        .join(
-            enter => enter.append("g").classed("phoneByBrand", true)
-                .attr("id", datum => datum[0])
-                .attr("transform", datum => "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")"),
-
-            exit => exit.remove()
-        );
-
-    brandsLines.selectAll("g.mock_phone")
+        .data(modelsByBrand, datum => datum[0]);
+            
+    brandsLines.enter()
+        .append("g").classed("phoneByBrand", true)
+        .attr("id", datum => datum[0])
+        .selectAll("g.mock_phone")
         .data(datum => datum[1], datum => datum['Model'])
-        .join(
-            enter => enter.append(datum => createMockPhone(datum['battery_amps'], getColorGlyph(datum)))
-                .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)"),
+        .append(datum => createMockPhone(datum['battery_amps'], getColorGlyph(datum)));
+    brandsLines.exit().remove();
 
-            exit => exit.remove()
-        );
+    brandsLines = phones.selectAll("g.phoneByBrand")
+    brandsLines.attr("transform", function(datum) {
+            console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
+            return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
+        });
+
+    // Remove and do them all ver again because of size Scale FIX
+    brandsLines.selectAll("g.mock_phone").remove();
+    brandsLines.selectAll("g.mock_phone")
+        .data(datum => datum[1], datum => datum['Model']).enter()
+        .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
+        .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 }
