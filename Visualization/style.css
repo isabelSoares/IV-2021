@@ -184,6 +184,11 @@ text {
 
 .text_left {
     text-anchor: end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.text_right {
+    text-anchor: start;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .text_brands {
@@ -204,4 +209,9 @@ text {
 
 .hidden {
     visibility: hidden;
+}
+
+.phoneInfo {
+    font-size: 0.24em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
