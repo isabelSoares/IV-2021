@@ -312,7 +312,7 @@ function show_circle(event, line_chart, brand) {
 
 function show_tooltip_line_chart(event, line_chart, information) {
     const PADDING = 50;
-    const distanceTooltip = parseInt(line_chart_1_svg.style("width").slice(0, -2)) / 3;
+    const distanceTooltip = 0.15 * parseInt(line_chart_1_svg.style("width").slice(0, -2));
 
     var coordinates = d3.pointer(event);
     var x = coordinates[0];
@@ -332,8 +332,8 @@ function show_tooltip_line_chart(event, line_chart, information) {
     const box_width = parseFloat(tooltip.style("width").slice(0, -2));
     const box_height = parseFloat(tooltip.style("height").slice(0, -2));
     var new_y = y + top - box_height / 2;
-    var new_x = x - distanceTooltip;
-    if (new_x < PADDING) new_x = x + distanceTooltip - box_width;
+    var new_x = x - distanceTooltip - box_width;
+    if (new_x < PADDING) new_x = x + distanceTooltip;
 
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);

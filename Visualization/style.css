@@ -69,6 +69,10 @@ body {
     height: auto;
 }
 
+.brand_box:hover {
+    font-weight: bold;
+}
+
 #line_charts {
     width: 29%;
     height: 62.5%;
@@ -109,6 +113,14 @@ body {
     height: 29%;
 }
 
+.inactive {
+    opacity: 0.5;
+}
+
+.tooltip_line text {
+    font-size: 0.70em;
+}
+
 #spiral_chart {
     float: right;
     width: 21%;
@@ -140,6 +152,10 @@ body {
     stroke: rgb(0, 76, 153);
     stroke-width: 1;
     stroke-linejoin: round;
+}
+
+.triangle_selector:hover {
+    stroke-width: 6;
 }
 
 .value_tick rect {
@@ -205,6 +221,10 @@ text {
 
 .text_center {
     text-anchor: middle;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .hidden {

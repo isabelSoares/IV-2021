@@ -179,7 +179,7 @@ function addPeriodSelection() {
             .attr("cx", step * index)
             .attr("cy", 0)
             .attr("r", 3)
-            .attr("fill", "blue");
+            .attr("fill", d3.rgb(0, 76, 153));
         tick.append("text")
             .attr("class", "text_point_axis")
             .attr("x", step * index)
@@ -198,7 +198,7 @@ function addPeriodSelection() {
         .attr("cy", 0)
         .attr("r", 6)
         .attr("stroke", "black")
-        .attr("fill", "blue")
+        .attr("fill", d3.rgb(0, 76, 153))
         .attr("id", "period_circle")
         .attr("class", "circle_selector");
 
@@ -357,7 +357,7 @@ function show_tooltip_spiral_chart(event, information) {
         .datum(information);
 
     const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
-    const distanceTooltip = parseInt(spiral_chart_svg.style("width").slice(0, -2)) / 15;
+    const distanceTooltip = - 0.25 * parseInt(spiral_chart_svg.style("width").slice(0, -2));
 
     var coordinates = d3.pointer(event);
     var x = coordinates[0];
@@ -371,8 +371,8 @@ function show_tooltip_spiral_chart(event, information) {
 
     const box_width = parseFloat(tooltip.style("width").slice(0, -2));
     const box_height = parseFloat(tooltip.style("height").slice(0, -2));
-    var new_y = y + top + distanceTooltip;
-    var new_x = x + left + distanceTooltip;
+    var new_y = y + top - distanceTooltip - box_height;
+    var new_x = x + left - distanceTooltip - box_width;
     
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);
