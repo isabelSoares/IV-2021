@@ -74,7 +74,7 @@ function prepare_event_time_selection() {
 
         d3.select(this)
             .attr("points", getPointsTriangle(new_x))
-            .style("stroke-width", 5)
+            .classed("hover", true)
             .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
         
         if (this.id == "start_triangle") start_date = new Date(date);
@@ -87,7 +87,7 @@ function prepare_event_time_selection() {
         .call(d3.drag()
             .on("drag", dragged)
             .on("end", function(event, datum) {
-                d3.select(this).style("stroke-width", 1);
+                d3.select(this).classed("hover", false);
                 dispatch.call("changed_time_period", this);
             }));
 }

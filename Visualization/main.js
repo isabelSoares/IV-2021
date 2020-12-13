@@ -166,6 +166,7 @@ function prepareEvents() {
             removeColorBrand(closeToBrand);
             brandUpdateColor(closeToBrand);
             brandUpdateColorParallelCoordinates(closeToBrand);
+            brandUpdateColorSmallMultiples(closeToBrand);
 
             update_brand_selection_unselected_brand();
             updateSpiralChart();
@@ -177,6 +178,7 @@ function prepareEvents() {
             addBrandColor(closeToBrand);
             brandUpdateColor(closeToBrand);
             brandUpdateColorParallelCoordinates(closeToBrand);
+            brandUpdateColorSmallMultiples(closeToBrand);
 
             update_brand_selection_selected_brand();
             updateSpiralChart();

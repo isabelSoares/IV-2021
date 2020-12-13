@@ -100,7 +100,7 @@ function treatDataset() {
         else break;
     }
 
-    //console.log(sortedFinalDataset);
+    // console.log(sortedFinalDataset);
     return sortedFinalDataset;
 }
 
@@ -167,9 +167,7 @@ function addPeriodSelection() {
 
     var axis = spiral_chart_svg.append("g").attr("class", "axis");
     axis.append("path")
-        .attr("fill", "none")
-        .attr("stroke", "black")
-        .attr("stroke-width", 1.5)
+        .classed("selection_axis", true)
         .attr("d", d3.line()([[0 - 5, 0], [LINE_WIDTH + 5, 0]]))
     
     PERIODS_AVAILABLE.forEach(function(elem, index) {
@@ -178,16 +176,12 @@ function addPeriodSelection() {
             .attr("class", "circle_point_axis")
             .attr("cx", step * index)
             .attr("cy", 0)
-            .attr("r", 3)
-            .attr("fill", d3.rgb(0, 76, 153));
+            .attr("r", 3);
         tick.append("text")
-            .attr("class", "text_point_axis")
+            .attr("class", "text_axis_ticks middle")
             .attr("x", step * index)
             .attr("y", svg_height / 11)
-            .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
-            .attr("class","text_axis_ticks")
-            .attr("font-size", ".75em")
             .text(elem['display']);
 
     });
@@ -197,8 +191,6 @@ function addPeriodSelection() {
         .attr("cx", PERIODS_AVAILABLE.findIndex(elem => elem == selected_period_months) * step)
         .attr("cy", 0)
         .attr("r", 6)
-        .attr("stroke", "black")
-        .attr("fill", d3.rgb(0, 76, 153))
         .attr("id", "period_circle")
         .attr("class", "circle_selector");
 

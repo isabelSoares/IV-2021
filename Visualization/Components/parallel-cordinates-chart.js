@@ -3,8 +3,6 @@ var datasetParallelCoordinates
 var axesParallelCoordinates
 var xPositionScaleParallelCoordinates
 
-const opacityNotInRegion = 0.1
-
 function build_parallel_coordinates_chart() {
     parallel_coordinates_svg = d3.select("#parallel_coordinates_chart");
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
@@ -42,8 +40,6 @@ function build_parallel_coordinates_chart() {
         .attr("transform", datum => "translate(" + xPositionScaleParallelCoordinates(datum['Name']) + ",0)");
 
     group_axis.append("path")
-        .attr("stroke", "black")
-        .attr("stroke-width", 1)
         .attr("d", function() {
             var line_coords = [[0, margins.top], [0, svg_height - margins.bottom]]
             return d3.line()(line_coords);
@@ -71,31 +67,31 @@ function build_parallel_coordinates_chart() {
             if (! d3.select(event.sourceEvent.target).classed("draggable")) return;
             var draggedAxis = d3.select(this);
             draggedAxis.select(".bold_on_hover").classed("bold", true);
-            //console.log("Information Dragged: ", datum);
+            // console.log("Information Dragged: ", datum);
             
             var itemAxes = axesParallelCoordinates.find(elem => elem == datum);
             itemAxes['dragging'] = true;
 
-            //console.log("Axes Ordered: ", axesParallelCoordinates);
-            //console.log(this.__origin__);
-            //console.log(itemAxes);
+            // console.log("Axes Ordered: ", axesParallelCoordinates);
+            // console.log(this.__origin__);
+            // console.log(itemAxes);
             this.__origin__ = xPositionScaleParallelCoordinates(itemAxes['Name']);
-            //console.log(this.__origin__);
+            // console.log(this.__origin__);
         })
         .on("drag", function(event, datum) {
             if (! datum['dragging']) return;
             var draggedAxis = d3.select(this);
             
             this.__origin__ += event.dx;
-            //console.log("Origin: ", this.__origin__);
-            //console.log("Event: ", event);
-            //console.log("Event X: ", event.x);
+            // console.log("Origin: ", this.__origin__);
+            // console.log("Event: ", event);
+            // console.log("Event X: ", event.x);
             if (this.__origin__ <= 0.99 * margins.left) this.__origin__ = 0.99 * margins.left;
             if (this.__origin__ >= svg_width - 0.99 * margins.right) this.__origin__ = svg_width - 0.99 * margins.right;
 
-            //console.log("Axes Ordered Before: ", axesParallelCoordinates);
+            // console.log("Axes Ordered Before: ", axesParallelCoordinates);
             axesParallelCoordinates.sort((a, b) => positionAxis(a, this.__origin__) - positionAxis(b, this.__origin__));
-            //console.log("Axes Ordered After: ", axesParallelCoordinates);
+            // console.log("Axes Ordered After: ", axesParallelCoordinates);
             xPositionScaleParallelCoordinates.domain(axesParallelCoordinates.map(elem => elem['Name']));
             group_axis.attr("transform", datum => "translate(" + (positionAxis(datum, this.__origin__)) + ",0)");
         })
@@ -107,9 +103,9 @@ function build_parallel_coordinates_chart() {
             var itemAxes = axesParallelCoordinates.find(elem => elem == datum);
             itemAxes['dragging'] = false;
 
-            //console.log("Axes Ordered Before: ", axesParallelCoordinates);
+            // console.log("Axes Ordered Before: ", axesParallelCoordinates);
             axesParallelCoordinates.sort((a, b) => positionAxis(a) - positionAxis(b));
-            //console.log("Axes Ordered After: ", axesParallelCoordinates);
+            // console.log("Axes Ordered After: ", axesParallelCoordinates);
             xPositionScaleParallelCoordinates.domain(axesParallelCoordinates.map(elem => elem['Name']));
             group_axis.attr("transform", datum => "translate(" + (positionAxis(datum)) + ",0)");
 
@@ -123,9 +119,9 @@ function build_parallel_coordinates_chart() {
         .call(d3.brushY()
             .extent( [ [- brushWidth / 2, margins.top], [brushWidth / 2, svg_height - margins.bottom] ] )
             .on("start brush end", function(event, datum) {
-                //console.log("Brush Event: ", event);
+                // console.log("Brush Event: ", event);
                 datum['filter'] = event.selection;
-                //console.log("Brush Datum: ", datum);
+                // console.log("Brush Datum: ", datum);
 
                 changedBrushingParallelLineChart();
             })
@@ -155,15 +151,11 @@ function build_parallel_coordinates_chart() {
         .attr("x", margins.left)
         .attr("y", margins.top)
         .attr("width", svg_width - margins.left - margins.right)
-        .attr("height", svg_height - margins.top - margins.bottom)
-        .attr("fill", "red");
-    group_paths.selectAll("path.line_chart_path")
+        .attr("height", svg_height - margins.top - margins.bottom);
+    group_paths.selectAll("path.brand_line")
         .data(datasetParallelCoordinates, datum => datum['Brand']).enter()
-        .append("path").attr("class", "line_chart_path")
+        .append("path").attr("class", "brand_line")
         .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
-        .attr("fill", "none")
-        .attr("stroke", "darkgrey")
-        .attr("stroke-width", 1)
         .attr("d", datum => createPathParallelCoordinates(datum));
 
     parallel_coordinates_svg.select(".line_chart_paths")
@@ -215,7 +207,7 @@ function treatParallelCoordinatesDataset() {
         });
     });
 
-    //console.log(treated)
+    // console.log(treated)
     return treated;
 }
 
@@ -230,7 +222,7 @@ function treatAxesParallel(range) {
         axis['scale'] = scale;
     });
 
-    //console.log(axesParallelCoordinates);
+    // console.log(axesParallelCoordinates);
 }
 
 function createPathParallelCoordinates(datum) {
@@ -238,7 +230,7 @@ function createPathParallelCoordinates(datum) {
         return [xPositionScaleParallelCoordinates(axis['Name']), axis['scale'](datum[axis['Name']])]
     });
 
-    //console.log(coords);
+    // console.log(coords);
     return d3.line()(coords);
 }
 
@@ -246,11 +238,10 @@ function brandUpdateColorParallelCoordinates(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
     
-    parallel_coordinates_svg.selectAll(".line_chart_paths")
-        .select("#path_line_" + index)
-        .transition().duration(1000)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
+    var line = parallel_coordinates_svg.selectAll(".line_chart_paths")
+        .select("#path_line_" + index);
+    line.classed("selected", selected);
+    line.attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         line_chart_1_svg.selectAll(".line_chart_paths")
@@ -260,23 +251,19 @@ function brandUpdateColorParallelCoordinates(brand) {
 
 function highlight_lineParallelCoordinates(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
-    const selected = selected_brands.includes(brand);
         
     parallel_coordinates_svg.selectAll(".line_chart_paths")
         .select("#path_line_" + index)
-        .attr("stroke-width", 3)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "black")
+        .classed("hover", true)
         .raise();   
 }
 
 function remove_highlight_lineParallelCoordinateaChart(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
-    const selected = selected_brands.includes(brand);
     
     parallel_coordinates_svg.selectAll(".line_chart_paths")
         .select("#path_line_" + index)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");   
+        .classed("hover", false);   
 }
 
 function getClosestPathParallelLineChart(event, max_distance = 100) {
@@ -306,10 +293,10 @@ function updateParallelLineChart() {
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
     const margins = {top: 50, right: 70, bottom: 35, left: 70}
 
-    //console.log("Before: ", axesParallelCoordinates);
+    // console.log("Before: ", axesParallelCoordinates);
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
     treatAxesParallel([svg_height - margins.bottom, margins.top]);
-    //console.log("After: ", axesParallelCoordinates);
+    // console.log("After: ", axesParallelCoordinates);
 
     parallel_coordinates_svg.selectAll("g.axis")
         .data(axesParallelCoordinates, datum => datum['Name']);
@@ -318,15 +305,15 @@ function updateParallelLineChart() {
         .selectAll("#axis_tick_max")
         .text(datum => datum['max'].toFixed(datum['round']));
 
-    parallel_coordinates_svg.selectAll("path.line_chart_path")
+    parallel_coordinates_svg.selectAll("path.brand_line")
         .data(datasetParallelCoordinates, datum => datum['Brand'])
         .attr("d", datum => createPathParallelCoordinates(datum));
     changedBrushingParallelLineChart();
 }
 
 function changedBrushingParallelLineChart() {
-    parallel_coordinates_svg.selectAll("path.line_chart_path")
-        .attr("opacity", function(datum) {
+    parallel_coordinates_svg.selectAll("path.brand_line")
+        .classed("filtered", function(datum) {
             var isSelected = true;
             axesParallelCoordinates.forEach(function(axis) {
                 if (axis['filter'] == null) return;
@@ -334,9 +321,10 @@ function changedBrushingParallelLineChart() {
                 var value = axis['scale'](datum[axis['Name']]);
                 var insideRegion = value >= filter[0] && value <= filter[1];
                 isSelected = isSelected && insideRegion;
-            })
+            });
 
-            return isSelected ? 1 : opacityNotInRegion;
+            return !isSelected
+
         });
 
     var regionsToRemove = false;
@@ -378,8 +366,7 @@ function showAxisValue(brand) {
     var ticks = parallel_coordinates_svg.selectAll("g.value_tick")
         .attr("transform", datum => "translate(" + (- tickWidth - 5) +
              "," + moveYParallelLineChartTooltip(information, datum, datum['scale'](information[datum['Name']])) + ")");
-
-    //ticks.attr("fill", datum => console.log(datum['scale'].range()));
+    
     ticks.classed("hidden", false);
     ticks.select("text")
         .text(datum => (Math.round(information[datum['Name']] * Math.pow(10, datum['round'])) / Math.pow(10, datum['round'])).toFixed(datum['round']));
@@ -407,8 +394,6 @@ function createButtonRemoveBrushes() {
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
     const radius = 0.07 * svg_height;
     const imageSide = 0.08 * svg_height;
-    const colorButton = d3.color("darkgrey")
-    const colorHovered = d3.rgb(0, 76, 153)
 
     var buttonsGroup = d3.create("svg:g")
         .classed("removeBrushes", true)
@@ -421,12 +406,12 @@ function createButtonRemoveBrushes() {
             if (! regionsToRemove) return;
 
             var element = d3.select(this);
-            element.select(".buttonCircle").attr("fill", colorHovered);
+            element.classed("hover", true);
             element.select(".buttonImage").attr("xlink:href", "Resources/delete-white.png");
         })
         .on("mouseleave", function() {
             var element = d3.select(this);
-            element.select(".buttonCircle").attr("fill", colorButton);
+            element.classed("hover", false)
             element.select(".buttonImage").attr("xlink:href", "Resources/delete.png");
         })
         .on("click", function() {
@@ -439,14 +424,13 @@ function createButtonRemoveBrushes() {
             changedBrushingParallelLineChart();
 
             var element = d3.select(this);
-            element.select(".buttonCircle").attr("fill", colorButton);
+            element.classed("hover", false);
             element.select(".buttonImage").attr("xlink:href", "Resources/delete.png");
         });
 
     button.append("circle")
         .classed("buttonCircle", true)
         .attr("r", radius)
-        .attr("fill", "darkgrey")
         .attr("cx", 0)
         .attr("cy", 0);
 

@@ -61,15 +61,13 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g") 
-                    .classed("brand_box bold_on_hover selectedBrand", true) 
+                    .classed("brand_box bold_on_hover selected_brand", true) 
                     .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
                     .attr("height", HEIGHT_BOX)
-                    .attr("fill", datum => getColorBrand(datum))
-                    .style("stroke", "black")
-                    .style("stroke-width", 1);
+                    .attr("fill", datum => getColorBrand(datum));
                 
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
@@ -90,15 +88,12 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box bold_on_hover unselectedBrand", true) 
+                    .classed("brand_box bold_on_hover unselected_brand", true) 
                     .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
-                    .attr("height", HEIGHT_BOX)
-                    .attr("fill", "white")
-                    .style("stroke", "black")
-                    .style("stroke-width", 1);
+                    .attr("height", HEIGHT_BOX);
                 
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
@@ -135,15 +130,13 @@ function update_brand_selection_selected_brand() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box bold_on_hover selectedBrand", true) 
+                    .classed("brand_box bold_on_hover selected_brand", true) 
                     .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
                     .attr("height", HEIGHT_BOX)
-                    .attr("fill", datum => getColorBrand(datum))
-                    .style("stroke", "black")
-                    .style("stroke-width", 1);
+                    .attr("fill", datum => getColorBrand(datum));
                 
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)
@@ -192,15 +185,12 @@ function update_brand_selection_unselected_brand() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box bold_on_hover unselectedBrand", true) 
+                    .classed("brand_box bold_on_hover unselected_brand", true) 
                     .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")
                     .attr("width", WIDTH_BOX)
-                    .attr("height", HEIGHT_BOX)
-                    .attr("fill", "white")
-                    .style("stroke", "black")
-                    .style("stroke-width", 1);
+                    .attr("height", HEIGHT_BOX);
                 
                 g.append("text")
                     .attr("x", WIDTH_BOX / 2)

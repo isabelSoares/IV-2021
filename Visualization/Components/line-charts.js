@@ -55,9 +55,7 @@ function build_line_chart_1(){
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
             .attr("id", "path_line_1_" + index)
-            .attr("fill", "none")
-            .attr("stroke", "darkgrey")
-            .attr("stroke-width", 1)
+            .classed("brand_line", true)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_models(datum['# Models'])))
@@ -121,9 +119,7 @@ function build_line_chart_2(){
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
             .attr("id", "path_line_2_" + index)
-            .attr("fill", "none")
-            .attr("stroke", "darkgrey")
-            .attr("stroke-width", 1)
+            .classed("brand_line", true)
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_sales(datum['Sales'])))
@@ -166,12 +162,8 @@ function build_line_chart_2(){
 
 function createHoverCircle(element) {
     element.append("circle")
-        .attr("class", "hover-circle")
-        .attr("r", 5)
-        .style("stroke", "black")
-        .style("fill", d3.rgb(0, 76, 153))
-        .style("stroke-width", "1px")
-        .style("opacity", "0");
+        .attr("class", "hover_circle hidden")
+        .attr("r", 5);
 }
 
 function createSpiralHoverRegion(element) {
@@ -245,17 +237,15 @@ function brandUpdateColor(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
 
-    line_chart_1_svg.selectAll(".line_chart_paths")
+    var line = line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index)
-        .transition().duration(1000)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
+    line.classed("selected", selected);
+    line.attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
     
-    line_chart_2_svg.selectAll(".line_chart_paths")
+    var line = line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
-        .transition().duration(1000)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
+    line.classed("selected", selected);
+    line.attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         line_chart_1_svg.selectAll(".line_chart_paths")
@@ -271,13 +261,13 @@ function highlight_line(brand) {
 
     line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index)
-        .attr("stroke-width", 3)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "black");
+        .classed("hover", true)
+        .raise();
         
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
-        .attr("stroke-width", 3)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
+        .classed("hover", true)
+        .raise();  
 }
 
 function show_circle(event, line_chart, brand) {
@@ -297,15 +287,15 @@ function show_circle(event, line_chart, brand) {
         .select("#path_line_2_" + index);
     y_sales = getClosestPointCircle(path.node(), x, 300);
 
-    line_chart_1_svg.selectAll(".hover-circle")
+    line_chart_1_svg.selectAll(".hover_circle")
+        .classed("hidden", false)
         .attr("cx", x)
-        .attr("cy", y_models)
-        .style("opacity", 1);
+        .attr("cy", y_models);
 
-    line_chart_2_svg.selectAll(".hover-circle")
+    line_chart_2_svg.selectAll(".hover_circle")
+        .classed("hidden", false)
         .attr("cx", x)
-        .attr("cy", y_sales)
-        .style("opacity", 1);
+        .attr("cy", y_sales);
 
     return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales), 'Date': xscale.invert(x)};
 }
@@ -414,25 +404,23 @@ function remove_highlight_line(brand) {
 
     line_chart_1_svg.selectAll(".line_chart_paths")
         .select("#path_line_1_" + index)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
+        .classed("hover", false);
        
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");  
+        .classed("hover", false);
 }
 
 function remove_circle() {
-    line_chart_1_svg.selectAll(".hover-circle")
+    line_chart_1_svg.selectAll(".hover_circle")
         .attr("cx", 0)
         .attr("cy", 0)
-        .style("opacity", 0);
+        .classed("hidden", true);
 
-    line_chart_2_svg.selectAll(".hover-circle")
+    line_chart_2_svg.selectAll(".hover_circle")
         .attr("cx", 0)
         .attr("cy", 0)
-        .style("opacity", 0);
+        .classed("hidden", true);
 }
 
 function remove_tooltip_line_chart() {

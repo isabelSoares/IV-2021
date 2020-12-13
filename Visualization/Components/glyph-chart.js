@@ -38,7 +38,7 @@ function build_glyph_chart() {
     
     const maxArea = computeMaxArea(svg_width, svg_height, margins, maxModels, selected_brands.length);
     //const maxArea = ((svg_width - margins.left - margins.right) * (svg_height - margins.top - margins.bottom)) / (maxModels * selected_brands.length)
-    console.log(maxArea);
+    // console.log(maxArea);
     xScaleGlyph = d3.scalePoint()
         .domain(Array.from({length: Math.max(...numberModelsByBrand.values())}, (x, i) => i))
         .range([margins.left, svg_width - margins.right]);
@@ -62,22 +62,22 @@ function build_glyph_chart() {
     modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
         const indexA = selected_brands.findIndex(elem => elem == a[0]);
         const indexB = selected_brands.findIndex(elem => elem == b[0]);
-        //console.log("Index A: ", indexA);
-        //console.log("Index B: ", indexB);
+        // console.log("Index A: ", indexA);
+        // console.log("Index B: ", indexB);
 
         return indexA - indexB;
     }));
 
     var phones = glyph_chart_svg_zoomable.append("g").attr("id", "allPhones");
 
-    console.log("Models By Brand: ", modelsByBrand);
+    // console.log("Models By Brand: ", modelsByBrand);
 
     var brandsLines = phones.selectAll("g.phoneByBrand")
         .data(modelsByBrand, datum => datum[0]).enter()
         .append("g").classed("phoneByBrand", true)
         .attr("id", datum => datum[0])
         .attr("transform", function(datum) {
-            console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
+            // console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
             return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
         })
 
@@ -111,7 +111,7 @@ function build_glyph_chart() {
 }
 
 function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', interactive = true) {
-    //console.log("Size: ", size);
+    // console.log("Size: ", size);
     const screenRatio = 0.60
     const sizeCamera = 0.006
     const sizeWidthSpeaker = 0.4
@@ -252,7 +252,7 @@ function treatDatasetGlyph() {
     // TODO: Not the way to deal with nulls on battery amps
     dataset_glyph = dataset_models.filter(elem => selected_brands.includes(elem['Brand']) && elem['battery_amps'] != null)
 
-    console.log("Dataset Glyph: ", dataset_glyph);
+    // console.log("Dataset Glyph: ", dataset_glyph);
 }
 
 function getColorGlyph(datum) {
@@ -294,8 +294,8 @@ function updateGlyphChart() {
     modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
         const indexA = selected_brands.findIndex(elem => elem == a[0]);
         const indexB = selected_brands.findIndex(elem => elem == b[0]);
-        //console.log("Index A: ", indexA);
-        //console.log("Index B: ", indexB);
+        // console.log("Index A: ", indexA);
+        // console.log("Index B: ", indexB);
 
         return indexA - indexB;
     }));
@@ -315,7 +315,7 @@ function updateGlyphChart() {
 
     brandsLines = phones.selectAll("g.phoneByBrand")
     brandsLines.attr("transform", function(datum) {
-            console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
+            // console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
             return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
         });
 
@@ -363,26 +363,25 @@ function createButtonsZoom() {
 
             var element = d3.select(this);
             if (!datum['hover_if']()) {
-                element.select(".buttonCircle").attr("fill", colorButton);
+                element.classed("hover", false);
                 element.select(".buttonImage").attr("xlink:href", datum['link']);
             }
         })
         .on("mouseenter", function(event, datum) {
             if (! datum['hover_if']()) return;
             var element = d3.select(this);
-            element.select(".buttonCircle").attr("fill", colorHovered);
+            element.classed("hover", true);
             element.select(".buttonImage").attr("xlink:href", datum['link_hover']);
         })
         .on("mouseleave", function(event, datum) {
             var element = d3.select(this);
-            element.select(".buttonCircle").attr("fill", colorButton);
+            element.classed("hover", false);
             element.select(".buttonImage").attr("xlink:href", datum['link']);
         });
 
     buttons.append("circle")
         .classed("buttonCircle", true)
         .attr("r", radius)
-        .attr("fill", "darkgrey")
         .attr("cx", datum => datum['x'])
         .attr("cy", 0);
 
@@ -412,8 +411,6 @@ function createButtonHelp() {
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
     const radius = 0.08 * svg_height;
     const imageSide = 0.1 * svg_height;
-    const colorButton = d3.color("darkgrey")
-    const colorHovered = d3.rgb(0, 76, 153)
 
     var buttonsGroup = d3.create("svg:g")
         .classed("help", true)
@@ -425,20 +422,19 @@ function createButtonHelp() {
             updateGlyphChartTooltip();
 
             var element = d3.select(event.target);
-            element.select(".buttonCircle").attr("fill", colorHovered);
+            element.classed("hover", true);
             element.select(".buttonImage").attr("xlink:href", "Resources/information-white.png");
         })
         .on("mouseleave", function(event) {
             d3.select("#tooltip_glyph_chart").classed("hidden", true);
             var element = d3.select(event.target);
-            element.select(".buttonCircle").attr("fill", colorButton);
+            element.classed("hover", false);
             element.select(".buttonImage").attr("xlink:href", "Resources/information.png");
         });
 
     button.append("circle")
         .classed("buttonCircle", true)
         .attr("r", radius)
-        .attr("fill", "darkgrey")
         .attr("cx", 0)
         .attr("cy", 0);
 

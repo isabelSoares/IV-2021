@@ -98,9 +98,7 @@ function build_small_multiples(){
         groupPaths.append("path")
             .datum(datum => treatDatasetPath(brand, datum))
             .attr("id", "path_line_" + index)
-            .attr("fill", "none")
-            .attr("stroke", "darkgrey")
-            .attr("stroke-width", 1)
+            .classed("brand_line", true)
             .attr("d", d3.line()
                 .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
                 .y(datum => numberModelsSmallMultiplesScale(datum['value']) - subMargins.bottom));
@@ -115,7 +113,7 @@ function treatDatasetPath(brand, axis) {
     dataset_multiples.filter(elem => elem['Brand'] == brand)
         .forEach(elem => treated.push({Brand: elem['Brand'], year: elem['year'], value: elem[axis['Name']]}));
 
-    //console.log(treated)
+    // console.log(treated)
     return treated;
 }
 
@@ -130,7 +128,7 @@ function treatMultiples() {
         axis['scale'] = scale;
     });
 
-    //console.log(multiplesAxes);
+    // console.log(multiplesAxes);
 }
 
 function treatdatasetMultiples() {
@@ -147,7 +145,7 @@ function treatdatasetMultiples() {
         multiplesAxes.forEach(axis => item[axis['Name']] += dataline[axis['attribute']]);
     });
 
-    console.log("Small Multiples: ", dataset_multiples);
+    // console.log("Small Multiples: ", dataset_multiples);
 }
 
 function updateSmallMultiplesChart() {
@@ -180,11 +178,11 @@ function updateSmallMultiplesChart() {
 function brandUpdateColorSmallMultiples(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
+    console.log(selected);
     
-    small_multiples_svg.selectAll("#path_line_" + index)
-        .transition().duration(1000)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
+    var line = small_multiples_svg.selectAll("#path_line_" + index);
+    line.classed("selected", selected);
+    line.attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");
 
     if (selected) {
         small_multiples_svg.selectAll("#path_line_" + index).raise();
@@ -193,20 +191,17 @@ function brandUpdateColorSmallMultiples(brand) {
 
 function highlightSmallMultiples(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
-    const selected = selected_brands.includes(brand);
         
     small_multiples_svg.selectAll("#path_line_" + index)
-        .attr("stroke-width", 3)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "black");   
+        .classed("hover", true)
+        .raise(); 
 }
 
 function remove_highlight_lineSmallMultiples(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
-    const selected = selected_brands.includes(brand);
     
     small_multiples_svg.selectAll("#path_line_" + index)
-        .attr("stroke-width", (selected) ? 2 : 1)
-        .attr("stroke", (selected) ? getColorBrand(brand) : "darkgrey");   
+        .classed("hover", false);   
 }
 
 function getClosestPathSmallMultiplesChart(event, small_multiple, max_distance = 100) {
