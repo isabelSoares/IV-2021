@@ -47,7 +47,8 @@ function build_small_multiples(){
     
     timeSmallMultiplesAxis = d3.axisBottom()
         .scale(timeSmallMultiplesScale)
-        .tickValues([start_date, end_date]);
+        .tickValues([start_date, end_date])
+        .tickFormat(d3.timeFormat("%Y"));
 
     var space = svg_height - margins.top - margins.bottom
     var stepY = space / rows
@@ -159,7 +160,10 @@ function updateSmallMultiplesChart() {
 
     timeSmallMultiplesScale.domain([start_date, end_date]);
     small_multiples_svg.selectAll(".xaxis")
-        .call(d3.axisBottom(timeSmallMultiplesScale));
+        .call(d3.axisBottom(timeSmallMultiplesScale)
+            .tickValues([start_date, end_date])
+            .tickFormat(d3.timeFormat("%Y"))
+        );
     
     /* TODO: UPDATE YAXIS SCALE */
     

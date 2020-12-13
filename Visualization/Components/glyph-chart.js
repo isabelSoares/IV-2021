@@ -358,15 +358,23 @@ function createButtonsZoom() {
         .data(buttonsInfo).enter()
         .append("g").classed("button", true)
         .classed("inactive", datum => !datum['hover_if']())
-        .on("click", (event, datum) => datum['action']())
+        .on("click", function(event, datum) {
+            datum['action']();
+
+            var element = d3.select(this);
+            if (!datum['hover_if']()) {
+                element.select(".buttonCircle").attr("fill", colorButton);
+                element.select(".buttonImage").attr("xlink:href", datum['link']);
+            }
+        })
         .on("mouseenter", function(event, datum) {
             if (! datum['hover_if']()) return;
-            var element = d3.select(event.target);
+            var element = d3.select(this);
             element.select(".buttonCircle").attr("fill", colorHovered);
             element.select(".buttonImage").attr("xlink:href", datum['link_hover']);
         })
         .on("mouseleave", function(event, datum) {
-            var element = d3.select(event.target);
+            var element = d3.select(this);
             element.select(".buttonCircle").attr("fill", colorButton);
             element.select(".buttonImage").attr("xlink:href", datum['link']);
         });

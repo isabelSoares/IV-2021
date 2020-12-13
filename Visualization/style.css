@@ -69,7 +69,7 @@ body {
     height: auto;
 }
 
-.brand_box:hover {
+.bold_on_hover:hover {
     font-weight: bold;
 }
 
@@ -155,7 +155,7 @@ body {
 }
 
 .triangle_selector:hover {
-    stroke-width: 6;
+    stroke-width: 5;
 }
 
 .value_tick rect {
@@ -231,7 +231,15 @@ text {
     visibility: hidden;
 }
 
+.hover-region {
+    pointer-events: all;
+}
+
 .phoneInfo {
     font-size: 0.24em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.draggable {
+    cursor: move;
 }

@@ -61,7 +61,7 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g") 
-                    .classed("brand_box selectedBrand", true) 
+                    .classed("brand_box bold_on_hover selectedBrand", true) 
                     .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
@@ -90,7 +90,7 @@ function build_brand_selection_form() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box unselectedBrand", true) 
+                    .classed("brand_box bold_on_hover unselectedBrand", true) 
                     .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")
@@ -135,7 +135,7 @@ function update_brand_selection_selected_brand() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box selectedBrand", true) 
+                    .classed("brand_box bold_on_hover selectedBrand", true) 
                     .on("click", (event, datum) => dispatch.call("unselectBrand", this, datum));
                 
                 g.append("rect")
@@ -192,7 +192,7 @@ function update_brand_selection_unselected_brand() {
         .join(
             function(enter) {
                 let g = enter.append("g")
-                    .classed("brand_box unselectedBrand", true) 
+                    .classed("brand_box bold_on_hover unselectedBrand", true) 
                     .on("click", (event, datum) => dispatch.call("selectBrand", this, datum));
                 
                 g.append("rect")

@@ -38,12 +38,12 @@ function build_time_selection_svg() {
     time_selection_svg.append("polygon")
         .attr("points", getPointsTriangle(time_scale(start_date)))
         .attr("id", "start_triangle")
-        .attr("class", "triangle_selector")
+        .attr("class", "triangle_selector draggable")
         .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
     time_selection_svg.append("polygon")
         .attr("points", getPointsTriangle(time_scale(end_date)))
         .attr("id", "end_triangle")
-        .attr("class", "triangle_selector")
+        .attr("class", "triangle_selector draggable")
         .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
     
     prepare_event_time_selection();
@@ -74,6 +74,7 @@ function prepare_event_time_selection() {
 
         d3.select(this)
             .attr("points", getPointsTriangle(new_x))
+            .style("stroke-width", 5)
             .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
         
         if (this.id == "start_triangle") start_date = new Date(date);
@@ -85,5 +86,8 @@ function prepare_event_time_selection() {
     time_selection_svg.selectAll("polygon")
         .call(d3.drag()
             .on("drag", dragged)
-            .on("end", (event, datum) => dispatch.call("changed_time_period", this)));
+            .on("end", function(event, datum) {
+                d3.select(this).style("stroke-width", 1);
+                dispatch.call("changed_time_period", this);
+            }));
 }
