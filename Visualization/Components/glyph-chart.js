@@ -9,11 +9,14 @@ var saturationScaleGlyphs
 
 var zoomGlyphs
 var zoomLevel = 1
+var maxZoom = 100
+var maxAreaPhoneGlyph
 
 const proportionHeightPhone = 1.8
-const maxZoom = 100
 const minSaturationGlyphs = 0.3
 const maxSaturationGlyphs = 1
+const maxZoomLevelMinimum = 1.5
+const maxZoomLevelMaxArea = 8000
 
 function build_glyph_chart() {
     glyph_chart_svg = d3.select("#glyph_chart");
@@ -36,9 +39,7 @@ function build_glyph_chart() {
 
     var maxModels = Math.max(...numberModelsByBrand.values());
     
-    const maxArea = computeMaxArea(svg_width, svg_height, margins, maxModels, selected_brands.length);
-    //const maxArea = ((svg_width - margins.left - margins.right) * (svg_height - margins.top - margins.bottom)) / (maxModels * selected_brands.length)
-    // console.log(maxArea);
+    maxAreaPhoneGlyph = computeMaxArea(svg_width, svg_height, margins, maxModels, selected_brands.length);
     xScaleGlyph = d3.scalePoint()
         .domain(Array.from({length: Math.max(...numberModelsByBrand.values())}, (x, i) => i))
         .range([margins.left, svg_width - margins.right]);
@@ -47,7 +48,7 @@ function build_glyph_chart() {
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['battery_amps']), datum => datum['Brand']);
     sizeScaleGlyphs = d3.scaleLinear()
         .domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
-        .range([0.02 * maxArea, 0.50 * maxArea]);
+        .range([0.02 * maxAreaPhoneGlyph, 0.50 * maxAreaPhoneGlyph]);
     sizeHoverScaleGlyphs = d3.scaleLinear()
         .domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
         .range([1, 0]);
@@ -86,6 +87,7 @@ function build_glyph_chart() {
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
+    maxZoom = (maxZoomLevelMinimum - 1) + maxZoomLevelMaxArea / maxAreaPhoneGlyph;
     zoomGlyphs = d3.zoom()
         .scaleExtent([1, maxZoom])
         .translateExtent([[0, 0], [svg_width, svg_height]])
@@ -123,6 +125,8 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
     const screenSymbol = createSymbol(1.5, 0.90);  
     const width = Math.sqrt(size / proportionHeightPhone);
     const height = proportionHeightPhone * width;
+
+    const phoneInfoFontSizeConstant = 0.0033;
 
     var phone = d3.create("svg:g").classed("mock_phone", true);
 
@@ -210,7 +214,10 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
             .text(datum => datum['units']);
 
         var currentTranslate = currentTransformation.split(" ").find(elem => elem.includes("translate"));
-        element.attr("transform", currentTranslate + " scale(" + 3 + ")");
+        var size = sizeScaleGlyphs(datum['battery_amps']);
+        var scaleFactor = 1.75 * Math.sqrt(maxAreaPhoneGlyph / size);
+        element.attr("transform", currentTranslate + " scale(" + scaleFactor + ")");
+        element.selectAll("text").attr("font-size", (phoneInfoFontSizeConstant * Math.sqrt(size)) + "em");
     });
     phone.on("mouseleave", function(event, datum) {
         var element = d3.select(event.target);
@@ -251,6 +258,9 @@ function createSymbol(proportionHeight, curveFactor) {
 function treatDatasetGlyph() {
     // TODO: Not the way to deal with nulls on battery amps
     dataset_glyph = dataset_models.filter(elem => selected_brands.includes(elem['Brand']) && elem['battery_amps'] != null)
+    
+    if (selectedAxis != undefined)
+        dataset_glyph = dataset_glyph.filter(elem => elem[selectedAxis['attribute']] == 1);
 
     // console.log("Dataset Glyph: ", dataset_glyph);
 }
@@ -277,13 +287,13 @@ function updateGlyphChart() {
     var stepY = yScaleGlyph.bandwidth();
 
     var maxModels = Math.max(...numberModelsByBrand.values());
-    const maxArea = computeMaxArea(svg_width, svg_height, margins, maxModels, selected_brands.length)
+    maxAreaPhoneGlyph = computeMaxArea(svg_width, svg_height, margins, maxModels, selected_brands.length)
     xScaleGlyph.domain(Array.from({length: Math.max(...numberModelsByBrand.values())}, (x, i) => i));
 
     var minimums = d3.rollup(dataset_glyph, values => d3.min(values, datum => datum['battery_amps']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['battery_amps']), datum => datum['Brand']);
     sizeScaleGlyphs.domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
-        .range([0.02 * maxArea, 0.50 * maxArea]);
+        .range([0.02 * maxAreaPhoneGlyph, 0.50 * maxAreaPhoneGlyph]);
     sizeHoverScaleGlyphs.domain([Math.min(...minimums.values()), Math.max(...maximums.values())])
 
     var minimums = d3.rollup(dataset_glyph.filter(elem => elem['im_MB'] != null), values => d3.min(values, datum => datum['im_MB']), datum => datum['Brand']);
@@ -325,6 +335,19 @@ function updateGlyphChart() {
         .data(datum => datum[1], datum => datum['Model']).enter()
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
+
+    maxZoom = (maxZoomLevelMinimum - 1) + maxZoomLevelMaxArea / maxAreaPhoneGlyph;
+    resetZoom();
+    zoomGlyphs = d3.zoom()
+        .scaleExtent([1, maxZoom])
+        .translateExtent([[0, 0], [svg_width, svg_height]])
+        .on("zoom", e => {
+            zoomLevel = e.transform.k;
+            glyph_chart_svg.select("text#zoomLevel").text(Math.round(zoomLevel * 100) / 100 + "x");
+            glyph_chart_svg.selectAll(".zoom_buttons .button").classed("inactive", datum => !datum['hover_if']())
+            glyph_chart_svg_zoomable.attr("transform", (transform = e.transform));
+        });
+    glyph_chart_svg.call(zoomGlyphs);
 }
 
 function computeMaxArea(width, height, margins, max_models, number_brands) {
@@ -405,6 +428,9 @@ function zoomOutAction() {
 function resetZoom() {
     glyph_chart_svg.transition().duration(750).call(zoomGlyphs.transform, d3.zoomIdentity.scale(1));
 }
+function zoomOutToMaximum(maxZoom) {
+    zoomGlyphs.scaleBy(glyph_chart_svg.transition().duration(750), maxZoom / zoomLevel);
+}
 
 function createButtonHelp() {
     var svg_width = parseInt(glyph_chart_svg.style("width").slice(0, -2));
@@ -458,8 +484,7 @@ function createTooltipGlyphChart() {
     const margins = {top: 0.3 * height_tooltip, right: 0.05 * width_tooltip, bottom: 0.3 * height_tooltip, left: 0.05 * width_tooltip };
     const stepY = 0.2 * svg_height;
     
-    var availableColors = brands_colors.filter(elem => elem['Brand'] != undefined);
-    var selectedColor = d3.color(availableColors[Math.floor(Math.random() * availableColors.length)]['Color']);
+    var selectedColor = d3.color(brands_colors[Math.floor(Math.random() * brands_colors.length)]['Color']);
 
     // INTERNAL MEMORY
     const lineHeight = 0.03 * height_tooltip;
@@ -517,7 +542,9 @@ function createTooltipGlyphChart() {
         .attr("x", - lineWidth / 2)
         .attr("y", 0.1 * svg_height)
         .text(Math.min(...minimums.values()) + " Amps/h");
-    var size = sizeScaleGlyphs(Math.min(...minimums.values()));
+    
+    // Placeholder Value
+    var size = 1000;
     var width_phone = Math.sqrt(size / proportionHeightPhone);
     var height_phone = proportionHeightPhone * width_phone;
     batteryElement.append(() => createMockPhone(size, selectedColor, undefined, false))
@@ -527,7 +554,8 @@ function createTooltipGlyphChart() {
         .attr("x", lineWidth / 2)
         .attr("y", 0.1 * svg_height)
         .text(Math.max(...maximums.values()) + " Amps/h");
-    var size = sizeScaleGlyphs(Math.max(...maximums.values()));
+    // Placeholder Value
+    var size = 2000;
     var width_phone = Math.sqrt(size / proportionHeightPhone);
     var height_phone = proportionHeightPhone * width_phone;
     batteryElement.append(() => createMockPhone(size, selectedColor, undefined, false))

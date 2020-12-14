@@ -13,7 +13,7 @@ var yaxis_sales
 
 function build_line_charts() {
     const PADDING = 50;
-
+    
     line_chart_1_svg = d3.select("svg#line_chart1").classed("line_chart", true);
     line_chart_2_svg = d3.select("svg#line_chart2").classed("line_chart", true);
 
@@ -50,7 +50,7 @@ function build_line_chart_1(){
         .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
-    var g = line_chart_1_svg.append("g").attr("class", "line_chart_paths");
+    var g = line_chart_1_svg.append("g").attr("class", "hover-region line_chart_paths");
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -59,6 +59,29 @@ function build_line_chart_1(){
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_models(datum['# Models'])))
+    });
+
+    treatdatasetMultiples();
+    var g = line_chart_1_svg.append("g").attr("class", "hover-region line_chart_dotted_paths");
+    brands_list.forEach(function(brand, index) {
+        var invisible = !selected_brands.includes(brand) || selectedAxis == undefined;
+        g.append("path")
+            .datum(function() {
+                var hasAxisSelected = (selectedAxis != undefined)
+                var value = []
+                if (selected_brands.includes(brand) && hasAxisSelected)
+                    value = treatDatasetPath(brand, selectedAxis);
+
+                //console.log("Value: ", value);
+                return value;
+            }, datum => datum['Brand'])
+            .attr("id", "path_line_1_temp_" + index)
+            .classed("selected", selected_brands.includes(brand))
+            .classed("hidden", invisible)
+            .attr("stroke", invisible ? "none" : getColorBrand(brand))
+            .attr("d", d3.line()
+                .x(datum => xscale(new Date(datum['year'], 0, 1)))
+                .y(datum => hscale_models(datum['value'])))
     });
 
     yaxis_models = d3.axisLeft() // we are creating a d3 axis
@@ -114,7 +137,7 @@ function build_line_chart_2(){
         .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
-    var g = line_chart_2_svg.append("g").attr("class", "line_chart_paths");
+    var g = line_chart_2_svg.append("g").attr("class", "hover-region line_chart_paths");
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -458,4 +481,30 @@ function hover_brand_line_chart(event, line_chart) {
 function hover_remove_brand_line_chart() {
     dispatch.call("hover_remove_brand", this, closeToBrand)
     closeToBrand = undefined;
+}
+
+function updateLinesSmallMultiples() {
+    treatdatasetMultiples();
+    brands_list.forEach(function(brand, index) {
+        var invisible = !selected_brands.includes(brand) || selectedAxis == undefined;
+        line_chart_1_svg.selectAll(".line_chart_dotted_paths")
+            .select("#path_line_1_temp_" + index)
+            .datum(function() {
+                var hasAxisSelected = (selectedAxis != undefined)
+                var value = []
+                if (selected_brands.includes(brand) && hasAxisSelected)
+                    value = treatDatasetPath(brand, selectedAxis);
+                    
+                //console.log("Value: ", value);
+                return value;
+            }, datum => datum['Brand'])
+            .classed("brand_line selected", true)
+            .classed("selected", selected_brands.includes(brand))
+            .classed("hidden", invisible)
+            .attr("stroke", invisible ? "none" : getColorBrand(brand))
+            .attr("d", d3.line()
+                .x(datum => xscale(new Date(datum['year'], 0, 1)))
+                .y(datum => hscale_models(datum['value'])))
+    });
+
 }

@@ -86,6 +86,9 @@ body {
     overflow: scroll;
 }
 
+.brand_box {
+    cursor: pointer;
+}
 .brand_box rect {
     stroke: black;
     stroke-width: 1px;
@@ -133,6 +136,10 @@ body {
     stroke: black;
 }
 
+.line_chart_dotted_paths .brand_line.selected {
+    stroke-dasharray: 4px;
+}
+
 .hover_circle {
     stroke: black;
     fill: rgb(0, 76, 153);
@@ -144,6 +151,13 @@ body {
     float: right;
     width: 59.5%;
     height: 30.5%;
+}
+
+.multiple .text_axis_title {
+    cursor: pointer;
+}
+.multiple.selected .text_axis_title {
+    font-weight: bold;
 }
 
 /* PARALLEL COORDINATES CHART */
@@ -164,8 +178,11 @@ body {
     stroke-width: 1px;
 }
 
-.brand_line.filtered {
+.brand_line.filtered:not(.selected) {
     opacity: 0.1 !important;
+}
+.brand_line.filtered.selected {
+    opacity: 0.3 !important;
 }
 
 /* GLYPH CHART */
@@ -176,7 +193,6 @@ body {
 }
 
 .phoneInfo {
-    font-size: 0.24em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -207,6 +223,9 @@ body {
 }
 .button.inactive circle {
     opacity: 0.5;
+}
+.button.hover:not(.inactive) {
+    cursor: pointer;
 }
 .button.hover:not(.inactive) circle{
     fill: rgb(0, 76, 153) !important;
@@ -309,6 +328,9 @@ text {
 
 .draggable {
     cursor: move;
+}
+.clickable {
+    cursor: pointer;
 }
 
 /* GENERAL */

@@ -46,11 +46,11 @@ function build_spiral_chart() {
         .on("mouseout", (event, datum) => dispatch.call("hover_remove_spiral_chart", this, event, datum));
     
     spiral_chart_svg.append("text")
-            .attr("x", svg_width * 2 / 3)
+            .attr("x", svg_width * 0.97)
             .attr("y", svg_height * 0.05)
             .attr("dominant-baseline", "middle")
             .attr("dy", ".35em")
-            .attr("class", "text_module_title")
+            .attr("class", "text_module_title text_left")
             .text("Number of Models");
 
     addPeriodSelection();

@@ -3,8 +3,17 @@ var xScaleSmallMultiples
 var yScaleSmallMultiples
 var timeSmallMultiplesScale
 var numberModelsSmallMultiplesScale
-var multiplesAxes
 var dataset_multiples
+
+var selectedAxis = undefined
+var multiplesAxes = [
+    {Name: "Bluetooth", attribute: "Bluetooth"},
+    {Name: "Fingerprint", attribute: "sensor_fingerprint"},
+    {Name: "Radio", attribute: "Radio"},
+    {Name: "Audio Jack", attribute: "Audio_jack"},
+    {Name: "GPS", attribute: "GPS"},
+    {Name: "Removable Battery", attribute: "battery_removable"}
+]
 
 function build_small_multiples(){
     small_multiples_svg = d3.select("#small_multiples_line_chart");
@@ -15,15 +24,6 @@ function build_small_multiples(){
     const subMargins = {top: 10, right: 15, bottom: 20, left: 15}
     const columns = 3
     const rows = 2
-
-    multiplesAxes = [
-        {Name: "Bluetooth", attribute: "Bluetooth"},
-        {Name: "Fingerprint", attribute: "sensor_fingerprint"},
-        {Name: "Radio", attribute: "Radio"},
-        {Name: "Audio Jack", attribute: "Audio_jack"},
-        {Name: "GPS", attribute: "GPS"},
-        {Name: "Removable Battery", attribute: "battery_removable"}
-    ]
 
     treatdatasetMultiples();
 
@@ -68,7 +68,7 @@ function build_small_multiples(){
 
     var smallMultiplesGroups = small_multiples_svg.selectAll("g.multiple")
         .data(multiplesAxes).enter()
-        .append("g").classed("multiple", true);
+        .append("g").classed("hover-region multiple", true);
 
     smallMultiplesGroups.append("g")
         .attr("transform", "translate(" + subMargins.left + "," + (- subMargins.bottom) + ")")
@@ -83,10 +83,12 @@ function build_small_multiples(){
         .call(numberModelsSmallMultiplesAxis);
 
     smallMultiplesGroups.append("text")
-        .attr("class", "text_module_title text_center")
+        .attr("class", "text_axis_title text_center")
         .attr("x", stepX / 2)
         .attr("y", - stepY * 0.90)
         .text(datum => datum['Name'])
+        .on("mouseenter", (event, datum) => d3.select(event.target).classed("bold_on_hover", true))
+        .on("click", (event, datum) => dispatch.call("clicked_attribute", this, event, datum));
 
     var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths")
         .attr("id", datum => "paths_" + datum['attribute'])
@@ -178,7 +180,6 @@ function updateSmallMultiplesChart() {
 function brandUpdateColorSmallMultiples(brand) {
     const index = brands_list.findIndex(elem => elem == brand);
     const selected = selected_brands.includes(brand);
-    console.log(selected);
     
     var line = small_multiples_svg.selectAll("#path_line_" + index);
     line.classed("selected", selected);
@@ -247,4 +248,20 @@ function hover_brand_small_multiples_chart(event, element){
 function hover_brand_remove_small_multiples_chart() {
     dispatch.call("hover_remove_brand", this, closeToBrand)
     closeToBrand = undefined;
+}
+
+function selectAttribute(information) {
+    var element = small_multiples_svg.selectAll("g.multiple")
+        .filter(datum => datum == information)
+        .classed("selected", true);
+
+    selectedAxis = information;
+}
+
+function unselectAttribute() {
+    var element = small_multiples_svg.selectAll("g.multiple")
+        .filter(datum => datum == selectedAxis)
+        .classed("selected", false);
+
+    selectedAxis = undefined;
 }

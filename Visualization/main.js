@@ -6,12 +6,13 @@ var dispatch = d3.dispatch("clickBrandLine",
     "changed_time_period", "changed_spiral_period",
     "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
-    "hover_spiral_chart", "hover_remove_spiral_chart");
+    "hover_spiral_chart", "hover_remove_spiral_chart",
+    "clicked_attribute");
 
 var dataset_brands
 var brands_list
 var closeToBrand = undefined
-var selected_brands = ["OnePlus", "Mitac"]
+var selected_brands = []
 
 var start_date = new Date(1992, 0, 1)
 var end_date = new Date(2017, 0, 1)
@@ -105,6 +106,10 @@ function init() {
             build_glyph_chart();
             
             prepareEvents();
+
+            // Trigger Selection Of Two Brands
+            dispatch.call("selectBrand", this, "OnePlus");
+            dispatch.call("selectBrand", this, "Mitac");
             
         });
     });
@@ -171,6 +176,7 @@ function prepareEvents() {
             update_brand_selection_unselected_brand();
             updateSpiralChart();
             updateGlyphChart();
+            updateLinesSmallMultiples();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -183,6 +189,7 @@ function prepareEvents() {
             update_brand_selection_selected_brand();
             updateSpiralChart();
             updateGlyphChart();
+            updateLinesSmallMultiples();
         }
     });
 
@@ -198,6 +205,7 @@ function prepareEvents() {
         update_brand_selection_selected_brand();
         updateSpiralChart();
         updateGlyphChart();
+        updateLinesSmallMultiples();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
@@ -212,10 +220,22 @@ function prepareEvents() {
         update_brand_selection_unselected_brand();
         updateSpiralChart();
         updateGlyphChart();
+        updateLinesSmallMultiples();
     });
 
     /* --------------- HOVER POINT OF BRAND ------------------ */
     dispatch.on("hover_brand", function(event, line_chart, brand) {
+        var elements = d3.selectAll(".hover-region");
+        elements.each(function() {
+            var subElement = d3.select(this.parentNode);
+            // TO REMOVE BRAND
+            if (selected_brands.length > 0 && selected_brands.length <= MAX_BRANDS_SELECTED && selected_brands.includes(brand))
+                subElement.classed("clickable", true);
+            // TO ADD A BRAND
+            if (selected_brands.length >= 0 && selected_brands.length < MAX_BRANDS_SELECTED && !selected_brands.includes(brand))
+                subElement.classed("clickable", true);
+        });
+
         highlight_line(brand);
         highlight_lineParallelCoordinates(brand);
         highlightSmallMultiples(brand);
@@ -228,6 +248,17 @@ function prepareEvents() {
     });
     
     dispatch.on("hover_remove_brand", function(brand) {
+        var elements = d3.selectAll(".hover-region");
+        elements.each(function() {
+            var subElement = d3.select(this.parentNode);
+            // TO REMOVE BRAND
+            if (selected_brands.length > 0 && selected_brands.length <= MAX_BRANDS_SELECTED && selected_brands.includes(brand))
+                subElement.classed("clickable", false);
+            // TO ADD A BRAND
+            if (selected_brands.length >= 0 && selected_brands.length < MAX_BRANDS_SELECTED && !selected_brands.includes(brand))
+                subElement.classed("clickable", false);
+        });
+
         remove_highlight_line(brand);
         remove_highlight_lineParallelCoordinateaChart(brand);
         remove_highlight_lineSmallMultiples(brand);
@@ -266,4 +297,21 @@ function prepareEvents() {
         remove_tooltip_spiral_chart();
         remove_region_line_chart();
     });
+
+    /* ------------- SELECTED ATTRIBUTE ------------------- */
+    dispatch.on("clicked_attribute", function(event, datum) {
+        if (selectedAxis == datum) {
+            unselectAttribute();
+            updateLinesSmallMultiples();
+            updateGlyphChart();
+            return;
+        }
+
+        if (selectedAxis != undefined) unselectAttribute();
+
+        selectAttribute(datum);
+        updateLinesSmallMultiples();
+        updateGlyphChart();
+    });
+
 }
