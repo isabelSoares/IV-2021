@@ -68,7 +68,7 @@ function build_small_multiples(){
 
     var smallMultiplesGroups = small_multiples_svg.selectAll("g.multiple")
         .data(multiplesAxes).enter()
-        .append("g").classed("hover-region multiple", true);
+        .append("g").classed("multiple", true);
 
     smallMultiplesGroups.append("g")
         .attr("transform", "translate(" + subMargins.left + "," + (- subMargins.bottom) + ")")
@@ -95,6 +95,12 @@ function build_small_multiples(){
         .on("mousemove", (event, datum, index) => hover_brand_small_multiples_chart(event, datum))
         .on("mouseout", (event, datum) => hover_brand_remove_small_multiples_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
+    groupPaths.append("rect")
+        .classed("hover-region hidden", true)
+        .attr("x", subMargins.left)
+        .attr("y", - subMargins.bottom - (stepY - subMargins.top - subMargins.bottom))
+        .attr("width", stepX - subMargins.left - subMargins.right)
+        .attr("height", stepY - subMargins.top - subMargins.bottom);
     
     brands_list.forEach(function(brand, index) {
         groupPaths.append("path")

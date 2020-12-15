@@ -45,12 +45,14 @@ function build_line_chart_1(){
             }),
         ])
         .range([svg_height - PADDING, PADDING]);
-    
-    line_chart_1_svg.on("mousemove", (event, datum) => hover_brand_line_chart(event, 1))
-        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
-        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     var g = line_chart_1_svg.append("g").attr("class", "hover-region line_chart_paths");
+    g.append("rect")
+        .classed("hover-region hidden", true)
+        .attr("x", PADDING)
+        .attr("y", PADDING)
+        .attr("width", svg_width - 2 * PADDING)
+        .attr("height", svg_height - 2 * PADDING);
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -61,8 +63,12 @@ function build_line_chart_1(){
                 .y(datum => hscale_models(datum['# Models'])))
     });
 
+    g.on("mousemove", (event, datum) => hover_brand_line_chart(event, 1))
+        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
+        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
+
     treatdatasetMultiples();
-    var g = line_chart_1_svg.append("g").attr("class", "hover-region line_chart_dotted_paths");
+    var g = line_chart_1_svg.append("g").attr("class", "line_chart_dotted_paths");
     brands_list.forEach(function(brand, index) {
         var invisible = !selected_brands.includes(brand) || selectedAxis == undefined;
         g.append("path")
@@ -133,11 +139,13 @@ function build_line_chart_2(){
         ])
         .range([svg_height - PADDING, PADDING]);
 
-    line_chart_2_svg.on("mousemove", (event, datum) => hover_brand_line_chart(event, 2))
-        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
-        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
-
     var g = line_chart_2_svg.append("g").attr("class", "hover-region line_chart_paths");
+    g.append("rect")
+        .classed("hover-region hidden", true)
+        .attr("x", PADDING)
+        .attr("y", PADDING)
+        .attr("width", svg_width - 2 * PADDING)
+        .attr("height", svg_height - 2 * PADDING);
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -146,7 +154,11 @@ function build_line_chart_2(){
             .attr("d", d3.line()
                 .x(datum => xscale(datum['Date']))
                 .y(datum => hscale_sales(datum['Sales'])))
-    }) 
+    })
+
+    g.on("mousemove", (event, datum) => hover_brand_line_chart(event, 2))
+        .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
+        .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
 
     yaxis_sales = d3.axisLeft() // we are creating a d3 axis
         .scale(hscale_sales) // fit to our scale
