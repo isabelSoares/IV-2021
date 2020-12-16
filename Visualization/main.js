@@ -242,8 +242,12 @@ function prepareEvents() {
         showAxisValue(brand);
         
         if (line_chart != undefined) {
-            var information = show_circle(event, line_chart, brand);
-            show_tooltip_line_chart(event, line_chart, information);
+            information = {'Brand': brand};
+            show_circle_hover(event, line_chart, brand, information);
+            show_circle_from_date(line_chart, brand, information);
+            show_tooltip_line_chart(line_chart, information);
+            
+            showValues(information);
         }
     });
     
@@ -263,6 +267,7 @@ function prepareEvents() {
         remove_highlight_lineParallelCoordinateaChart(brand);
         remove_highlight_lineSmallMultiples(brand);
         hideAxisValue();
+        hideValues();
 
         remove_circle();
         remove_tooltip_line_chart();
@@ -304,6 +309,8 @@ function prepareEvents() {
             unselectAttribute();
             updateLinesSmallMultiples();
             updateGlyphChart();
+            hideLegend();
+
             return;
         }
 
@@ -312,6 +319,7 @@ function prepareEvents() {
         selectAttribute(datum);
         updateLinesSmallMultiples();
         updateGlyphChart();
+        showLegend();
     });
 
 }

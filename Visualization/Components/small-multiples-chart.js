@@ -15,7 +15,7 @@ var multiplesAxes = [
     {Name: "Removable Battery", attribute: "battery_removable"}
 ]
 
-function build_small_multiples(){
+function build_small_multiples() {
     small_multiples_svg = d3.select("#small_multiples_line_chart");
     var svg_width = parseInt(small_multiples_svg.style("width").slice(0, -2));
     var svg_height = parseInt(small_multiples_svg.style("height").slice(0, -2));
@@ -43,7 +43,7 @@ function build_small_multiples(){
     
     timeSmallMultiplesScale = d3.scaleUtc()
         .domain([start_date, end_date])
-        .range([0, stepX - subMargins.left - subMargins.right]);
+        .range([subMargins.left, stepX - subMargins.right - subMargins.left]);
     
     timeSmallMultiplesAxis = d3.axisBottom()
         .scale(timeSmallMultiplesScale)
@@ -60,7 +60,7 @@ function build_small_multiples(){
 
     numberModelsSmallMultiplesScale = d3.scaleLinear()
         .domain([0, 150])
-        .range([0, - (stepY - subMargins.top - subMargins.bottom)]);
+        .range([- subMargins.bottom, - (stepY - subMargins.top) + subMargins.bottom]);
 
     numberModelsSmallMultiplesAxis = d3.axisLeft()
         .scale(numberModelsSmallMultiplesScale)
@@ -70,14 +70,32 @@ function build_small_multiples(){
         .data(multiplesAxes).enter()
         .append("g").classed("multiple", true);
 
+    const tickWidth = 50;
+    const tickHeight = 20;
+    var group_tick = smallMultiplesGroups.append("g").classed("value_tick hidden", true);
+    group_tick.append("rect")
+        .attr("width", tickWidth)
+        .attr("height", tickHeight)
+        .attr("x", - tickWidth / 2)
+        .attr("y", - tickHeight / 2)
+        .attr("rx", 5)
+        .attr("ry", 5);
+    group_tick.append("text")
+        .classed("text_axis_ticks text_center", true)
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("font_weight", "bold")
+        .attr("dominant-baseline", "middle")
+        .text(0);
+
     smallMultiplesGroups.append("g")
-        .attr("transform", "translate(" + subMargins.left + "," + (- subMargins.bottom) + ")")
+        .attr("transform", "translate(0," + (- subMargins.bottom) + ")")
         .attr("class", "xaxis")
         .attr("id", (datum, index) => "xaxis_" + index)
         .call(timeSmallMultiplesAxis);
 
     smallMultiplesGroups.append("g")
-        .attr("transform", "translate(" + subMargins.left + "," + (- subMargins.bottom) + ")")
+        .attr("transform", "translate(" + subMargins.left + ",0)")
         .attr("class", "yaxis")
         .attr("id", (datum, index) => "yaxis_" + index)
         .call(numberModelsSmallMultiplesAxis);
@@ -92,9 +110,11 @@ function build_small_multiples(){
 
     var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths")
         .attr("id", datum => "paths_" + datum['attribute'])
-        .on("mousemove", (event, datum, index) => hover_brand_small_multiples_chart(event, datum))
+        .on("mousemove", (event, datum) => hover_brand_small_multiples_chart(event, datum))
         .on("mouseout", (event, datum) => hover_brand_remove_small_multiples_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
+
+    createHoverCircleSmallMultiples(groupPaths);
     groupPaths.append("rect")
         .classed("hover-region hidden", true)
         .attr("x", subMargins.left)
@@ -108,8 +128,8 @@ function build_small_multiples(){
             .attr("id", "path_line_" + index)
             .classed("brand_line", true)
             .attr("d", d3.line()
-                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
-                .y(datum => numberModelsSmallMultiplesScale(datum['value']) - subMargins.bottom));
+                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)))
+                .y(datum => numberModelsSmallMultiplesScale(datum['value'])));
     });
 
     smallMultiplesGroups.attr("transform", datum => "translate(" + (xScaleSmallMultiples(datum['Name'])) +
@@ -178,8 +198,8 @@ function updateSmallMultiplesChart() {
         groupPaths.select("path#path_line_" + index)
             .datum(datum => treatDatasetPath(brand, datum))
             .attr("d", d3.line()
-                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)) + subMargins.left)
-                .y(datum => numberModelsSmallMultiplesScale(datum['value']) - subMargins.bottom));
+                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)))
+                .y(datum => numberModelsSmallMultiplesScale(datum['value'])));
     });
 }
 
@@ -232,6 +252,7 @@ function getClosestPathSmallMultiplesChart(event, small_multiple, max_distance =
 }
 
 function hover_brand_small_multiples_chart(event, element){
+    var small_multiple = multiplesAxes.findIndex(elem => elem == element);
     var newCloseToBrand
     var path = getClosestPathSmallMultiplesChart(event, element, 50);
 
@@ -240,12 +261,12 @@ function hover_brand_small_multiples_chart(event, element){
         newCloseToBrand = brands_list[index];
     } else newCloseToBrand = undefined
 
-    if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+    if (closeToBrand != undefined || newCloseToBrand != closeToBrand) {
         dispatch.call("hover_remove_brand", this, closeToBrand)
     }
 
-    if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
-        dispatch.call("hover_brand", this, event, undefined, newCloseToBrand);
+    if (newCloseToBrand != undefined) {
+        dispatch.call("hover_brand", this, event, small_multiple + 3, newCloseToBrand);
     }
 
     closeToBrand = newCloseToBrand;
@@ -270,4 +291,49 @@ function unselectAttribute() {
         .classed("selected", false);
 
     selectedAxis = undefined;
+}
+
+function showValues(information) {
+    const svg_width = parseInt(small_multiples_svg.style("width").slice(0, -2))
+    const distanceTooltip = 0.025 * svg_width;
+
+    var ticks = small_multiples_svg.selectAll("g.value_tick");
+    ticks.classed("hidden", false);
+
+    ticks.selectAll("text").text(datum => Math.round(information[datum['Name']]));
+    small_multiples_svg.selectAll(".multiple").each(function() {
+        var multiple = d3.select(this);
+        const box_multiple = multiple.node().getBBox();
+
+        var circle = multiple.select(".hover_circle");
+        var tick = multiple.select("g.value_tick");
+        var text = tick.select("text");
+        var text_width = text.node().getComputedTextLength();
+        const rect_width = text_width + 0.015 * svg_width;
+        
+        tick.select("rect")
+            .attr("width", rect_width)
+            .attr("x", - rect_width / 2);
+
+        var pos = {x: parseFloat(circle.attr("cx")), y: parseFloat(circle.attr("cy"))}
+        
+        const box = tick.node().getBBox();
+        var new_y = pos.y - distanceTooltip;
+        var new_x = pos.x - distanceTooltip;
+        if (new_x < box_multiple.width / 2) new_x = pos.x + distanceTooltip;
+
+        tick.attr("transform", "translate(" + new_x + "," + new_y + ")");
+        tick.raise();
+    });
+}
+
+function hideValues() {
+    var ticks = small_multiples_svg.selectAll("g.value_tick")
+        .classed("hidden", true);
+}
+
+function createHoverCircleSmallMultiples(element) {
+    element.append("circle")
+        .attr("class", "hover_circle hidden")
+        .attr("r", 4);
 }

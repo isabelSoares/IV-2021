@@ -136,8 +136,12 @@ body {
     stroke: black;
 }
 
-.line_chart_dotted_paths .brand_line.selected {
+.brand_line.dotted {
     stroke-dasharray: 4px;
+}
+
+.legend .brand_line {
+    stroke-width: 2;
 }
 
 .hover_circle {
@@ -264,7 +268,7 @@ text {
 }
 
 .text_title{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     word-wrap: break-word;
     font-size: 1.1em;
@@ -285,6 +289,11 @@ text {
 .text_axis_ticks {
     font-size: 0.70em;
     text-anchor: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+
+.text_legend {
+    font-size: 0.70em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;  
 }
 

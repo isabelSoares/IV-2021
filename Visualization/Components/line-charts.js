@@ -63,6 +63,7 @@ function build_line_chart_1(){
                 .y(datum => hscale_models(datum['# Models'])))
     });
 
+    createHoverCircle(g);
     g.on("mousemove", (event, datum) => hover_brand_line_chart(event, 1))
         .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
@@ -82,6 +83,7 @@ function build_line_chart_1(){
                 return value;
             }, datum => datum['Brand'])
             .attr("id", "path_line_1_temp_" + index)
+            .attr("class", "brand_line dotted")
             .classed("selected", selected_brands.includes(brand))
             .classed("hidden", invisible)
             .attr("stroke", invisible ? "none" : getColorBrand(brand))
@@ -122,7 +124,7 @@ function build_line_chart_1(){
         .attr("class", "text_axis_title")
         .text("Year"); 
     
-    createHoverCircle(line_chart_1_svg);
+    createLegend(line_chart_1_svg);
 }
 
 function build_line_chart_2(){
@@ -156,6 +158,7 @@ function build_line_chart_2(){
                 .y(datum => hscale_sales(datum['Sales'])))
     })
 
+    createHoverCircle(g);
     g.on("mousemove", (event, datum) => hover_brand_line_chart(event, 2))
         .on("mouseout", (event, datum) => hover_remove_brand_line_chart())
         .on("click", (event, datum) => dispatch.call("clickBrandLine", this));
@@ -191,14 +194,63 @@ function build_line_chart_2(){
         .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
         .attr("class", "text_axis_title")
         .text("Year");
-        
-    createHoverCircle(line_chart_2_svg);
 }
 
 function createHoverCircle(element) {
     element.append("circle")
         .attr("class", "hover_circle hidden")
         .attr("r", 5);
+}
+
+function createLegend(element) {
+    var svg_width = parseInt(element.style("width").slice(0, -2));
+    var svg_height = parseInt(element.style("height").slice(0, -2));
+    const SPACING = 0.03 * svg_width;
+    const LINE_WIDTH = 0.07 * svg_width;
+
+    var legend = element.append("g").classed("legend hidden", true);
+    legend.attr("transform", "translate(" + (0.95 * svg_width) + "," + (0.02 * svg_height) + ")");
+
+    var line = legend.append("g");
+    line.attr("transform", "translate(0," + (0.05 * svg_height) + ")");
+    var text = line.append("text")
+        .classed("text_legend text_left", true)
+        .attr("dominant-baseline", "middle")
+        .text("Total");
+    var textWidth = text.node().getComputedTextLength();
+    line.append("path")
+        .classed("brand_line", true)
+        .attr("d", d3.line()([[- textWidth - SPACING, 0], [- textWidth - SPACING - LINE_WIDTH, 0]]));
+
+
+    var line = legend.append("g").attr("id", "selectedAxis").datum(selectedAxis);
+    line.attr("transform", "translate(0," + (0.10 * svg_height) + ")");
+    var text = line.append("text")
+        .classed("text_legend text_left", true)
+        .attr("dominant-baseline", "middle")
+        .text(datum => "With " + ((datum == undefined) ? "" : datum['Name']));
+    var textWidth = text.node().getComputedTextLength();
+    line.append("path")
+        .classed("brand_line dotted", true)
+        .attr("d", d3.line()([[- textWidth - SPACING, 0], [- textWidth - SPACING - LINE_WIDTH, 0]]));
+}
+
+function showLegend() {
+    var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
+
+    const SPACING = 0.03 * svg_width;
+    const LINE_WIDTH = 0.07 * svg_width;
+
+    var legend = line_chart_1_svg.select(".legend").classed("hidden", false);
+    var text = legend.select("#selectedAxis").datum(selectedAxis)
+        .select("text").text(datum => "With " + datum['Name']);
+    var textWidth = text.node().getComputedTextLength();
+    legend.select("#selectedAxis").select("path")
+        .attr("d", d3.line()([[- textWidth - SPACING, 0], [- textWidth - SPACING - LINE_WIDTH, 0]]));
+}
+
+function hideLegend() {
+    legend = line_chart_1_svg.select(".legend").classed("hidden", true);
 }
 
 function createSpiralHoverRegion(element) {
@@ -305,46 +357,94 @@ function highlight_line(brand) {
         .raise();  
 }
 
-function show_circle(event, line_chart, brand) {
+function getChoices(indexOfBrand) {
+    var choices = [
+        { path: line_chart_1_svg.selectAll(".line_chart_paths").select("#path_line_1_" + indexOfBrand), 
+            circle: line_chart_1_svg.selectAll(".hover_circle"),
+            attribute: 'Models',
+            scaleX: xscale,
+            scaleY: hscale_models
+        },
+        { path: line_chart_2_svg.selectAll(".line_chart_paths").select("#path_line_2_" + indexOfBrand), 
+            circle: line_chart_2_svg.selectAll(".hover_circle"),
+            attribute: 'Sales',
+            scaleX: xscale,
+            scaleY: hscale_sales
+        }
+    ]
+
+    multiplesAxes.forEach(function(axis) {
+        var new_multiple_choice = { path: small_multiples_svg.selectAll(".line_chart_paths#paths_" + axis['attribute']).select("#path_line_" + indexOfBrand), 
+            circle: small_multiples_svg.selectAll(".line_chart_paths#paths_" + axis['attribute']).selectAll(".hover_circle"),
+            attribute: axis['Name'],
+            scaleX: timeSmallMultiplesScale,
+            scaleY: numberModelsSmallMultiplesScale
+        }
+
+        choices.push(new_multiple_choice);
+    })
+
+    return choices
+}
+
+function show_circle_hover(event, line_chart, brand, information) {
     const index = brands_list.findIndex(elem => elem == brand);
 
     var coordinates = d3.pointer(event);
     var x = coordinates[0];
     var y = coordinates[1];
 
-    var path;
-    var y_models, y_sales;
-    
-    path = line_chart_1_svg.selectAll(".line_chart_paths")
-        .select("#path_line_1_" + index);
-    y_models = getClosestPointCircle(path.node(), x, 300);
-    path = line_chart_2_svg.selectAll(".line_chart_paths")
-        .select("#path_line_2_" + index);
-    y_sales = getClosestPointCircle(path.node(), x, 300);
+    var choices = getChoices(index);
+    var currentParams = choices[line_chart - 1];
+    var pos = getClosestPointCircle(currentParams.path.node(), x, y, 125);
 
-    line_chart_1_svg.selectAll(".hover_circle")
-        .classed("hidden", false)
-        .attr("cx", x)
-        .attr("cy", y_models);
+    currentParams.circle.classed("hidden", false)
+        .attr("cx", pos.x)
+        .attr("cy", pos.y)
+        .raise();
 
-    line_chart_2_svg.selectAll(".hover_circle")
-        .classed("hidden", false)
-        .attr("cx", x)
-        .attr("cy", y_sales);
+    information['Date'] = currentParams.scaleX.invert(pos.x);
+    information[currentParams.attribute] = currentParams.scaleY.invert(pos.y);
 
-    return {'Brand': brand, 'Models': hscale_models.invert(y_models), 'Sales': hscale_sales.invert(y_sales), 'Date': xscale.invert(x)};
+    return currentParams.scaleX.invert(pos.x);
 }
 
-function show_tooltip_line_chart(event, line_chart, information) {
+function show_circle_from_date(line_chart, brand, information) {
+    const index = brands_list.findIndex(elem => elem == brand);
+    var choices = getChoices(index);
+    var date = information['Date'];
+
+    choices.forEach(function(choice, index) {
+        if (line_chart - 1 == index) return;
+
+        var x = choice.scaleX(date);
+
+        var closest_y = getClosestToX(choice.path.node(), x, 100);
+        var value;
+        if (closest_y == undefined) return;
+        value = choice.scaleY.invert(closest_y);
+
+        information[choice.attribute] = value;
+
+        choice.circle.classed("hidden", false)
+            .attr("cx", x)
+            .attr("cy", closest_y)
+            .raise();
+    })
+}
+
+function show_tooltip_line_chart(line_chart, information) {
     const PADDING = 50;
     const distanceTooltip = 0.15 * parseInt(line_chart_1_svg.style("width").slice(0, -2));
 
-    var coordinates = d3.pointer(event);
-    var x = coordinates[0];
-    var y = coordinates[1];
+    var element
+    if (line_chart == 1) element = line_chart_1_svg;
+    else if (line_chart == 2) element = line_chart_2_svg;
+    else element = line_chart_1_svg;
 
-    if (line_chart == 1) var top = line_chart_1_svg.node().getBoundingClientRect().y;
-    if (line_chart == 2) var top = line_chart_2_svg.node().getBoundingClientRect().y;
+    var circle = element.select(".hover_circle")
+    var pos = {x: parseFloat(circle.attr("cx")), y: parseFloat(circle.attr("cy"))}
+    var top = element.node().getBoundingClientRect().y;
 
     var tooltip = d3.select("div#tooltip_line_chart")
         .datum(information);
@@ -356,9 +456,9 @@ function show_tooltip_line_chart(event, line_chart, information) {
 
     const box_width = parseFloat(tooltip.style("width").slice(0, -2));
     const box_height = parseFloat(tooltip.style("height").slice(0, -2));
-    var new_y = y + top - box_height / 2;
-    var new_x = x - distanceTooltip - box_width;
-    if (new_x < PADDING) new_x = x + distanceTooltip;
+    var new_y = pos.y + top - box_height / 2;
+    var new_x = pos.x - distanceTooltip - box_width;
+    if (new_x < PADDING) new_x = pos.x + distanceTooltip;
 
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);
@@ -375,19 +475,43 @@ function show_region_interval_line_chart(startTime, endTime) {
         .classed("hidden", false);
 }
 
-function getClosestPointCircle(path, x, nSteps) {
+function getClosestToX(path, x, steps) {
     var pathLength = path.getTotalLength();
+    if (pathLength == 0) return undefined;
+
     var min = 0;
     var max = 1;
     var pos;
 
-    for (var i = 0; i < nSteps; i++) {
+    for (var i = 0; i < steps; i++) {
         pos = path.getPointAtLength(pathLength * ((min + max) / 2));
         if (pos.x < x) min = (min + max) / 2
         else max = (min + max) / 2
     }
 
     return pos.y;
+}
+
+function getClosestPointCircle(path, x, y, steps) {
+    var pathLength = path.getTotalLength();
+    var min_distance = undefined;
+    var min_pos = undefined;
+
+    if (d3.select(path).attr("d") == null) return undefined;
+
+    for (var i = 0; i < steps; i++) {
+        pos = path.getPointAtLength(pathLength * i / steps);
+        var deltaX = x - pos.x;
+        var deltaY = y - pos.y;
+        var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        if (min_distance == undefined || min_distance >= distance) {
+            min_distance = distance;
+            min_pos = pos;
+        }
+    }
+
+    return min_pos;
 }
 
 function getClosestPath(event, line_chart, max_distance = 100) {
@@ -447,12 +571,7 @@ function remove_highlight_line(brand) {
 }
 
 function remove_circle() {
-    line_chart_1_svg.selectAll(".hover_circle")
-        .attr("cx", 0)
-        .attr("cy", 0)
-        .classed("hidden", true);
-
-    line_chart_2_svg.selectAll(".hover_circle")
+    d3.selectAll(".hover_circle")
         .attr("cx", 0)
         .attr("cy", 0)
         .classed("hidden", true);
@@ -472,18 +591,18 @@ function remove_region_line_chart() {
 
 function hover_brand_line_chart(event, line_chart) {
     var newCloseToBrand
-    var path = getClosestPath(event, line_chart, 50);
+    var path = getClosestPath(event, line_chart, 100);
 
     if (path != undefined) {
         const index = parseInt(d3.select(path).attr("id").split("_")[3]);
         newCloseToBrand = brands_list[index];
     } else newCloseToBrand = undefined
 
-    if (closeToBrand != undefined && newCloseToBrand != closeToBrand) {
+    if (closeToBrand != undefined || newCloseToBrand != closeToBrand) {
         dispatch.call("hover_remove_brand", this, closeToBrand)
     }
 
-    if (newCloseToBrand != undefined && newCloseToBrand != closeToBrand) {
+    if (newCloseToBrand != undefined) {
         dispatch.call("hover_brand", this, event, line_chart, newCloseToBrand);
     }
 
@@ -510,7 +629,6 @@ function updateLinesSmallMultiples() {
                 //console.log("Value: ", value);
                 return value;
             }, datum => datum['Brand'])
-            .classed("brand_line selected", true)
             .classed("selected", selected_brands.includes(brand))
             .classed("hidden", invisible)
             .attr("stroke", invisible ? "none" : getColorBrand(brand))
