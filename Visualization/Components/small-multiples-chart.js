@@ -106,7 +106,7 @@ function build_small_multiples() {
         .attr("y", - stepY * 0.90)
         .text(datum => datum['Name'])
         .on("mouseenter", (event, datum) => d3.select(event.target).classed("bold_on_hover", true))
-        .on("click", (event, datum) => dispatch.call("clicked_attribute", this, event, datum));
+        .on("click", (event, datum) => dispatch.call("clicked_attribute", this, datum));
 
     var groupPaths = smallMultiplesGroups.append("g").attr("class", "line_chart_paths")
         .attr("id", datum => "paths_" + datum['attribute'])
@@ -336,4 +336,30 @@ function createHoverCircleSmallMultiples(element) {
     element.append("circle")
         .attr("class", "hover_circle hidden")
         .attr("r", 4);
+}
+
+function filterBrandsSmallMultiples() {
+    var paths = small_multiples_svg.selectAll("path.brand_line");
+    var unselectedBrands = brands_list.filter(brand => !selected_brands.includes(brand));
+    var unfilteredBrands = brands_list.filter(brand => !filteredBrands.includes(brand));
+
+    // UPDATE NOT FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (filteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem != undefined && elem[0] != undefined && elem[0]['Brand'] == brand);
+        path.classed("filtered", true).raise();
+    });
+    
+    // UPDATE FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (unfilteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem != undefined && elem[0] != undefined && elem[0]['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
+
+    // UPDATE SELECTED BRANDS
+    selected_brands.forEach(function(brand) {
+        var path = paths.filter(elem => elem != undefined && elem[0] != undefined && elem[0]['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
 }

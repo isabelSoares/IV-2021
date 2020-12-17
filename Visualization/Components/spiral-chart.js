@@ -251,10 +251,20 @@ function prepare_event_period_selection() {
         // console.log("New Selected Period Months: ", selected_period_months);
     }
 
-    spiral_chart_svg.selectAll("circle")
+    spiral_chart_svg.select(".circle_selector")
         .call(d3.drag()
             .on("drag", dragged)
             .on("end", (event, datum) => dispatch.call("changed_spiral_period", this)));
+}
+
+function resetPeriodSelection() {
+    var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
+    const LINE_WIDTH = svg_width * 0.75;
+    const step = LINE_WIDTH / (PERIODS_AVAILABLE.length - 1);
+
+    spiral_chart_svg.select(".circle_selector").transition().duration(1000)
+        .attr("cx", 2 * step);
+    selected_period_months = PERIODS_AVAILABLE[2];
 }
 
 function updateSpiralChart() {

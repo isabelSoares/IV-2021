@@ -91,3 +91,19 @@ function prepare_event_time_selection() {
                 dispatch.call("changed_time_period", this);
             }));
 }
+
+function resetTimeSelection() {
+    var start_triangle = time_selection_svg.select("#start_triangle");
+    var end_triangle = time_selection_svg.select("#end_triangle");
+    var new_x
+    
+    new_x = time_scale(min_date);
+    start_triangle.transition().duration(1000)
+        .attr("points", getPointsTriangle(new_x));
+    start_date = new Date(min_date);
+    
+    new_x = time_scale(max_date);
+    end_triangle.transition().duration(1000)
+        .attr("points", getPointsTriangle(new_x));
+    end_date = new Date(max_date);
+}

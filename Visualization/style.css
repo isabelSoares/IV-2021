@@ -12,9 +12,10 @@ body {
     -webkit-border-radius: 10px;
 }
 
-#title {
+#title_and_reset {
+    margin: 0.4% 0.4% 0.4% 0.4%;
     float: left;
-    width: 19%;
+    width: 18.2%;
     height: 4%;
 }
 
@@ -182,13 +183,15 @@ body {
     stroke-width: 1px;
 }
 
-.brand_line.filtered:not(.selected) {
+#line_charts .brand_line.filtered:not(.selected) {
+    opacity: 0.4 !important;
+}
+#small_multiples_line_chart .brand_line.filtered:not(.selected) {
+    opacity: 0.4 !important;
+}
+#parallel_coordinates_chart .brand_line.filtered:not(.selected) {
     opacity: 0.1 !important;
 }
-.brand_line.filtered.selected {
-    opacity: 0.3 !important;
-}
-
 /* GLYPH CHART */
 #glyph_chart {
     float: left;
@@ -222,16 +225,17 @@ body {
 }
 
 /* BUTTONS */
-.button circle {
+.button .buttonCircle {
     fill: darkgrey;
 }
-.button.inactive circle {
-    opacity: 0.5;
+.button .backdropCircle {
+    fill: rgb(213, 233, 253);
+    fill-opacity: 1 !important;
 }
 .button.hover:not(.inactive) {
     cursor: pointer;
 }
-.button.hover:not(.inactive) circle{
+.button.hover:not(.inactive) .buttonCircle {
     fill: rgb(0, 76, 153) !important;
 }
 .inactive {
@@ -268,10 +272,11 @@ text {
 }
 
 .text_title{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
     text-align: center;
     word-wrap: break-word;
     font-size: 1.1em;
+    font-weight: bold;
 }
 
 .text_module_title {

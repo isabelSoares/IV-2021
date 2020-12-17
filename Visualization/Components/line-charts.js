@@ -638,3 +638,33 @@ function updateLinesSmallMultiples() {
     });
 
 }
+
+function filterBrandsLineChart(line_chart) {
+    var element
+    if (line_chart == 1) element = line_chart_1_svg
+    if (line_chart == 2) element = line_chart_2_svg
+
+    var paths = element.selectAll(".line_chart_paths").selectAll("path.brand_line");
+    var unselectedBrands = brands_list.filter(brand => !selected_brands.includes(brand));
+    var unfilteredBrands = brands_list.filter(brand => !filteredBrands.includes(brand));
+
+    // UPDATE NOT FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (filteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem != undefined && elem.length != 0 && elem[0]['Brand'] == brand);
+        path.classed("filtered", true).raise();
+    });
+
+    // UPDATE FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (unfilteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem != undefined && elem.length != 0 && elem[0]['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
+
+    // UPDATE SELECTED BRANDS
+    selected_brands.forEach(function(brand) {
+        var path = paths.filter(elem => elem != undefined && elem.length != 0 && elem[0]['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
+}

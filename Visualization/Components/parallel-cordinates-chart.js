@@ -1,7 +1,17 @@
 var parallel_coordinates_svg
 var datasetParallelCoordinates
-var axesParallelCoordinates
 var xPositionScaleParallelCoordinates
+var axesParallelCoordinates = [
+    {Name: "Battery Amps/h", round: 0, attribute: ["battery_amps"], dragging: false, filter: null},
+    {Name: "Internal Memory MB", round: 0, attribute: ["im_MB"], dragging: false, filter: null},
+    {Name: "RAM MB", round: 1, attribute: ["ram_MB"], dragging: false, filter: null},
+    {Name: "Camera MP", round: 1, attribute: ["primary_camera_MP"], dragging: false, filter: null},
+    {Name: "Number of Sensors/ Model", round: 2, attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"], dragging: false, filter: null},
+    {Name: "Aspect Ratio", round: 2, attribute: ["aspect_ratio"], dragging: false, filter: null},
+    {Name: "Screen/Body Ratio", round: 2, attribute: ["screen_body_ratio"], dragging: false, filter: null},
+]
+
+var filteredBrands = []
 
 function build_parallel_coordinates_chart() {
     parallel_coordinates_svg = d3.select("#parallel_coordinates_chart");
@@ -9,16 +19,6 @@ function build_parallel_coordinates_chart() {
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
 
     const margins = {top: 50, right: 70, bottom: 35, left: 70}
-    
-    axesParallelCoordinates = [
-        {Name: "Battery Amps/h", round: 0, attribute: ["battery_amps"], dragging: false, filter: null},
-        {Name: "Internal Memory MB", round: 0, attribute: ["im_MB"], dragging: false, filter: null},
-        {Name: "RAM MB", round: 1, attribute: ["ram_MB"], dragging: false, filter: null},
-        {Name: "Camera MP", round: 1, attribute: ["primary_camera_MP"], dragging: false, filter: null},
-        {Name: "Number of Sensors/ Model", round: 2, attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"], dragging: false, filter: null},
-        {Name: "Aspect Ratio", round: 2, attribute: ["aspect_ratio"], dragging: false, filter: null},
-        {Name: "Screen/Body Ratio", round: 2, attribute: ["screen_body_ratio"], dragging: false, filter: null},
-    ]
     
     parallel_coordinates_svg.append("text")
         .attr("x", "50%")
@@ -51,15 +51,36 @@ function build_parallel_coordinates_chart() {
         .text(datum => datum['Name']);
     group_axis.append("text")
         .classed("text_axis_ticks text_left", true)
+        .classed("hidden", datum => datum['filter'] != undefined)
         .attr("id", "axis_tick_max")
         .attr("x", - 5)
         .attr("y", margins.top)
         .text(datum => datum['max'].toFixed(datum['round']));
     group_axis.append("text")
         .classed("text_axis_ticks text_left", true)
+        .classed("hidden", datum => datum['filter'] != undefined)
+        .attr("id", "axis_tick_min")
         .attr("x", - 5)
         .attr("y", svg_height - margins.bottom)
         .text(datum => datum['min']);
+
+    const brushWidth = 0.03 * svg_width;
+    group_axis.append("text")
+        .classed("text_axis_ticks text_left bold", true)
+        .classed("hidden", datum => datum['filter'] == undefined)
+        .attr("id", "axis_tick_min_region")
+        .attr("dominant-baseline", "middle")
+        .attr("x", - brushWidth / 2 - 5)
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0] + 0.01 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
+    group_axis.append("text")
+        .classed("text_axis_ticks text_left bold", true)
+        .classed("hidden", datum => datum['filter'] == undefined)
+        .attr("id", "axis_tick_max_region")
+        .attr("dominant-baseline", "middle")
+        .attr("x", - brushWidth / 2 - 5)
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1] - 0.01 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
 
     // DEAL WITH DRAGGING
     group_axis.call(d3.drag()
@@ -114,7 +135,6 @@ function build_parallel_coordinates_chart() {
         }));
 
     // DEAL WITH BRUSHING
-    const brushWidth = 0.03 * svg_width;
     group_axis.append("g").classed("brush", true)
         .call(d3.brushY()
             .extent( [ [- brushWidth / 2, margins.top], [brushWidth / 2, svg_height - margins.bottom] ] )
@@ -165,7 +185,7 @@ function build_parallel_coordinates_chart() {
 
     group_axes.raise();
 
-    parallel_coordinates_svg.append(() => createButtonRemoveBrushes())
+    // parallel_coordinates_svg.append(() => createButtonRemoveBrushes())
 }
 
 function positionAxis(datum, positionDragged = undefined) {
@@ -312,8 +332,27 @@ function updateParallelLineChart() {
 }
 
 function changedBrushingParallelLineChart() {
+    const margins = {top: 50, right: 70, bottom: 35, left: 70}
+    var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
+
+    filteredBrands = []
+
+    // UPDATE BRUSH AXIS
+    parallel_coordinates_svg.selectAll("#axis_tick_min")
+        .classed("hidden", datum => datum['filter'] != undefined);
+    parallel_coordinates_svg.selectAll("#axis_tick_max")
+        .classed("hidden", datum => datum['filter'] != undefined);
+    parallel_coordinates_svg.selectAll("#axis_tick_min_region")
+        .classed("hidden", datum => datum['filter'] == undefined)
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0] + 0.03 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
+    parallel_coordinates_svg.selectAll("#axis_tick_max_region")
+        .classed("hidden", datum => datum['filter'] == undefined)
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1] - 0.03 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
+
     parallel_coordinates_svg.selectAll("path.brand_line")
-        .classed("filtered", function(datum) {
+        .each(function(datum, index) {
             var isSelected = true;
             axesParallelCoordinates.forEach(function(axis) {
                 if (axis['filter'] == null) return;
@@ -323,13 +362,41 @@ function changedBrushingParallelLineChart() {
                 isSelected = isSelected && insideRegion;
             });
 
-            return !isSelected
+            if (isSelected) filteredBrands.push(datum['Brand']);
 
         });
 
     var regionsToRemove = false;
     axesParallelCoordinates.forEach(axis => { if (axis['filter'] != null) regionsToRemove = true; })
     parallel_coordinates_svg.select(".removeBrushes .button").classed("inactive", !regionsToRemove);
+
+    dispatch.call("filtered_brand", this);
+}
+
+function filterBrandsParallelCoordinates() {
+    var paths = parallel_coordinates_svg.selectAll("path.brand_line");
+    var unselectedBrands = brands_list.filter(brand => !selected_brands.includes(brand));
+    var unfilteredBrands = brands_list.filter(brand => !filteredBrands.includes(brand));
+
+    // UPDATE NOT FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (filteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem['Brand'] == brand);
+        path.classed("filtered", true).raise();
+    });
+    
+    // UPDATE FILTERED AND NOT SELECTED BRANDS
+    unselectedBrands.forEach(function(brand) {
+        if (unfilteredBrands.includes(brand)) return;
+        var path = paths.filter(elem => elem['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
+
+    // UPDATE SELECTED BRANDS
+    selected_brands.forEach(function(brand) {
+        var path = paths.filter(elem => elem['Brand'] == brand);
+        path.classed("filtered", false).raise();
+    });
 }
 
 function hover_brand_parallel_line_chart(event){
@@ -443,4 +510,10 @@ function createButtonRemoveBrushes() {
         .attr("xlink:href", "Resources/delete.png");
 
     return buttonsGroup.node();
+}
+
+function resetBrushes() {
+    parallel_coordinates_svg.selectAll(".brush").call(d3.brush().clear);
+    axesParallelCoordinates.forEach(axis => axis['filter'] = null);
+    changedBrushingParallelLineChart();
 }

@@ -96,6 +96,8 @@ function build_glyph_chart() {
             glyph_chart_svg.select("text#zoomLevel").text(Math.round(zoomLevel * 100) / 100 + "x");
             glyph_chart_svg.selectAll(".zoom_buttons .button").classed("inactive", datum => !datum['hover_if']())
             glyph_chart_svg_zoomable.attr("transform", (transform = e.transform));
+
+            updateResetButton();
         });
 
     glyph_chart_svg.call(zoomGlyphs);
@@ -107,7 +109,7 @@ function build_glyph_chart() {
         .classed("text_left bold", true)
         .attr("id", "zoomLevel")
         .attr("dominant-baseline", "middle")
-        .attr("x", 0.87 * svg_width)
+        .attr("x", 0.91 * svg_width)
         .attr("y", 0.15 * svg_height)
         .text(Math.round(zoomLevel * 100) / 100 + "x")
 }
@@ -346,6 +348,8 @@ function updateGlyphChart() {
             glyph_chart_svg.select("text#zoomLevel").text(Math.round(zoomLevel * 100) / 100 + "x");
             glyph_chart_svg.selectAll(".zoom_buttons .button").classed("inactive", datum => !datum['hover_if']())
             glyph_chart_svg_zoomable.attr("transform", (transform = e.transform));
+
+            updateResetButton();
         });
     glyph_chart_svg.call(zoomGlyphs);
 }
@@ -365,12 +369,10 @@ function createButtonsZoom() {
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
     const radius = 0.08 * svg_height;
     const imageSide = 0.08 * svg_height;
-    const colorButton = d3.color("darkgrey")
-    const colorHovered = d3.rgb(0, 76, 153)
     const buttonsInfo = [
-        {x: - 0.04 * svg_width, color: colorButton, Name: "Zoom In", link: "Resources/zoom-in.png", link_hover: "Resources/zoom-in-white.png", action: zoomInAction, hover_if: () => zoomLevel != maxZoom},
-        {x: + 0, color: colorButton, Name: "Zoom Out", link: "Resources/zoom-out.png", link_hover: "Resources/zoom-out-white.png", action: zoomOutAction, hover_if: () => zoomLevel != 1},
-        {x: + 0.04 * svg_width, color: colorButton, Name: "Back To Normal", link: "Resources/expand.png", link_hover: "Resources/expand-white.png", action: resetZoom, hover_if: () => zoomLevel != 1},
+        {x: + 0, Name: "Zoom In", link: "Resources/zoom-in.png", link_hover: "Resources/zoom-in-white.png", action: zoomInAction, hover_if: () => zoomLevel != maxZoom},
+        {x: + 0.04 * svg_width, Name: "Zoom Out", link: "Resources/zoom-out.png", link_hover: "Resources/zoom-out-white.png", action: zoomOutAction, hover_if: () => zoomLevel != 1},
+        //{x: + 0.04 * svg_width, Name: "Back To Normal", link: "Resources/expand.png", link_hover: "Resources/expand-white.png", action: resetZoom, hover_if: () => zoomLevel != 1},
     ]
 
     var buttonsGroup = d3.create("svg:g")
@@ -382,6 +384,7 @@ function createButtonsZoom() {
         .append("g").classed("button", true)
         .classed("inactive", datum => !datum['hover_if']())
         .on("click", function(event, datum) {
+            if (!datum['hover_if']()) return;
             datum['action']();
 
             var element = d3.select(this);
@@ -427,9 +430,6 @@ function zoomOutAction() {
 }
 function resetZoom() {
     glyph_chart_svg.transition().duration(750).call(zoomGlyphs.transform, d3.zoomIdentity.scale(1));
-}
-function zoomOutToMaximum(maxZoom) {
-    zoomGlyphs.scaleBy(glyph_chart_svg.transition().duration(750), maxZoom / zoomLevel);
 }
 
 function createButtonHelp() {

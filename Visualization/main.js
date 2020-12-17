@@ -7,7 +7,9 @@ var dispatch = d3.dispatch("clickBrandLine",
     "selectBrand", "unselectBrand",
     "hover_brand", "hover_remove_brand",
     "hover_spiral_chart", "hover_remove_spiral_chart",
-    "clicked_attribute");
+    "clicked_attribute",
+    "filtered_brand",
+    "reset_visualization");
 
 var dataset_brands
 var brands_list
@@ -20,6 +22,8 @@ var end_date = new Date(2017, 0, 1)
 const DatasetDir = "../Datasets/"
 
 function init() {
+    build_title_and_reset()
+
     d3.dsv(";", DatasetDir + "Brands_Parsed.csv").then(function (data) {
         data.forEach(function(element) {
             if (element['Year'] == 'null') element['Year'] = null;
@@ -108,8 +112,8 @@ function init() {
             prepareEvents();
 
             // Trigger Selection Of Two Brands
-            dispatch.call("selectBrand", this, "OnePlus");
-            dispatch.call("selectBrand", this, "Mitac");
+            dispatch.call("selectBrand", this, "Xiaomi");
+            dispatch.call("selectBrand", this, "Apple");
             
         });
     });
@@ -154,16 +158,20 @@ function prepareEvents() {
         updateSpiralChart();
         updateSmallMultiplesChart();
         updateGlyphChart();
+
+        updateResetButton();
     });
 
     /* --------------- CHANGED SPIRAL PERIOD ------------------ */
     dispatch.on("changed_spiral_period", function() {
         updateSpiralChart();
+        updateResetButton();
     });
 
     /* --------------- CLICKED LINE OF BRAND ------------------ */
     dispatch.on("clickBrandLine", function() {
         if (closeToBrand == undefined) return;
+        updateResetButton();
 
         if (selected_brands.includes(closeToBrand)) {
             const index = selected_brands.indexOf(closeToBrand);
@@ -206,12 +214,17 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+
+        updateResetButton();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
     dispatch.on("unselectBrand", function(brand) {
+        console.log("Unselecting: ", brand, " before: ", selected_brands);
         const index = selected_brands.indexOf(brand);
         selected_brands.splice(index, 1);
+        console.log("Unselecting: ", brand, " after: ", selected_brands);
+
         removeColorBrand(brand);
         brandUpdateColor(brand);
         brandUpdateColorParallelCoordinates(brand);
@@ -221,6 +234,8 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+
+        updateResetButton();
     });
 
     /* --------------- HOVER POINT OF BRAND ------------------ */
@@ -304,13 +319,16 @@ function prepareEvents() {
     });
 
     /* ------------- SELECTED ATTRIBUTE ------------------- */
-    dispatch.on("clicked_attribute", function(event, datum) {
+    dispatch.on("clicked_attribute", function(datum) {
+        console.log(selectedAxis);
+        console.log(datum);
         if (selectedAxis == datum) {
             unselectAttribute();
             updateLinesSmallMultiples();
             updateGlyphChart();
             hideLegend();
-
+            
+            updateResetButton();
             return;
         }
 
@@ -320,6 +338,46 @@ function prepareEvents() {
         updateLinesSmallMultiples();
         updateGlyphChart();
         showLegend();
+        
+        updateResetButton();
     });
 
+    /* ------------- FILTERED BRAND ------------------- */
+    dispatch.on("filtered_brand", function() {
+        filterBrandsLineChart(1);
+        filterBrandsLineChart(2);
+        filterBrandsSmallMultiples();
+        filterBrandsParallelCoordinates();
+
+        updateResetButton();
+    })
+
+    /* ------------- RESET VISUALIZATION ------------------- */
+    dispatch.on("reset_visualization", function() {
+        // Reset Zoom in Glyphs
+        resetZoom();
+
+        // Reset Brands Selection
+        const copy_selected_brands = [...selected_brands]
+        copy_selected_brands.forEach(brand => dispatch.call("unselectBrand", this, brand));
+        dispatch.call("selectBrand", this, "Xiaomi");
+        dispatch.call("selectBrand", this, "Apple");
+
+        // Reset Brushes in Parallel Coordinates
+        resetBrushes();
+        // Reset Time Selection
+        resetTimeSelection();
+        // Reset Selected Axis Small Multiple
+        dispatch.call("clicked_attribute", this, selectedAxis);
+        // Reset Glyphs Period Selection
+        resetPeriodSelection();
+
+        /* UPDATE IDIOMS */
+        filterDatasets();
+        updateLineCharts();
+        updateSmallMultiplesChart();
+        updateParallelLineChart();
+        updateGlyphChart();
+        updateSpiralChart();
+    })
 }
