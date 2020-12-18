@@ -192,7 +192,7 @@ function addPeriodSelection() {
         .attr("cy", 0)
         .attr("r", 6)
         .attr("id", "period_circle")
-        .attr("class", "circle_selector");
+        .attr("class", "circle_selector draggable");
 
     prepare_event_period_selection();
 }
@@ -246,15 +246,24 @@ function prepare_event_period_selection() {
         if (index > PERIODS_AVAILABLE.length - 1) index = PERIODS_AVAILABLE.length - 1;
         else if (index < 0) index = 0;
 
-        d3.select(this).attr("cx", index * step);
+        d3.select(this).attr("r", 8)
+            .attr("cx", index * step);
         selected_period_months = PERIODS_AVAILABLE[index];
         // console.log("New Selected Period Months: ", selected_period_months);
     }
 
     spiral_chart_svg.select(".circle_selector")
         .call(d3.drag()
+            .on("start", function(event, datum) {
+                d3.select(this).attr("r", 7)
+            })
             .on("drag", dragged)
-            .on("end", (event, datum) => dispatch.call("changed_spiral_period", this)));
+            .on("end", function(event, datum) {
+                d3.select(this).attr("r", 6);
+                dispatch.call("changed_spiral_period", this)
+            }))
+        .on("mousemove", function(event, datum) { d3.select(this).attr("r", 8)})
+        .on("mouseout", function(event, datum) { d3.select(this).attr("r", 6)});
 }
 
 function resetPeriodSelection() {

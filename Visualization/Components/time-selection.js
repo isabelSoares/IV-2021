@@ -35,16 +35,20 @@ function build_time_selection_svg() {
         .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")")
         .call(time_axis);
     
-    time_selection_svg.append("polygon")
+    var selectors = time_selection_svg.append("g")
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
+    
+    selectors.append("path")
+        .attr("class", "path_selector grabbable")
+        .attr("d", d3.line()([getPointsConnection(time_scale(start_date)), getPointsConnection(time_scale(end_date))]));
+    selectors.append("polygon")
         .attr("points", getPointsTriangle(time_scale(start_date)))
         .attr("id", "start_triangle")
-        .attr("class", "triangle_selector draggable")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
-    time_selection_svg.append("polygon")
+        .attr("class", "triangle_selector draggable");
+    selectors.append("polygon")
         .attr("points", getPointsTriangle(time_scale(end_date)))
         .attr("id", "end_triangle")
-        .attr("class", "triangle_selector draggable")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
+        .attr("class", "triangle_selector draggable");
     
     prepare_event_time_selection();
 }
@@ -55,6 +59,10 @@ function getPointsTriangle(center) {
     return points_string;
 }
 
+function getPointsConnection(center) {
+    return [center, - 10.45]
+}
+
 function prepare_event_time_selection() {
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
     const LINE_WIDTH = svg_width * 0.95;
@@ -62,7 +70,7 @@ function prepare_event_time_selection() {
     function dragged(event, datum) {
         var new_x = event.x - (svg_width - LINE_WIDTH) / 2;
         var temp_date = time_scale.invert(new_x);
-        var date = new Date(temp_date.getFullYear(), Math.round(temp_date.getMonth() / 12) * 12 , 1);
+        var date = new Date(temp_date.getFullYear(), 12 , 1);
 
         var closest_start_date = (new Date(start_date)).setFullYear(start_date.getFullYear() + 2);
         var closest_end_date = (new Date(end_date)).setFullYear(end_date.getFullYear() - 2);
@@ -74,20 +82,74 @@ function prepare_event_time_selection() {
 
         d3.select(this)
             .attr("points", getPointsTriangle(new_x))
-            .classed("hover", true)
-            .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
-        
+            .classed("hover", true);
+            
         if (this.id == "start_triangle") start_date = new Date(date);
         else if (this.id == "end_triangle") end_date = new Date(date);
         // console.log("Start: ", start_year);
         // console.log("End: ", end_year);
+
+        time_selection_svg.select(".path_selector")
+            .attr("d", d3.line()([getPointsConnection(time_scale(start_date)), getPointsConnection(time_scale(end_date))]));
     }
 
-    time_selection_svg.selectAll("polygon")
+    function grabbed(event, datum) {
+        this.__origin_start__ += event.dx;
+        this.__origin_end__ += event.dx;
+
+        var new_start_date = time_scale.invert(this.__origin_start__);
+        new_start_date = new Date(new_start_date.getFullYear(), Math.round(new_start_date.getMonth() / 12) * 12 , 1);
+        var new_end_date = time_scale.invert(this.__origin_end__);
+        new_end_date = new Date(new_end_date.getFullYear(), Math.round(new_end_date.getMonth() / 12) * 12 , 1);
+        
+        if (new_start_date < min_date || new_end_date > max_date) {
+            this.__origin_start__ -= event.dx;
+            this.__origin_end__ -= event.dx;
+
+            new_start_date = time_scale.invert(this.__origin_start__);
+            new_start_date = new Date(new_start_date.getFullYear(), Math.round(new_start_date.getMonth() / 12) * 12 , 1);
+            new_end_date = time_scale.invert(this.__origin_end__);
+            new_end_date = new Date(new_end_date.getFullYear(), Math.round(new_end_date.getMonth() / 12) * 12 , 1);
+        }
+        
+        this.__current_start__ = time_scale(new_start_date);
+        this.__current_end__ = time_scale(new_end_date);
+
+        d3.select("#start_triangle").attr("points", getPointsTriangle(this.__current_start__));
+        d3.select("#end_triangle").attr("points", getPointsTriangle(this.__current_end__));
+        d3.select(this)
+            .attr("d", d3.line()([getPointsConnection(this.__current_start__, "start_triangle"), getPointsConnection(this.__current_end__, "end_triangle")]));
+
+        start_date = new Date(new_start_date);
+        end_date = new Date(new_end_date);
+    }
+
+    time_selection_svg.selectAll(".triangle_selector")
         .call(d3.drag()
             .on("drag", dragged)
             .on("end", function(event, datum) {
                 d3.select(this).classed("hover", false);
+                dispatch.call("changed_time_period", this);
+            }));
+    time_selection_svg.select(".path_selector")
+        .call(d3.drag()
+            .on("start", function(event, datum) {
+                this.__origin_start__ = time_scale(start_date);
+                this.__origin_end__ = time_scale(end_date);
+                this.__current_start__ = time_scale(start_date);
+                this.__current_end__ = time_scale(end_date);
+                d3.selectAll(".triangle_selector").classed("hover", true);
+                d3.select(this).classed("grabbing", true);
+            })
+            .on("drag", grabbed)
+            .on("end", function(event, datum) {
+                delete this.__origin_start__;
+                delete this.__origin_end__;
+                delete this.__current_start__;
+                delete this.__current_end__;
+
+                d3.selectAll(".triangle_selector").classed("hover", false);
+                d3.select(this).classed("grabbing", false);
                 dispatch.call("changed_time_period", this);
             }));
 }
@@ -106,4 +168,8 @@ function resetTimeSelection() {
     end_triangle.transition().duration(1000)
         .attr("points", getPointsTriangle(new_x));
     end_date = new Date(max_date);
+
+    var path_selector = time_selection_svg.select(".path_selector");
+    path_selector.transition().duration(1000)
+        .attr("d", d3.line()([getPointsConnection(time_scale(start_date)), getPointsConnection(time_scale(end_date))]));
 }
