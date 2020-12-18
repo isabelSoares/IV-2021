@@ -166,7 +166,7 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
         var currentTransformation = element.attr("transform");
         
         const showing_attributes = [
-            {Name: 'Date Announced', image: 'Resources/year.png', attribute: datum['Date'].getFullYear(), units: undefined},
+            {Name: 'Date Announced', image: 'Resources/year.png', attribute: datum['year'], units: undefined},
             {Name: 'Battery', image: 'Resources/battery.png', attribute: datum['battery_amps'], units: "Amps/h"},
             {Name: 'Internal Memory', image: 'Resources/internal-memory.png', attribute: datum['im_MB'], units:"MB"}
         ]
@@ -181,12 +181,13 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
         var infoElement = element.append("g")
             .classed("phoneInfo", true);
 
+        /*
         infoElement.append("text").classed("modelTitle text_center bold", true)
             .attr("x", 0)
             .attr("y", - 0.30 * height)
             .text(datum['Model'].replace("_", ""))
             .append("title")
-            .text("Model");
+            .text("Model");*/
 
         var infoElements = infoElement.selectAll("g.infoLine").data(showing_attributes).enter()
             .append("g").classed("infoLine", true)
@@ -207,7 +208,7 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
             .attr("dominant-baseline", "middle")
             .attr("x", 0.35 * width)
             .attr("y", datum => (datum['units'] == undefined) ? 0 : - 0.03 * height)
-            .text(datum => datum['attribute'])
+            .text(datum => Math.round(datum['attribute']))
         infoElements.append("text")
             .classed("text_left", true)
             .attr("dominant-baseline", "middle")
@@ -258,13 +259,30 @@ function createSymbol(proportionHeight, curveFactor) {
 }
 
 function treatDatasetGlyph() {
-    // TODO: Not the way to deal with nulls on battery amps
+    // Phones without Battery Amps are filtered out
     dataset_glyph = dataset_models.filter(elem => selected_brands.includes(elem['Brand']) && elem['battery_amps'] != null)
-    
     if (selectedAxis != undefined)
         dataset_glyph = dataset_glyph.filter(elem => elem[selectedAxis['attribute']] == 1);
 
-    // console.log("Dataset Glyph: ", dataset_glyph);
+    test = d3.group(dataset_glyph, datum => datum['Brand'], datum => datum['year']);
+    final = [];
+    Array.from(test, function([brand, year_values]) {
+        Array.from(year_values, function([year, values]) {
+
+            element = {'Brand': brand, 'year': year, 'battery_amps': 0, 'im_MB': 0}
+            values.forEach(function(value) {
+                element['battery_amps'] += value['battery_amps']
+                if (value['im_MB'] != null) element['im_MB'] += value['im_MB']
+            })
+
+            element['battery_amps'] /= values.length;
+            element['im_MB'] /= values.filter(elem => elem['im_MB'] != null).length
+            final.push(element);
+        })
+    })
+    dataset_glyph = final;
+
+    //console.log("Dataset Glyph: ", dataset_glyph);
 }
 
 function getColorGlyph(datum) {
@@ -517,12 +535,12 @@ function createTooltipGlyphChart() {
         .classed("text_right minimum", true)
         .attr("x", - lineWidth / 2)
         .attr("y", lineHeight)
-        .text(Math.min(...minimums.values()) + " MB");
+        .text(Math.round(Math.min(...minimums.values())) + " MB");
     internalMemoryElement.append("text")
         .classed("text_left maximum", true)
         .attr("x", lineWidth / 2)
         .attr("y", lineHeight)
-        .text(Math.max(...maximums.values()) + " MB");
+        .text(Math.round(Math.max(...maximums.values())) + " MB");
     internalMemoryElement.append("rect")
         .attr("x", - lineWidth / 2)
         .attr("y", - 2 * lineHeight)
@@ -541,19 +559,19 @@ function createTooltipGlyphChart() {
         .classed("text_right minimum", true)
         .attr("x", - lineWidth / 2)
         .attr("y", 0.1 * svg_height)
-        .text(Math.min(...minimums.values()) + " Amps/h");
+        .text(Math.round(Math.min(...minimums.values())) + " Amps/h");
     
     // Placeholder Value
     var size = 1000;
     var width_phone = Math.sqrt(size / proportionHeightPhone);
     var height_phone = proportionHeightPhone * width_phone;
     batteryElement.append(() => createMockPhone(size, selectedColor, undefined, false))
-        .attr("transform", "translate(" + (- 0.38 * lineWidth + width_phone) + ",0)");
+        .attr("transform", "translate(" + (- 0.38 * lineWidth) + "," + (- height_phone / 2) + ")");
     batteryElement.append("text")
         .classed("text_left maximum", true)
         .attr("x", lineWidth / 2)
         .attr("y", 0.1 * svg_height)
-        .text(Math.max(...maximums.values()) + " Amps/h");
+        .text(Math.round(Math.max(...maximums.values())) + " Amps/h");
     // Placeholder Value
     var size = 2000;
     var width_phone = Math.sqrt(size / proportionHeightPhone);
@@ -562,7 +580,7 @@ function createTooltipGlyphChart() {
         .attr("transform", "translate(" + (0.38 * lineWidth) + "," + (- height_phone / 2) + ")");
 
     const linesInfo = [
-        {attribute: "Announced Year", encoded: "horizontal positioning", image: "Resources/year.png", element: undefined},
+        {attribute: "Announced Year", encoded: "horizontal ordering", image: "Resources/year.png", element: undefined},
         {attribute: "Battery", encoded: "size", image: "Resources/battery.png", element: batteryElement.node()},
         {attribute: "Internal Memory", encoded: "color saturation", image: "Resources/internal-memory.png", element: internalMemoryElement.node()},
     ]
@@ -606,7 +624,7 @@ function createTooltipGlyphChart() {
         .text(datum => datum['attribute']);
     textLines.append("tspan")
         .attr("y", 0)
-        .text(" encoded through ");
+        .text(" represented through ");
     textLines.append("tspan")
         .attr("font-weight", "bold")
         .attr("y", 0)
@@ -624,13 +642,13 @@ function updateGlyphChartTooltip() {
     var minimums = d3.rollup(dataset_glyph.filter(elem => elem['im_MB'] != null), values => d3.min(values, datum => datum['im_MB']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph.filter(elem => elem['im_MB'] != null), values => d3.max(values, datum => datum['im_MB']), datum => datum['Brand']);
     var internalMemoryElement = tooltip.select("#internal_memory_info");
-    internalMemoryElement.select(".minimum").text(Math.min(...minimums.values()) + " MB");
-    internalMemoryElement.select(".maximum").text(Math.max(...maximums.values()) + " MB");
+    internalMemoryElement.select(".minimum").text(Math.round(Math.min(...minimums.values())) + " MB");
+    internalMemoryElement.select(".maximum").text(Math.round(Math.max(...maximums.values())) + " MB");
 
     // BATTERY AMPS
     var minimums = d3.rollup(dataset_glyph, values => d3.min(values, datum => datum['battery_amps']), datum => datum['Brand']);
     var maximums = d3.rollup(dataset_glyph, values => d3.max(values, datum => datum['battery_amps']), datum => datum['Brand']);
     var batteryElement = tooltip.select("#battery_amps_info");
-    batteryElement.select(".minimum").text(Math.min(...minimums.values()) + " Amps/h");
-    batteryElement.select(".maximum").text(Math.max(...maximums.values()) + " Amps/h");
+    batteryElement.select(".minimum").text(Math.round(Math.min(...minimums.values())) + " Amps/h");
+    batteryElement.select(".maximum").text(Math.round(Math.max(...maximums.values())) + " Amps/h");
 }
