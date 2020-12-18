@@ -27,9 +27,7 @@ function build_spiral_chart() {
         .radius(chartRadius)
         .holeRadiusProportion(0)
         .arcsPerCoil(selected_period_months['div'])
-        .coilPadding(0.05)
-        .arcLabel("Month")
-        .coilLabel("Year")
+        .coilPadding(0.05);
 
     const g = spiral_chart_svg.append("g")
         .attr("id", "spiral_group")
@@ -56,6 +54,152 @@ function build_spiral_chart() {
     addPeriodSelection();
     addErrorMessage();
     createTooltipSpiralChart();
+}
+
+function spiralHeatmap () {
+    // constants
+    const radians = 0.0174532925
+    // Default values
+    var radius = 250
+    var holeRadiusProportion = 0.3
+    var arcsPerCoil = 12
+    var coilPadding = 0 
+    var arcLabel = ''
+    var coilLabel = ''
+  
+    function chart (selection) {
+      selection.each(function (data) {
+        updatePathData(data)
+  
+        var thisSelection = d3
+          .select(this)
+          .append('g')
+          .attr('class', 'spiral-heatmap')
+  
+        var arcs = thisSelection.selectAll('.arc')
+          .data(data).enter()
+          .append('g')
+          .attr('class', 'arc');
+  
+        arcs.append('path').attr('d', function (d) {
+          // start at vertice 1
+          var start = 'M ' + d.x1 + ' ' + d.y1
+          // inner curve to vertice 2
+          var side1 = ' Q ' + d.controlPoint1x + ' ' + d.controlPoint1y + ' ' + d.x2 + ' ' + d.y2
+          // straight line to vertice 3
+          var side2 = 'L ' + d.x3 + ' ' + d.y3
+          // outer curve vertice 4
+          var side3 = ' Q ' + d.controlPoint2x + ' ' + d.controlPoint2y + ' ' + d.x4 + ' ' + d.y4
+          return start + ' ' + side1 + ' ' + side2 + ' ' + side3 + ' Z'
+        })
+      })
+  
+      function updatePathData (data) {
+        var holeRadius = radius * holeRadiusProportion
+        var arcAngle = 360 / arcsPerCoil
+        var dataLength = data.length
+        var coils = Math.ceil(dataLength / arcsPerCoil)
+        var coilWidth = radius * (1 - holeRadiusProportion) / (coils + 1)
+  
+        data.forEach(function (d, i) {
+          var coil = Math.floor(i / arcsPerCoil)
+          var position = i - coil * arcsPerCoil
+          var startAngle = position * arcAngle
+          var endAngle = (position + 1) * arcAngle
+          var startInnerRadius = holeRadius + i / arcsPerCoil * coilWidth
+          var startOuterRadius = holeRadius + i / arcsPerCoil * coilWidth + coilWidth * (1 - coilPadding)
+          var endInnerRadius = holeRadius + (i + 1) / arcsPerCoil * coilWidth
+          var endOuterRadius = holeRadius + (i + 1) / arcsPerCoil * coilWidth + coilWidth * (1 - coilPadding)
+  
+          // vertices of each arc
+          d.x1 = x(startAngle, startInnerRadius)
+          d.y1 = y(startAngle, startInnerRadius)
+          d.x2 = x(endAngle, endInnerRadius)
+          d.y2 = y(endAngle, endInnerRadius)
+          d.x3 = x(endAngle, endOuterRadius)
+          d.y3 = y(endAngle, endOuterRadius)
+          d.x4 = x(startAngle, startOuterRadius)
+          d.y4 = y(startAngle, startOuterRadius)
+  
+          // CURVE CONTROL POINTS
+          var midAngle = startAngle + arcAngle / 2
+          var midInnerRadius =
+            holeRadius + (i + 0.5) / arcsPerCoil * coilWidth
+          var midOuterRadius =
+            holeRadius +
+            (i + 0.5) / arcsPerCoil * coilWidth +
+            coilWidth * (1 - coilPadding)
+  
+          // MID POINTS, WHERE THE CURVE WILL PASS THRU
+          d.mid1x = x(midAngle, midInnerRadius)
+          d.mid1y = y(midAngle, midInnerRadius)
+          d.mid2x = x(midAngle, midOuterRadius)
+          d.mid2y = y(midAngle, midOuterRadius)
+  
+          d.controlPoint1x = (d.mid1x - 0.25 * d.x1 - 0.25 * d.x2) / 0.5
+          d.controlPoint1y = (d.mid1y - 0.25 * d.y1 - 0.25 * d.y2) / 0.5
+          d.controlPoint2x = (d.mid2x - 0.25 * d.x3 - 0.25 * d.x4) / 0.5
+          d.controlPoint2y = (d.mid2y - 0.25 * d.y3 - 0.25 * d.y4) / 0.5
+  
+          d.arcNumber = position
+          d.coilNumber = coil
+        })
+  
+        return data
+      }
+  
+      function x (angle, radius) {
+        return radius * Math.sin((360 - angle + 180) * radians)
+      }
+  
+      function y (angle, radius) {
+        return radius * Math.cos((360 - angle + 180) * radians)
+      }
+    }
+  
+    chart.radius = function (value) {
+      if (!arguments.length) return radius
+      radius = value
+      return chart
+    }
+  
+    chart.holeRadiusProportion = function (value) {
+      if (!arguments.length) return holeRadiusProportion
+      holeRadiusProportion = value
+      return chart
+    }
+  
+    chart.arcsPerCoil = function (value) {
+      if (!arguments.length) return arcsPerCoil
+      arcsPerCoil = value
+      return chart
+    }
+  
+    chart.coilPadding = function (value) {
+      if (!arguments.length) return coilPadding
+      coilPadding = value
+      return chart
+    }
+  
+    chart.arcLabel = function (value) {
+      if (!arguments.length) return arcLabel
+      arcLabel = value
+      return chart
+    }
+  
+    chart.coilLabel = function (value) {
+      if (!arguments.length) return coilLabel
+      coilLabel = value
+      return chart
+    }
+    
+    chart.startAngle = function (value) {
+      if (!arguments.length) return startAngle
+      startAngle = value
+      return chart
+    }
+  
+    return chart
 }
 
 function treatDataset() {
@@ -242,7 +386,7 @@ function prepare_event_period_selection() {
         var new_x = event.x;
         const step = LINE_WIDTH / (PERIODS_AVAILABLE.length - 1);
         
-        const index = Math.round(new_x / step);
+        var index = Math.round(new_x / step);
         if (index > PERIODS_AVAILABLE.length - 1) index = PERIODS_AVAILABLE.length - 1;
         else if (index < 0) index = 0;
 
