@@ -12,20 +12,22 @@ var hscale_sales
 var yaxis_sales
 
 function build_line_charts() {
-    const PADDING = 50;
-    
     line_chart_1_svg = d3.select("svg#line_chart1").classed("line_chart", true);
     line_chart_2_svg = d3.select("svg#line_chart2").classed("line_chart", true);
 
     var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
+    const margins = {top: 0.12 * svg_height, right: 0.06 * svg_width, bottom: 0.15 * svg_height, left: 0.11 * svg_width};
 
     xscale = d3.scaleUtc()
         .domain([start_date, end_date])
-        .range([PADDING, svg_width - PADDING]);
+        .range([margins.left, svg_width - margins.right]);
 
-    xaxis = d3.axisBottom() // we are creating a d3 axis
-        .scale(xscale) // we are adding our padding
-        .tickSizeOuter(0);
+    xaxis = d3.axisBottom()
+        .scale(xscale)
+        .tickSizeOuter(0)
+        .tickValues(computeTimeAxisTicksLineChart())
+        .tickFormat(d3.timeFormat("%Y"));
 
     build_line_chart_1();
     build_line_chart_2();
@@ -33,10 +35,10 @@ function build_line_charts() {
 }
 
 function build_line_chart_1(){
-    const PADDING = 50;
-
     var svg_width = parseInt(line_chart_1_svg.style("width").slice(0, -2));
     var svg_height = parseInt(line_chart_1_svg.style("height").slice(0, -2));
+    const margins = {top: 0.12 * svg_height, right: 0.06 * svg_width, bottom: 0.15 * svg_height, left: 0.11 * svg_width};
+
     createSpiralHoverRegion(line_chart_1_svg);
 
     hscale_models = d3.scaleLinear()
@@ -44,15 +46,15 @@ function build_line_chart_1(){
             return d['# Models'];
             }),
         ])
-        .range([svg_height - PADDING, PADDING]);
+        .range([svg_height - margins.bottom, margins.top]);
 
     var g = line_chart_1_svg.append("g").attr("class", "hover-region line_chart_paths");
     g.append("rect")
         .classed("hover-region hidden", true)
-        .attr("x", PADDING)
-        .attr("y", PADDING)
-        .attr("width", svg_width - 2 * PADDING)
-        .attr("height", svg_height - 2 * PADDING);
+        .attr("x", margins.left)
+        .attr("y", margins.top)
+        .attr("width", svg_width - margins.left - margins.right)
+        .attr("height", svg_height - margins.top - margins.bottom);
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -97,30 +99,33 @@ function build_line_chart_1(){
         .tickFormat(d3.format(".2s")) // format of each year
         .tickSizeOuter(0);
 
-    line_chart_1_svg.append("g") // we are creating a 'g' element to match our yaxis
-        .attr("transform", "translate(" + PADDING + ",0)")
+    var axis = line_chart_1_svg.append("g") // we are creating a 'g' element to match our yaxis
+        .attr("transform", "translate(" + margins.left + ",0)")
         .attr("class", "yaxis") // we are giving it a css style
         .attr("id", "yaxis_1")
         .call(yaxis_models);
+    axis.selectAll(".tick").selectAll("text")
+        .attr("class", "text_axis_ticks text_left");
 
     line_chart_1_svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 0)
+        .attr("y", 0.01 * svg_width)
         .attr("x", - svg_height / 2)
         .attr("text-anchor", "middle")
         .attr("dy", "1em")
         .attr("class", "text_axis_title")
         .text("Models Developed");
         
-    line_chart_1_svg.append("g") // we are creating a 'g' element to match our x axis
-        .attr("transform", "translate(0," + (svg_height - PADDING) + ")")
+    var axis = line_chart_1_svg.append("g") // we are creating a 'g' element to match our x axis
+        .attr("transform", "translate(0," + (svg_height - margins.bottom) + ")")
         .attr("class", "xaxis") // we are giving it a css style
         .attr("id", "xaxis_1")
         .call(xaxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
     
       // text label for the x axis
     line_chart_1_svg.append("text")
-        .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
+        .attr("transform", "translate(" +  (margins.left + (svg_width - margins.left - margins.right) / 2) + " ," + (svg_height - 0.2 * margins.bottom) + ")")
         .attr("class", "text_axis_title")
         .text("Year"); 
     
@@ -128,10 +133,10 @@ function build_line_chart_1(){
 }
 
 function build_line_chart_2(){
-    const PADDING = 50;
-    
     var svg_width = parseInt(line_chart_2_svg.style("width").slice(0, -2));
     var svg_height = parseInt(line_chart_2_svg.style("height").slice(0, -2));
+    const margins = {top: 0.12 * svg_height, right: 0.06 * svg_width, bottom: 0.15 * svg_height, left: 0.11 * svg_width};
+
     createSpiralHoverRegion(line_chart_2_svg);
 
     hscale_sales = d3.scaleLinear()
@@ -139,15 +144,15 @@ function build_line_chart_2(){
             return d['Sales'];
             }),
         ])
-        .range([svg_height - PADDING, PADDING]);
+        .range([svg_height - margins.bottom, margins.top]);
 
     var g = line_chart_2_svg.append("g").attr("class", "hover-region line_chart_paths");
     g.append("rect")
         .classed("hover-region hidden", true)
-        .attr("x", PADDING)
-        .attr("y", PADDING)
-        .attr("width", svg_width - 2 * PADDING)
-        .attr("height", svg_height - 2 * PADDING);
+        .attr("x", margins.left)
+        .attr("y", margins.top)
+        .attr("width", svg_width - margins.left - margins.right)
+        .attr("height", svg_height - margins.top - margins.bottom);
     brands_list.forEach(function(brand, index) {
         g.append("path")
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
@@ -168,11 +173,13 @@ function build_line_chart_2(){
         .tickFormat(d3.format(".2s")) // format of each year
         .tickSizeOuter(0);
 
-    line_chart_2_svg.append("g") // we are creating a 'g' element to match our yaxis
-        .attr("transform", "translate(" + PADDING + ",0)")
+    var axis = line_chart_2_svg.append("g") // we are creating a 'g' element to match our yaxis
+        .attr("transform", "translate(" + margins.left + ",0)")
         .attr("class", "yaxis") // we are giving it a css style
         .attr("id", "yaxis_2")
         .call(yaxis_sales);
+    axis.selectAll(".tick").selectAll("text")
+        .attr("class", "text_axis_ticks text_left");
 
     line_chart_2_svg.append("text")
         .attr("transform", "rotate(-90)")
@@ -183,17 +190,37 @@ function build_line_chart_2(){
         .attr("class", "text_axis_title")
         .text("Sales");
         
-    line_chart_2_svg.append("g") // we are creating a 'g' element to match our x axis
-        .attr("transform", "translate(0," + (svg_height - PADDING) + ")")
+    var axis = line_chart_2_svg.append("g") // we are creating a 'g' element to match our x axis
+        .attr("transform", "translate(0," + (svg_height - margins.bottom) + ")")
         .attr("class", "xaxis") // we are giving it a css style
         .attr("id", "xaxis_2")
         .call(xaxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
     
       // text label for the x axis
     line_chart_2_svg.append("text")
-        .attr("transform", "translate(" + svg_width / 2 + " ," + (svg_height - PADDING / 3) + ")")
+        .attr("transform", "translate(" +  (margins.left + (svg_width - margins.left - margins.right) / 2) + " ," + (svg_height - 0.2 * margins.bottom) + ")")
         .attr("class", "text_axis_title")
         .text("Year");
+}
+
+function computeTimeAxisTicksLineChart() {
+    var startYear = start_date.getFullYear();
+    var endYear = end_date.getFullYear();
+    var tickValues = []
+
+    for (var year = startYear; year <= endYear; year += 1) {
+        if (endYear - startYear <= 12) tickValues.push(new Date(year, 0, 1));
+        else if (startYear % 2 == endYear % 2 && year % 2 == startYear % 2) tickValues.push(new Date(year, 0, 1));
+        else if (startYear % 2 != endYear % 2) {
+            if (year < Math.floor((endYear + startYear) / 2) && year % 2 == startYear % 2)
+                tickValues.push(new Date(year, 0, 1));
+            else if (year > Math.ceil((endYear + startYear) / 2) && year % 2 == endYear % 2)
+                tickValues.push(new Date(year, 0, 1));
+        }
+    }
+
+    return tickValues;
 }
 
 function createHoverCircle(element) {
@@ -254,17 +281,16 @@ function hideLegend() {
 }
 
 function createSpiralHoverRegion(element) {
-    const PADDING = 50;
-    
     var svg_width = parseInt(element.style("width").slice(0, -2));
     var svg_height = parseInt(element.style("height").slice(0, -2));
+    const margins = {top: 0.12 * svg_height, right: 0.06 * svg_width, bottom: 0.15 * svg_height, left: 0.11 * svg_width};
 
     var g = element.append("g").attr("id", "time_interval_lines");
     g.append("rect")
-        .attr("x", PADDING)
-        .attr("y", PADDING)
+        .attr("x", margins.left)
+        .attr("y", margins.top)
         .attr("width", 250)
-        .attr("height", svg_height - 2 * PADDING)
+        .attr("height", svg_height - margins.top - margins.bottom)
         .attr("class", "time_interval_rectangle hidden");
 }
 
@@ -286,13 +312,21 @@ function updateLineCharts() {
     // console.log("New dataset models: ", dataset_models);
 
     xscale.domain([start_date, end_date]);
-    d3.selectAll(".line_chart").select(".xaxis")
-        .call(d3.axisBottom(xscale));
+    xaxis = d3.axisBottom()
+        .scale(xscale)
+        .tickSizeOuter(0)
+        .tickValues(computeTimeAxisTicksLineChart())
+        .tickFormat(d3.timeFormat("%Y"));
+    
+    var axis = d3.selectAll(".line_chart").select(".xaxis")
+        .call(xaxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
 
     // -------------------- UPDATE LINE CHART 1 --------------------
     hscale_models.domain([0, d3.max(dataset_brands, datum => datum['# Models'])]);
-    line_chart_1_svg.select(".yaxis")
+    var axis = line_chart_1_svg.select(".yaxis")
         .call(d3.axisLeft(hscale_models));
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
 
     brands_list.forEach(function(brand, index) {
         line_chart_1_svg.selectAll(".line_chart_paths")
@@ -305,10 +339,11 @@ function updateLineCharts() {
 
     // -------------------- UPDATE LINE CHART 2 --------------------
     hscale_sales.domain([0, d3.max(dataset_brands, datum => datum['Sales'])]);
-    line_chart_2_svg.select(".yaxis")
+    var axis = line_chart_2_svg.select(".yaxis")
         .call(d3.axisLeft(hscale_sales)
             .tickFormat(d3.format(".2s"))
             .tickSizeOuter(0));
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
 
     brands_list.forEach(function(brand, index) {
         line_chart_2_svg.selectAll(".line_chart_paths")
@@ -434,13 +469,15 @@ function show_circle_from_date(line_chart, brand, information) {
 }
 
 function show_tooltip_line_chart(line_chart, information) {
-    const PADDING = 50;
-    const distanceTooltip = 0.15 * parseInt(line_chart_1_svg.style("width").slice(0, -2));
-
     var element
     if (line_chart == 1) element = line_chart_1_svg;
     else if (line_chart == 2) element = line_chart_2_svg;
     else element = line_chart_1_svg;
+
+    var svg_height = parseInt(element.style("height").slice(0, -2));
+    var svg_width = parseInt(element.style("width").slice(0, -2));
+    const distanceTooltip = 0.15 * svg_width;
+    const margins = {top: 0.12 * svg_height, right: 0.06 * svg_width, bottom: 0.15 * svg_height, left: 0.11 * svg_width};
 
     var circle = element.select(".hover_circle")
     var pos = {x: parseFloat(circle.attr("cx")), y: parseFloat(circle.attr("cy"))}
@@ -458,7 +495,7 @@ function show_tooltip_line_chart(line_chart, information) {
     const box_height = parseFloat(tooltip.style("height").slice(0, -2));
     var new_y = pos.y + top - box_height / 2;
     var new_x = pos.x - distanceTooltip - box_width;
-    if (new_x < PADDING) new_x = pos.x + distanceTooltip;
+    if (new_x < margins.left) new_x = pos.x + distanceTooltip;
 
     tooltip.style("top", new_y).style("left", new_x);
     tooltip.classed("hidden", false);

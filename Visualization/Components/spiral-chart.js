@@ -16,8 +16,8 @@ function build_spiral_chart() {
     var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
 
-    const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
-    const chartRadius = svg_height / 2 - margin.bottom;
+    const margins = {top: 0.05 * svg_height, bottom: 0.07 * svg_height, left: 0.05 * svg_width, right: 0.05 * svg_width };
+    const chartRadius = (svg_height - margins.bottom - margins.top) / 2;
 
     dataset_spiral_chart = treatDataset();
     addColorScale(d3.extent(dataset_spiral_chart, datum => datum["Models"]), d3.rgb(153, 204, 255), d3.rgb(0, 76, 153));
@@ -33,7 +33,7 @@ function build_spiral_chart() {
         .attr("id", "spiral_group")
         .attr("transform", "translate(" + 
             (svg_width / 2) + "," + 
-            (svg_height / 2 - margin.bottom + margin.top) + ")");
+            (margins.top + chartRadius) + ")");
 
     g.datum(dataset_spiral_chart)
         .call(spiral_heatmap);
@@ -348,7 +348,7 @@ function addErrorMessage() {
     const HEIGHT = svg_height * 0.50;
 
     var errorMessage = spiral_chart_svg.append("g")
-        .attr("class", "ErrorMessage hidden");
+        .attr("class", "ErrorMessage hidden tooltip_line");
     
     errorMessage.attr("transform", "translate(" + (svg_width - WIDTH) / 2 + ", " + (svg_height - HEIGHT) / 2 + ")");
 
@@ -368,9 +368,8 @@ function addErrorMessage() {
         .attr("x", 0)
         .attr("y", 0)
         .attr("dy", 0)
-        .attr("text-anchor", "middle")
         .attr("dominant-baseline", "hanging")
-        .attr("font-family", "Verdana, Geneva, Tahoma, sans-serif")
+        .attr("class", "text_center")
         .text("Select a period of time big enough for at least one revolution!")
         .call(wrap, WIDTH * 0.90);
 
@@ -423,8 +422,8 @@ function resetPeriodSelection() {
 function updateSpiralChart() {
     var svg_width = parseInt(spiral_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(spiral_chart_svg.style("height").slice(0, -2));
-    const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
-    const chartRadius = svg_height / 2 - margin.bottom;
+    const margins = {top: 0.05 * svg_height, bottom: 0.07 * svg_height, left: 0.05 * svg_width, right: 0.05 * svg_width };
+    const chartRadius = svg_height / 2 - margins.bottom - margins.top;
 
     dataset_spiral_chart = treatDataset();
     if (dataset_spiral_chart.length < selected_period_months['div']) {
@@ -461,7 +460,7 @@ function updateSpiralChart() {
         .attr("id", "spiral_group")
         .attr("transform", "translate(" + 
             (svg_width / 2) + "," + 
-            (svg_height / 2 - margin.bottom + margin.top) + ")");
+            (margins.top + chartRadius) + ")");
 
     g.datum(dataset_spiral_chart)
         .call(spiral_heatmap);
@@ -510,8 +509,6 @@ function createTooltipSpiralChart() {
 function show_tooltip_spiral_chart(event, information) {
     var tooltip = d3.select("div#tooltip_spiral_chart")
         .datum(information);
-
-    const margin = { "top": 0, "bottom": 20, "left": 20, "right": 20 }
     const distanceTooltip = - 0.25 * parseInt(spiral_chart_svg.style("width").slice(0, -2));
 
     var coordinates = d3.pointer(event);

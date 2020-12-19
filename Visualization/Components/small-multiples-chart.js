@@ -20,8 +20,8 @@ function build_small_multiples() {
     var svg_width = parseInt(small_multiples_svg.style("width").slice(0, -2));
     var svg_height = parseInt(small_multiples_svg.style("height").slice(0, -2));
 
-    const margins = {top: 35, right: 35, bottom: 15, left: 35}
-    const subMargins = {top: 10, right: 15, bottom: 20, left: 15}
+    const margins = {top: 0.12 * svg_height, right: 0.03 * svg_width, bottom: 0.06 * svg_height, left: 0.04 * svg_width}
+    const subMargins = {top: 0.04 * svg_height, right: 0.015 * svg_width, bottom: 0.06 * svg_height, left: 0.015 * svg_width}
     const columns = 3
     const rows = 2
 
@@ -29,7 +29,7 @@ function build_small_multiples() {
 
     small_multiples_svg.append("text")
         .attr("x", "50%")
-        .attr("y", "10%")
+        .attr("y", "7%")
         .attr("class", "text_module_title text_center")
         .text("The Number Of Models By Spec");
 
@@ -58,13 +58,20 @@ function build_small_multiples() {
         .domain(multiplesAxes.map(datum => datum['Name']))
         .range(range);
 
+    var max = 0
+    dataset_multiples.forEach(function(data) {
+        multiplesAxes.forEach(function(axis) {
+            if (max < data[axis['attribute']])
+                max = data[axis['attribute']];
+        })
+    })
+    max = Math.ceil(max / 10) * 10;
     numberModelsSmallMultiplesScale = d3.scaleLinear()
-        .domain([0, 150])
+        .domain([0, max])
         .range([- subMargins.bottom, - (stepY - subMargins.top) + subMargins.bottom]);
-
     numberModelsSmallMultiplesAxis = d3.axisLeft()
         .scale(numberModelsSmallMultiplesScale)
-        .tickValues([0, 150]);
+        .tickValues([0, max]);
 
     var smallMultiplesGroups = small_multiples_svg.selectAll("g.multiple")
         .data(multiplesAxes).enter()
@@ -88,17 +95,19 @@ function build_small_multiples() {
         .attr("dominant-baseline", "middle")
         .text(0);
 
-    smallMultiplesGroups.append("g")
+    var axis = smallMultiplesGroups.append("g")
         .attr("transform", "translate(0," + (- subMargins.bottom) + ")")
         .attr("class", "xaxis")
         .attr("id", (datum, index) => "xaxis_" + index)
         .call(timeSmallMultiplesAxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
 
-    smallMultiplesGroups.append("g")
+    var axis = smallMultiplesGroups.append("g")
         .attr("transform", "translate(" + subMargins.left + ",0)")
         .attr("class", "yaxis")
         .attr("id", (datum, index) => "yaxis_" + index)
         .call(numberModelsSmallMultiplesAxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
 
     smallMultiplesGroups.append("text")
         .attr("class", "text_axis_title text_center")
@@ -177,19 +186,32 @@ function treatdatasetMultiples() {
 }
 
 function updateSmallMultiplesChart() {
-    var svg_width = parseInt(small_multiples_svg.style("width").slice(0, -2));
-    var svg_height = parseInt(small_multiples_svg.style("height").slice(0, -2));
-    const margins = {top: 35, right: 35, bottom: 15, left: 35}
-    const subMargins = {top: 10, right: 15, bottom: 20, left: 15}
-
     treatdatasetMultiples();
 
+    var max = 0
+    dataset_multiples.forEach(function(data) {
+        multiplesAxes.forEach(function(axis) {
+            if (max < data[axis['attribute']])
+                max = data[axis['attribute']];
+        })
+    })
+    max = Math.ceil(max / 10) * 10;
+    numberModelsSmallMultiplesScale.domain([0, max]);
+    numberModelsSmallMultiplesAxis = d3.axisLeft()
+        .scale(numberModelsSmallMultiplesScale)
+        .tickValues([0, max]);
+    var axis = small_multiples_svg.selectAll(".yaxis")
+        .call(numberModelsSmallMultiplesAxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
+
     timeSmallMultiplesScale.domain([start_date, end_date]);
-    small_multiples_svg.selectAll(".xaxis")
-        .call(d3.axisBottom(timeSmallMultiplesScale)
-            .tickValues([start_date, end_date])
-            .tickFormat(d3.timeFormat("%Y"))
-        );
+    timeSmallMultiplesAxis = d3.axisBottom()
+        .scale(timeSmallMultiplesScale)
+        .tickValues([start_date, end_date])
+        .tickFormat(d3.timeFormat("%Y"));
+    var axis = small_multiples_svg.selectAll(".xaxis")
+        .call(timeSmallMultiplesAxis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
     
     /* TODO: UPDATE YAXIS SCALE */
     

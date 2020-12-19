@@ -18,11 +18,11 @@ function build_parallel_coordinates_chart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
 
-    const margins = {top: 50, right: 70, bottom: 35, left: 70}
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width}
     
     parallel_coordinates_svg.append("text")
         .attr("x", "50%")
-        .attr("y", "10%")
+        .attr("y", "7%")
         .attr("class", "text_module_title text_center")
         .text("Mean Value By Brand");
 
@@ -71,16 +71,16 @@ function build_parallel_coordinates_chart() {
         .attr("id", "axis_tick_min_region")
         .attr("dominant-baseline", "middle")
         .attr("x", - brushWidth / 2 - 5)
-        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0] + 0.01 * svg_height)
-        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1] - 0.03 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
     group_axis.append("text")
         .classed("text_axis_ticks text_left bold", true)
         .classed("hidden", datum => datum['filter'] == undefined)
         .attr("id", "axis_tick_max_region")
         .attr("dominant-baseline", "middle")
         .attr("x", - brushWidth / 2 - 5)
-        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1] - 0.01 * svg_height)
-        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0] + 0.03 * svg_height)
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
 
     // DEAL WITH DRAGGING
     group_axis.call(d3.drag()
@@ -141,7 +141,7 @@ function build_parallel_coordinates_chart() {
             .on("start brush end", function(event, datum) {
                 // console.log("Brush Event: ", event);
                 datum['filter'] = event.selection;
-                // console.log("Brush Datum: ", datum);
+                //console.log("Brush Datum: ", datum);
 
                 changedBrushingParallelLineChart();
             })
@@ -311,7 +311,7 @@ function getClosestPathParallelLineChart(event, max_distance = 100) {
 function updateParallelLineChart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
-    const margins = {top: 50, right: 70, bottom: 35, left: 70}
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width};
 
     // console.log("Before: ", axesParallelCoordinates);
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
@@ -325,37 +325,54 @@ function updateParallelLineChart() {
         .selectAll("#axis_tick_max")
         .text(datum => datum['max'].toFixed(datum['round']));
 
-    parallel_coordinates_svg.selectAll("path.brand_line")
-        .data(datasetParallelCoordinates, datum => datum['Brand'])
+    var paths = parallel_coordinates_svg.select(".line_chart_paths").selectAll("path.brand_line")
+        .data(datasetParallelCoordinates, datum => datum['Brand']);
+    paths.exit().remove();
+    paths.enter().append("path").attr("class", "brand_line")
+        .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
         .attr("d", datum => createPathParallelCoordinates(datum));
+    paths.attr("d", datum => createPathParallelCoordinates(datum));
     changedBrushingParallelLineChart();
 }
 
 function changedBrushingParallelLineChart() {
-    const margins = {top: 50, right: 70, bottom: 35, left: 70}
+    var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width};
 
     filteredBrands = []
 
     // UPDATE BRUSH AXIS
+    const brushWidth = 0.03 * svg_width;
+    const range = svg_height - margins.top - margins.bottom;
     parallel_coordinates_svg.selectAll("#axis_tick_min")
         .classed("hidden", datum => datum['filter'] != undefined);
     parallel_coordinates_svg.selectAll("#axis_tick_max")
         .classed("hidden", datum => datum['filter'] != undefined);
     parallel_coordinates_svg.selectAll("#axis_tick_min_region")
         .classed("hidden", datum => datum['filter'] == undefined)
-        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0] + 0.03 * svg_height)
-        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1])
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
     parallel_coordinates_svg.selectAll("#axis_tick_max_region")
         .classed("hidden", datum => datum['filter'] == undefined)
-        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1] - 0.03 * svg_height)
-        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][1]).toFixed(datum['round']));
+        .classed("text_left", datum => datum['filter'] == undefined || datum['filter'][1] - datum['filter'][0] > 0.15 * range)
+        .classed("text_right", datum => !(datum['filter'] == undefined || datum['filter'][1] - datum['filter'][0] > 0.15 * range))
+        .attr("x", function(datum) {
+            if (datum['filter'] == undefined) return 0;
+            if (datum['filter'][1] - datum['filter'][0] > 0.15 * range)
+                return - brushWidth / 2 - 5;
+            else return brushWidth / 2 + 5;
+        })
+        .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][0])
+        .text(datum => datum['filter'] == undefined ? 0 : datum['scale'].invert(datum['filter'][0]).toFixed(datum['round']));
 
     parallel_coordinates_svg.selectAll("path.brand_line")
         .each(function(datum, index) {
             var isSelected = true;
             axesParallelCoordinates.forEach(function(axis) {
                 if (axis['filter'] == null) return;
+                if (datum['Brand'] == 'Parla') console.log(axis['Name'], axis['filter']);
+                if (datum['Brand'] == 'Parla') console.log("Parla: ", datum[axis['Name']], axis['scale'](datum[axis['Name']]));
                 var filter = axis['filter'];
                 var value = axis['scale'](datum[axis['Name']]);
                 var insideRegion = value >= filter[0] && value <= filter[1];
@@ -425,18 +442,29 @@ function hover_remove_brand_parallel_line_chart() {
 }
 
 function showAxisValue(brand) {
-    const tickWidth = 50;
+    var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     const tickHeight = 20;
     var information = datasetParallelCoordinates.find(elem => elem['Brand'] == brand);
     if (information == undefined) { hideAxisValue(); return };
 
-    var ticks = parallel_coordinates_svg.selectAll("g.value_tick")
-        .attr("transform", datum => "translate(" + (- tickWidth - 5) +
-             "," + moveYParallelLineChartTooltip(information, datum, datum['scale'](information[datum['Name']])) + ")");
+    var ticks = parallel_coordinates_svg.selectAll("g.value_tick");
     
     ticks.classed("hidden", false);
     ticks.select("text")
         .text(datum => (Math.round(information[datum['Name']] * Math.pow(10, datum['round'])) / Math.pow(10, datum['round'])).toFixed(datum['round']));
+
+    ticks.each(function() {
+        var tick = d3.select(this);
+        var rect = tick.select("rect");
+        var text = tick.select("text");
+        var text_width = text.node().getComputedTextLength();
+        const rect_width = text_width + 0.012 * svg_width;
+
+        text.attr("x", rect_width - 5);
+        rect.attr("width", rect_width);
+        tick.attr("transform", datum => "translate(" + (- rect_width - 5) +
+            "," + moveYParallelLineChartTooltip(information, datum, datum['scale'](information[datum['Name']])) + ")");
+    })
 }
 
 function moveYParallelLineChartTooltip(infomation, datum, value) {

@@ -7,6 +7,7 @@ var time_selection_svg
 function build_time_selection_svg() {
     time_selection_svg = d3.select("svg#time_selection");
     var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(time_selection_svg.style("height").slice(0, -2));
 
     const LINE_WIDTH = svg_width * 0.95;
     // console.log(time_selection_svg);
@@ -28,15 +29,19 @@ function build_time_selection_svg() {
         .domain([min_date, max_date]);
 
     time_axis = d3.axisBottom()
-        .scale(time_scale);
+        .scale(time_scale)
+        .tickSizeOuter(0)
+        .tickValues(computeTimeAxisTicksTimeSelection())
+        .tickFormat(d3.timeFormat("%Y"));
     
-    time_selection_svg.append("g")
+    var axis = time_selection_svg.append("g")
         .attr("class", "axis")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")")
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height * 5 / 12) + ")")
         .call(time_axis);
+    axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks lim_height");
     
     var selectors = time_selection_svg.append("g")
-        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (17) + ")");
+        .attr("transform", "translate(" + (svg_width - LINE_WIDTH) / 2 + "," + (svg_height * 5 / 12) + ")");
     
     selectors.append("path")
         .attr("class", "path_selector grabbable")
@@ -54,13 +59,18 @@ function build_time_selection_svg() {
 }
 
 function getPointsTriangle(center) {
-    var points = [[center, 0], [center - 10, -12], [center + 10, -12]]
+    var svg_width = parseInt(time_selection_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(time_selection_svg.style("height").slice(0, -2));
+
+    var points = [[center, 0], [center - 0.007 * svg_width, - 0.30 * svg_height], [center + 0.007 * svg_width, - 0.30 * svg_height]]
     var points_string = points.map(elem => elem.join(",")).join(" ");
     return points_string;
 }
 
 function getPointsConnection(center) {
-    return [center, - 10.45]
+    var svg_height = parseInt(time_selection_svg.style("height").slice(0, -2));
+
+    return [center, - 0.25 * svg_height]
 }
 
 function prepare_event_time_selection() {
@@ -172,4 +182,16 @@ function resetTimeSelection() {
     var path_selector = time_selection_svg.select(".path_selector");
     path_selector.transition().duration(1000)
         .attr("d", d3.line()([getPointsConnection(time_scale(start_date)), getPointsConnection(time_scale(end_date))]));
+}
+
+function computeTimeAxisTicksTimeSelection() {
+    var startYear = start_date.getFullYear();
+    var endYear = end_date.getFullYear();
+    var tickValues = []
+
+    for (var year = startYear; year <= endYear; year += 1) {
+        tickValues.push(new Date(year, 0, 1));
+    }
+
+    return tickValues;
 }

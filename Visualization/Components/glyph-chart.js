@@ -7,6 +7,8 @@ var sizeScaleGlyphs
 var sizeHoverScaleGlyphs
 var saturationScaleGlyphs
 
+var scaleZoom
+
 var zoomGlyphs
 var zoomLevel = 1
 var maxZoom = 100
@@ -16,18 +18,23 @@ const proportionHeightPhone = 1.8
 const minSaturationGlyphs = 0.3
 const maxSaturationGlyphs = 1
 const maxZoomLevelMinimum = 1.5
-const maxZoomLevelMaxArea = 8000
+const maxZoomLevelMaxArea = 7900
 
 function build_glyph_chart() {
     glyph_chart_svg = d3.select("#glyph_chart");
     var svg_width = parseInt(glyph_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
+
+    scaleZoom = d3.scalePow()
+        .exponent(0.5)
+        .domain([6771, 3009])
+        .range([1.75, 2.65]);
     
     glyph_chart_svg_zoomable = glyph_chart_svg.append("g")
         .attr("id", "zoomable_section")
         .attr("class", "zoomable");
     
-    const margins = {top: 35, right: 100, bottom: 15, left: 100}
+    const margins = {top: 0.1 * svg_height, right: 0.1 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width}
 
     treatDatasetGlyph();
     var numberModelsByBrand = d3.rollup(dataset_glyph, value => value.length, datum => datum['Brand']);
@@ -87,7 +94,7 @@ function build_glyph_chart() {
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
-    maxZoom = (maxZoomLevelMinimum - 1) + maxZoomLevelMaxArea / maxAreaPhoneGlyph;
+    maxZoom = Math.max(1, scaleZoom(maxAreaPhoneGlyph));
     zoomGlyphs = d3.zoom()
         .scaleExtent([1, maxZoom])
         .translateExtent([[0, 0], [svg_width, svg_height]])
@@ -106,12 +113,14 @@ function build_glyph_chart() {
     createTooltipGlyphChart();
 
     glyph_chart_svg.append("text")
-        .classed("text_left bold", true)
+        .classed("text_zoom_level text_left bold", true)
         .attr("id", "zoomLevel")
         .attr("dominant-baseline", "middle")
         .attr("x", 0.91 * svg_width)
         .attr("y", 0.15 * svg_height)
-        .text(Math.round(zoomLevel * 100) / 100 + "x")
+        .text(Math.round(zoomLevel * 100) / 100 + "x");
+
+    glyph_chart_svg.select("#zoomable_section").raise();
 }
 
 function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', interactive = true) {
@@ -298,7 +307,7 @@ function updateGlyphChart() {
     var svg_width = parseInt(glyph_chart_svg.style("width").slice(0, -2));
     var svg_height = parseInt(glyph_chart_svg.style("height").slice(0, -2));
 
-    const margins = {top: 35, right: 100, bottom: 15, left: 100}
+    const margins = {top: 0.1 * svg_height, right: 0.1 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width}
 
     treatDatasetGlyph();
     var numberModelsByBrand = d3.rollup(dataset_glyph, value => value.length, datum => datum['Brand']);
@@ -356,7 +365,7 @@ function updateGlyphChart() {
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
-    maxZoom = (maxZoomLevelMinimum - 1) + maxZoomLevelMaxArea / maxAreaPhoneGlyph;
+    maxZoom = Math.max(1, scaleZoom(maxAreaPhoneGlyph));
     resetZoom();
     zoomGlyphs = d3.zoom()
         .scaleExtent([1, maxZoom])
@@ -378,7 +387,7 @@ function computeMaxArea(width, height, margins, max_models, number_brands) {
 
     var accurateMaxHeight = Math.min(maxWidth * proportionHeightPhone, maxHeight);
     var accurateMaxWidth = accurateMaxHeight / proportionHeightPhone;
-
+    
     return accurateMaxWidth * accurateMaxHeight;
 }
 
@@ -598,11 +607,15 @@ function createTooltipGlyphChart() {
         .attr("width", width_tooltip)
         .attr("height", height_tooltip);
 
-    tooltip.append("text")
+    var text = tooltip.append("text")
         .attr("x", "50%")
-        .attr("y", "10%")
-        .attr("class", "text_module_title text_center")
-        .text("Help - Modules By Brand");
+        .attr("y", "7%")
+        .attr("class", "text_module_title text_center");
+    text.append("tspan")
+        .text("Help");
+    text.append("tspan")
+        .attr("font-weight", "normal")
+        .text(" - Mean Specs of Models by Year and by Brand");
 
     var lines = tooltip.selectAll("g.tooltip_line")
         .data(linesInfo).enter()

@@ -185,6 +185,7 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
+            updateParallelLineChart();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -198,6 +199,7 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
+            updateParallelLineChart();
         }
     });
 
@@ -214,6 +216,7 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+        updateParallelLineChart();
 
         updateResetButton();
     });
@@ -234,6 +237,7 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+        updateParallelLineChart();
 
         updateResetButton();
     });
