@@ -234,7 +234,7 @@ function treatParallelCoordinatesDataset() {
 function treatAxesParallel(range) {
     axesParallelCoordinates.forEach(function(axis) {
         axis['min'] = 0;
-        axis['max'] = d3.max(datasetParallelCoordinates, datum => Math.round(datum[axis['Name']] * 1.05));
+        axis['max'] = Math.ceil(d3.max(datasetParallelCoordinates, datum => datum[axis['Name']]));
 
         var scale = d3.scaleLinear()
             .domain([0, axis['max']])
@@ -330,7 +330,12 @@ function updateParallelLineChart() {
     paths.exit().remove();
     paths.enter().append("path").attr("class", "brand_line")
         .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
-        .attr("d", datum => createPathParallelCoordinates(datum));
+        .attr("d", datum => createPathParallelCoordinates(datum))
+        .classed("selected", datum => selected_brands.includes(datum['Brand']))
+        .each(function(datum) {
+            if (! selected_brands.includes(datum['Brand'])) return;
+            d3.select(this).attr("stroke", getColorBrand(datum['Brand']))
+        });
     paths.attr("d", datum => createPathParallelCoordinates(datum));
     changedBrushingParallelLineChart();
 }
