@@ -410,7 +410,7 @@ function resetPeriodSelection() {
     const LINE_WIDTH = svg_width * 0.75;
     const step = LINE_WIDTH / (PERIODS_AVAILABLE.length - 1);
 
-    spiral_chart_svg.select(".circle_selector").transition().duration(1000)
+    spiral_chart_svg.select(".circle_selector").transition("Reset Period Selection").duration(1000)
         .attr("cx", 2 * step);
     selected_period_months = PERIODS_AVAILABLE[2];
 }
@@ -455,7 +455,10 @@ function updateSpiralChart() {
     spiral_chart_svg.select("#bottom_spiral_scale").text(domain[0]);
     spiral_chart_svg.select("#top_spiral_scale").text(domain[1]);
 
-    spiral_chart_svg.select("g#spiral_group").remove();
+    spiral_chart_svg.selectAll("g#spiral_group")
+        .transition().duration(1000)
+        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(0) rotate(-180)")
+        .remove();
 
     spiral_heatmap = spiralHeatmap()
         .radius(chartRadius)
@@ -467,12 +470,12 @@ function updateSpiralChart() {
 
     const g = spiral_chart_svg.append("g")
         .attr("id", "spiral_group")
-        .attr("transform", "translate(" + 
-            (svg_width / 2) + "," + 
-            (margins.top + chartRadius) + ")");
+        .attr("transform", "translate(" + (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(0) rotate(-180)");
 
     g.datum(dataset_spiral_chart)
-        .call(spiral_heatmap);
+        .call(spiral_heatmap)
+        .transition().delay(1000).duration(1000)
+        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(1) rotate(0)");
 
     g.selectAll(".arc").selectAll("path")
         .style("fill", datum => spiral_color_scale(datum["Models"]))

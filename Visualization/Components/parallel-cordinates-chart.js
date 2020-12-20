@@ -323,20 +323,62 @@ function updateParallelLineChart() {
     
     parallel_coordinates_svg.selectAll("g.axis")
         .selectAll("#axis_tick_max")
-        .text(datum => datum['max'].toFixed(datum['round']));
+        .transition("Update Time Axis Line Chart").duration(500)
+        .style("opacity", 0)
+        .on("end", function() {
+            d3.select(this).text(datum => datum['max'].toFixed(datum['round']))
+                .transition("Update Time Axis Line Chart").duration(500)
+                .style("opacity", 1);
+        });
 
     var paths = parallel_coordinates_svg.select(".line_chart_paths").selectAll("path.brand_line")
         .data(datasetParallelCoordinates, datum => datum['Brand']);
     paths.exit().remove();
     paths.enter().append("path").attr("class", "brand_line")
         .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
-        .attr("d", datum => createPathParallelCoordinates(datum))
-        .classed("selected", datum => selected_brands.includes(datum['Brand']))
-        .each(function(datum) {
-            if (! selected_brands.includes(datum['Brand'])) return;
-            d3.select(this).attr("stroke", getColorBrand(datum['Brand']))
-        });
-    paths.attr("d", datum => createPathParallelCoordinates(datum));
+        .each(function() {
+            var path = d3.select(this);
+            var pathLength = path.node().getTotalLength();
+    
+            path.attr("stroke-dashoffset", 0)
+                .attr("stroke-dasharray", pathLength)
+                .transition("Update Path Parallel Coordinates Remove").duration(1000)
+                .attr("stroke-dashoffset", pathLength)
+                .on("end", function() {
+                    var path = d3.select(this).attr("d", datum => createPathParallelCoordinates(datum))
+                        .classed("selected", datum => selected_brands.includes(datum['Brand']))
+                        .each(function(datum) {
+                            if (! selected_brands.includes(datum['Brand'])) return;
+                            d3.select(this).attr("stroke", getColorBrand(datum['Brand']))
+                        });
+                    var pathLength = path.node().getTotalLength();
+
+                    path.attr("stroke-dashoffset", pathLength)
+                        .attr("stroke-dasharray", pathLength)
+                        .transition("Update Path Parallel Coordinates Create").duration(2000)
+                        .attr("stroke-dashoffset", 0);
+                });
+        })
+
+    paths.each(function() {
+        var path = d3.select(this);
+        var pathLength = path.node().getTotalLength();
+
+        path.attr("stroke-dashoffset", 0)
+            .attr("stroke-dasharray", pathLength)
+            .transition("Update Path Parallel Coordinates Remove").duration(1000)
+            .attr("stroke-dashoffset", pathLength)
+            .on("end", function() {
+                var path = d3.select(this).attr("d", datum => createPathParallelCoordinates(datum))
+                var pathLength = path.node().getTotalLength();
+                
+                path.attr("stroke-dashoffset", pathLength)
+                    .attr("stroke-dasharray", pathLength)
+                    .transition("Update Path Parallel Coordinates Create").duration(2000)
+                    .attr("stroke-dashoffset", 0);
+            });
+    });
+    
     changedBrushingParallelLineChart();
 }
 
@@ -376,8 +418,6 @@ function changedBrushingParallelLineChart() {
             var isSelected = true;
             axesParallelCoordinates.forEach(function(axis) {
                 if (axis['filter'] == null) return;
-                if (datum['Brand'] == 'Parla') console.log(axis['Name'], axis['filter']);
-                if (datum['Brand'] == 'Parla') console.log("Parla: ", datum[axis['Name']], axis['scale'](datum[axis['Name']]));
                 var filter = axis['filter'];
                 var value = axis['scale'](datum[axis['Name']]);
                 var insideRegion = value >= filter[0] && value <= filter[1];

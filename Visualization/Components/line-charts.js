@@ -94,9 +94,8 @@ function build_line_chart_1(){
                 .y(datum => hscale_models(datum['value'])))
     });
 
-    yaxis_models = d3.axisLeft() // we are creating a d3 axis
-        .scale(hscale_models) // fit to our scale
-        .tickFormat(d3.format(".2s")) // format of each year
+    yaxis_models = d3.axisLeft()
+        .scale(hscale_models)
         .tickSizeOuter(0);
 
     var axis = line_chart_1_svg.append("g") // we are creating a 'g' element to match our yaxis
@@ -239,7 +238,7 @@ function createLegend(element) {
     legend.attr("transform", "translate(" + (0.95 * svg_width) + "," + (0.02 * svg_height) + ")");
 
     var line = legend.append("g");
-    line.attr("transform", "translate(0," + (0.05 * svg_height) + ")");
+    line.attr("transform", "translate(0," + (0.03 * svg_height) + ")");
     var text = line.append("text")
         .classed("text_legend text_left", true)
         .attr("dominant-baseline", "middle")
@@ -251,7 +250,7 @@ function createLegend(element) {
 
 
     var line = legend.append("g").attr("id", "selectedAxis").datum(selectedAxis);
-    line.attr("transform", "translate(0," + (0.10 * svg_height) + ")");
+    line.attr("transform", "translate(0," + (0.08 * svg_height) + ")");
     var text = line.append("text")
         .classed("text_legend text_left", true)
         .attr("dominant-baseline", "middle")
@@ -319,27 +318,48 @@ function updateLineCharts() {
         .tickFormat(d3.timeFormat("%Y"));
     
     var axis = d3.selectAll(".line_chart").select(".xaxis")
+        .transition("Update Time Axis Line Chart").duration(2000)
         .call(xaxis);
     axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
 
     // -------------------- UPDATE LINE CHART 1 --------------------
     hscale_models.domain([0, d3.max(dataset_brands, datum => datum['# Models'])]);
     var axis = line_chart_1_svg.select(".yaxis")
-        .call(d3.axisLeft(hscale_models));
+        .transition("Update Number Models Axis Line Chart").duration(2000)
+        .call(d3.axisLeft(hscale_models)
+            .tickSizeOuter(0));
     axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
 
     brands_list.forEach(function(brand, index) {
         line_chart_1_svg.selectAll(".line_chart_paths")
             .select("#path_line_1_" + index)
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
-            .attr("d", d3.line()
-                .x(datum => xscale(datum['Date']))
-                .y(datum => hscale_models(datum['# Models'])))
+            .each(function() {
+                var path = d3.select(this);
+                var pathLength = path.node().getTotalLength();
+
+                path.attr("stroke-dashoffset", 0)
+                    .attr("stroke-dasharray", pathLength)
+                    .transition("Update Path Line Chart 1 Remove").duration(1000)
+                    .attr("stroke-dashoffset", pathLength)
+                    .on("end", function() {
+                        var path = d3.select(this).attr("d", d3.line()
+                            .x(datum => xscale(datum['Date']))
+                            .y(datum => hscale_models(datum['# Models'])));
+                        var pathLength = path.node().getTotalLength();
+                        
+                        path.attr("stroke-dashoffset", pathLength)
+                            .attr("stroke-dasharray", pathLength)
+                            .transition("Update Path Line Chart 1 Create").duration(2000)
+                            .attr("stroke-dashoffset", 0);
+                    });
+            })
     });
 
     // -------------------- UPDATE LINE CHART 2 --------------------
     hscale_sales.domain([0, d3.max(dataset_brands, datum => datum['Sales'])]);
     var axis = line_chart_2_svg.select(".yaxis")
+        .transition("Update Sales Axis Line Chart").duration(2000)
         .call(d3.axisLeft(hscale_sales)
             .tickFormat(d3.format(".2s"))
             .tickSizeOuter(0));
@@ -349,9 +369,26 @@ function updateLineCharts() {
         line_chart_2_svg.selectAll(".line_chart_paths")
             .select("#path_line_2_" + index)
             .datum(dataset_brands.filter(elem => elem['Brand'] == brand))
-            .attr("d", d3.line()
-                .x(datum => xscale(datum['Date']))
-                .y(datum => hscale_sales(datum['Sales'])));
+            .each(function() {
+                var path = d3.select(this);
+                var pathLength = path.node().getTotalLength();
+
+                path.attr("stroke-dashoffset", 0)
+                    .attr("stroke-dasharray", pathLength)
+                    .transition("Update Path Line Chart 1 Remove").duration(1000)
+                    .attr("stroke-dashoffset", pathLength)
+                    .on("end", function() {
+                        var path = d3.select(this).attr("d", d3.line()
+                            .x(datum => xscale(datum['Date']))
+                            .y(datum => hscale_sales(datum['Sales'])));
+                        var pathLength = path.node().getTotalLength();
+                        
+                        path.attr("stroke-dashoffset", pathLength)
+                            .attr("stroke-dasharray", pathLength)
+                            .transition("Update Path Line Chart 1 Create").duration(2000)
+                            .attr("stroke-dashoffset", 0);
+                    });
+            })
     });
 }
 
@@ -389,7 +426,7 @@ function highlight_line(brand) {
     line_chart_2_svg.selectAll(".line_chart_paths")
         .select("#path_line_2_" + index)
         .classed("hover", true)
-        .raise();  
+        .raise();
 }
 
 function getChoices(indexOfBrand) {
@@ -666,12 +703,25 @@ function updateLinesSmallMultiples() {
                 //console.log("Value: ", value);
                 return value;
             }, datum => datum['Brand'])
-            .classed("selected", selected_brands.includes(brand))
-            .classed("hidden", invisible)
-            .attr("stroke", invisible ? "none" : getColorBrand(brand))
-            .attr("d", d3.line()
-                .x(datum => xscale(new Date(datum['year'], 0, 1)))
-                .y(datum => hscale_models(datum['value'])))
+            .each(function() {
+                var path = d3.select(this);
+                var pathLength = path.node().getTotalLength();
+
+                path.transition("Update Path Small Multiples Line Chart 1 Remove").duration(1000)
+                    .style("opacity", 0)
+                    .on("end", function() {
+                        var path = d3.select(this).attr("d", d3.line()
+                                .x(datum => xscale(new Date(datum['year'], 0, 1)))
+                                .y(datum => hscale_models(datum['value'])))
+                            .classed("selected", selected_brands.includes(brand))
+                            .classed("hidden", invisible)
+                            .attr("stroke", invisible ? "none" : getColorBrand(brand));
+                        var pathLength = path.node().getTotalLength();
+                        
+                        path.transition("Update Path Small Multiples Line Chart 1 Create").delay(250).duration(1750)
+                            .style("opacity", 1);
+                    });
+            })
     });
 
 }
@@ -704,4 +754,7 @@ function filterBrandsLineChart(line_chart) {
         var path = paths.filter(elem => elem != undefined && elem.length != 0 && elem[0]['Brand'] == brand);
         path.classed("filtered", false).raise();
     });
+
+    line_chart_1_svg.selectAll(".hover_circle").raise();
+    line_chart_2_svg.selectAll(".hover_circle").raise();
 }

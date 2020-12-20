@@ -90,7 +90,7 @@ function build_glyph_chart() {
         })
 
     brandsLines.selectAll("g.mock_phone")
-        .data(datum => datum[1], datum => datum['Model']).enter()
+        .data(datum => datum[1], datum => datum['year']).enter()
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
@@ -137,43 +137,58 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
     const width = Math.sqrt(size / proportionHeightPhone);
     const height = proportionHeightPhone * width;
 
-    const phoneInfoFontSizeConstant = 0.0033;
-
     var phone = d3.create("svg:g").classed("mock_phone", true);
 
     phone.append("path")
         .attr("d", d3.symbol().type(phoneSymbol).size(size))
-        .attr("fill", "black");
+        .attr("fill", "black")
+        .attr("id", "phoneFrame");
     phone.append("path")
+        .classed("coloredComponent", true)
         .attr("d", d3.symbol().type(screenSymbol).size(size * screenRatio))
-        .attr("fill", color);
+        .attr("fill", color)
+        .attr("id", "phoneScreen");
     phone.append("path")
         .attr("d", d3.symbol().type(d3.symbolCircle).size(size * sizeCamera))
         .attr("fill", colorComponent)
-        .attr("transform", "translate(" + 0.7 * width / 2 + "," + (- 0.85 * height / 2) + ")");
+        .attr("transform", "translate(" + 0.7 * width / 2 + "," + (- 0.85 * height / 2) + ")")
+        .attr("id", "phoneCamera");
 
     phone.append("rect")
         .attr("width", width * sizeWidthSpeaker)
         .attr("height", height * sizeHeightSpeaker)
         .attr("x", - width * sizeWidthSpeaker / 2)
         .attr("y", - 0.85 * height / 2 - height * sizeHeightSpeaker / 2)
-        .attr("fill", colorComponent);
+        .attr("fill", colorComponent)
+        .attr("id", "phoneSpeaker");
     phone.append("rect")
         .attr("width", width * sizeWidthButton)
         .attr("height", height * sizeHeightButton)
         .attr("x", - width * sizeWidthButton / 2)
         .attr("y", 0.85 * height / 2 - height * sizeHeightButton / 2)
-        .attr("fill", colorComponent);
+        .attr("fill", colorComponent)
+        .attr("id", "phoneButton");
 
 
     if (! interactive) return phone.node();
+    addEventToMockPhone(phone, proportionHeightPhone, size);
+
+    return phone.node();
+
+}
+
+function addEventToMockPhone(phone, proportionHeightPhone, size) {
+    const width = Math.sqrt(size / proportionHeightPhone);
+    const height = proportionHeightPhone * width;
+    const phoneInfoFontSizeConstant = 0.0033;
+
     phone.on("mouseenter", function(event, datum) {
         var element = d3.select(event.target);
         element.raise();
         d3.select(element.node().parentNode).raise();
 
         var currentTransformation = element.attr("transform");
-        
+
         const showing_attributes = [
             {Name: 'Date Announced', image: 'Resources/year.png', attribute: datum['year'], units: undefined},
             {Name: 'Battery', image: 'Resources/battery.png', attribute: datum['battery_amps'], units: "Amps/h"},
@@ -189,14 +204,6 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
 
         var infoElement = element.append("g")
             .classed("phoneInfo", true);
-
-        /*
-        infoElement.append("text").classed("modelTitle text_center bold", true)
-            .attr("x", 0)
-            .attr("y", - 0.30 * height)
-            .text(datum['Model'].replace("_", ""))
-            .append("title")
-            .text("Model");*/
 
         var infoElements = infoElement.selectAll("g.infoLine").data(showing_attributes).enter()
             .append("g").classed("infoLine", true)
@@ -225,6 +232,7 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
             .attr("y", + 0.03 * height)
             .text(datum => datum['units']);
 
+        currentTransformation = currentTransformation.replace(", ", ",");
         var currentTranslate = currentTransformation.split(" ").find(elem => elem.includes("translate"));
         var size = sizeScaleGlyphs(datum['battery_amps']);
         var scaleFactor = 1.75 * Math.sqrt(maxAreaPhoneGlyph / size);
@@ -237,12 +245,44 @@ function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', int
         var currentTransformation = element.attr("transform");
         element.select(".phoneInfo").remove();
 
+        currentTransformation = currentTransformation.replace(", ", ",");
         var currentTranslate = currentTransformation.split(" ").find(elem => elem.includes("translate"));
         element.attr("transform", currentTranslate);
     });
+}
 
-    return phone.node();
+function updateMockPhone(element, size, color = 'darkgrey') {
+    // console.log("Size: ", size);
+    const screenRatio = 0.60
+    const sizeCamera = 0.006
+    const sizeWidthSpeaker = 0.4
+    const sizeHeightSpeaker = 0.01
+    const sizeWidthButton = 0.3
+    const sizeHeightButton = 0.05
 
+    const phoneSymbol = createSymbol(proportionHeightPhone, 0.75);  
+    const screenSymbol = createSymbol(1.5, 0.90);  
+    const width = Math.sqrt(size / proportionHeightPhone);
+    const height = proportionHeightPhone * width;
+
+    element.selectAll(".coloredComponent")
+        .attr("fill", color);
+
+    element.select("#phoneFrame").transition("Update Mock Phone Frame").duration(1250)
+        .attr("d", d3.symbol().type(phoneSymbol).size(size));
+    element.select("#phoneScreen").transition("Update Mock Phone Screen").duration(1250)
+        .attr("d", d3.symbol().type(screenSymbol).size(size * screenRatio));
+    element.select("#phoneCamera").transition("Update Mock Phone Camera").duration(1250)
+        .attr("d", d3.symbol().type(d3.symbolCircle).size(size * sizeCamera))
+        .attr("transform", "translate(" + 0.7 * width / 2 + "," + (- 0.85 * height / 2) + ")");
+    element.select("#phoneSpeaker").transition("Update Mock Phone Speaker").duration(1250)
+        .attr("width", width * sizeWidthSpeaker).attr("height", height * sizeHeightSpeaker)
+        .attr("x", - width * sizeWidthSpeaker / 2).attr("y", - 0.85 * height / 2 - height * sizeHeightSpeaker / 2);
+    element.select("#phoneButton").transition("Update Mock Phone Button").duration(1250)
+        .attr("width", width * sizeWidthButton).attr("height", height * sizeHeightButton)
+        .attr("x", - width * sizeWidthButton / 2).attr("y", 0.85 * height / 2 - height * sizeHeightButton / 2);
+
+    addEventToMockPhone(element, proportionHeightPhone, size);
 }
 
 function createSymbol(proportionHeight, curveFactor) {
@@ -341,28 +381,47 @@ function updateGlyphChart() {
 
     var phones = glyph_chart_svg_zoomable.select("g#allPhones");
 
-    var brandsLines = phones.selectAll("g.phoneByBrand")
+    var oldBrandsLines = phones.selectAll("g.phoneByBrand")
         .data(modelsByBrand, datum => datum[0]);
             
-    brandsLines.enter()
+    var newBrandsLines = oldBrandsLines.enter()
         .append("g").classed("phoneByBrand", true)
         .attr("id", datum => datum[0])
-        .selectAll("g.mock_phone")
-        .data(datum => datum[1], datum => datum['Model'])
-        .append(datum => createMockPhone(datum['battery_amps'], getColorGlyph(datum)));
-    brandsLines.exit().remove();
-
-    brandsLines = phones.selectAll("g.phoneByBrand")
-    brandsLines.attr("transform", function(datum) {
-            // console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
-            return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
-        });
-
-    // Remove and do them all ver again because of size Scale FIX
-    brandsLines.selectAll("g.mock_phone").remove();
-    brandsLines.selectAll("g.mock_phone")
+        .attr("transform", function(datum) { return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")"; });
+    newBrandsLines.selectAll("g.mock_phone")
         .data(datum => datum[1], datum => datum['Model']).enter()
         .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
+        .attr("transform", datum => "translate(" + (- Math.sqrt(sizeScaleGlyphs(datum['battery_amps']))) + ", 0)");
+    oldBrandsLines.exit().each(function(datum) {
+        var brand_line = d3.select(this);
+        brand_line.transition("Remove non-existing Brand Lines - " + datum[0]).duration(1000).style("opacity", 0).remove();
+    })
+
+    allBrandsLines = phones.selectAll("g.phoneByBrand")
+    oldBrandsLines.transition("Move Existing Brand Lines").duration(1250).attr("transform", function(datum) {
+            return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
+        });
+    
+    // Deal with already existing brand lines
+    var oldPhones = oldBrandsLines.selectAll("g.mock_phone")
+        .data(datum => datum[1], datum => datum['year']);
+    var newPhones = oldPhones.enter()
+        .append(datum => createMockPhone(sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum)))
+        .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)")
+        .style("opacity", 0);
+    oldPhones.exit().transition("Remove non-existing phones in Existing Brand Lines").duration(1000).style("opacity", 0).remove();
+    oldPhones.transition("Old Phones in Existing Brand Lines").duration(1250)
+        .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)")
+    newPhones.transition("New Phones in Existing Brand Lines").delay(750).transition(1000)
+        .style("opacity", 1);
+    oldPhones.each(function(datum) {
+        var phone = d3.select(this);
+        updateMockPhone(phone, sizeScaleGlyphs(datum['battery_amps']), getColorGlyph(datum));
+    });
+    // Deal with bew brand lines
+    var phones = newBrandsLines.selectAll("g.mock_phone")
+        .data(datum => datum[1], datum => datum['year']);
+    phones.transition("Phones in New Brand Lines").duration(1250)
         .attr("transform", (datum, index) => "translate(" + xScaleGlyph(index) + ",0)");
 
     maxZoom = Math.max(1, scaleZoom(maxAreaPhoneGlyph));
@@ -450,13 +509,13 @@ function createButtonsZoom() {
 }
 
 function zoomInAction() {
-    zoomGlyphs.scaleBy(glyph_chart_svg.transition().duration(750), 2);
+    zoomGlyphs.scaleBy(glyph_chart_svg.transition("Zoom In Action").duration(750), 2);
 }
 function zoomOutAction() {
-    zoomGlyphs.scaleBy(glyph_chart_svg.transition().duration(750), 0.5);
+    zoomGlyphs.scaleBy(glyph_chart_svg.transition("Zoom Out Action").duration(750), 0.5);
 }
 function resetZoom() {
-    glyph_chart_svg.transition().duration(750).call(zoomGlyphs.transform, d3.zoomIdentity.scale(1));
+    glyph_chart_svg.transition("Reset Zoom Action").duration(750).call(zoomGlyphs.transform, d3.zoomIdentity.scale(1));
 }
 
 function createButtonHelp() {
@@ -571,7 +630,7 @@ function createTooltipGlyphChart() {
         .text(Math.round(Math.min(...minimums.values())) + " Amps/h");
     
     // Placeholder Value
-    var size = 1000;
+    var size = 1250;
     var width_phone = Math.sqrt(size / proportionHeightPhone);
     var height_phone = proportionHeightPhone * width_phone;
     batteryElement.append(() => createMockPhone(size, selectedColor, undefined, false))

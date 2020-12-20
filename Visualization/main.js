@@ -154,15 +154,13 @@ function computeDateModel(element) {
 function prepareEvents() {
     /* --------------- CHANGED TIME PERIOD ------------------ */
     dispatch.on("changed_time_period", function() {
-        console.log("Start Date: ", start_date);
-        console.log("End Date: ", end_date);
-
         filterDatasets();
         updateLineCharts();
         updateParallelLineChart();
         updateSpiralChart();
         updateSmallMultiplesChart();
         updateGlyphChart();
+        updateLinesSmallMultiples();
 
         updateResetButton();
     });
@@ -190,7 +188,6 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
-            updateParallelLineChart();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -204,7 +201,6 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
-            updateParallelLineChart();
         }
     });
 
@@ -221,7 +217,6 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
-        updateParallelLineChart();
 
         updateResetButton();
     });
@@ -240,7 +235,6 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
-        updateParallelLineChart();
 
         updateResetButton();
     });
@@ -364,9 +358,10 @@ function prepareEvents() {
 
         // Reset Brands Selection
         const copy_selected_brands = [...selected_brands]
-        copy_selected_brands.forEach(brand => dispatch.call("unselectBrand", this, brand));
-        dispatch.call("selectBrand", this, "Xiaomi");
-        dispatch.call("selectBrand", this, "Apple");
+        const predefinedBrands = ['Xiaomi', 'Apple'];
+
+        copy_selected_brands.forEach(brand => { if (! predefinedBrands.includes(brand)) dispatch.call("unselectBrand", this, brand)});
+        predefinedBrands.forEach(brand => { if (! selected_brands.includes(brand)) dispatch.call("selectBrand", this, brand)});
 
         // Reset Brushes in Parallel Coordinates
         resetBrushes();

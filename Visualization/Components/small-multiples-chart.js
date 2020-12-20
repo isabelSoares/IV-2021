@@ -201,6 +201,7 @@ function updateSmallMultiplesChart() {
         .scale(numberModelsSmallMultiplesScale)
         .tickValues([0, max]);
     var axis = small_multiples_svg.selectAll(".yaxis")
+        .transition("Update Number Models Axis Line Chart").duration(2000)
         .call(numberModelsSmallMultiplesAxis);
     axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks text_left");
 
@@ -210,18 +211,34 @@ function updateSmallMultiplesChart() {
         .tickValues([start_date, end_date])
         .tickFormat(d3.timeFormat("%Y"));
     var axis = small_multiples_svg.selectAll(".xaxis")
+        .transition("Update Time Axis Line Chart").duration(2000)
         .call(timeSmallMultiplesAxis);
     axis.selectAll(".tick").selectAll("text").attr("class", "text_axis_ticks");
-    
-    /* TODO: UPDATE YAXIS SCALE */
     
     var groupPaths = small_multiples_svg.selectAll("g.multiple").select("g.line_chart_paths");
     brands_list.forEach(function(brand, index) {
         groupPaths.select("path#path_line_" + index)
             .datum(datum => treatDatasetPath(brand, datum))
-            .attr("d", d3.line()
-                .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)))
-                .y(datum => numberModelsSmallMultiplesScale(datum['value'])));
+            .each(function() {
+                var path = d3.select(this);
+                var pathLength = path.node().getTotalLength();
+
+                path.attr("stroke-dashoffset", 0)
+                    .attr("stroke-dasharray", pathLength)
+                    .transition("Update Path Small Multiples Remove").duration(1000)
+                    .attr("stroke-dashoffset", pathLength)
+                    .on("end", function() {
+                        var path = d3.select(this).attr("d", d3.line()
+                            .x(datum => timeSmallMultiplesScale(new Date(datum['year'], 0, 1)))
+                            .y(datum => numberModelsSmallMultiplesScale(datum['value'])));
+                        var pathLength = path.node().getTotalLength();
+                        
+                        path.attr("stroke-dashoffset", pathLength)
+                            .attr("stroke-dasharray", pathLength)
+                            .transition("Update Path Small Multiples Create").duration(2000)
+                            .attr("stroke-dashoffset", 0);
+                    });
+            })
     });
 }
 
@@ -384,4 +401,6 @@ function filterBrandsSmallMultiples() {
         var path = paths.filter(elem => elem != undefined && elem[0] != undefined && elem[0]['Brand'] == brand);
         path.classed("filtered", false).raise();
     });
+
+    small_multiples_svg.selectAll(".hover_circle").raise();
 }

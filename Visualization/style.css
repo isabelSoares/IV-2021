@@ -33,7 +33,7 @@ body {
     stroke-linejoin: round;
 }
 .triangle_selector.hover {
-    stroke-width: 5;
+    stroke-width: 0.5vh;
 }
 .path_selector {
     fill: rgb(0, 76, 153);
