@@ -121,13 +121,15 @@ function init() {
 
 function filterDatasets() {
     dataset_brands = fulldataset_brands.filter(function(elem) {
-        return (elem['Date'] >= start_date &&
-            elem['Date'] <= end_date) 
+        return (elem['Date'] != undefined && 
+            elem['Date'].getTime() >= start_date.getTime() &&
+            elem['Date'].getTime() <= end_date.getTime()) 
     });
 
     dataset_models = fulldataset_models.filter(function(elem) {
-        return (elem['Date'] >= start_date &&
-            elem['Date'] <= end_date) 
+        return (elem['Date'] != undefined && 
+            elem['Date'].getTime() >= start_date.getTime() &&
+            elem['Date'].getTime() <= end_date.getTime()) 
     });
 }
 
@@ -152,6 +154,9 @@ function computeDateModel(element) {
 function prepareEvents() {
     /* --------------- CHANGED TIME PERIOD ------------------ */
     dispatch.on("changed_time_period", function() {
+        console.log("Start Date: ", start_date);
+        console.log("End Date: ", end_date);
+
         filterDatasets();
         updateLineCharts();
         updateParallelLineChart();
@@ -185,6 +190,7 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
+            updateParallelLineChart();
         } else {
             if (selected_brands.length >= MAX_BRANDS_SELECTED) return;
 
@@ -198,6 +204,7 @@ function prepareEvents() {
             updateSpiralChart();
             updateGlyphChart();
             updateLinesSmallMultiples();
+            updateParallelLineChart();
         }
     });
 
@@ -214,16 +221,15 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+        updateParallelLineChart();
 
         updateResetButton();
     });
 
     /* --------------- UNSELECTION OF BRAND ------------------ */
     dispatch.on("unselectBrand", function(brand) {
-        console.log("Unselecting: ", brand, " before: ", selected_brands);
         const index = selected_brands.indexOf(brand);
         selected_brands.splice(index, 1);
-        console.log("Unselecting: ", brand, " after: ", selected_brands);
 
         removeColorBrand(brand);
         brandUpdateColor(brand);
@@ -234,6 +240,7 @@ function prepareEvents() {
         updateSpiralChart();
         updateGlyphChart();
         updateLinesSmallMultiples();
+        updateParallelLineChart();
 
         updateResetButton();
     });
@@ -320,8 +327,6 @@ function prepareEvents() {
 
     /* ------------- SELECTED ATTRIBUTE ------------------- */
     dispatch.on("clicked_attribute", function(datum) {
-        console.log(selectedAxis);
-        console.log(datum);
         if (selectedAxis == datum) {
             unselectAttribute();
             updateLinesSmallMultiples();

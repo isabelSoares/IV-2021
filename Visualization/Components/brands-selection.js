@@ -73,7 +73,7 @@ function build_brand_selection_form() {
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
                     .attr("dominant-baseline", "middle")
-                    .attr("class", "text_brands")
+                    .attr("class", "text_brands text_center")
                     .text(datum => datum)
                 
                 return g;
@@ -99,7 +99,7 @@ function build_brand_selection_form() {
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
                     .attr("dominant-baseline", "middle")
-                    .attr("class", "text_brands")
+                    .attr("class", "text_brands text_center")
                     .text(datum => datum);
                 
                 return g;
@@ -142,7 +142,7 @@ function update_brand_selection_selected_brand() {
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
                     .attr("dominant-baseline", "middle")
-                    .attr("class", "text_brands")
+                    .attr("class", "text_brands text_center")
                     .text(datum => datum)
                 
                 return g;
@@ -196,7 +196,7 @@ function update_brand_selection_unselected_brand() {
                     .attr("x", WIDTH_BOX / 2)
                     .attr("y", HEIGHT_BOX / 2)
                     .attr("dominant-baseline", "middle")
-                    .attr("class", "text_brands")
+                    .attr("class", "text_brands text_center")
                     .text(datum => datum)
                     .text(datum => datum)
                     .text(datum => datum)

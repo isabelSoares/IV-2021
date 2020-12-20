@@ -38,7 +38,7 @@ body {
 .path_selector {
     fill: rgb(0, 76, 153);
     stroke: rgb(0, 76, 153);
-    stroke-width: 4;
+    stroke-width: 0.5vh;
     stroke-linejoin: round;
 }
 
@@ -222,11 +222,16 @@ body {
     fill: rgb(0, 76, 153);
     stroke: black;
 }
-
 .selection_axis {
     fill: none;
     stroke: black;
     stroke-width: 1.5;
+}
+.time_interval_rectangle{
+    stroke: black;
+    stroke-width: 1;
+    border-style: dotted;
+    fill: rgba(0, 76, 153, 0.2);
 }
 
 /* BUTTONS */
@@ -259,11 +264,16 @@ body {
 .tooltip p {
     padding: 0.2em;
     margin: 0;
-    font-size: 0.7em;
+    font-size: .6vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .tooltip_line text {
-    font-size: 0.70em;
+    font-size: 0.6vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.tooltip_line tspan {
+    font-size: 0.6vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* GENERAL TEXT */
@@ -280,30 +290,37 @@ text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
     text-align: center;
     word-wrap: break-word;
-    font-size: 1.1em;
+    font-size: .9vw;
     font-weight: bold;
 }
 
 .text_module_title {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: .80em;
+    font-size: .65vw;
     font-weight: 700;
 }
 
 .text_axis_title {
     text-anchor: middle;
-    font-size: 0.80em;
+    font-size: .60vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .text_axis_ticks {
-    font-size: 0.70em;
+    font-size: .55vw;
     text-anchor: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+.text_axis_ticks.lim_height {
+    font-size: 1vh;
+}
+.text_zoom_level {
+    font-size: .9vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;  
 }
 
 .text_legend {
-    font-size: 0.70em;
+    font-size: .6vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;  
 }
 
@@ -317,15 +334,8 @@ text {
 }
 
 .text_brands {
-    text-anchor: middle;
+    font-size: .7vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;   
-}
-
-.time_interval_rectangle{
-    stroke: black;
-    stroke-width: 1;
-    border-style: dotted;
-    fill: rgba(0, 76, 153, 0.2);
 }
 
 .text_center {
