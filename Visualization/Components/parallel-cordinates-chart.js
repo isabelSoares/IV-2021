@@ -2,13 +2,13 @@ var parallel_coordinates_svg
 var datasetParallelCoordinates
 var xPositionScaleParallelCoordinates
 var axesParallelCoordinates = [
-    {Name: "Battery Amps/h", round: 0, attribute: ["battery_amps"], dragging: false, filter: null},
-    {Name: "Internal Memory MB", round: 0, attribute: ["im_MB"], dragging: false, filter: null},
-    {Name: "RAM MB", round: 1, attribute: ["ram_MB"], dragging: false, filter: null},
-    {Name: "Camera MP", round: 1, attribute: ["primary_camera_MP"], dragging: false, filter: null},
-    {Name: "Number of Sensors/ Model", round: 2, attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"], dragging: false, filter: null},
-    {Name: "Aspect Ratio", round: 2, attribute: ["aspect_ratio"], dragging: false, filter: null},
-    {Name: "Screen/Body Ratio", round: 2, attribute: ["screen_body_ratio"], dragging: false, filter: null},
+    {Name: "Battery Amps/h", round: 0, attribute: ["battery_amps"], dragging: false, filter: null, brush: undefined},
+    {Name: "Internal Memory MB", round: 0, attribute: ["im_MB"], dragging: false, filter: null, brush: undefined},
+    {Name: "RAM MB", round: 1, attribute: ["ram_MB"], dragging: false, filter: null, brush: undefined},
+    {Name: "Camera MP", round: 1, attribute: ["primary_camera_MP"], dragging: false, filter: null, brush: undefined},
+    {Name: "Number of Sensors/ Model", round: 2, attribute: ["sensor_accelerometer","sensor_fingerprint","sensor_heart_rate","sensor_iris_scanner","sensor_proximity","sensor_temperature"], dragging: false, filter: null, brush: undefined},
+    {Name: "Aspect Ratio", round: 2, attribute: ["aspect_ratio"], dragging: false, filter: null, brush: undefined},
+    {Name: "Screen/Body Ratio", round: 2, attribute: ["screen_body_ratio"], dragging: false, filter: null, brush: undefined},
 ]
 
 var filteredBrands = []
@@ -136,16 +136,21 @@ function build_parallel_coordinates_chart() {
 
     // DEAL WITH BRUSHING
     group_axis.append("g").classed("brush", true)
-        .call(d3.brushY()
-            .extent( [ [- brushWidth / 2, margins.top], [brushWidth / 2, svg_height - margins.bottom] ] )
-            .on("start brush end", function(event, datum) {
-                // console.log("Brush Event: ", event);
-                datum['filter'] = event.selection;
-                //console.log("Brush Datum: ", datum);
+        .each(function(datum) {
+            var brush = d3.brushY()
+                .extent( [ [- brushWidth / 2, margins.top], [brushWidth / 2, svg_height - margins.bottom] ] )
+                .on("start brush end", function(event, datum) {
+                    // console.log("Brush Event: ", event);
+                    datum['filter'] = event.selection;
+                    //console.log("Brush Datum: ", datum);
 
-                changedBrushingParallelLineChart();
-            })
-    );
+                    changedBrushingParallelLineChart();
+                });
+
+            d3.select(this).call(brush);
+            datum['brush'] = brush;
+        });
+        
 
     const tickWidth = 50;
     const tickHeight = 20;
@@ -232,7 +237,17 @@ function treatParallelCoordinatesDataset() {
 }
 
 function treatAxesParallel(range) {
+    var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
+    var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
+    const brushWidth = 0.03 * svg_width;
+
     axesParallelCoordinates.forEach(function(axis) {
+        // Keep Brush Selection even if scale changes
+        if (axis['filter'] != undefined) {
+            var value_filter = [];
+            axis['filter'].forEach(value => value_filter.push(axis['scale'].invert(value)));
+        }
+
         axis['min'] = 0;
         axis['max'] = Math.ceil(d3.max(datasetParallelCoordinates, datum => datum[axis['Name']]));
 
@@ -240,6 +255,22 @@ function treatAxesParallel(range) {
             .domain([0, axis['max']])
             .range(range);
         axis['scale'] = scale;
+
+        // Update Brush Selection even if scale changes
+        if (axis['filter'] != undefined) {
+            if (value_filter[0] > axis['max']) value_filter[0] = axis['max'];
+            if (value_filter[1] < axis['min']) value_filter[1] = axis['min'];
+
+            var filter = [];
+            value_filter.forEach(value => filter.push(axis['scale'](value)));
+            parallel_coordinates_svg.selectAll("g.axis").filter(datum => datum['Name'] == axis['Name'])
+                .select(".brush")
+                .each(function() {
+                    var element = d3.select(this).transition().duration(2000);
+                    if (filter[0] != filter[1] && filter[0] < filter[1]) element.call(axis['brush'].move, [filter[0], filter[1]]);
+                    else element.call(axis['brush'].clear);
+                });
+        }
     });
 
     // console.log(axesParallelCoordinates);
