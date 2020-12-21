@@ -360,9 +360,11 @@ function updateParallelLineChart() {
 
     paths.each(function() {
         var path = d3.select(this);
-
+        path.attr("stroke-dashoffset", null).attr("stroke-dasharray", null);
         path.transition("Update Path Parallel Coordinates Remove").duration(1000)
             .attr("d", datum => createPathParallelCoordinates(datum));
+        var pathLength = path.node().getTotalLength();
+        
     });
     
     changedBrushingParallelLineChart();
