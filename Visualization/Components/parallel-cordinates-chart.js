@@ -18,13 +18,13 @@ function build_parallel_coordinates_chart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
 
-    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width}
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.12 * svg_height, left: 0.05 * svg_width}
     
     parallel_coordinates_svg.append("text")
         .attr("x", "50%")
         .attr("y", "7%")
         .attr("class", "text_module_title text_center")
-        .text("Mean Value By Brand");
+        .text("Mean Values By Brand");
 
     xPositionScaleParallelCoordinates = d3.scalePoint()
         .domain(axesParallelCoordinates.map(elem => elem['Name']))
@@ -47,21 +47,20 @@ function build_parallel_coordinates_chart() {
     group_axis.append("text")
         .classed("text_axis_title draggable bold_on_hover", true)
         .attr("x", 0)
-        .attr("y", svg_height - margins.bottom * 0.50)
+        .attr("y", svg_height - margins.bottom * 0.25)
         .text(datum => datum['Name']);
     group_axis.append("text")
-        .classed("text_axis_ticks text_left", true)
-        .classed("hidden", datum => datum['filter'] != undefined)
+        .classed("text_axis_ticks text_center", true)
         .attr("id", "axis_tick_max")
-        .attr("x", - 5)
-        .attr("y", margins.top)
+        .attr("x", 0)
+        .attr("y", margins.top * 0.80)
         .text(datum => datum['max'].toFixed(datum['round']));
     group_axis.append("text")
-        .classed("text_axis_ticks text_left", true)
-        .classed("hidden", datum => datum['filter'] != undefined)
+        .classed("text_axis_ticks text_center", true)
         .attr("id", "axis_tick_min")
-        .attr("x", - 5)
-        .attr("y", svg_height - margins.bottom)
+        .style("dominant-baseline", "hanging")
+        .attr("x", 0)
+        .attr("y", svg_height - margins.bottom * 0.90)
         .text(datum => datum['min']);
 
     const brushWidth = 0.03 * svg_width;
@@ -342,7 +341,7 @@ function getClosestPathParallelLineChart(event, max_distance = 100) {
 function updateParallelLineChart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
-    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width};
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.12 * svg_height, left: 0.05 * svg_width};
 
     // console.log("Before: ", axesParallelCoordinates);
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
@@ -368,46 +367,25 @@ function updateParallelLineChart() {
     paths.enter().append("path").attr("class", "brand_line")
         .attr("id", datum => "path_line_" + brands_list.findIndex(elem => elem == datum['Brand']))
         .each(function() {
-            var path = d3.select(this);
-            var pathLength = path.node().getTotalLength();
-    
-            path.attr("stroke-dashoffset", 0)
-                .attr("stroke-dasharray", pathLength)
-                .transition("Update Path Parallel Coordinates Remove").duration(1000)
-                .attr("stroke-dashoffset", pathLength)
-                .on("end", function() {
-                    var path = d3.select(this).attr("d", datum => createPathParallelCoordinates(datum))
-                        .classed("selected", datum => selected_brands.includes(datum['Brand']))
-                        .each(function(datum) {
-                            if (! selected_brands.includes(datum['Brand'])) return;
-                            d3.select(this).attr("stroke", getColorBrand(datum['Brand']))
-                        });
-                    var pathLength = path.node().getTotalLength();
-
-                    path.attr("stroke-dashoffset", pathLength)
-                        .attr("stroke-dasharray", pathLength)
-                        .transition("Update Path Parallel Coordinates Create").duration(2000)
-                        .attr("stroke-dashoffset", 0);
+            var path = d3.select(this).attr("d", datum => createPathParallelCoordinates(datum))
+                .classed("selected", datum => selected_brands.includes(datum['Brand']))
+                .each(function(datum) {
+                    if (! selected_brands.includes(datum['Brand'])) return;
+                    d3.select(this).attr("stroke", getColorBrand(datum['Brand']))
                 });
-        })
+            var pathLength = path.node().getTotalLength();
+
+            path.attr("stroke-dashoffset", pathLength)
+                .attr("stroke-dasharray", pathLength)
+                .transition("Update Path Parallel Coordinates Create").duration(2000)
+                .attr("stroke-dashoffset", 0);
+            })
 
     paths.each(function() {
         var path = d3.select(this);
-        var pathLength = path.node().getTotalLength();
 
-        path.attr("stroke-dashoffset", 0)
-            .attr("stroke-dasharray", pathLength)
-            .transition("Update Path Parallel Coordinates Remove").duration(1000)
-            .attr("stroke-dashoffset", pathLength)
-            .on("end", function() {
-                var path = d3.select(this).attr("d", datum => createPathParallelCoordinates(datum))
-                var pathLength = path.node().getTotalLength();
-                
-                path.attr("stroke-dashoffset", pathLength)
-                    .attr("stroke-dasharray", pathLength)
-                    .transition("Update Path Parallel Coordinates Create").duration(2000)
-                    .attr("stroke-dashoffset", 0);
-            });
+        path.transition("Update Path Parallel Coordinates Remove").duration(1000)
+            .attr("d", datum => createPathParallelCoordinates(datum));
     });
     
     changedBrushingParallelLineChart();
@@ -416,17 +394,13 @@ function updateParallelLineChart() {
 function changedBrushingParallelLineChart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
-    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.1 * svg_height, left: 0.05 * svg_width};
+    const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.12 * svg_height, left: 0.05 * svg_width};
 
     filteredBrands = []
 
     // UPDATE BRUSH AXIS
     const brushWidth = 0.03 * svg_width;
     const range = svg_height - margins.top - margins.bottom;
-    parallel_coordinates_svg.selectAll("#axis_tick_min")
-        .classed("hidden", datum => datum['filter'] != undefined);
-    parallel_coordinates_svg.selectAll("#axis_tick_max")
-        .classed("hidden", datum => datum['filter'] != undefined);
     parallel_coordinates_svg.selectAll("#axis_tick_min_region")
         .classed("hidden", datum => datum['filter'] == undefined)
         .attr("y", datum => datum['filter'] == undefined ? margins.top : datum['filter'][1])

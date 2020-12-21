@@ -178,7 +178,7 @@ body {
 }
 
 .value_tick rect {
-    fill: white;
+    fill: rgb(240, 248, 255);
     stroke: black;
     stroke-width: 1;
 }
@@ -257,7 +257,7 @@ body {
     border: solid;
     border-width: 1px;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(240, 248, 255);
     padding: 10px;
     position: absolute;
 }

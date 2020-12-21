@@ -456,26 +456,28 @@ function updateSpiralChart() {
     spiral_chart_svg.select("#top_spiral_scale").text(domain[1]);
 
     spiral_chart_svg.selectAll("g#spiral_group")
+        .style("opacity", 1)
+        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ")")
         .transition().duration(1000)
-        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(0) rotate(-180)")
+        .style("opacity", 0)
         .remove();
 
     spiral_heatmap = spiralHeatmap()
         .radius(chartRadius)
         .holeRadiusProportion(0)
         .arcsPerCoil(selected_period_months['div'])
-        .coilPadding(0.05)
-        .arcLabel("Month")
-        .coilLabel("Year")
+        .coilPadding(0.05);
 
     const g = spiral_chart_svg.append("g")
         .attr("id", "spiral_group")
-        .attr("transform", "translate(" + (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(0) rotate(-180)");
+        .attr("transform", "translate(" + (svg_width / 2) + "," + (margins.top + chartRadius) + ")");
 
     g.datum(dataset_spiral_chart)
         .call(spiral_heatmap)
-        .transition().delay(1000).duration(1000)
-        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ") scale(1) rotate(0)");
+        .style("opacity", 0)
+        .attr("transform", "translate(" +  (svg_width / 2) + "," + (margins.top + chartRadius) + ")")
+        .transition().duration(1000)
+        .style("opacity", 1);
 
     g.selectAll(".arc").selectAll("path")
         .style("fill", datum => spiral_color_scale(datum["Models"]))

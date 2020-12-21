@@ -212,9 +212,7 @@ function computeTimeAxisTicksLineChart() {
         if (endYear - startYear <= 12) tickValues.push(new Date(year, 0, 1));
         else if (startYear % 2 == endYear % 2 && year % 2 == startYear % 2) tickValues.push(new Date(year, 0, 1));
         else if (startYear % 2 != endYear % 2) {
-            if (year < Math.floor((endYear + startYear) / 2) && year % 2 == startYear % 2)
-                tickValues.push(new Date(year, 0, 1));
-            else if (year > Math.ceil((endYear + startYear) / 2) && year % 2 == endYear % 2)
+            if (year % 2 == startYear % 2)
                 tickValues.push(new Date(year, 0, 1));
         }
     }
