@@ -12,7 +12,6 @@ function build_time_selection_svg() {
     var svg_height = parseInt(time_selection_svg.style("height").slice(0, -2));
 
     const LINE_WIDTH = svg_width * 0.95;
-    // console.log(time_selection_svg);
     
     var min_date_models = d3.min(fulldataset_models.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
     var max_date_models = d3.max(fulldataset_models.filter(elem => elem['Date'] != undefined), datum => datum['Date']);
@@ -22,9 +21,6 @@ function build_time_selection_svg() {
     max_date = new Date(Math.min(max_date_brands, max_date_models));
 
     max_date = new Date(max_date.getFullYear(), 0 , 1);
-
-    // console.log("Min Available Date: ", min_date);
-    // console.log("Max Available Date: ", max_date);
 
     time_scale = d3.scaleUtc()
         .range([0, LINE_WIDTH])
@@ -98,8 +94,6 @@ function prepare_event_time_selection() {
             
         if (this.id == "start_triangle") start_date = new Date(date);
         else if (this.id == "end_triangle") end_date = new Date(date);
-        // console.log("Start: ", start_year);
-        // console.log("End: ", end_year);
 
         time_selection_svg.select(".path_selector")
             .attr("d", d3.line()([getPointsConnection(time_scale(start_date)), getPointsConnection(time_scale(end_date))]));

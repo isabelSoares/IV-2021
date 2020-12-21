@@ -239,7 +239,6 @@ function treatDataset() {
 
     var sortedFinalDataset = finalDataset.sort((a, b) => a['Date'] - b['Date'])
 
-    // console.log(sortedFinalDataset);
     return sortedFinalDataset;
 }
 
@@ -388,7 +387,6 @@ function prepare_event_period_selection() {
         d3.select(this).attr("r", 8)
             .attr("cx", index * step);
         selected_period_months = PERIODS_AVAILABLE[index];
-        // console.log("New Selected Period Months: ", selected_period_months);
     }
 
     spiral_chart_svg.select(".circle_selector")

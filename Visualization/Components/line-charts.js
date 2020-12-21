@@ -80,8 +80,6 @@ function build_line_chart_1(){
                 var value = []
                 if (selected_brands.includes(brand) && hasAxisSelected)
                     value = treatDatasetPath(brand, selectedAxis);
-
-                //console.log("Value: ", value);
                 return value;
             }, datum => datum['Brand'])
             .attr("id", "path_line_1_temp_" + index)
@@ -305,8 +303,6 @@ function createTooltipLineChart() {
 }
 
 function updateLineCharts() {
-    // console.log("New dataset brands: ", dataset_brands);
-    // console.log("New dataset models: ", dataset_models);
 
     xscale.domain([start_date, end_date]);
     xaxis = d3.axisBottom()
@@ -537,7 +533,6 @@ function show_tooltip_line_chart(line_chart, information) {
 }
 
 function show_region_interval_line_chart(startTime, endTime) {
-    // console.log(startTime, endTime);
     var startX = xscale(startTime);
     var endX = xscale(endTime);
 
@@ -607,7 +602,6 @@ function getClosestPath(event, line_chart, max_distance = 100) {
         }
     });
 
-    // console.log("Min Distance: ", min_distance);
     return min_path;
 }
     
@@ -698,7 +692,6 @@ function updateLinesSmallMultiples() {
                 if (selected_brands.includes(brand) && hasAxisSelected)
                     value = treatDatasetPath(brand, selectedAxis);
                     
-                //console.log("Value: ", value);
                 return value;
             }, datum => datum['Brand'])
             .each(function() {

@@ -150,7 +150,6 @@ function treatDatasetPath(brand, axis) {
     dataset_multiples.filter(elem => elem['Brand'] == brand)
         .forEach(elem => treated.push({Brand: elem['Brand'], year: elem['year'], value: elem[axis['Name']]}));
 
-    // console.log(treated)
     return treated;
 }
 
@@ -164,8 +163,6 @@ function treatMultiples() {
             .range(range);
         axis['scale'] = scale;
     });
-
-    // console.log(multiplesAxes);
 }
 
 function treatdatasetMultiples() {
@@ -182,7 +179,6 @@ function treatdatasetMultiples() {
         multiplesAxes.forEach(axis => item[axis['Name']] += dataline[axis['attribute']]);
     });
 
-    // console.log("Small Multiples: ", dataset_multiples);
 }
 
 function updateSmallMultiplesChart() {

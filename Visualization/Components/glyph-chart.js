@@ -70,22 +70,17 @@ function build_glyph_chart() {
     modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
         const indexA = selected_brands.findIndex(elem => elem == a[0]);
         const indexB = selected_brands.findIndex(elem => elem == b[0]);
-        // console.log("Index A: ", indexA);
-        // console.log("Index B: ", indexB);
 
         return indexA - indexB;
     }));
 
     var phones = glyph_chart_svg_zoomable.append("g").attr("id", "allPhones");
 
-    // console.log("Models By Brand: ", modelsByBrand);
-
     var brandsLines = phones.selectAll("g.phoneByBrand")
         .data(modelsByBrand, datum => datum[0]).enter()
         .append("g").classed("phoneByBrand", true)
         .attr("id", datum => datum[0])
         .attr("transform", function(datum) {
-            // console.log("Translation: ", datum[0], (yScaleGlyph(datum[0]) + stepY / 2));
             return "translate(0," + (yScaleGlyph(datum[0]) + stepY / 2) + ")";
         })
 
@@ -124,7 +119,6 @@ function build_glyph_chart() {
 }
 
 function createMockPhone(size, color = 'darkgrey', colorComponent = 'white', interactive = true) {
-    // console.log("Size: ", size);
     const screenRatio = 0.60
     const sizeCamera = 0.006
     const sizeWidthSpeaker = 0.4
@@ -252,7 +246,6 @@ function addEventToMockPhone(phone, proportionHeightPhone, size) {
 }
 
 function updateMockPhone(element, size, color = 'darkgrey') {
-    // console.log("Size: ", size);
     const screenRatio = 0.60
     const sizeCamera = 0.006
     const sizeWidthSpeaker = 0.4
@@ -330,8 +323,6 @@ function treatDatasetGlyph() {
         })
     })
     dataset_glyph = final;
-
-    //console.log("Dataset Glyph: ", dataset_glyph);
 }
 
 function getColorGlyph(datum) {
@@ -373,8 +364,6 @@ function updateGlyphChart() {
     modelsByBrand = new Map([...modelsByBrand.entries()].sort(function(a, b) {
         const indexA = selected_brands.findIndex(elem => elem == a[0]);
         const indexB = selected_brands.findIndex(elem => elem == b[0]);
-        // console.log("Index A: ", indexA);
-        // console.log("Index B: ", indexB);
 
         return indexA - indexB;
     }));

@@ -87,31 +87,19 @@ function build_parallel_coordinates_chart() {
             if (! d3.select(event.sourceEvent.target).classed("draggable")) return;
             var draggedAxis = d3.select(this);
             draggedAxis.select(".bold_on_hover").classed("bold", true);
-            // console.log("Information Dragged: ", datum);
             
             var itemAxes = axesParallelCoordinates.find(elem => elem == datum);
             itemAxes['dragging'] = true;
-
-            // console.log("Axes Ordered: ", axesParallelCoordinates);
-            // console.log(this.__origin__);
-            // console.log(itemAxes);
             this.__origin__ = xPositionScaleParallelCoordinates(itemAxes['Name']);
-            // console.log(this.__origin__);
         })
         .on("drag", function(event, datum) {
             if (! datum['dragging']) return;
             var draggedAxis = d3.select(this);
             
             this.__origin__ += event.dx;
-            // console.log("Origin: ", this.__origin__);
-            // console.log("Event: ", event);
-            // console.log("Event X: ", event.x);
             if (this.__origin__ <= 0.99 * margins.left) this.__origin__ = 0.99 * margins.left;
             if (this.__origin__ >= svg_width - 0.99 * margins.right) this.__origin__ = svg_width - 0.99 * margins.right;
-
-            // console.log("Axes Ordered Before: ", axesParallelCoordinates);
             axesParallelCoordinates.sort((a, b) => positionAxis(a, this.__origin__) - positionAxis(b, this.__origin__));
-            // console.log("Axes Ordered After: ", axesParallelCoordinates);
             xPositionScaleParallelCoordinates.domain(axesParallelCoordinates.map(elem => elem['Name']));
             group_axis.attr("transform", datum => "translate(" + (positionAxis(datum, this.__origin__)) + ",0)");
         })
@@ -123,9 +111,8 @@ function build_parallel_coordinates_chart() {
             var itemAxes = axesParallelCoordinates.find(elem => elem == datum);
             itemAxes['dragging'] = false;
 
-            // console.log("Axes Ordered Before: ", axesParallelCoordinates);
+            
             axesParallelCoordinates.sort((a, b) => positionAxis(a) - positionAxis(b));
-            // console.log("Axes Ordered After: ", axesParallelCoordinates);
             xPositionScaleParallelCoordinates.domain(axesParallelCoordinates.map(elem => elem['Name']));
             group_axis.attr("transform", datum => "translate(" + (positionAxis(datum)) + ",0)");
 
@@ -139,9 +126,9 @@ function build_parallel_coordinates_chart() {
             var brush = d3.brushY()
                 .extent( [ [- brushWidth / 2, margins.top], [brushWidth / 2, svg_height - margins.bottom] ] )
                 .on("start brush end", function(event, datum) {
-                    // console.log("Brush Event: ", event);
+                    
                     datum['filter'] = event.selection;
-                    //console.log("Brush Datum: ", datum);
+                    
 
                     changedBrushingParallelLineChart();
                 });
@@ -230,8 +217,6 @@ function treatParallelCoordinatesDataset() {
             dataline[axis['Name']] = dataline[axis['Name']].value;
         });
     });
-
-    // console.log(treated)
     return treated;
 }
 
@@ -271,8 +256,6 @@ function treatAxesParallel(range) {
                 });
         }
     });
-
-    // console.log(axesParallelCoordinates);
 }
 
 function createPathParallelCoordinates(datum) {
@@ -280,7 +263,6 @@ function createPathParallelCoordinates(datum) {
         return [xPositionScaleParallelCoordinates(axis['Name']), axis['scale'](datum[axis['Name']])]
     });
 
-    // console.log(coords);
     return d3.line()(coords);
 }
 
@@ -333,8 +315,6 @@ function getClosestPathParallelLineChart(event, max_distance = 100) {
             min_path = this;
         }
     });
-
-    // console.log("Min Distance: ", min_distance);
     return min_path;
 }
 
@@ -342,11 +322,8 @@ function updateParallelLineChart() {
     var svg_width = parseInt(parallel_coordinates_svg.style("width").slice(0, -2));
     var svg_height = parseInt(parallel_coordinates_svg.style("height").slice(0, -2));
     const margins = {top: 0.16 * svg_height, right: 0.05 * svg_width, bottom: 0.12 * svg_height, left: 0.05 * svg_width};
-
-    // console.log("Before: ", axesParallelCoordinates);
     datasetParallelCoordinates = treatParallelCoordinatesDataset();
     treatAxesParallel([svg_height - margins.bottom, margins.top]);
-    // console.log("After: ", axesParallelCoordinates);
 
     parallel_coordinates_svg.selectAll("g.axis")
         .data(axesParallelCoordinates, datum => datum['Name']);

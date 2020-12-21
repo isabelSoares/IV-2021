@@ -92,14 +92,7 @@ function init() {
 
             fulldataset_models = data;
             dataset_models = fulldataset_models;
-
-            console.log("Brands: ", fulldataset_brands);
-            console.log("Models: ", fulldataset_models);
-
             filterDatasets();
-
-            // console.log("Start Date: ", start_date);
-            // console.log("End Date: ", end_date);
 
             build_time_selection_svg();
             build_brand_selection_form();

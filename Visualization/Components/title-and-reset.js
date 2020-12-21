@@ -65,13 +65,6 @@ function build_title_and_reset() {
 }
 
 function changesToReset() {
-    // console.log("Zoom: ", zoomLevel == 1);
-    // console.log("Brands: ", selected_brands.includes("Apple") && selected_brands.includes("Xiaomi") && selected_brands.length == 2);
-    // console.log("Parallel Coordinates: ", axesParallelCoordinates.filter(elem => elem['filter'] != undefined).length == 0);
-    // console.log("Time: ", start_date.getTime() == min_date.getTime() && end_date.getTime() == max_date.getTime());
-    // console.log("Small Multiples: ", selectedAxis == undefined);
-    // console.log("Spiral: ", selected_period_months == PERIODS_AVAILABLE[2]);
-    // console.log("-----------------");
     
     return !(zoomLevel == 1
         && selected_brands.includes("Apple") && selected_brands.includes("Xiaomi") && selected_brands.length == 2
